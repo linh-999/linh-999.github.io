@@ -1,20 +1,14 @@
-Cách upload portfolio Khánh Linh lên GitHub Pages
+Khánh Linh SOC Analyst Portfolio - bản hoàn chỉnh
 
-1. Giải nén zip này.
-2. Copy toàn bộ file/thư mục bên trong vào root repo:
-   D:\IO\update\linh-999.github.io
-3. Cấu trúc đúng cần có:
-   index.html
-   assets/
-   projects/
-   writeups/
-4. Push:
+Cách dùng:
+1. Giải nén file zip.
+2. Copy toàn bộ nội dung bên trong thư mục này vào root repo linh-999.github.io.
+3. Chạy:
    git add .
-   git commit -m "add soc102 soc201 investigation labs"
+   git commit -m "rebuild complete soc analyst portfolio"
    git push origin main
 
-Lab mới đã thêm:
-- writeups/soc102-newly-registered-domain.html
-- writeups/soc201-potential-beaconing.html
-- assets/labs/soc102/*
-- assets/labs/soc201/*
+Lưu ý:
+- Không copy thư mục .git từ zip cũ.
+- Root repo cần có index.html, assets/, projects/, writeups/.
+- Sau khi push, mở https://linh-999.github.io và nhấn Ctrl+F5 nếu trình duyệt còn cache.

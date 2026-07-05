@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Centralized Security Monitoring System | Khánh Linh</title>
-  <meta name="description" content="SOC Analyst case report for a centralized SIEM monitoring lab using Snort IDS, Filebeat, Elasticsearch and Kibana." />
+  <meta name="description" content="SOC portfolio case report: Centralized Security Monitoring System" />
   <link rel="stylesheet" href="../assets/style.css" />
 </head>
 <body>
@@ -13,27 +13,25 @@
     <nav>
       <a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
       <div class="nav-links">
+        <a href="../index.html#profile">Profile</a>
         <a href="../index.html#projects">Projects</a>
         <a href="../index.html#casefiles">Case Files</a>
         <a href="../index.html#workflow">SOC Workflow</a>
         <a href="../index.html#writeups">Write-ups</a>
+        <a href="../index.html#skills">Skills</a>
         <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
     </nav>
   </div>
 </header>
-
 <main class="container">
   <section class="page-hero">
     <div class="breadcrumb"><a href="../index.html">Home</a> / Projects / Centralized Security Monitoring System</div>
-    <div class="eyebrow"><span class="pulse"></span> Sep 2025 – Oct 2025 · SIEM Engineering Lab · Report-ready SOC Case</div>
+    <div class="eyebrow"><span class="pulse"></span> Sep 2025 – Oct 2025 · SIEM Engineering Lab</div>
     <h1 class="page-title">Centralized Security Monitoring System</h1>
-    <p class="lead">Một project SIEM nhỏ nhưng viết theo tư duy vận hành thật: xác định nguồn log, chuẩn hóa dữ liệu, xây detection use case, điều tra alert bằng evidence và đưa ra verdict/recommendation rõ ràng.</p>
-    <div class="mini-tags">
-      <span>Snort IDS</span><span>Linux Log</span><span>Filebeat</span><span>Elasticsearch</span><span>Kibana</span><span>Alert Triage</span><span>MITRE Mapping</span>
-    </div>
+    <p class="lead">Thiết kế một pipeline giám sát bảo mật tập trung để chuyển cảnh báo network-level thành case triage có cấu trúc. Project không dừng ở việc cài Snort/ELK, mà tập trung vào cách analyst đọc alert, kiểm tra raw event, xác định source/destination, so sánh với baseline lab và đưa verdict có bằng chứng.</p>
+    <div class="mini-tags"><span>Snort IDS</span><span>ELK Stack</span><span>Filebeat</span><span>Kibana</span><span>Alert Triage</span><span>Rule Tuning</span></div>
   </section>
-
   <section class="report-layout">
     <aside class="sidebar">
       <div class="panel">
@@ -42,206 +40,69 @@
           <div class="info-box"><span>Priority</span><b>High learning value</b></div>
           <div class="info-box"><span>Status</span><b>Report-ready lab</b></div>
           <div class="info-box"><span>Role</span><b>SOC Analyst / SIEM Operator</b></div>
-          <div class="info-box"><span>Time range</span><b>2025</b></div>
+          <div class="info-box"><span>Analyst value</span><b>Chứng minh khả năng hiểu luồng log end-to-end và trình bày một SIEM use case theo ngôn ngữ vận hành SOC.</b></div>
         </div>
       </div>
       <div class="panel" style="margin-top:16px">
         <p class="meta">On this page</p>
-        <div class="toc">
-          <a href="#summary">Executive Summary</a>
-          <a href="#scope">Objective & Scope</a>
-          <a href="#architecture">Architecture</a>
-          <a href="#implementation">Implementation</a>
-          <a href="#detection">Detection Logic</a>
-          <a href="#workflow">Investigation Workflow</a>
-          <a href="#evidence">Evidence</a>
-          <a href="#findings">Findings</a>
-          <a href="#recommendations">Recommendations</a>
-          <a href="#final-report">Final SOC Report</a>
-          <a href="#next">Next Improvements</a>
-        </div>
+        <div class="toc"><a href="#1">Executive Summary</a><a href="#2">Objective & Scope</a><a href="#3">Architecture</a><a href="#4">Detection Logic</a><a href="#5">Investigation Workflow</a><a href="#6">Evidence</a><a href="#7">Findings</a><a href="#8">Recommendations</a><a href="#9">Next Improvements</a></div>
       </div>
     </aside>
-
     <div>
-      <section class="report-section" id="summary">
-        <div class="section-kicker">01 · Executive view</div>
+      <section class="report-section" id="1">
+        <div class="section-kicker">01 · Executive Summary</div>
         <h2>Executive Summary</h2>
-        <p>Project tập trung vào cách xây dựng một hệ thống SIEM nhỏ có đầy đủ tư duy vận hành: endpoint/network sinh log, agent ship log, SIEM chuẩn hóa dữ liệu, dashboard hiển thị tín hiệu bất thường và analyst dùng evidence để kết luận alert. Nội dung nhấn mạnh luồng log, rule phát hiện, phân loại alert, lý do false positive và hành động khuyến nghị.</p>
-
-        <div class="callout good">
-          <b>Analyst value:</b> Project này chứng minh được 4 năng lực quan trọng của SOC Analyst L1: hiểu log source, biết đọc alert field, biết pivot sang evidence, và không kết luận tấn công khi chưa kiểm tra context.
-        </div>
-
-        <div class="info-grid" style="margin-top:16px">
-          <div class="info-box">
-            <span>Data sources</span>
-            <div class="mini-tags"><span>Snort alert log</span><span>Linux system log</span><span>Network traffic sample</span><span>Filebeat pipeline</span><span>Kibana dashboard</span></div>
-          </div>
-          <div class="info-box">
-            <span>MITRE / Analyst mapping</span>
-            <div class="mini-tags"><span>T1595 Reconnaissance</span><span>T1110 Credential Access</span><span>T1071 C2-like Outbound</span><span>T1498 DoS Pattern</span></div>
-          </div>
-        </div>
+        <p>Thiết kế một pipeline giám sát bảo mật tập trung để chuyển cảnh báo network-level thành case triage có cấu trúc. Project không dừng ở việc cài Snort/ELK, mà tập trung vào cách analyst đọc alert, kiểm tra raw event, xác định source/destination, so sánh với baseline lab và đưa verdict có bằng chứng.</p>
+        <div class="callout"><b>Security operations value:</b> Chứng minh khả năng hiểu luồng log end-to-end và trình bày một SIEM use case theo ngôn ngữ vận hành SOC.</div>
       </section>
-
-      <section class="report-section" id="scope">
-        <div class="section-kicker">02 · Scope control</div>
+      <section class="report-section" id="2">
+        <div class="section-kicker">02 · Scope</div>
         <h2>Objective & Scope</h2>
-        <div class="split">
-          <div>
-            <h3>Objectives</h3>
-            <ul>
-              <li>Thiết kế luồng giám sát tập trung từ sensor/endpoint về SIEM dashboard.</li>
-              <li>Tạo các use case cơ bản: port scan, SSH brute force, suspicious outbound traffic và high-volume connection.</li>
-              <li>Viết mẫu report điều tra alert có timestamp, source, destination, evidence, verdict và recommendation.</li>
-              <li>Đánh giá hạn chế của rule khi thiếu threat intelligence hoặc endpoint context.</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Scope boundary</h3>
-            <ul>
-              <li>Lab tập trung vào network-level detection, không khẳng định mức độ compromise nếu thiếu endpoint telemetry.</li>
-              <li>Các alert được đánh giá theo ngữ cảnh lab: traffic kiểm thử, host nội bộ, time range và rule match.</li>
-              <li>Không giả lập toàn bộ quy trình IR enterprise; chỉ mô phỏng triage và initial recommendation của SOC L1.</li>
-            </ul>
-          </div>
-        </div>
+        <ul><li>Thiết kế luồng thu thập alert từ sensor về dashboard tập trung.</li><li>Xây dựng use case phát hiện port scanning, SSH brute force, suspicious outbound traffic và high-volume connection.</li><li>Chuẩn hóa format report gồm timestamp, source, destination, evidence, verdict và recommended action.</li><li>Ghi rõ điểm giới hạn khi thiếu endpoint telemetry hoặc threat intelligence.</li></ul>
       </section>
-
-      <section class="report-section" id="architecture">
-        <div class="section-kicker">03 · Architecture</div>
-        <h2>Architecture / Log Flow</h2>
-        <div class="flow large-flow">
-          <span>Alert / Event Source</span><i>→</i><span>Log Collection</span><i>→</i><span>SIEM / Dashboard</span><i>→</i><span>Analyst Triage</span><i>→</i><span>Verdict & Response</span>
-        </div>
-        <div class="architecture-map">
-          <div class="node-card"><b>Endpoint / Attacker VM</b><p>Sinh traffic kiểm thử như scan port, SSH login failure, outbound connection.</p></div>
-          <div class="node-card"><b>Snort IDS Sensor</b><p>Giám sát traffic, match rule, sinh alert log gồm signature, protocol, source, destination.</p></div>
-          <div class="node-card"><b>Filebeat Agent</b><p>Thu thập alert log, thêm metadata và ship event về Elasticsearch.</p></div>
-          <div class="node-card"><b>Elasticsearch</b><p>Lưu trữ, index và hỗ trợ truy vấn theo timestamp, source IP, destination port, severity.</p></div>
-          <div class="node-card"><b>Kibana Dashboard</b><p>Hiển thị alert trend, top source IP, destination port, signature và event detail.</p></div>
-          <div class="node-card"><b>SOC Analyst</b><p>Pivot từ dashboard sang raw log, xác minh context và ghi verdict.</p></div>
-        </div>
-        <div class="evidence-note">
-          <b>Evidence artifacts:</b> topology lab, Kibana dashboard, Snort rule, alert detail và command output. Evidence ưu tiên phải có timestamp, log field và nội dung liên quan trực tiếp đến quá trình điều tra.
-        </div>
+      <section class="report-section" id="3">
+        <div class="section-kicker">03 · Data flow</div>
+        <h2>Architecture / Data Flow</h2>
+        <div class="flow"><span>Traffic source / endpoint lab</span><span>Snort IDS sensor</span><span>Filebeat log shipper</span><span>Elasticsearch index</span><span>Kibana dashboard</span><span>SOC analyst triage</span></div>
+        <p>Luồng trên giúp case có điểm bắt đầu và điểm kết thúc rõ ràng: nguồn dữ liệu sinh event, hệ thống xử lý/correlation và analyst đưa kết luận dựa trên bằng chứng.</p>
       </section>
-
-      <section class="report-section" id="implementation">
-        <div class="section-kicker">04 · Build notes</div>
-        <h2>Implementation Notes</h2>
-        <p>Phần này ghi lại các cấu phần triển khai quan trọng của pipeline SIEM: rule phát hiện, field cần thu thập, luồng Filebeat và truy vấn analyst dùng khi pivot từ dashboard sang raw event.</p>
-        <div class="command-grid">
-          <div class="codebox"><b># snort local rule example</b><br>alert tcp any any -> $HOME_NET any (msg:"LAB Possible TCP Port Scan"; flags:S; detection_filter:track by_src, count 20, seconds 60; classtype:attempted-recon; sid:1000001; rev:1;)</div>
-          <div class="codebox"><b># expected alert fields</b><br>timestamp<br>src_ip / src_port<br>dest_ip / dest_port<br>protocol<br>signature<br>severity / priority<br>rule_sid</div>
-          <div class="codebox"><b># filebeat flow</b><br>input: snort alert log<br>processor: add host metadata<br>output: elasticsearch<br>visualization: kibana dashboard</div>
-          <div class="codebox"><b># analyst query idea</b><br>source.ip: "ATTACKER_IP" AND event.dataset: "snort"<br>sort by @timestamp<br>group by destination.port</div>
-        </div>
+      <section class="report-section" id="4">
+        <div class="section-kicker">04 · Detection design</div>
+        <h2>Detection / Analysis Logic</h2>
+        <div class="table-wrap"><table><thead><tr><th>Use case</th><th>Condition</th><th>Expected evidence</th><th>MITRE / Analyst mapping</th><th>False-positive consideration</th></tr></thead><tbody><tr><td>Port scanning</td><td>Nhiều destination port được truy cập trong thời gian ngắn từ cùng một source.</td><td>Snort alert volume, destination port distribution, time range spike.</td><td>Reconnaissance / Discovery</td><td>Scanner nội bộ hoặc hoạt động kiểm thử hợp lệ.</td></tr><tr><td>SSH brute force</td><td>Nhiều kết nối/attempt tới TCP/22 với pattern lặp lại.</td><td>Alert count theo source IP, destination host và protocol.</td><td>Credential Access</td><td>Admin nhập sai mật khẩu nhiều lần hoặc scanner được cấp phép.</td></tr><tr><td>Suspicious outbound</td><td>Host nội bộ kết nối tới IP/port không phổ biến so với baseline.</td><td>Source host, external IP, port, byte count, time correlation.</td><td>Command and Control</td><td>Dịch vụ cloud hợp lệ chưa được đưa vào allowlist.</td></tr><tr><td>Potential DoS</td><td>Spike traffic bất thường so với baseline lab.</td><td>High alert volume, repeated destination, packet/flow pattern.</td><td>Impact</td><td>Stress test hoặc lab traffic hợp lệ.</td></tr></tbody></table></div>
       </section>
-
-      <section class="report-section" id="detection">
-        <div class="section-kicker">05 · Detection engineering</div>
-        <h2>Detection Logic / Use Cases</h2>
-        <table class="evidence-table advanced-table">
-          <thead><tr><th>Use case</th><th>Detection condition</th><th>Expected evidence</th><th>MITRE mapping</th><th>False-positive notes</th></tr></thead>
-          <tbody>
-            <tr><td><b>Port scanning</b></td><td>Nhiều connection tới nhiều destination port trong thời gian ngắn từ cùng source IP.</td><td>Alert spike, nhiều dst.port, TCP SYN pattern, cùng src.ip.</td><td>T1595 Active Scanning</td><td>Nmap nội bộ, vulnerability scanner, kiểm thử hợp lệ.</td></tr>
-            <tr><td><b>SSH brute force</b></td><td>Nhiều authentication failure hoặc nhiều connection tới TCP/22 trong time window ngắn.</td><td>Linux auth log failure, source IP lặp lại, username lặp hoặc nhiều username.</td><td>T1110 Brute Force</td><td>Người dùng gõ sai password, script kiểm thử, scanner quản trị.</td></tr>
-            <tr><td><b>Suspicious outbound</b></td><td>Host nội bộ kết nối tới IP/domain lạ, port ít dùng hoặc tần suất bất thường.</td><td>Outbound session, destination IP, port, timestamp, baseline deviation.</td><td>T1071 Application Layer Protocol</td><td>Ứng dụng hợp lệ, update service, CDN, lab traffic.</td></tr>
-            <tr><td><b>Potential DoS</b></td><td>Spike traffic/connection tăng đột biến so với baseline lab.</td><td>High event count, repeated source/destination, dashboard time-series tăng mạnh.</td><td>T1498 Network DoS</td><td>Load test hợp lệ, backup, scripted traffic generation.</td></tr>
-          </tbody>
-        </table>
-        <div class="callout warn"><b>Analyst note:</b> Detection tốt phải định nghĩa đủ: objective → data source → condition → expected evidence → false-positive notes → response action. Thiếu một trong các phần này thì rule dễ tạo noise hoặc kết luận thiếu bằng chứng.</div>
-      </section>
-
-      <section class="report-section" id="workflow">
-        <div class="section-kicker">06 · Triage workflow</div>
+      <section class="report-section" id="5">
+        <div class="section-kicker">05 · Triage process</div>
         <h2>Investigation Workflow</h2>
-        <ol class="case-timeline">
-          <li><b>Validate alert timestamp:</b> kiểm tra alert xảy ra trong khoảng thời gian nào, có trùng với thời gian lab/test/maintenance hay không.</li>
-          <li><b>Confirm spike on dashboard:</b> xem dashboard có tăng bất thường theo time range, source IP hoặc destination port không.</li>
-          <li><b>Pivot to raw event:</b> lấy rule sid, signature, src.ip, dst.ip, dst.port, protocol, event count.</li>
-          <li><b>Scope affected assets:</b> xác định một host hay nhiều host bị ảnh hưởng, một source hay nhiều source, một service hay nhiều service.</li>
-          <li><b>Check context:</b> so sánh với traffic hợp lệ, danh sách scanner nội bộ, lab activity hoặc maintenance window.</li>
-          <li><b>Classify verdict:</b> true positive, benign positive, false positive hoặc needs escalation.</li>
-          <li><b>Recommend action:</b> monitor, block source, tune rule, enrich IOC hoặc escalate sang Tier 2.</li>
-        </ol>
+        <ol><li>Validate alert timestamp và xác định time window cần điều tra.</li><li>Pivot từ dashboard sang raw event để lấy rule SID, source IP, destination IP, port và protocol.</li><li>Kiểm tra scope: một host hay nhiều host, một destination hay nhiều destination.</li><li>Đối chiếu với traffic lab hợp lệ để phân loại true positive, benign test hoặc false positive.</li><li>Ghi verdict kèm confidence, limitation và action: monitor, tune rule, block source hoặc escalate.</li></ol>
       </section>
-
-      <section class="report-section" id="evidence">
-        <div class="section-kicker">07 · Evidence-based reporting</div>
-        <h2>Evidence Collected</h2>
-        <table class="evidence-table">
-          <thead><tr><th>Evidence</th><th>Analyst value</th></tr></thead>
-          <tbody>
-            <tr><td><b>Alert Volume</b></td><td>Kibana hiển thị số alert tăng trong thời gian kiểm thử scan/brute force, giúp xác định mức độ bất thường theo time range.</td></tr>
-            <tr><td><b>Rule Match</b></td><td>Snort rule match đúng pattern traffic được thiết kế, giúp liên kết alert với hành vi cụ thể.</td></tr>
-            <tr><td><b>Source Context</b></td><td>Source IP, destination IP, port và protocol được ghi lại đầy đủ để truy vết luồng network.</td></tr>
-            <tr><td><b>Dashboard Context</b></td><td>Top source IP, top destination port, alert trend và signature distribution hỗ trợ ưu tiên alert.</td></tr>
-            <tr><td><b>Limitation</b></td><td>Thiếu endpoint telemetry nên chưa chứng minh được process/user gây traffic; cần bổ sung EDR/Sysmon/Linux audit để tăng độ tin cậy.</td></tr>
-          </tbody>
-        </table>
-
-        <div class="sample-event">
-          <h3>Sample event fields for screenshot/log update</h3>
-          <div class="codebox">@timestamp: 2025-10-xxT10:24:31Z<br>event.dataset: snort.alert<br>rule.sid: 1000001<br>rule.name: LAB Possible TCP Port Scan<br>source.ip: 192.168.x.x<br>destination.ip: 192.168.x.x<br>destination.port: 22, 80, 443, 445, 3389<br>network.transport: tcp<br>event.severity: medium</div>
-        </div>
+      <section class="report-section" id="6">
+        <div class="section-kicker">06 · Evidence model</div>
+        <h2>Evidence Collected / Required</h2>
+        <div class="table-wrap"><table><thead><tr><th>Evidence</th><th>What it proves</th><th>Analyst value</th></tr></thead><tbody><tr><td>Alert volume</td><td>Số lượng alert tăng trong khung giờ kiểm thử.</td><td>Giúp analyst biết đây là spike có ý nghĩa hay chỉ là event rời rạc.</td></tr><tr><td>Rule match</td><td>Snort rule khớp đúng pattern được thiết kế.</td><td>Giải thích vì sao alert sinh ra thay vì chỉ nhìn severity.</td></tr><tr><td>Network context</td><td>Source/destination/port/protocol được giữ trong raw event.</td><td>Phục vụ truy vết và viết ticket rõ ràng.</td></tr><tr><td>Baseline gap</td><td>Thiếu endpoint process và asset inventory.</td><td>Giúp không phóng đại kết luận khi evidence chưa đủ.</td></tr></tbody></table></div>
       </section>
-
-      <section class="report-section" id="findings">
-        <div class="section-kicker">08 · Analyst conclusion</div>
+      <section class="report-section" id="7">
+        <div class="section-kicker">07 · Findings</div>
         <h2>Key Findings</h2>
-        <div class="finding-grid">
-          <div class="finding-card"><b>Detection coverage</b><p>Hệ thống phát hiện được hành vi network-level rõ ràng như scan, brute force pattern và traffic spike.</p></div>
-          <div class="finding-card"><b>Triage efficiency</b><p>Dashboard hỗ trợ analyst ưu tiên alert theo source, severity, destination port và time range.</p></div>
-          <div class="finding-card"><b>False-positive awareness</b><p>Một số alert có thể là benign positive nếu đến từ scanner nội bộ hoặc hoạt động kiểm thử hợp lệ.</p></div>
-          <div class="finding-card"><b>Context gap</b><p>Chưa đủ endpoint context để xác định process/user, nên không nên kết luận compromise chỉ dựa trên network alert.</p></div>
-        </div>
+        <ul><li>Hệ thống phát hiện tốt các hành vi network-level rõ ràng như scan, brute force và traffic spike.</li><li>Dashboard hỗ trợ ưu tiên alert theo source IP, severity và time range.</li><li>False positive có thể xuất hiện nếu scanner nội bộ hoặc maintenance traffic chưa được allowlist.</li><li>Project thể hiện được vòng đời SIEM use case: data source → rule → alert → triage → tuning.</li></ul>
       </section>
-
-      <section class="report-section" id="recommendations">
-        <div class="section-kicker">09 · Response & tuning</div>
+      <section class="report-section" id="8">
+        <div class="section-kicker">08 · Response</div>
         <h2>Recommendations</h2>
-        <ul>
-          <li>Bổ sung asset inventory để phân biệt server quan trọng, máy lab, máy scanner và máy người dùng.</li>
-          <li>Tích hợp threat intelligence để enrich IP/domain trước khi kết luận malicious.</li>
-          <li>Thêm correlation với endpoint log để xác định process/user liên quan.</li>
-          <li>Xây allowlist cho scanner nội bộ và maintenance window để giảm noise.</li>
-          <li>Chuẩn hóa severity: không chỉ dựa vào rule priority, cần kết hợp asset criticality và scope ảnh hưởng.</li>
-          <li>Tạo dashboard riêng cho SOC L1 gồm: alert volume, top source, top destination, top signature, event detail và investigation checklist.</li>
-        </ul>
+        <ul><li>Bổ sung asset inventory để phân biệt server quan trọng, máy người dùng và máy lab.</li><li>Tích hợp threat intelligence để enrich external IP/domain trước khi kết luận.</li><li>Correlation thêm endpoint log để xác định process/user tạo traffic.</li><li>Duy trì allowlist có owner và thời hạn cho scanner nội bộ hoặc maintenance window.</li></ul>
       </section>
-
-      <section class="report-section" id="final-report">
-        <div class="section-kicker">10 · Ready-to-submit report block</div>
-        <h2>Final SOC Report Sample</h2>
-        <div class="report-summary">
-          <p><b>Case title:</b> Network-level suspicious activity detected by Snort IDS and visualized in ELK dashboard.</p>
-          <p><b>Severity:</b> Medium in lab environment. Severity may increase if the destination is a critical server or if endpoint compromise evidence is confirmed.</p>
-          <p><b>Summary:</b> During the lab time range, the SIEM dashboard recorded an abnormal increase in IDS alerts related to multiple connection attempts from the same source IP. The raw Snort alert included source IP, destination IP, destination port, protocol and rule SID, allowing the analyst to correlate the alert with port scanning/brute-force style behavior.</p>
-          <p><b>Verdict:</b> Benign positive / lab-generated true positive. The detection logic worked as expected, but the alert should not be treated as confirmed compromise because endpoint telemetry and user/process context were not available.</p>
-          <p><b>Recommended action:</b> Keep monitoring, document the source IP as lab scanner if authorized, tune detection thresholds, and enrich future alerts with asset inventory and endpoint telemetry.</p>
-        </div>
-      </section>
-
-      <section class="report-section" id="next">
-        <div class="section-kicker">11 · Continuous improvement</div>
+      <section class="report-section" id="9">
+        <div class="section-kicker">09 · Continuous improvement</div>
         <h2>Limitations & Next Improvements</h2>
-        <ul>
-          <li>Thêm Suricata/Zeek để tăng context network, đặc biệt là DNS, HTTP, TLS và connection metadata.</li>
-          <li>Viết detection rule mapping MITRE rõ hơn và thêm risk score cho từng use case.</li>
-          <li>Tự động sinh ticket summary từ alert fields: time, source, destination, evidence, verdict, recommendation.</li>
-          <li>Tích hợp Sysmon hoặc EDR để xác định process/user tạo traffic.</li>
-          <li>Thêm baseline theo khung giờ để giảm false positive khi có traffic hợp lệ tăng cao.</li>
-        </ul>
-        <p style="margin-top:12px">Limitation được ghi rõ để tránh phóng đại kết quả lab. Khi có ảnh/log thật, phần này nên được cập nhật bằng evidence cụ thể.</p>
+        <ul><li>Thêm Zeek/Suricata để tăng network context như DNS, HTTP, TLS và JA3.</li><li>Mapping mỗi use case với MITRE ATT&amp;CK tactic/technique.</li><li>Tạo template ticket tự động từ các trường alert quan trọng.</li><li>Định nghĩa severity dựa trên asset criticality và confidence thay vì chỉ dựa vào rule name.</li></ul>
+        <div class="callout warn"><b>Quality note:</b> Kết luận trong report luôn bám vào dữ liệu hiện có; nếu thiếu log hoặc thiếu context, phần limitation được ghi rõ để giữ tính chính xác của case.</div>
       </section>
-
-      <p style="margin:28px 0"><a class="btn btn-outline" href="../index.html#projects">← Back to project list</a></p>
     </div>
   </section>
 </main>
-<footer>© 2026 Khánh Linh · SOC Analyst Portfolio</footer>
+<footer>
+  <div class="container">© 2026 Khánh Linh · SOC Analyst Portfolio · Built for GitHub Pages</div>
+</footer>
+<script src="../assets/app.js"></script>
 </body>
 </html>

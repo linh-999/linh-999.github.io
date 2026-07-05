@@ -1,18 +1,42 @@
 <!DOCTYPE html>
-<html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>CTF Forensics Study Notes | Khánh Linh</title><link rel="stylesheet" href="../assets/style.css"></head>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CTF Forensics Investigation Notes | Khánh Linh</title>
+  <meta name="description" content="Technical write-up: CTF Forensics Investigation Notes" />
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
 <body>
-<header><div class="container"><nav><a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a><div class="nav-links"><a href="../index.html#projects">Projects</a><a href="../index.html#writeups">Write-ups</a><a href="../index.html#skills">Skills</a><a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a></div></nav></div></header>
+<header>
+  <div class="container">
+    <nav>
+      <a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
+      <div class="nav-links">
+        <a href="../index.html#profile">Profile</a>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#casefiles">Case Files</a>
+        <a href="../index.html#workflow">SOC Workflow</a>
+        <a href="../index.html#writeups">Write-ups</a>
+        <a href="../index.html#skills">Skills</a>
+        <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </nav>
+  </div>
+</header>
 <main class="container">
-  <section class="page-hero"><div class="breadcrumb"><a href="../index.html">Home</a> / Write-ups / CTF Forensics Study Notes</div><div class="eyebrow"><span class="pulse"></span>Dec 2024 · Lab Note</div><h1 class="page-title">CTF Forensics Study Notes</h1><p class="lead">Checklist phân tích file, metadata, timeline, strings và cách viết solve path có evidence.</p><div class="mini-tags"><span>Forensics</span><span>CTF</span><span>Evidence</span></div></section>
-  <section class="report-layout">
-    <aside class="sidebar"><div class="panel"><p class="meta">Linked full project</p><h3>Network IDS &amp; PCAP Investigation</h3><p style="color:var(--muted);margin:10px 0">Bài write-up này là phần ghi chú kỹ thuật hỗ trợ project/report chính.</p><a class="btn btn-outline" href="../projects/network-ids-pcap-investigation.html">Open full project</a></div></aside>
-    <div>
-      <section class="report-section"><h2>1. Lab Objective</h2><p>Mục tiêu của lab là ghi lại cách triển khai, kiểm thử và phân tích evidence theo hướng SOC Analyst. Bài viết không chỉ lưu command/cấu hình, mà phải trả lời: use case phát hiện gì, log đi qua đâu, evidence nào chứng minh alert và hạn chế hiện tại là gì.</p></section>
-      <section class="report-section"><h2>2. Use Case & Log Flow</h2><div class="flow"><span>Endpoint / Traffic</span><i>→</i><span>Agent / Sensor</span><i>→</i><span>Manager / SIEM</span><i>→</i><span>Dashboard</span><i>→</i><span>Analyst Report</span></div><ul><li>IDS sinh alert từ traffic capture.</li><li>PCAP được mở bằng Wireshark để follow stream.</li><li>Analyst filter theo IP/port/protocol/time.</li><li>Packet evidence được trích ra report.</li><li>Verdict được đưa ra kèm limitation.</li></ul></section>
-      <section class="report-section"><h2>3. Configuration &amp; Evidence Checklist</h2><div class="evidence-note"><b>Evidence checklist:</b> ghi lại cấu hình agent/rule, dashboard hoặc alert detail khi có kết quả lab. Tên file evidence nên thể hiện rõ nội dung như <span class="kbd">wazuh-rule-file-integrity.png</span> hoặc <span class="kbd">kibana-portscan-dashboard.png</span>.</div></section>
-      <section class="report-section"><h2>4. Detection & Analysis</h2><ul><li>Port scan: nhiều SYN tới nhiều port/host.</li><li>Suspicious HTTP: user-agent lạ, path bất thường, payload encoded.</li><li>DNS anomaly: domain dài, query lặp, pattern giống tunneling.</li><li>Potential exfiltration: outbound data volume hoặc file transfer không bình thường.</li></ul><table class="evidence-table"><thead><tr><th>Field</th><th>What to document</th></tr></thead><tbody><tr><td>Timestamp</td><td>Thời điểm alert xảy ra và múi giờ nếu có.</td></tr><tr><td>Source / Destination</td><td>IP, host, user, process hoặc email sender tùy case.</td></tr><tr><td>Rule / Signature</td><td>Rule ID, description, severity và điều kiện match.</td></tr><tr><td>Verdict</td><td>True positive, false positive, benign activity hoặc needs escalation.</td></tr></tbody></table></section>
-      <section class="report-section"><h2>5. Conclusion</h2><p>Lab liên quan trực tiếp đến project <b>Network IDS &amp; PCAP Investigation</b>. Kết luận cần ghi rõ rule phát hiện được gì, còn thiếu dữ liệu nào và action nào phù hợp nếu đây là môi trường thật.</p><ul><li>Lưu PCAP mẫu cho các case training.</li><li>Tạo cheat sheet filter Wireshark cho SOC L1.</li><li>Kết hợp IDS alert với DNS/proxy log nếu có.</li></ul></section>
-      <p style="margin:28px 0"><a class="btn btn-outline" href="../index.html#writeups">← Back to write-ups</a></p>
-    </div>
-  </section>
-</main><footer>© 2026 Khánh Linh · Lab Write-up</footer></body></html>
+<section class="page-hero">
+<div class="breadcrumb"><a href="../index.html">Home</a> / Write-ups / CTF Forensics Investigation Notes</div>
+<div class="eyebrow"><span class="pulse"></span> 2025 · Forensics Learning Notes</div>
+<h1 class="page-title">CTF Forensics Investigation Notes</h1>
+<p class="lead">Write-up ghi lại cách tiếp cận challenge forensics theo hướng investigation: xác định artifact, dựng timeline, kiểm tra metadata/hash, tìm dấu vết user activity và trình bày kết quả có bằng chứng.</p>
+<div class="mini-tags"><span>Forensics</span><span>Timeline</span><span>Artifact</span><span>Hash</span><span>Evidence</span><span>Write-up</span></div>
+</section>
+<section class="report-layout">
+<aside class="sidebar"><div class="panel"><p class="meta">Write-up type</p><div class="info-grid" style="grid-template-columns:1fr"><div class="info-box"><span>Focus</span><b>Forensics Learning Notes</b></div><div class="info-box"><span>Role</span><b>SOC / Security Operations Learner</b></div><div class="info-box"><span>Status</span><b>Complete technical note</b></div></div></div><div class="panel" style="margin-top:16px"><p class="meta">On this page</p><div class="toc"><a href="#s1">Methodology</a><a href="#s2">Evidence types</a><a href="#s3">Analyst mindset</a><a href="#s4">Conclusion</a></div></div></aside>
+<div><section class="report-section" id="s1"><div class="section-kicker">01 · Notes</div><h2>Methodology</h2><ul><li>Không tìm flag ngay từ đầu; trước tiên cần xác định loại artifact và câu hỏi điều tra.</li><li>Dựng timeline để hiểu thứ tự sự kiện.</li><li>Ghi lại command/output quan trọng để report có thể kiểm chứng.</li></ul></section><section class="report-section" id="s2"><div class="section-kicker">02 · Notes</div><h2>Evidence types</h2><ul><li>File metadata, hash, timestamp, strings, logs, browser history hoặc message database.</li><li>Screenshot/output dùng để minh họa phát hiện quan trọng.</li><li>Artifact path giúp người đọc tự kiểm tra lại.</li></ul></section><section class="report-section" id="s3"><div class="section-kicker">03 · Notes</div><h2>Analyst mindset</h2><ul><li>Forensics rèn khả năng kiên nhẫn, quan sát chi tiết và không kết luận khi thiếu evidence.</li><li>Kỹ năng này liên quan trực tiếp đến SOC khi điều tra endpoint hoặc suspicious file.</li></ul></section><section class="report-section" id="s4"><div class="section-kicker">04 · Notes</div><h2>Conclusion</h2><ul><li>CTF write-up tốt cần có flow điều tra, không chỉ có đáp án cuối.</li><li>Mỗi bước nên trả lời câu hỏi: tìm gì, dùng công cụ gì, thấy bằng chứng gì, kết luận gì.</li></ul></section></div></section></main><footer>
+  <div class="container">© 2026 Khánh Linh · SOC Analyst Portfolio · Built for GitHub Pages</div>
+</footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

@@ -13,327 +13,95 @@
     <nav>
       <a class="logo" href="index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
       <div class="nav-links">
-        <a href="#projects">Projects</a>
-        <a href="#casefiles">Case Files</a>
-        <a href="#workflow">SOC Workflow</a>
-        <a href="#writeups">Write-ups</a>
-        <a href="#skills">Skills</a>
-        <a href="#roadmap">Roadmap</a>
+        <a href="index.html#profile">Profile</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#casefiles">Case Files</a>
+        <a href="index.html#workflow">SOC Workflow</a>
+        <a href="index.html#writeups">Write-ups</a>
+        <a href="index.html#skills">Skills</a>
         <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
     </nav>
   </div>
 </header>
 <main>
-  <section class="hero container" id="home">
-    <div>
-      <div class="eyebrow"><span class="pulse"></span> SOC Analyst Portfolio · Evidence-based Investigation · Detection Engineering</div>
-      <h1>Security Operations <br><span class="gradient">Case Portfolio</span></h1>
-      <p class="lead">Khánh Linh là sinh viên An toàn thông tin định hướng SOC Analyst / Security Operations. Portfolio này tập trung vào các case study điều tra bảo mật: alert context, log source, detection logic, investigation workflow, evidence, verdict, limitation và recommendation.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#projects">View case reports</a>
-        <a class="btn btn-outline" href="#workflow">SOC report standard</a>
-        <a class="btn btn-outline" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub profile</a>
-      </div>
-      <div class="metrics">
-        <div class="metric"><strong>13</strong><span>case-style projects</span></div>
-        <div class="metric"><strong>08</strong><span>lab write-ups</span></div>
-        <div class="metric"><strong>2024–2026</strong><span>growth timeline</span></div>
-        <div class="metric"><strong>SOC L1+</strong><span>triage mindset</span></div>
-      </div>
-    </div>
-    <aside class="console">
-      <div class="console-head"><div class="dots"><i></i><i></i><i></i></div><span class="kbd">soc-console / analyst-view</span></div>
-      <div class="screen-grid">
-        <div class="screen-card"><h3>Alert trend</h3><div class="signal"><span></span><span></span><span></span><span></span><span></span></div></div>
-        <div class="screen-card"><h3>Queue</h3><div class="event-list"><div class="event"><b>SOC-201</b><span class="sev high">High</span></div><div class="event"><b>SOC-102</b><span class="sev">Medium</span></div><div class="event"><b>AUTH-118</b><span class="sev">Medium</span></div><div class="event"><b>WAF-074</b><span class="sev low">Low</span></div></div></div>
-        <div class="screen-card terminal">
-          <h3>Analyst notes</h3>
-          <p><em>$</em> scope = user + host + src_ip + timestamp</p>
-          <p><em>$</em> evidence = raw_log + dashboard + artifact</p>
-          <p><em>$</em> verdict = <b>true positive?</b> validate before escalation</p>
-        </div>
-      </div>
-    </aside>
-  </section>
+<section class="hero container" id="home">
+  <div>
+    <div class="eyebrow"><span class="pulse"></span> SOC Analyst Portfolio · Evidence-based Investigation</div>
+    <h1>Khánh Linh<br><span class="gradient">Security Operations Portfolio</span></h1>
+    <p class="lead">Portfolio này được xây dựng như một hồ sơ SOC Analyst hoàn chỉnh: có profile, project report, lab investigation, workflow, kỹ năng và roadmap. Nội dung tập trung vào cách nhận alert, đọc log, kiểm tra IOC, phân loại false positive/true positive và viết recommendation dựa trên evidence.</p>
+    <div class="hero-actions"><a class="btn btn-primary" href="#projects">View projects</a><a class="btn btn-outline" href="#casefiles">View case files</a><a class="btn btn-outline" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub profile</a></div>
+    <div class="metrics"><div class="metric"><strong>13</strong><span>case reports</span></div><div class="metric"><strong>08</strong><span>technical write-ups</span></div><div class="metric"><strong>2024–2026</strong><span>growth timeline</span></div><div class="metric"><strong>SOC L1+</strong><span>triage mindset</span></div></div>
+  </div>
+  <aside class="console"><div class="console-head"><div class="dots"><i></i><i></i><i></i></div><span class="kbd">soc-console / analyst-view</span></div><div class="screen-grid"><div class="screen-card"><h3>Alert trend</h3><div class="signal"><span></span><span></span><span></span><span></span><span></span></div></div><div class="screen-card"><h3>Queue</h3><div class="event-list"><div class="event"><b>SOC-201</b><span class="sev high">High</span></div><div class="event"><b>SOC-102</b><span class="sev closed">Closed</span></div><div class="event"><b>AUTH-4625</b><span class="sev">Medium</span></div><div class="event"><b>WAF-074</b><span class="sev low">Low</span></div></div></div><div class="screen-card terminal"><h3>Analyst notes</h3><p><em>$</em> context = user + host + source + destination + timestamp</p><p><em>$</em> evidence = raw_log + screenshot + IOC + timeline</p><p><em>$</em> verdict = validate before escalation or closure</p></div></div></aside>
+</section>
 
-  <section class="section container" id="projects">
-    <div class="section-title">
-      <span>Security Operations Projects</span>
-      <h2>Case study điều tra bảo mật & vận hành SOC</h2>
-      <p>Các project bên dưới được xây dựng theo hướng thực hành SOC: nhận alert, xác định nguồn dữ liệu, kiểm tra log, đối chiếu bằng chứng, đánh giá false positive/true positive và đề xuất hành động xử lý phù hợp.</p>
-    </div>
+<section class="section container" id="profile">
+  <div class="section-title"><span>Profile</span><h2>Định hướng SOC Analyst / Security Operations</h2><p>Hồ sơ này trình bày năng lực theo cách một SOC Analyst cần thể hiện trong môi trường doanh nghiệp: hiểu nguồn log, biết đặt câu hỏi điều tra, phân biệt alert noise với incident thật và viết report có thể hành động.</p></div>
+  <div class="profile-grid"><div class="panel"><h3>Khánh Linh</h3><p class="soft">Sinh viên An toàn thông tin định hướng SOC Analyst, SIEM Operator và Network Security. Trọng tâm học tập gồm SIEM, Wazuh, ELK, Windows/Linux logs, network security, phishing triage, endpoint investigation và incident reporting.</p><div class="mini-tags"><span>SOC Analyst</span><span>SIEM</span><span>Wazuh</span><span>ELK</span><span>Network Security</span><span>Incident Report</span></div></div><div class="profile-list"><div><b>Working style</b><p class="soft">Điều tra theo evidence-first: không kết luận chỉ vì alert có severity cao; luôn kiểm tra raw log, scope, business context và limitation.</p></div><div><b>Target roles</b><p class="soft">SOC Analyst L1, Security Operations Intern, SIEM Operator, Network Security / NOC Intern.</p></div><div><b>Report standard</b><p class="soft">Mỗi case có executive summary, data sources, investigation workflow, evidence table, findings, recommendation và next improvements.</p></div></div></div>
+</section>
 
-    <div class="featured">
-      <article class="project-card feature-card">
-        <div>
-          <div class="card-icon">◈</div>
-          <p class="meta">Sep 2025 – Oct 2025 · SIEM / IDS Monitoring Case</p>
-          <h3>Centralized Security Monitoring System</h3>
-          <p>Xây dựng pipeline giám sát <b>Snort → Filebeat → Elasticsearch → Kibana</b> để chuyển raw alert thành quy trình triage có evidence: rule match, source/destination, severity, baseline, khả năng false positive và action đề xuất.</p>
-          <div class="analyst-focus"><strong>Analyst value:</strong> đọc được luồng log, hiểu vì sao alert sinh ra, biết pivot từ dashboard sang raw event để kết luận.</div>
-          <div class="mini-tags"><span>Snort IDS</span><span>ELK Stack</span><span>Filebeat</span><span>Kibana</span><span>Alert Triage</span><span>Rule Tuning</span></div>
-        </div>
-        <a href="projects/centralized-security-monitoring.html">Open full case report →</a>
-      </article>
+<section class="section container" id="projects">
+  <div class="section-title"><span>Security Operations Projects</span><h2>Project report được viết theo chuẩn điều tra SOC</h2><p>Không chỉ liệt kê tool đã dùng; mỗi project giải thích alert sinh ra từ đâu, dữ liệu nào được kiểm tra, bằng chứng nói gì, khả năng false positive nằm ở đâu và hành động nào phù hợp.</p></div>
+  <div class="featured"><article class="project-card feature-card"><div><div class="card-icon">◈</div><p class="meta">Sep 2025 – Oct 2025 · SIEM Engineering Lab</p><h3>Centralized Security Monitoring System</h3><p>Thiết kế một pipeline giám sát bảo mật tập trung để chuyển cảnh báo network-level thành case triage có cấu trúc. Project không dừng ở việc cài Snort/ELK, mà tập trung vào cách analyst đọc alert, kiểm tra raw event, xác định source/destination, so sánh với baseline lab và đưa verdict có bằng chứng.</p><div class="analyst-focus"><strong>Analyst value:</strong> Chứng minh khả năng hiểu luồng log end-to-end và trình bày một SIEM use case theo ngôn ngữ vận hành SOC.</div><div class="mini-tags"><span>Snort IDS</span><span>ELK Stack</span><span>Filebeat</span><span>Kibana</span><span>Alert Triage</span><span>Rule Tuning</span></div></div><a href="projects/centralized-security-monitoring.html">Open full case report →</a></article><div class="feature-stack"><article class="project-card"><div class="card-icon">◆</div><p class="meta">Nov 2025 – Dec 2025 · SOC Use Case Pack</p><h3>Wazuh SOC Use Case Pack</h3><p>Xây dựng bộ use case Wazuh cho SOC L1 gồm File Integrity Monitoring, authentication failure, privileged command và suspicious process. Mỗi use case được mô tả bằng mục tiêu phát hiện, nguồn log, điều kiện sinh alert, bằng chứng mong đợi, khả năng false positive và hành động phản hồi.</p><div class="analyst-focus"><strong>Analyst value:</strong> Thể hiện khả năng chuyển yêu cầu giám sát thành rule/use case có thể vận hành và điều chỉnh noise.</div><div class="mini-tags"><span>Wazuh</span><span>FIM</span><span>Linux Audit</span><span>MITRE ATT&amp;CK</span><span>Rule Tuning</span></div><a href="projects/wazuh-soc-use-case-pack.html">Open case report →</a></article><article class="project-card"><div class="card-icon">✉</div><p class="meta">Jan 2026 – Feb 2026 · Email Security Case</p><h3>Phishing Email Triage Playbook</h3><p>Playbook điều tra email nghi phishing theo hướng SOC L1: kiểm tra header, sender authentication, URL, attachment, brand impersonation, user impact và recommended response. Trọng tâm là phân biệt suspicious email, phishing confirmed và benign marketing email.</p><div class="analyst-focus"><strong>Analyst value:</strong> Giúp chứng minh tư duy điều tra email không chỉ dựa vào tiêu đề hay cảm giác, mà dựa vào artifact và bằng chứng.</div><div class="mini-tags"><span>Phishing</span><span>Email Header</span><span>URL Analysis</span><span>Attachment Triage</span><span>IOC</span></div><a href="projects/phishing-email-triage-playbook.html">Open case report →</a></article></div></div>
+  <div class="grid">
+    <article class="project-card"><div class="card-icon">▣</div><p class="meta">Feb 2026 – Mar 2026 · Windows Security Monitoring</p><h3>Windows Authentication Attack Detection</h3><p>Thiết kế logic phát hiện các hành vi tấn công xác thực trên Windows như brute force, password spray, successful login sau nhiều lần thất bại và quyền đặc biệt được cấp sau đăng nhập. Project tập trung vào cách đọc Event ID và correlation theo user, source IP, host và time window.</p><div class="analyst-focus"><strong>Analyst value:</strong> Tạo nền tảng quan trọng cho SOC L1 vì authentication alert là nhóm cảnh báo thường gặp trong môi trường doanh nghiệp.</div><div class="mini-tags"><span>Windows Event Log</span><span>Event ID 4625</span><span>Password Spray</span><span>Brute Force</span><span>Privilege Use</span></div><a href="projects/windows-authentication-attack-detection.html">Open case report →</a></article>
+    <article class="project-card"><div class="card-icon">◎</div><p class="meta">Mar 2025 – Apr 2025 · Web Security Monitoring</p><h3>Web Security &amp; WAF Mitigation Lab</h3><p>Lab kiểm thử các pattern OWASP Top 10 trên ứng dụng web và phân tích event từ WAF/access log. Project tập trung vào cách SOC/Web Security Analyst đọc request, xác định rule match, kiểm tra response, phân loại blocked/allowed traffic và đề xuất tuning rule.</p><div class="analyst-focus"><strong>Analyst value:</strong> Thể hiện khả năng điều tra alert web ở cả góc nhìn offensive testing và defensive monitoring.</div><div class="mini-tags"><span>WAF</span><span>OWASP Top 10</span><span>Burp Suite</span><span>Access Log</span><span>False Positive</span></div><a href="projects/web-security-waf-mitigation.html">Open case report →</a></article>
+    <article class="project-card"><div class="card-icon">◍</div><p class="meta">Apr 2026 – May 2026 · Endpoint Security Case</p><h3>Endpoint Malware Triage Lab</h3><p>Xây dựng phương pháp triage endpoint khi xuất hiện process hoặc network connection đáng nghi. Project tập trung vào process tree, parent-child relationship, command line, persistence location, file hash, user context và network behavior để quyết định isolate/escalate.</p><div class="analyst-focus"><strong>Analyst value:</strong> Thể hiện tư duy điều tra endpoint có hệ thống, không chỉ nhìn tên process hoặc một cảnh báo đơn lẻ.</div><div class="mini-tags"><span>EDR</span><span>Process Tree</span><span>Persistence</span><span>Hash</span><span>Containment</span></div><a href="projects/endpoint-malware-triage-lab.html">Open case report →</a></article>
+    <article class="project-card"><div class="card-icon">⌁</div><p class="meta">May 2025 – Jun 2025 · Network Forensics Case</p><h3>Network IDS &amp; PCAP Investigation</h3><p>Phân tích IDS alert và PCAP để xác định bản chất traffic: reconnaissance, exploit attempt, malware download hay benign scan. Project tập trung vào kỹ năng đọc packet, follow TCP stream, kiểm tra DNS/HTTP/TLS và liên kết packet evidence với alert.</p><div class="analyst-focus"><strong>Analyst value:</strong> Tăng năng lực điều tra network-level alert khi SIEM chỉ cung cấp một phần context.</div><div class="mini-tags"><span>PCAP</span><span>Wireshark</span><span>IDS Alert</span><span>DNS</span><span>HTTP</span></div><a href="projects/network-ids-pcap-investigation.html">Open case report →</a></article>
+    <article class="project-card"><div class="card-icon">⚙</div><p class="meta">Mar 2026 – Apr 2026 · SOC Automation Prototype</p><h3>AI-Driven Cybersecurity Agent</h3><p>Prototype agent hỗ trợ analyst chuẩn hóa alert, trích xuất IOC, đề xuất checklist điều tra và tạo bản nháp báo cáo. Nội dung được thiết kế theo nguyên tắc evidence-first: mọi output phải được analyst xác minh bằng log hoặc artifact trước khi dùng trong ticket.</p><div class="analyst-focus"><strong>Analyst value:</strong> Kết nối kỹ năng SOC với automation, phù hợp định hướng Security Operations hiện đại.</div><div class="mini-tags"><span>Python</span><span>LLM</span><span>SOC Workflow</span><span>IOC Enrichment</span><span>Report Draft</span></div><a href="projects/ai-cybersecurity-agent.html">Open case report →</a></article>
+    <article class="project-card"><div class="card-icon">⇄</div><p class="meta">Aug 2024 – Dec 2024 · Network Foundation</p><h3>CCNA Network Security Foundation</h3><p>Tổng hợp nền tảng mạng phục vụ SOC và Network Operations: subnetting, VLAN, routing, ACL, NAT, default gateway, troubleshooting bằng ping/traceroute/show commands. Project được trình bày theo hướng ứng dụng vào phân tích alert và xác định luồng traffic.</p><div class="analyst-focus"><strong>Analyst value:</strong> Nền tảng mạng giúp SOC Analyst hiểu source/destination, route path, segment, gateway và firewall/ACL impact khi điều tra sự cố.</div><div class="mini-tags"><span>TCP/IP</span><span>VLAN</span><span>Routing</span><span>ACL</span><span>NAT</span></div><a href="projects/ccna-network-security-foundation.html">Open case report →</a></article>
+    <article class="project-card"><div class="card-icon">▰</div><p class="meta">Jun 2026 – Jul 2026 · NOC / Automation Research</p><h3>Network Operations &amp; Streaming Telemetry Lab</h3><p>Nghiên cứu cách vận hành mạng theo hướng telemetry: thu thập trạng thái interface, CPU/memory, link status, routing neighbor và traffic counters để phát hiện bất thường sớm hơn so với kiểm tra thủ công. Project kết nối định hướng NOC với SOC bằng cách đưa network health vào bối cảnh security monitoring.</p><div class="analyst-focus"><strong>Analyst value:</strong> Thể hiện khả năng nhìn hệ thống mạng như nguồn dữ liệu vận hành và bảo mật, không chỉ cấu hình thiết bị.</div><div class="mini-tags"><span>Telemetry</span><span>NOC</span><span>gNMI Concept</span><span>SNMP</span><span>Python</span></div><a href="projects/network-operations-telemetry-lab.html">Open case report →</a></article>
+    <article class="project-card"><div class="card-icon">◇</div><p class="meta">Jul 2025 – Sep 2025 · SOC Documentation</p><h3>SOC Incident Reporting Framework</h3><p>Xây dựng framework viết báo cáo điều tra SOC theo cấu trúc thống nhất: alert context, affected asset, data sources, evidence table, investigation workflow, verdict, confidence, limitation và recommended action. Framework dùng chung cho các case như phishing, beaconing, WAF, endpoint và authentication.</p><div class="analyst-focus"><strong>Analyst value:</strong> Giúp portfolio thể hiện năng lực viết report rõ ràng, có thể đọc được bởi SOC lead, IT owner và người không trực tiếp điều tra.</div><div class="mini-tags"><span>Incident Report</span><span>Evidence Table</span><span>Verdict</span><span>Recommendation</span><span>Case Management</span></div><a href="projects/soc-incident-reporting-framework.html">Open case report →</a></article>
+    <article class="project-card"><div class="card-icon">⌘</div><p class="meta">Jul 2025 – Sep 2025 · Network Operations Notes</p><h3>Network Troubleshooting Case Notes</h3><p>Bộ ghi chú xử lý sự cố mạng theo phương pháp có cấu trúc: xác định symptom, scope, layer nghi vấn, command kiểm tra, root cause và corrective action. Nội dung phù hợp với SOC/NOC vì nhiều alert bảo mật cần loại trừ lỗi mạng trước khi kết luận incident.</p><div class="analyst-focus"><strong>Analyst value:</strong> Thể hiện tư duy vận hành: không đoán lỗi, mà khoanh vùng bằng bằng chứng.</div><div class="mini-tags"><span>Troubleshooting</span><span>Layered Approach</span><span>Ping</span><span>Traceroute</span><span>Show Commands</span></div><a href="projects/network-troubleshooting-notes.html">Open case report →</a></article>
+  </div>
+</section>
 
-      <div class="feature-stack">
-        <article class="card">
-          <div>
-            <div class="card-icon">◆</div>
-            <p class="meta">Nov 2025 – Dec 2025 · Wazuh Detection Use Cases</p>
-            <h3>Wazuh SOC Use Case Pack</h3>
-            <p>Thiết kế bộ use case cho SOC L1 gồm File Integrity Monitoring, authentication failure, privileged command và suspicious process. Mỗi use case có objective, data source, expected evidence, false-positive note, MITRE mapping và response action.</p>
-            <div class="analyst-focus"><strong>Analyst value:</strong> biến rule kỹ thuật thành case điều tra có ngữ cảnh và checklist xử lý.</div>
-            <div class="mini-tags"><span>Wazuh</span><span>FIM</span><span>Linux Audit</span><span>MITRE ATT&amp;CK</span><span>Rule Tuning</span></div>
-          </div>
-          <a href="projects/wazuh-soc-use-case-pack.html">Open full case report →</a>
-        </article>
+<section class="section container" id="casefiles">
+  <div class="section-title"><span>Case Files</span><h2>Lab investigation có evidence cụ thể</h2><p>Hai case SOC-102 và SOC-201 được đưa vào như báo cáo điều tra hoàn chỉnh: có alert context, IOC, ảnh evidence, workflow, verdict và action.</p></div>
+  <div class="case-grid">
+    <article class="case-card"><div><span class="verdict">Escalate</span><p class="meta">SOC-201 · Potential Beaconing</p><h3>Periodic outbound traffic from HR-WIN-001</h3><p>Phân tích kết nối định kỳ 5 phút tới 85.208.253.156 qua TCP/443, kiểm tra IP reputation và endpoint network history để đề xuất isolate, block và escalate.</p><div class="mini-tags"><span>C2-like</span><span>Beaconing</span><span>Endpoint</span><span>Containment</span></div></div><a href="writeups/soc201-potential-beaconing.html">Read investigation →</a></article>
+    <article class="case-card"><div><span class="verdict closed">Closed</span><p class="meta">SOC-102 · Newly Registered Domain</p><h3>Business domain validated as false positive</h3><p>Đối chiếu proxy log, endpoint process, threat intelligence và email nội bộ để kết luận domain Marketing hợp lệ, không phải phishing/malware.</p><div class="mini-tags"><span>Suspicious Domain</span><span>Proxy</span><span>TI</span><span>False Positive</span></div></div><a href="writeups/soc102-newly-registered-domain.html">Read investigation →</a></article>
+    <article class="case-card"><div><span class="verdict closed">Framework</span><p class="meta">SOC Report Standard</p><h3>Evidence-first reporting framework</h3><p>Chuẩn hóa cách viết report để mọi case có context, data source, evidence table, findings, verdict, limitation và response action.</p><div class="mini-tags"><span>Evidence</span><span>Verdict</span><span>Recommendation</span><span>Escalation</span></div></div><a href="projects/soc-incident-reporting-framework.html">Open framework →</a></article>
+  </div>
+</section>
 
-        <article class="card">
-          <div>
-            <div class="card-icon">✉</div>
-            <p class="meta">May 2025 – Jun 2025 · Email Threat Triage</p>
-            <h3>Phishing Email Triage Playbook</h3>
-            <p>Xây dựng playbook điều tra phishing từ header đến IOC: kiểm tra sender alignment, URL/domain reputation, attachment hash, social-engineering intent, affected mailbox scope và đưa verdict phish/benign kèm containment action.</p>
-            <div class="analyst-focus"><strong>Analyst value:</strong> không kết luận chỉ dựa vào cảm tính; verdict luôn đi kèm artifact và evidence.</div>
-            <div class="mini-tags"><span>Phishing</span><span>Email Header</span><span>IOC Extraction</span><span>Threat Intel</span><span>Playbook</span></div>
-          </div>
-          <a href="projects/phishing-email-triage-playbook.html">Open full case report →</a>
-        </article>
-      </div>
-    </div>
+<section class="section container" id="workflow">
+  <div class="section-title"><span>SOC Workflow</span><h2>Quy trình điều tra dùng xuyên suốt portfolio</h2><p>Mỗi case trong portfolio được trình bày theo một workflow thống nhất để người đọc thấy rõ tư duy điều tra thay vì chỉ thấy ảnh giao diện tool.</p></div>
+  <div class="workflow"><div class="step"><strong>01</strong><span>Intake</span><p>Ghi alert name, severity, affected asset, user, source, destination và timestamp.</p></div><div class="step"><strong>02</strong><span>Validate</span><p>Kiểm tra raw log, rule match, time window và data source.</p></div><div class="step"><strong>03</strong><span>Correlate</span><p>Pivot qua endpoint, network, DNS/proxy, WAF, email hoặc authentication log.</p></div><div class="step"><strong>04</strong><span>Assess</span><p>Phân loại true positive, false positive, benign activity hoặc needs escalation.</p></div><div class="step"><strong>05</strong><span>Respond</span><p>Đề xuất monitor, tune rule, block IOC, isolate host, reset password hoặc escalate.</p></div></div>
+</section>
 
-    <div class="grid" style="margin-top:20px">
+<section class="section container" id="writeups">
+  <div class="section-title"><span>Write-ups</span><h2>Technical notes hỗ trợ project chính</h2><p>Các write-up ghi lại phương pháp, checklist và kỹ thuật nền tảng phục vụ điều tra SOC, network security và SIEM operations.</p></div>
+  <div class="grid">
+    <article class="card"><div class="card-icon">🛰</div><p class="meta">SOC-201</p><h3>Potential Beaconing Activity</h3><p>Case điều tra C2-like beaconing với interval 5 phút, destination IP, endpoint process và containment action.</p><a href="writeups/soc201-potential-beaconing.html">Read write-up →</a></article>
+    <article class="card"><div class="card-icon">🌐</div><p class="meta">SOC-102</p><h3>Newly Registered Domain</h3><p>Case phân loại false positive bằng proxy evidence, endpoint context, threat intelligence và business validation.</p><a href="writeups/soc102-newly-registered-domain.html">Read write-up →</a></article>
+    <article class="card"><div class="card-icon">🛡</div><p class="meta">Wazuh</p><h3>Wazuh SIEM/SOC Lab</h3><p>Luồng Endpoint → Agent → Manager → Indexer → Dashboard và cách viết use case cho SOC L1.</p><a href="writeups/wazuh-siem-soc-lab.html">Read write-up →</a></article>
+    <article class="card"><div class="card-icon">📋</div><p class="meta">SOC Method</p><h3>SOC Alert Investigation</h3><p>Checklist điều tra alert từ intake đến verdict và recommendation.</p><a href="writeups/soc-alert-investigation.html">Read write-up →</a></article>
+    <article class="card"><div class="card-icon">🔥</div><p class="meta">WAF</p><h3>Web Security & WAF Lab</h3><p>Phân tích WAF event, access log, payload và false-positive tuning.</p><a href="writeups/web-security-waf-lab.html">Read write-up →</a></article>
+    <article class="card"><div class="card-icon">🔀</div><p class="meta">CCNA</p><h3>VLSM Design & Verification</h3><p>Thiết kế subnet, gateway, route và verification command phục vụ network troubleshooting.</p><a href="writeups/ccna-vlsm-design.html">Read write-up →</a></article>
+    <article class="card"><div class="card-icon">⚙</div><p class="meta">Automation</p><h3>Network Automation & Telemetry</h3><p>Ghi chú về telemetry, monitoring metric và correlation giữa NOC/SOC.</p><a href="writeups/network-automation-telemetry.html">Read write-up →</a></article>
+    <article class="card"><div class="card-icon">🔎</div><p class="meta">Forensics</p><h3>CTF Forensics Notes</h3><p>Phương pháp phân tích artifact, timeline và evidence trong forensics challenge.</p><a href="writeups/ctf-forensics-notes.html">Read write-up →</a></article>
+  </div>
+</section>
 
-      <article class="card">
-        <div>
-          <div class="card-icon">⏱</div>
-          <p class="meta">Oct 2025 – Feb 2026 · C2 Beaconing Investigation</p>
-          <h3>SOC-201 Potential Beaconing Activity</h3>
-          <p>Điều tra host HR-WIN-001 kết nối định kỳ ra external IP qua TCP/443 với chu kỳ 5 phút và byte size ổn định. Case tập trung vào beaconing pattern, threat intelligence, endpoint process và containment recommendation.</p>
-          <div class="analyst-focus"><strong>Analyst value:</strong> biết chuyển từ network anomaly sang endpoint investigation, xác định process liên quan và escalation package cho Tier 2/IR.</div>
-          <div class="mini-tags"><span>C2 Beaconing</span><span>Threat Intel</span><span>Endpoint Process</span><span>Containment</span><span>Escalation</span></div>
-        </div>
-        <a href="writeups/soc201-potential-beaconing.html">Open full case report →</a>
-      </article>
+<section class="section container" id="skills">
+  <div class="section-title"><span>Skills</span><h2>Kỹ năng trình bày theo nhóm năng lực SOC</h2><p>Danh sách kỹ năng được gom theo cách một SOC Analyst sử dụng trong điều tra thực tế.</p></div>
+  <div class="skills-wrap"><div class="panel"><h3>Security Operations</h3><div class="skill-list"><span>Alert Triage</span><span>Log Analysis</span><span>IOC Checking</span><span>False Positive Analysis</span><span>Incident Report</span><span>MITRE ATT&CK</span></div></div><div class="panel"><h3>Tools & Platforms</h3><div class="skill-list"><span>Wazuh</span><span>ELK Stack</span><span>Kibana</span><span>Snort IDS</span><span>Wireshark</span><span>Burp Suite</span></div></div><div class="panel"><h3>Network & Endpoint</h3><div class="skill-list"><span>TCP/IP</span><span>VLAN</span><span>Routing</span><span>ACL</span><span>Windows Logs</span><span>Linux Logs</span><span>Python basics</span></div></div></div>
+</section>
 
-      <article class="card">
-        <div>
-          <div class="card-icon">◍</div>
-          <p class="meta">Oct 2025 – May 2026 · Suspicious Domain Investigation</p>
-          <h3>SOC-102 Newly Registered Domain</h3>
-          <p>Phân tích workstation FIN-WIN-001 truy cập newly registered domain trên AWS. Report đối chiếu SIEM alert, proxy log, VirusTotal, endpoint process và email nội bộ để phân loại false positive hợp lệ.</p>
-          <div class="analyst-focus"><strong>Analyst value:</strong> không kết luận domain là malicious chỉ vì mới đăng ký; verdict dựa trên evidence và business context.</div>
-          <div class="mini-tags"><span>Suspicious Domain</span><span>Proxy Log</span><span>Threat Intel</span><span>False Positive</span><span>Rule Tuning</span></div>
-        </div>
-        <a href="writeups/soc102-newly-registered-domain.html">Open full case report →</a>
-      </article>
-      <article class="card">
-        <div>
-          <div class="card-icon">▦</div>
-          <p class="meta">Aug 2025 – Sep 2025 · Windows Security Detection</p>
-          <h3>Windows Authentication Attack Detection</h3>
-          <p>Phân tích Windows Event Log để nhận diện brute force, password spraying và account lockout. Correlation dựa trên Event ID 4625/4624/4740, source host, username, time window, failed-to-success pattern và scope tài khoản bị ảnh hưởng.</p>
-          <div class="analyst-focus"><strong>Analyst value:</strong> phân biệt lỗi đăng nhập hợp lệ, test nội bộ và dấu hiệu Credential Access thật.</div>
-          <div class="mini-tags"><span>Windows Event Log</span><span>Active Directory</span><span>4625</span><span>4624</span><span>4740</span></div>
-        </div>
-        <a href="projects/windows-authentication-attack-detection.html">Open full case report →</a>
-      </article>
+<section class="section container" id="roadmap">
+  <div class="section-title"><span>Roadmap</span><h2>Sơ đồ phát triển năng lực 2024–2026</h2><p>Roadmap thể hiện sự phát triển từ nền tảng mạng đến SOC triage, SIEM use case, incident reporting và automation.</p></div>
+  <div class="timeline"><div class="timeline-item"><strong>2024</strong><div><h3>Network Foundation</h3><p class="soft">TCP/IP, subnetting, VLAN, routing, ACL, Packet Tracer và troubleshooting theo từng lớp.</p></div></div><div class="timeline-item"><strong>2025</strong><div><h3>SIEM & SOC Use Cases</h3><p class="soft">Snort/ELK, Wazuh, WAF log, phishing triage, Windows authentication detection và report framework.</p></div></div><div class="timeline-item"><strong>2026</strong><div><h3>Detection Engineering & Automation</h3><p class="soft">Endpoint triage, beaconing investigation, AI-assisted alert enrichment, telemetry và structured incident reporting.</p></div></div></div>
+</section>
 
-      <article class="card">
-        <div>
-          <div class="card-icon">⌁</div>
-          <p class="meta">Mar 2025 – Apr 2025 · Web Security / WAF Investigation</p>
-          <h3>Web Security &amp; WAF Mitigation Lab</h3>
-          <p>Điều tra SQL injection, XSS và path traversal bằng cách đối chiếu request payload, HTTP status, URI, rule ID, source IP, WAF action và web access log. Report tập trung vào block/bypass, false positive và rule tuning.</p>
-          <div class="analyst-focus"><strong>Analyst value:</strong> biết đọc log web/WAF để đề xuất mitigation dựa trên bằng chứng thay vì chỉ nói “đã test OWASP”.</div>
-          <div class="mini-tags"><span>OWASP Top 10</span><span>WAF</span><span>Burp Suite</span><span>DVWA</span><span>Web Log</span></div>
-        </div>
-        <a href="projects/web-security-waf-mitigation.html">Open full case report →</a>
-      </article>
-
-      <article class="card">
-        <div>
-          <div class="card-icon">✹</div>
-          <p class="meta">Jan 2026 – Feb 2026 · Endpoint Triage Case</p>
-          <h3>Endpoint Malware Triage Lab</h3>
-          <p>Dựng timeline endpoint dựa trên process tree, command line, persistence location, file hash, parent-child process, network connection và user context. Case tập trung vào phân loại suspicious activity trước khi escalate.</p>
-          <div class="analyst-focus"><strong>Analyst value:</strong> biết gom artifact thành timeline để đề xuất isolate host, collect sample hoặc monitor thêm.</div>
-          <div class="mini-tags"><span>Endpoint</span><span>Process Tree</span><span>Persistence</span><span>IOC</span><span>Containment</span></div>
-        </div>
-        <a href="projects/endpoint-malware-triage-lab.html">Open full case report →</a>
-      </article>
-
-      <article class="card">
-        <div>
-          <div class="card-icon">⌬</div>
-          <p class="meta">Oct 2024 – Jan 2025 · Network Forensics Case</p>
-          <h3>Network IDS &amp; PCAP Investigation</h3>
-          <p>Điều tra alert IDS bằng PCAP: tái dựng session, kiểm tra TCP handshake, DNS/HTTP pattern, payload, rule SID, traffic direction và mức độ ảnh hưởng theo asset. Kết luận dựa trên packet evidence, không chỉ dựa vào alert name.</p>
-          <div class="analyst-focus"><strong>Analyst value:</strong> hiểu network evidence để xác nhận scan, exploit attempt, C2-like beacon hoặc benign traffic.</div>
-          <div class="mini-tags"><span>IDS</span><span>Wireshark</span><span>PCAP</span><span>TCP/IP</span><span>Network Forensics</span></div>
-        </div>
-        <a href="projects/network-ids-pcap-investigation.html">Open full case report →</a>
-      </article>
-
-      <article class="card">
-        <div>
-          <div class="card-icon">⌘</div>
-          <p class="meta">Mar 2026 – Apr 2026 · AI-Assisted SOC Workflow</p>
-          <h3>AI-Driven Cybersecurity Agent</h3>
-          <p>Prototype workflow hỗ trợ analyst parse alert, enrich IOC, tạo checklist điều tra, chuẩn hóa evidence và draft report. Thiết kế theo nguyên tắc analyst-in-the-loop: AI hỗ trợ tốc độ, còn verdict vẫn được xác minh bằng log và nguồn tin cậy.</p>
-          <div class="analyst-focus"><strong>Analyst value:</strong> giảm thời gian viết report nhưng không tự động kết luận khi thiếu context.</div>
-          <div class="mini-tags"><span>Python</span><span>LLM</span><span>IOC Enrichment</span><span>Automation</span><span>Report Draft</span></div>
-        </div>
-        <a href="projects/ai-cybersecurity-agent.html">Open full case report →</a>
-      </article>
-
-      <article class="card">
-        <div>
-          <div class="card-icon">▧</div>
-          <p class="meta">Aug 2024 – Dec 2024 · Network Security Foundation</p>
-          <h3>CCNA Packet Tracer Lab Portfolio</h3>
-          <p>Mô phỏng hạ tầng doanh nghiệp nhỏ với VLSM, VLAN, routing, ACL, NAT, DHCP và default gateway. Mỗi lab có bảng addressing, verification command, lỗi thường gặp và troubleshooting checklist theo từng layer.</p>
-          <div class="analyst-focus"><strong>Analyst value:</strong> nền tảng network giúp đọc log firewall/IDS đúng hơn và xác định traffic path khi triage alert.</div>
-          <div class="mini-tags"><span>CCNA</span><span>VLSM</span><span>VLAN</span><span>Routing</span><span>ACL</span></div>
-        </div>
-        <a href="projects/ccna-packet-tracer-portfolio.html">Open full case report →</a>
-      </article>
-
-      <article class="card">
-        <div>
-          <div class="card-icon">⟡</div>
-          <p class="meta">Jul 2025 – Sep 2025 · Network Troubleshooting Case</p>
-          <h3>Network Troubleshooting Case Notes</h3>
-          <p>Ghi chú xử lý sự cố mạng theo quy trình: xác định symptom, khoanh vùng scope, kiểm tra physical/link, IP addressing, ARP/MAC, routing, ACL/NAT và command output. Mỗi case có root cause và preventive action.</p>
-          <div class="analyst-focus"><strong>Analyst value:</strong> tư duy isolate issue giúp SOC phân biệt outage, misconfiguration và dấu hiệu security incident.</div>
-          <div class="mini-tags"><span>Troubleshooting</span><span>Layered Analysis</span><span>Routing</span><span>ACL</span><span>Verification</span></div>
-        </div>
-        <a href="projects/network-troubleshooting-notes.html">Open full case report →</a>
-      </article>
-
-      <article class="card">
-        <div>
-          <div class="card-icon">▣</div>
-          <p class="meta">2025 – 2026 · SOC Reporting Framework</p>
-          <h3>SOC Incident Reporting Framework</h3>
-          <p>Chuẩn hóa cách viết report điều tra alert: executive summary, scope, affected asset, timeline, evidence table, analyst verdict, confidence level, limitation và recommendation. Framework này dùng lại cho mọi lab/case trong portfolio.</p>
-          <div class="analyst-focus"><strong>Analyst value:</strong> report rõ ràng để người đọc thấy được decision-making, không chỉ thấy screenshot tool.</div>
-          <div class="mini-tags"><span>Incident Report</span><span>Evidence</span><span>Timeline</span><span>Verdict</span><span>Recommendation</span></div>
-        </div>
-        <a href="projects/soc-incident-reporting-framework.html">Open full case report →</a>
-      </article>
-    </div>
-  </section>
-
-  <section class="section container" id="casefiles">
-    <div class="section-title"><span>Investigation framework</span><h2>Chuẩn trình bày case report</h2><p>Mỗi case được trình bày theo cùng một cấu trúc điều tra để người đọc có thể theo dõi rõ: alert đến từ đâu, bằng chứng nào được kiểm chứng, vì sao đưa ra verdict và hành động xử lý tiếp theo là gì.</p></div>
-    <div class="matrix">
-      <div class="matrix-box"><h3>01 · Alert context</h3><p>Ghi rõ alert type, source, affected asset, time range, severity và lý do cần triage.</p></div>
-      <div class="matrix-box"><h3>02 · Data sources</h3><p>Nêu log đến từ đâu: SIEM, Wazuh, Windows Event, WAF, PCAP, email header hay endpoint.</p></div>
-      <div class="matrix-box"><h3>03 · Evidence table</h3><p>Mỗi kết luận phải có bằng chứng: raw event, screenshot, IOC, command output hoặc timeline.</p></div>
-      <div class="matrix-box"><h3>04 · Verdict & action</h3><p>Không phỏng đoán quá mức; kết luận kèm confidence, limitation và recommended response.</p></div>
-    </div>
-  </section>
-
-  <section class="section container" id="workflow">
-    <div class="section-title"><span>SOC workflow</span><h2>Quy trình điều tra được áp dụng trong các case</h2><p>Workflow này mô tả cách một alert được xử lý từ bước triage ban đầu đến khi có verdict, response action và khuyến nghị cải thiện detection.</p></div>
-    <div class="workflow">
-      <div class="step"><strong>01</strong><span>Triage</span><p>Xác định alert type, severity, source, destination, user, host, timestamp.</p></div>
-      <div class="step"><strong>02</strong><span>Scope</span><p>Ảnh hưởng một endpoint, một user, một subnet hay nhiều asset?</p></div>
-      <div class="step"><strong>03</strong><span>Correlate</span><p>Pivot qua auth, endpoint, network, DNS/proxy, WAF hoặc email log.</p></div>
-      <div class="step"><strong>04</strong><span>Verdict</span><p>Phân loại true positive, benign activity, false positive hoặc cần escalate.</p></div>
-      <div class="step"><strong>05</strong><span>Respond</span><p>Đề xuất monitor, block, isolate, reset password, tune rule hoặc open ticket.</p></div>
-    </div>
-  </section>
-
-  <section class="section container" id="writeups">
-    <div class="section-title"><span>Lab write-ups</span><h2>Write-up & technical notes</h2><p>Các bài này hỗ trợ project chính, dùng để ghi lại cách cấu hình, ảnh dashboard, command kiểm thử và bằng chứng.</p></div>
-    <div class="grid"><article class="card">
-      <div class="card-icon">⏱</div>
-      <p class="meta">Feb 2026</p>
-      <h3>SOC-201: Potential Beaconing Activity</h3>
-      <p>Report điều tra C2-like beaconing từ HR-WIN-001: 5-minute interval, external IP reputation, endpoint process và containment action.</p>
-      <div class="mini-tags"><span>C2 Beaconing</span><span>Endpoint</span><span>Escalation</span></div>
-      <a href="writeups/soc201-potential-beaconing.html">Read lab note →</a>
-    </article><article class="card">
-      <div class="card-icon">◍</div>
-      <p class="meta">May 2026</p>
-      <h3>SOC-102: Newly Registered Domain</h3>
-      <p>Report xác minh suspicious domain bằng proxy log, endpoint process, threat intelligence và business email để kết luận false positive.</p>
-      <div class="mini-tags"><span>Domain Triage</span><span>Proxy</span><span>False Positive</span></div>
-      <a href="writeups/soc102-newly-registered-domain.html">Read lab note →</a>
-    </article><article class="card">
-      <div class="card-icon">◆</div>
-      <p class="meta">Jul 2025</p>
-      <h3>SOC Alert Investigation Report</h3>
-      <p>Mẫu điều tra alert từ SIEM: scope, IOC, context, evidence, verdict và false positive reasoning.</p>
-      <div class="mini-tags"><span>Alert Triage</span><span>IOC</span><span>Verdict</span></div>
-      <a href="writeups/soc-alert-investigation.html">Read lab note →</a>
-    </article><article class="card">
-      <div class="card-icon">◈</div>
-      <p class="meta">Nov 2025</p>
-      <h3>Wazuh SIEM/SOC Lab Report</h3>
-      <p>Báo cáo lab Wazuh: use case, log flow, agent/rule, dashboard evidence, conclusion và limitation.</p>
-      <div class="mini-tags"><span>Wazuh</span><span>Rule</span><span>Dashboard</span></div>
-      <a href="writeups/wazuh-siem-soc-lab.html">Read lab note →</a>
-    </article><article class="card">
-      <div class="card-icon">⌁</div>
-      <p class="meta">Apr 2025</p>
-      <h3>Web Security &amp; WAF Notes</h3>
-      <p>Checklist đọc WAF/web log, phân tích payload, block/bypass và khuyến nghị mitigation.</p>
-      <div class="mini-tags"><span>WAF</span><span>OWASP</span><span>Burp</span></div>
-      <a href="writeups/web-security-waf-lab.html">Read lab note →</a>
-    </article><article class="card">
-      <div class="card-icon">▧</div>
-      <p class="meta">Dec 2024</p>
-      <h3>CCNA VLSM Design Write-up</h3>
-      <p>Cách chia subnet, bảng địa chỉ, cấu hình interface và kiểm thử connectivity trong Packet Tracer.</p>
-      <div class="mini-tags"><span>CCNA</span><span>VLSM</span><span>Packet Tracer</span></div>
-      <a href="writeups/ccna-vlsm-design.html">Read lab note →</a>
-    </article><article class="card">
-      <div class="card-icon">⟡</div>
-      <p class="meta">May 2026</p>
-      <h3>Network Automation &amp; Telemetry</h3>
-      <p>Research note về streaming telemetry, automation và ứng dụng trong NOC/SOC operations.</p>
-      <div class="mini-tags"><span>NOC</span><span>Automation</span><span>Telemetry</span></div>
-      <a href="writeups/network-automation-telemetry.html">Read lab note →</a>
-    </article><article class="card">
-      <div class="card-icon">✦</div>
-      <p class="meta">Dec 2024</p>
-      <h3>CTF Forensics Study Notes</h3>
-      <p>Checklist phân tích file, metadata, timeline, strings và cách viết solve path có evidence.</p>
-      <div class="mini-tags"><span>Forensics</span><span>CTF</span><span>Evidence</span></div>
-      <a href="writeups/ctf-forensics-notes.html">Read lab note →</a>
-    </article></div>
-  </section>
-
-  <section class="section container" id="skills">
-    <div class="section-title"><span>Skill matrix</span><h2>Kỹ năng được trình bày theo năng lực SOC thực tế</h2></div>
-    <div class="grid-2">
-      <div class="panel"><h3>Security Monitoring & SIEM</h3><div class="skill-list"><div class="skill-row"><b>Alert Triage</b><span>scope, severity, evidence</span></div><div class="skill-row"><b>SIEM</b><span>Wazuh, ELK, dashboard</span></div><div class="skill-row"><b>Detection Logic</b><span>use case, threshold, FP tuning</span></div><div class="skill-row"><b>Reporting</b><span>executive summary, timeline, verdict</span></div></div></div>
-      <div class="panel"><h3>Technical Foundation</h3><div class="skill-list"><div class="skill-row"><b>Network</b><span>TCP/IP, VLAN, ACL, routing</span></div><div class="skill-row"><b>Endpoint</b><span>process, command line, persistence</span></div><div class="skill-row"><b>Web Security</b><span>OWASP, WAF, HTTP log</span></div><div class="skill-row"><b>Automation</b><span>Python, parsing, enrichment</span></div></div></div>
-    </div>
-  </section>
-
-  <section class="section container" id="roadmap">
-    <div class="section-title"><span>Roadmap</span><h2>Sơ đồ phát triển năng lực 2024 – 2026</h2></div>
-    <div class="timeline">
-      <div class="timeline-item"><h3>2024 · Network & Forensics Foundation</h3><p>CCNA, VLSM, VLAN, routing, ACL, Wireshark, PCAP, CTF forensics và cách viết solve path có evidence.</p></div>
-      <div class="timeline-item"><h3>2025 · SOC Operations & Detection Use Cases</h3><p>SIEM, Wazuh, phishing triage, Windows authentication log, WAF/web log và report theo workflow SOC Tier 1.</p></div>
-      <div class="timeline-item"><h3>2026 · Endpoint Triage, Automation & NOC/SOC Observability</h3><p>Endpoint malware triage, AI-assisted enrichment, network telemetry và chuẩn hóa report/automation để tăng tốc điều tra.</p></div>
-    </div>
-  </section>
-
-  <section class="section container">
-    <div class="cta">
-      <div><h2>Security lab repository</h2><p>Kho lưu trữ các bài lab, case report và ghi chú kỹ thuật về SIEM, alert triage, network security, web security và incident reporting.</p></div>
-      <a class="btn btn-primary" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">Open GitHub</a>
-    </div>
-  </section>
+<section class="section container" id="contact">
+  <div class="contact"><div><h2>Contact & Repository</h2><p>Portfolio được xây dựng để thể hiện năng lực SOC Analyst bằng case report hoàn chỉnh. GitHub lưu source code, write-up và các trang report đã chuẩn hóa.</p></div><a class="btn btn-primary" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">Open GitHub</a></div>
+</section>
 </main>
-<footer>© 2026 Khánh Linh · SOC Analyst Portfolio · Built for GitHub Pages</footer>
+<footer>
+  <div class="container">© 2026 Khánh Linh · SOC Analyst Portfolio · Built for GitHub Pages</div>
+</footer>
 <script src="assets/app.js"></script>
 </body>
 </html>

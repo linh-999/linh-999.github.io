@@ -1,14 +1,36 @@
 <!DOCTYPE html>
-<html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Web Security &amp; WAF Mitigation Lab | Khánh Linh</title><link rel="stylesheet" href="../assets/style.css"></head>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Security &amp; WAF Mitigation Lab | Khánh Linh</title>
+  <meta name="description" content="SOC portfolio case report: Web Security &amp; WAF Mitigation Lab" />
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
 <body>
-<header><div class="container"><nav><a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a><div class="nav-links"><a href="../index.html#projects">Projects</a><a href="../index.html#workflow">SOC Workflow</a><a href="../index.html#writeups">Write-ups</a><a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a></div></nav></div></header>
+<header>
+  <div class="container">
+    <nav>
+      <a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
+      <div class="nav-links">
+        <a href="../index.html#profile">Profile</a>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#casefiles">Case Files</a>
+        <a href="../index.html#workflow">SOC Workflow</a>
+        <a href="../index.html#writeups">Write-ups</a>
+        <a href="../index.html#skills">Skills</a>
+        <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </nav>
+  </div>
+</header>
 <main class="container">
   <section class="page-hero">
     <div class="breadcrumb"><a href="../index.html">Home</a> / Projects / Web Security &amp; WAF Mitigation Lab</div>
-    <div class="eyebrow"><span class="pulse"></span>Mar 2025 – Apr 2025 · Web Security / WAF Lab</div>
+    <div class="eyebrow"><span class="pulse"></span> Mar 2025 – Apr 2025 · Web Security Monitoring</div>
     <h1 class="page-title">Web Security &amp; WAF Mitigation Lab</h1>
-    <p class="lead">Kiểm thử OWASP Top 10 trên DVWA, đọc access log/WAF event, đánh giá block/bypass và viết khuyến nghị rule tuning.</p>
-    <div class="mini-tags"><span>OWASP Top 10</span><span>WAF</span><span>Burp Suite</span><span>DVWA</span><span>Web Log</span><span>Mitigation</span></div>
+    <p class="lead">Lab kiểm thử các pattern OWASP Top 10 trên ứng dụng web và phân tích event từ WAF/access log. Project tập trung vào cách SOC/Web Security Analyst đọc request, xác định rule match, kiểm tra response, phân loại blocked/allowed traffic và đề xuất tuning rule.</p>
+    <div class="mini-tags"><span>WAF</span><span>OWASP Top 10</span><span>Burp Suite</span><span>Access Log</span><span>False Positive</span><span>Mitigation</span></div>
   </section>
   <section class="report-layout">
     <aside class="sidebar">
@@ -16,25 +38,71 @@
         <p class="meta">Case metadata</p>
         <div class="info-grid" style="grid-template-columns:1fr">
           <div class="info-box"><span>Priority</span><b>Medium–High</b></div>
-          <div class="info-box"><span>Status</span><b>Security testing report</b></div>
-          <div class="info-box"><span>Role</span><b>SOC Analyst with Web Security Context</b></div>
+          <div class="info-box"><span>Status</span><b>Report-ready lab</b></div>
+          <div class="info-box"><span>Role</span><b>SOC Analyst / Web Security Analyst</b></div>
+          <div class="info-box"><span>Analyst value</span><b>Thể hiện khả năng điều tra alert web ở cả góc nhìn offensive testing và defensive monitoring.</b></div>
         </div>
       </div>
-      <div class="panel" style="margin-top:16px"><p class="meta">On this page</p><div class="toc"><a href="#summary">Executive Summary</a><a href="#scope">Objective & Scope</a><a href="#architecture">Architecture</a><a href="#detection">Detection Logic</a><a href="#workflow">Investigation Workflow</a><a href="#evidence">Evidence</a><a href="#findings">Findings</a><a href="#recommendations">Recommendations</a><a href="#next">Next Improvements</a></div></div>
+      <div class="panel" style="margin-top:16px">
+        <p class="meta">On this page</p>
+        <div class="toc"><a href="#1">Executive Summary</a><a href="#2">Objective & Scope</a><a href="#3">Architecture</a><a href="#4">Detection Logic</a><a href="#5">Investigation Workflow</a><a href="#6">Evidence</a><a href="#7">Findings</a><a href="#8">Recommendations</a><a href="#9">Next Improvements</a></div>
+      </div>
     </aside>
     <div>
-      <section class="report-section" id="summary"><h2>Executive Summary</h2><p>Project thể hiện khả năng kết nối giữa pentest cơ bản và SOC monitoring. Analyst cần hiểu payload web attack để đọc WAF log đúng: request nào thật sự nguy hiểm, request nào là scanner/lab traffic, rule nào block đúng và rule nào cần tuning.</p><div class="info-grid" style="margin-top:16px"><div class="info-box"><span>Data sources</span><div class="mini-tags"><span>HTTP access log</span><span>WAF event log</span><span>Burp Suite request/response</span><span>Application response</span><span>Payload evidence</span></div></div><div class="info-box"><span>MITRE / Analyst mapping</span><div class="mini-tags"><span>Initial Access</span><span>Exploit Public-Facing Application</span><span>Web Attack</span></div></div></div></section>
-      <section class="report-section" id="scope"><h2>Objective & Scope</h2><ul><li>Thực hành nhận diện SQLi, XSS, file upload và command injection pattern.</li><li>Đọc WAF log để xác định rule ID, action, payload và source.</li><li>Viết report mitigation dựa trên evidence thay vì chỉ nói “bị tấn công”.</li><li>Đề xuất hardening phía application và tuning phía WAF.</li></ul></section>
-      <section class="report-section" id="architecture"><h2>Architecture / Log Flow</h2><div class="flow"><span>Alert / Event Source</span><i>→</i><span>Log Collection</span><i>→</i><span>SIEM / Dashboard</span><i>→</i><span>Analyst Triage</span><i>→</i><span>Verdict & Response</span></div><ul><li>Attacker/lab browser gửi request qua Burp Suite.</li><li>WAF kiểm tra request và ghi event block/alert.</li><li>Web server ghi access log và response code.</li><li>SOC analyst correlate WAF event với access log để xác nhận impact.</li><li>Report đưa ra finding và mitigation.</li></ul><div class="evidence-note"><b>Evidence artifacts:</b> topology, dashboard, rule detail, raw event và command output được quản lý như bằng chứng kỹ thuật của case.</div></section>
-      <section class="report-section" id="detection"><h2>Detection Logic / Use Cases</h2><ul><li>SQL injection pattern: quote, union select, boolean-based payload.</li><li>XSS pattern: script tag, event handler, encoded payload.</li><li>File upload risk: extension bypass, content-type mismatch.</li><li>Command injection: shell metacharacters và command keyword bất thường.</li></ul><div class="codebox"><b># analyst-note</b><br>Detection should define: objective → data source → condition → expected evidence → false-positive notes → response action.</div></section>
-      <section class="report-section" id="workflow"><h2>Investigation Workflow</h2><ol><li>Xác định URL, method, source IP, user-agent và payload.</li><li>Kiểm tra WAF action: blocked, alerted, allowed hay bypass.</li><li>Đối chiếu web access log để xem request có tới backend không.</li><li>Đánh giá response code và dấu hiệu data exposure/execution.</li><li>Phân loại severity và đề xuất mitigation.</li></ol></section>
-      <section class="report-section" id="evidence"><h2>Evidence Collected</h2><table class="evidence-table"><thead><tr><th>Evidence</th><th>Analyst value</th></tr></thead><tbody><tr><td>Payload</td><td>Request chứa pattern tấn công hoặc input bất thường.</td></tr><tr><td>WAF Rule</td><td>Rule ID/action cho biết cơ chế phát hiện và xử lý.</td></tr><tr><td>Access Log</td><td>Backend có nhận request hay không giúp đánh giá impact.</td></tr><tr><td>Response</td><td>HTTP code/body hỗ trợ xác định block thành công hay có bypass.</td></tr></tbody></table></section>
-      <section class="report-section" id="findings"><h2>Key Findings</h2><ul><li>WAF giúp giảm rủi ro nhưng không thay thế secure coding.</li><li>Một số payload encoded có thể cần rule tuning.</li><li>Correlation WAF + access log giúp tránh kết luận sai.</li></ul></section>
-      <section class="report-section" id="recommendations"><h2>Recommendations</h2><ul><li>Validate input phía application và dùng parameterized query.</li><li>Bật logging đầy đủ cho URL, source IP, user-agent và rule ID.</li><li>Tạo allowlist cẩn thận để tránh bypass.</li><li>Review false positive theo endpoint nghiệp vụ.</li></ul></section>
-      <section class="report-section" id="next"><h2>Limitations & Next Improvements</h2><ul><li>Thêm ModSecurity CRS lab.</li><li>Viết checklist đọc WAF alert cho SOC L1.</li><li>Tạo dashboard top attack path/payload.</li></ul><p style="margin-top:12px">Limitation được ghi rõ để tránh phóng đại kết quả lab. Khi có ảnh/log thật, phần này nên được cập nhật bằng evidence cụ thể.</p></section>
-      <p style="margin:28px 0"><a class="btn btn-outline" href="../index.html#projects">← Back to project list</a></p>
+      <section class="report-section" id="1">
+        <div class="section-kicker">01 · Executive Summary</div>
+        <h2>Executive Summary</h2>
+        <p>Lab kiểm thử các pattern OWASP Top 10 trên ứng dụng web và phân tích event từ WAF/access log. Project tập trung vào cách SOC/Web Security Analyst đọc request, xác định rule match, kiểm tra response, phân loại blocked/allowed traffic và đề xuất tuning rule.</p>
+        <div class="callout"><b>Security operations value:</b> Thể hiện khả năng điều tra alert web ở cả góc nhìn offensive testing và defensive monitoring.</div>
+      </section>
+      <section class="report-section" id="2">
+        <div class="section-kicker">02 · Scope</div>
+        <h2>Objective & Scope</h2>
+        <ul><li>Kiểm tra các pattern SQL injection, XSS, path traversal và suspicious user-agent.</li><li>Đối chiếu WAF event với web access log để xác định impact.</li><li>Phân biệt true attack, blocked attempt và false positive.</li><li>Viết khuyến nghị mitigation dựa trên evidence.</li></ul>
+      </section>
+      <section class="report-section" id="3">
+        <div class="section-kicker">03 · Data flow</div>
+        <h2>Architecture / Data Flow</h2>
+        <div class="flow"><span>Browser / Burp Suite</span><span>Vulnerable web app lab</span><span>WAF policy</span><span>Web access log</span><span>SIEM / dashboard</span><span>Analyst review</span></div>
+        <p>Luồng trên giúp case có điểm bắt đầu và điểm kết thúc rõ ràng: nguồn dữ liệu sinh event, hệ thống xử lý/correlation và analyst đưa kết luận dựa trên bằng chứng.</p>
+      </section>
+      <section class="report-section" id="4">
+        <div class="section-kicker">04 · Detection design</div>
+        <h2>Detection / Analysis Logic</h2>
+        <div class="table-wrap"><table><thead><tr><th>Use case</th><th>Condition</th><th>Expected evidence</th><th>MITRE / Analyst mapping</th><th>False-positive consideration</th></tr></thead><tbody><tr><td>SQL injection pattern</td><td>Request chứa payload SQLi hoặc ký tự bất thường.</td><td>URI, parameter, rule ID, response status.</td><td>Initial Access</td><td>Input hợp lệ có ký tự đặc biệt.</td></tr><tr><td>XSS payload</td><td>Script tag/event handler trong parameter.</td><td>Payload, target endpoint, WAF action.</td><td>Execution</td><td>Content management input hợp lệ.</td></tr><tr><td>Path traversal</td><td>../ hoặc encoded traversal pattern.</td><td>URI path, encoding, response code.</td><td>Discovery</td><td>Scanner kiểm thử hợp lệ.</td></tr><tr><td>Abnormal user-agent</td><td>User-agent scanner/tool xuất hiện.</td><td>User-agent, source IP, request rate.</td><td>Reconnaissance</td><td>Monitoring bot hoặc uptime checker.</td></tr></tbody></table></div>
+      </section>
+      <section class="report-section" id="5">
+        <div class="section-kicker">05 · Triage process</div>
+        <h2>Investigation Workflow</h2>
+        <ol><li>Xác định WAF rule ID, action và target endpoint.</li><li>Kiểm tra raw request để hiểu payload và parameter bị rule match.</li><li>Đối chiếu web access log để biết request bị block hay backend trả response.</li><li>Kiểm tra số lần lặp lại, source IP và các endpoint liên quan.</li><li>Đề xuất block/tune rule hoặc xác nhận false positive với app owner.</li></ol>
+      </section>
+      <section class="report-section" id="6">
+        <div class="section-kicker">06 · Evidence model</div>
+        <h2>Evidence Collected / Required</h2>
+        <div class="table-wrap"><table><thead><tr><th>Evidence</th><th>What it proves</th><th>Analyst value</th></tr></thead><tbody><tr><td>WAF event</td><td>Rule ID, payload, action, severity.</td><td>Giải thích vì sao request bị đánh dấu.</td></tr><tr><td>Access log</td><td>HTTP method, URI, status, bytes, user-agent.</td><td>Xác định request có vào backend không.</td></tr><tr><td>Payload review</td><td>Parameter và encoding.</td><td>Phân loại attack attempt hoặc benign input.</td></tr><tr><td>Response status</td><td>403/406/200/500.</td><td>Đánh giá impact và hiệu quả chặn.</td></tr></tbody></table></div>
+      </section>
+      <section class="report-section" id="7">
+        <div class="section-kicker">07 · Findings</div>
+        <h2>Key Findings</h2>
+        <ul><li>WAF block không đồng nghĩa ứng dụng đã bị compromise; cần xem response và backend log.</li><li>Một số payload có thể là kiểm thử hợp lệ nếu đến từ lab/scanner nội bộ.</li><li>Rule tuning cần dựa trên endpoint và parameter cụ thể để tránh mở rộng rủi ro.</li></ul>
+      </section>
+      <section class="report-section" id="8">
+        <div class="section-kicker">08 · Response</div>
+        <h2>Recommendations</h2>
+        <ul><li>Duy trì whitelist scanner nội bộ theo IP và lịch kiểm thử.</li><li>Tạo dashboard WAF theo rule ID, endpoint và source IP.</li><li>Phối hợp app owner khi cần tune false positive trên parameter hợp lệ.</li></ul>
+      </section>
+      <section class="report-section" id="9">
+        <div class="section-kicker">09 · Continuous improvement</div>
+        <h2>Limitations & Next Improvements</h2>
+        <ul><li>Thêm correlation giữa WAF, app log và authentication log.</li><li>Phân loại endpoint criticality để ưu tiên alert.</li><li>Tạo playbook riêng cho SQLi, XSS và path traversal.</li></ul>
+        <div class="callout warn"><b>Quality note:</b> Kết luận trong report luôn bám vào dữ liệu hiện có; nếu thiếu log hoặc thiếu context, phần limitation được ghi rõ để giữ tính chính xác của case.</div>
+      </section>
     </div>
   </section>
 </main>
-<footer>© 2026 Khánh Linh · SOC Analyst Portfolio</footer>
-</body></html>
+<footer>
+  <div class="container">© 2026 Khánh Linh · SOC Analyst Portfolio · Built for GitHub Pages</div>
+</footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

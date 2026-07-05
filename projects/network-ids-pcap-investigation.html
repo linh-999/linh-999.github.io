@@ -1,40 +1,108 @@
 <!DOCTYPE html>
-<html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Network IDS &amp; PCAP Investigation | Khánh Linh</title><link rel="stylesheet" href="../assets/style.css"></head>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Network IDS &amp; PCAP Investigation | Khánh Linh</title>
+  <meta name="description" content="SOC portfolio case report: Network IDS &amp; PCAP Investigation" />
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
 <body>
-<header><div class="container"><nav><a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a><div class="nav-links"><a href="../index.html#projects">Projects</a><a href="../index.html#workflow">SOC Workflow</a><a href="../index.html#writeups">Write-ups</a><a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a></div></nav></div></header>
+<header>
+  <div class="container">
+    <nav>
+      <a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
+      <div class="nav-links">
+        <a href="../index.html#profile">Profile</a>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#casefiles">Case Files</a>
+        <a href="../index.html#workflow">SOC Workflow</a>
+        <a href="../index.html#writeups">Write-ups</a>
+        <a href="../index.html#skills">Skills</a>
+        <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </nav>
+  </div>
+</header>
 <main class="container">
   <section class="page-hero">
     <div class="breadcrumb"><a href="../index.html">Home</a> / Projects / Network IDS &amp; PCAP Investigation</div>
-    <div class="eyebrow"><span class="pulse"></span>Oct 2024 – Jan 2025 · Network Forensics Lab</div>
+    <div class="eyebrow"><span class="pulse"></span> May 2025 – Jun 2025 · Network Forensics Case</div>
     <h1 class="page-title">Network IDS &amp; PCAP Investigation</h1>
-    <p class="lead">Phân tích alert IDS kết hợp Wireshark/PCAP để xác định traffic pattern, session, payload, rule match và verdict.</p>
-    <div class="mini-tags"><span>IDS</span><span>Wireshark</span><span>PCAP</span><span>TCP/IP</span><span>Network Forensics</span><span>Incident Analysis</span></div>
+    <p class="lead">Phân tích IDS alert và PCAP để xác định bản chất traffic: reconnaissance, exploit attempt, malware download hay benign scan. Project tập trung vào kỹ năng đọc packet, follow TCP stream, kiểm tra DNS/HTTP/TLS và liên kết packet evidence với alert.</p>
+    <div class="mini-tags"><span>PCAP</span><span>Wireshark</span><span>IDS Alert</span><span>DNS</span><span>HTTP</span><span>TLS</span><span>Evidence</span></div>
   </section>
   <section class="report-layout">
     <aside class="sidebar">
       <div class="panel">
         <p class="meta">Case metadata</p>
         <div class="info-grid" style="grid-template-columns:1fr">
-          <div class="info-box"><span>Priority</span><b>Foundation</b></div>
-          <div class="info-box"><span>Status</span><b>Study report</b></div>
-          <div class="info-box"><span>Role</span><b>Network Security Analyst</b></div>
+          <div class="info-box"><span>Priority</span><b>Medium–High</b></div>
+          <div class="info-box"><span>Status</span><b>Analysis workflow completed</b></div>
+          <div class="info-box"><span>Role</span><b>SOC Analyst / Network Security Analyst</b></div>
+          <div class="info-box"><span>Analyst value</span><b>Tăng năng lực điều tra network-level alert khi SIEM chỉ cung cấp một phần context.</b></div>
         </div>
       </div>
-      <div class="panel" style="margin-top:16px"><p class="meta">On this page</p><div class="toc"><a href="#summary">Executive Summary</a><a href="#scope">Objective & Scope</a><a href="#architecture">Architecture</a><a href="#detection">Detection Logic</a><a href="#workflow">Investigation Workflow</a><a href="#evidence">Evidence</a><a href="#findings">Findings</a><a href="#recommendations">Recommendations</a><a href="#next">Next Improvements</a></div></div>
+      <div class="panel" style="margin-top:16px">
+        <p class="meta">On this page</p>
+        <div class="toc"><a href="#1">Executive Summary</a><a href="#2">Objective & Scope</a><a href="#3">Architecture</a><a href="#4">Detection Logic</a><a href="#5">Investigation Workflow</a><a href="#6">Evidence</a><a href="#7">Findings</a><a href="#8">Recommendations</a><a href="#9">Next Improvements</a></div>
+      </div>
     </aside>
     <div>
-      <section class="report-section" id="summary"><h2>Executive Summary</h2><p>Project này thể hiện nền tảng network security quan trọng cho SOC: đọc packet, hiểu TCP/IP, xác định session, decode payload cơ bản và dùng PCAP để validate alert IDS. Đây là kỹ năng giúp analyst không bị phụ thuộc hoàn toàn vào dashboard.</p><div class="info-grid" style="margin-top:16px"><div class="info-box"><span>Data sources</span><div class="mini-tags"><span>IDS alert</span><span>PCAP file</span><span>TCP stream</span><span>DNS/HTTP traffic</span><span>Source/destination tuple</span></div></div><div class="info-box"><span>MITRE / Analyst mapping</span><div class="mini-tags"><span>Discovery</span><span>Command and Control</span><span>Exfiltration</span></div></div></div></section>
-      <section class="report-section" id="scope"><h2>Objective & Scope</h2><ul><li>Phân tích traffic từ alert IDS đến packet-level evidence.</li><li>Xác định source, destination, port, protocol, session và payload liên quan.</li><li>Phân biệt scan, normal browsing, suspicious beaconing hoặc file transfer.</li><li>Viết kết luận dựa trên packet evidence.</li></ul></section>
-      <section class="report-section" id="architecture"><h2>Architecture / Log Flow</h2><div class="flow"><span>Alert / Event Source</span><i>→</i><span>Log Collection</span><i>→</i><span>SIEM / Dashboard</span><i>→</i><span>Analyst Triage</span><i>→</i><span>Verdict & Response</span></div><ul><li>IDS sinh alert từ traffic capture.</li><li>PCAP được mở bằng Wireshark để follow stream.</li><li>Analyst filter theo IP/port/protocol/time.</li><li>Packet evidence được trích ra report.</li><li>Verdict được đưa ra kèm limitation.</li></ul><div class="evidence-note"><b>Evidence artifacts:</b> topology, dashboard, rule detail, raw event và command output được quản lý như bằng chứng kỹ thuật của case.</div></section>
-      <section class="report-section" id="detection"><h2>Detection Logic / Use Cases</h2><ul><li>Port scan: nhiều SYN tới nhiều port/host.</li><li>Suspicious HTTP: user-agent lạ, path bất thường, payload encoded.</li><li>DNS anomaly: domain dài, query lặp, pattern giống tunneling.</li><li>Potential exfiltration: outbound data volume hoặc file transfer không bình thường.</li></ul><div class="codebox"><b># analyst-note</b><br>Detection should define: objective → data source → condition → expected evidence → false-positive notes → response action.</div></section>
-      <section class="report-section" id="workflow"><h2>Investigation Workflow</h2><ol><li>Bắt đầu từ alert metadata: timestamp, sid, src/dst IP, port.</li><li>Filter PCAP theo tuple và time range.</li><li>Follow TCP stream để hiểu request/response.</li><li>Kiểm tra handshake, response code, payload và bytes transferred.</li><li>Kết luận alert có evidence đủ mạnh hay cần thêm endpoint/proxy log.</li></ol></section>
-      <section class="report-section" id="evidence"><h2>Evidence Collected</h2><table class="evidence-table"><thead><tr><th>Evidence</th><th>Analyst value</th></tr></thead><tbody><tr><td>5-tuple</td><td>Source IP, destination IP, source port, destination port, protocol.</td></tr><tr><td>TCP Stream</td><td>Request/response hoặc payload giúp xác nhận hành vi.</td></tr><tr><td>DNS/HTTP Fields</td><td>Host, URI, user-agent, query name hỗ trợ investigation.</td></tr><tr><td>Traffic Pattern</td><td>Tần suất và volume giúp phân biệt benign vs suspicious.</td></tr></tbody></table></section>
-      <section class="report-section" id="findings"><h2>Key Findings</h2><ul><li>PCAP giúp validate alert và giảm false positive.</li><li>Cần hiểu protocol để không đọc sai packet.</li><li>Network evidence thường cần bổ sung endpoint context để xác định user/process.</li></ul></section>
-      <section class="report-section" id="recommendations"><h2>Recommendations</h2><ul><li>Lưu PCAP mẫu cho các case training.</li><li>Tạo cheat sheet filter Wireshark cho SOC L1.</li><li>Kết hợp IDS alert với DNS/proxy log nếu có.</li></ul></section>
-      <section class="report-section" id="next"><h2>Limitations & Next Improvements</h2><ul><li>Tự động extract IOC từ PCAP.</li><li>Thêm Zeek log để dễ pivot hơn.</li><li>Viết report template cho từng traffic pattern.</li></ul><p style="margin-top:12px">Limitation được ghi rõ để tránh phóng đại kết quả lab. Khi có ảnh/log thật, phần này nên được cập nhật bằng evidence cụ thể.</p></section>
-      <p style="margin:28px 0"><a class="btn btn-outline" href="../index.html#projects">← Back to project list</a></p>
+      <section class="report-section" id="1">
+        <div class="section-kicker">01 · Executive Summary</div>
+        <h2>Executive Summary</h2>
+        <p>Phân tích IDS alert và PCAP để xác định bản chất traffic: reconnaissance, exploit attempt, malware download hay benign scan. Project tập trung vào kỹ năng đọc packet, follow TCP stream, kiểm tra DNS/HTTP/TLS và liên kết packet evidence với alert.</p>
+        <div class="callout"><b>Security operations value:</b> Tăng năng lực điều tra network-level alert khi SIEM chỉ cung cấp một phần context.</div>
+      </section>
+      <section class="report-section" id="2">
+        <div class="section-kicker">02 · Scope</div>
+        <h2>Objective & Scope</h2>
+        <ul><li>Xác minh IDS alert bằng packet evidence.</li><li>Extract IOC từ DNS, HTTP Host, URL, SNI hoặc IP.</li><li>Kiểm tra payload/response để đánh giá impact.</li><li>Viết report có timestamp, flow và conclusion rõ ràng.</li></ul>
+      </section>
+      <section class="report-section" id="3">
+        <div class="section-kicker">03 · Data flow</div>
+        <h2>Architecture / Data Flow</h2>
+        <div class="flow"><span>IDS alert</span><span>PCAP sample</span><span>Wireshark analysis</span><span>Protocol timeline</span><span>IOC extraction</span><span>SOC report</span></div>
+        <p>Luồng trên giúp case có điểm bắt đầu và điểm kết thúc rõ ràng: nguồn dữ liệu sinh event, hệ thống xử lý/correlation và analyst đưa kết luận dựa trên bằng chứng.</p>
+      </section>
+      <section class="report-section" id="4">
+        <div class="section-kicker">04 · Detection design</div>
+        <h2>Detection / Analysis Logic</h2>
+        <div class="table-wrap"><table><thead><tr><th>Use case</th><th>Condition</th><th>Expected evidence</th><th>MITRE / Analyst mapping</th><th>False-positive consideration</th></tr></thead><tbody><tr><td>Port scan</td><td>Nhiều SYN tới nhiều port hoặc host.</td><td>Packet count, SYN/SYN-ACK/RST pattern.</td><td>Discovery</td><td>Network scan hợp lệ.</td></tr><tr><td>Suspicious DNS</td><td>Domain lạ, entropy cao hoặc query lặp lại.</td><td>DNS query, response IP, TTL.</td><td>Command and Control</td><td>CDN hoặc tracking domain hợp lệ.</td></tr><tr><td>HTTP download</td><td>Request tải file đáng nghi.</td><td>URI, file type, response bytes, hash nếu có.</td><td>Initial Access</td><td>Tải file công việc hợp lệ.</td></tr><tr><td>TLS connection</td><td>SNI/certificate bất thường hoặc JA3 lạ.</td><td>SNI, cert issuer, destination IP.</td><td>Command and Control</td><td>Dịch vụ cloud hợp lệ.</td></tr></tbody></table></div>
+      </section>
+      <section class="report-section" id="5">
+        <div class="section-kicker">05 · Triage process</div>
+        <h2>Investigation Workflow</h2>
+        <ol><li>Xác định alert time và 5-tuple network flow.</li><li>Lọc PCAP theo source/destination/protocol/time window.</li><li>Follow stream để đọc request/response nếu giao thức cho phép.</li><li>Extract IOC và đối chiếu với DNS/HTTP/TLS context.</li><li>Kết luận behavior và ghi rõ limitation nếu payload bị mã hóa.</li></ol>
+      </section>
+      <section class="report-section" id="6">
+        <div class="section-kicker">06 · Evidence model</div>
+        <h2>Evidence Collected / Required</h2>
+        <div class="table-wrap"><table><thead><tr><th>Evidence</th><th>What it proves</th><th>Analyst value</th></tr></thead><tbody><tr><td>5-tuple flow</td><td>Source IP, destination IP, port, protocol, timestamp.</td><td>Xác định kết nối cụ thể.</td></tr><tr><td>Protocol fields</td><td>DNS query, HTTP Host, URI, TLS SNI.</td><td>Tạo IOC điều tra.</td></tr><tr><td>Traffic pattern</td><td>Rate, interval, byte size.</td><td>Phân biệt normal browsing và beaconing/scan.</td></tr><tr><td>Payload availability</td><td>Plaintext hoặc encrypted.</td><td>Xác định giới hạn phân tích.</td></tr></tbody></table></div>
+      </section>
+      <section class="report-section" id="7">
+        <div class="section-kicker">07 · Findings</div>
+        <h2>Key Findings</h2>
+        <ul><li>PCAP giúp validate alert chính xác hơn dashboard summary.</li><li>Traffic mã hóa vẫn có thể phân tích metadata như SNI, timing và byte pattern.</li><li>Một flow đáng nghi cần được đặt trong bối cảnh host và user để giảm false positive.</li></ul>
+      </section>
+      <section class="report-section" id="8">
+        <div class="section-kicker">08 · Response</div>
+        <h2>Recommendations</h2>
+        <ul><li>Lưu PCAP quanh thời điểm alert cho các host critical.</li><li>Dùng Zeek để tự động hóa DNS/HTTP/TLS metadata.</li><li>Chuẩn hóa bảng IOC extraction cho mọi network investigation.</li></ul>
+      </section>
+      <section class="report-section" id="9">
+        <div class="section-kicker">09 · Continuous improvement</div>
+        <h2>Limitations & Next Improvements</h2>
+        <ul><li>Tạo filter library cho Wireshark theo use case.</li><li>Kết hợp IDS alert với Zeek logs và endpoint telemetry.</li><li>Xây dựng baseline cho internal scanner và service traffic.</li></ul>
+        <div class="callout warn"><b>Quality note:</b> Kết luận trong report luôn bám vào dữ liệu hiện có; nếu thiếu log hoặc thiếu context, phần limitation được ghi rõ để giữ tính chính xác của case.</div>
+      </section>
     </div>
   </section>
 </main>
-<footer>© 2026 Khánh Linh · SOC Analyst Portfolio</footer>
-</body></html>
+<footer>
+  <div class="container">© 2026 Khánh Linh · SOC Analyst Portfolio · Built for GitHub Pages</div>
+</footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

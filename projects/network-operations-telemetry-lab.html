@@ -1,40 +1,108 @@
 <!DOCTYPE html>
-<html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Network Operations &amp; Streaming Telemetry Lab | Khánh Linh</title><link rel="stylesheet" href="../assets/style.css"></head>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Network Operations &amp; Streaming Telemetry Lab | Khánh Linh</title>
+  <meta name="description" content="SOC portfolio case report: Network Operations &amp; Streaming Telemetry Lab" />
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
 <body>
-<header><div class="container"><nav><a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a><div class="nav-links"><a href="../index.html#projects">Projects</a><a href="../index.html#workflow">SOC Workflow</a><a href="../index.html#writeups">Write-ups</a><a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a></div></nav></div></header>
+<header>
+  <div class="container">
+    <nav>
+      <a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
+      <div class="nav-links">
+        <a href="../index.html#profile">Profile</a>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#casefiles">Case Files</a>
+        <a href="../index.html#workflow">SOC Workflow</a>
+        <a href="../index.html#writeups">Write-ups</a>
+        <a href="../index.html#skills">Skills</a>
+        <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </nav>
+  </div>
+</header>
 <main class="container">
   <section class="page-hero">
     <div class="breadcrumb"><a href="../index.html">Home</a> / Projects / Network Operations &amp; Streaming Telemetry Lab</div>
-    <div class="eyebrow"><span class="pulse"></span>May 2026 – Jun 2026 · NOC/SOC Research Lab</div>
+    <div class="eyebrow"><span class="pulse"></span> Jun 2026 – Jul 2026 · NOC / Automation Research</div>
     <h1 class="page-title">Network Operations &amp; Streaming Telemetry Lab</h1>
-    <p class="lead">Research lab về giám sát Core IP/Transmission, streaming telemetry, automation và cách dữ liệu vận hành hỗ trợ SOC/NOC.</p>
-    <div class="mini-tags"><span>Network Operations</span><span>Telemetry</span><span>Automation</span><span>NOC</span><span>Python</span><span>Observability</span></div>
+    <p class="lead">Nghiên cứu cách vận hành mạng theo hướng telemetry: thu thập trạng thái interface, CPU/memory, link status, routing neighbor và traffic counters để phát hiện bất thường sớm hơn so với kiểm tra thủ công. Project kết nối định hướng NOC với SOC bằng cách đưa network health vào bối cảnh security monitoring.</p>
+    <div class="mini-tags"><span>Telemetry</span><span>NOC</span><span>gNMI Concept</span><span>SNMP</span><span>Python</span><span>Monitoring</span></div>
   </section>
   <section class="report-layout">
     <aside class="sidebar">
       <div class="panel">
         <p class="meta">Case metadata</p>
         <div class="info-grid" style="grid-template-columns:1fr">
-          <div class="info-box"><span>Priority</span><b>Growth path</b></div>
-          <div class="info-box"><span>Status</span><b>Research note</b></div>
-          <div class="info-box"><span>Role</span><b>Network Operations / SOC Automation Learner</b></div>
+          <div class="info-box"><span>Priority</span><b>Medium</b></div>
+          <div class="info-box"><span>Status</span><b>Research-oriented lab</b></div>
+          <div class="info-box"><span>Role</span><b>Network Operations / Automation Learner</b></div>
+          <div class="info-box"><span>Analyst value</span><b>Thể hiện khả năng nhìn hệ thống mạng như nguồn dữ liệu vận hành và bảo mật, không chỉ cấu hình thiết bị.</b></div>
         </div>
       </div>
-      <div class="panel" style="margin-top:16px"><p class="meta">On this page</p><div class="toc"><a href="#summary">Executive Summary</a><a href="#scope">Objective & Scope</a><a href="#architecture">Architecture</a><a href="#detection">Detection Logic</a><a href="#workflow">Investigation Workflow</a><a href="#evidence">Evidence</a><a href="#findings">Findings</a><a href="#recommendations">Recommendations</a><a href="#next">Next Improvements</a></div></div>
+      <div class="panel" style="margin-top:16px">
+        <p class="meta">On this page</p>
+        <div class="toc"><a href="#1">Executive Summary</a><a href="#2">Objective & Scope</a><a href="#3">Architecture</a><a href="#4">Detection Logic</a><a href="#5">Investigation Workflow</a><a href="#6">Evidence</a><a href="#7">Findings</a><a href="#8">Recommendations</a><a href="#9">Next Improvements</a></div>
+      </div>
     </aside>
     <div>
-      <section class="report-section" id="summary"><h2>Executive Summary</h2><p>Project mở rộng portfolio từ SOC sang vận hành mạng. Nội dung tập trung vào cách thu thập trạng thái thiết bị, phát hiện bất thường về interface/latency/loss, tự động hóa kiểm tra và tạo report để NOC/SOC có dữ liệu vận hành trước khi sự cố ảnh hưởng người dùng.</p><div class="info-grid" style="margin-top:16px"><div class="info-box"><span>Data sources</span><div class="mini-tags"><span>Interface counter</span><span>Device syslog</span><span>Routing state</span><span>Latency/loss metric</span><span>Automation script output</span></div></div><div class="info-box"><span>MITRE / Analyst mapping</span><div class="mini-tags"><span>Not applicable — operations observability</span></div></div></div></section>
-      <section class="report-section" id="scope"><h2>Objective & Scope</h2><ul><li>Mô tả mô hình giám sát Core IP/Transmission ở mức học thuật/lab.</li><li>So sánh polling truyền thống và telemetry push-based.</li><li>Đề xuất use case: interface flapping, high error rate, latency spike, routing change.</li><li>Viết hướng phát triển automation bằng Python.</li></ul></section>
-      <section class="report-section" id="architecture"><h2>Architecture / Log Flow</h2><div class="flow"><span>Alert / Event Source</span><i>→</i><span>Log Collection</span><i>→</i><span>SIEM / Dashboard</span><i>→</i><span>Analyst Triage</span><i>→</i><span>Verdict & Response</span></div><ul><li>Network device sinh metric/log về interface, route và health.</li><li>Collector nhận dữ liệu định kỳ hoặc streaming.</li><li>Storage/indexer lưu metric theo time-series.</li><li>Dashboard hiển thị trạng thái và trend.</li><li>Automation script tạo health-check report hoặc cảnh báo.</li></ul><div class="evidence-note"><b>Evidence artifacts:</b> topology, dashboard, rule detail, raw event và command output được quản lý như bằng chứng kỹ thuật của case.</div></section>
-      <section class="report-section" id="detection"><h2>Detection Logic / Use Cases</h2><ul><li>Interface flap: trạng thái link đổi liên tục trong thời gian ngắn.</li><li>High error/discard: counter lỗi tăng bất thường.</li><li>Latency/loss spike: ảnh hưởng chất lượng dịch vụ.</li><li>Routing change: thay đổi route/neighbor cần kiểm tra.</li></ul><div class="codebox"><b># analyst-note</b><br>Detection should define: objective → data source → condition → expected evidence → false-positive notes → response action.</div></section>
-      <section class="report-section" id="workflow"><h2>Investigation Workflow</h2><ol><li>Xác định metric cần giám sát và ngưỡng cảnh báo.</li><li>Thu thập dữ liệu mẫu từ thiết bị hoặc lab.</li><li>Tạo dashboard trend theo thời gian.</li><li>Viết checklist khi có alert: link, port, route, neighbor, traffic.</li><li>Đề xuất action: monitor, open ticket, escalate transmission/core team.</li></ol></section>
-      <section class="report-section" id="evidence"><h2>Evidence Collected</h2><table class="evidence-table"><thead><tr><th>Evidence</th><th>Analyst value</th></tr></thead><tbody><tr><td>Metric Trend</td><td>Biểu đồ counter/latency giúp thấy bất thường theo thời gian.</td></tr><tr><td>Syslog</td><td>Log link up/down hoặc routing event cung cấp timestamp.</td></tr><tr><td>Health Check</td><td>Output script tổng hợp trạng thái thiết bị.</td></tr><tr><td>Limitation</td><td>Lab có thể chưa phản ánh scale của mạng thực tế.</td></tr></tbody></table></section>
-      <section class="report-section" id="findings"><h2>Key Findings</h2><ul><li>Dữ liệu vận hành giúp SOC/NOC phân biệt sự cố mạng và sự cố bảo mật.</li><li>Automation giảm thời gian kiểm tra thủ công lặp lại.</li><li>Telemetry có giá trị cao khi cần phát hiện bất thường gần real-time.</li></ul></section>
-      <section class="report-section" id="recommendations"><h2>Recommendations</h2><ul><li>Chuẩn hóa checklist health-check theo thiết bị/dịch vụ.</li><li>Lưu baseline để phát hiện deviation.</li><li>Tạo báo cáo định kỳ cho link/device critical.</li></ul></section>
-      <section class="report-section" id="next"><h2>Limitations & Next Improvements</h2><ul><li>Thử gNMI/Netconf/YANG ở lab nâng cao.</li><li>Tích hợp alert với Slack/email/ticket.</li><li>Kết hợp telemetry với security event trong SIEM.</li></ul><p style="margin-top:12px">Limitation được ghi rõ để tránh phóng đại kết quả lab. Khi có ảnh/log thật, phần này nên được cập nhật bằng evidence cụ thể.</p></section>
-      <p style="margin:28px 0"><a class="btn btn-outline" href="../index.html#projects">← Back to project list</a></p>
+      <section class="report-section" id="1">
+        <div class="section-kicker">01 · Executive Summary</div>
+        <h2>Executive Summary</h2>
+        <p>Nghiên cứu cách vận hành mạng theo hướng telemetry: thu thập trạng thái interface, CPU/memory, link status, routing neighbor và traffic counters để phát hiện bất thường sớm hơn so với kiểm tra thủ công. Project kết nối định hướng NOC với SOC bằng cách đưa network health vào bối cảnh security monitoring.</p>
+        <div class="callout"><b>Security operations value:</b> Thể hiện khả năng nhìn hệ thống mạng như nguồn dữ liệu vận hành và bảo mật, không chỉ cấu hình thiết bị.</div>
+      </section>
+      <section class="report-section" id="2">
+        <div class="section-kicker">02 · Scope</div>
+        <h2>Objective & Scope</h2>
+        <ul><li>Theo dõi interface status, utilization và error counters.</li><li>Ghi nhận bất thường như link flap, high bandwidth, packet drop.</li><li>Tạo alert rõ impact và recommended troubleshooting.</li><li>Liên hệ network telemetry với security event khi traffic tăng bất thường.</li></ul>
+      </section>
+      <section class="report-section" id="3">
+        <div class="section-kicker">03 · Data flow</div>
+        <h2>Architecture / Data Flow</h2>
+        <div class="flow"><span>Network devices</span><span>Telemetry/SNMP collector</span><span>Time-series storage</span><span>Dashboard</span><span>Threshold / anomaly rule</span><span>NOC/SOC analyst</span></div>
+        <p>Luồng trên giúp case có điểm bắt đầu và điểm kết thúc rõ ràng: nguồn dữ liệu sinh event, hệ thống xử lý/correlation và analyst đưa kết luận dựa trên bằng chứng.</p>
+      </section>
+      <section class="report-section" id="4">
+        <div class="section-kicker">04 · Detection design</div>
+        <h2>Detection / Analysis Logic</h2>
+        <div class="table-wrap"><table><thead><tr><th>Use case</th><th>Condition</th><th>Expected evidence</th><th>MITRE / Analyst mapping</th><th>False-positive consideration</th></tr></thead><tbody><tr><td>Link flap</td><td>Interface up/down liên tục trong thời gian ngắn.</td><td>Interface log, timestamp, device, port.</td><td>Availability</td><td>Bảo trì hoặc cabling test.</td></tr><tr><td>High utilization</td><td>Bandwidth vượt baseline/threshold.</td><td>Interface counter, direction, duration.</td><td>Impact / Exfiltration signal</td><td>Backup hoặc update hợp lệ.</td></tr><tr><td>Error counter spike</td><td>CRC/drop tăng bất thường.</td><td>CRC, input/output drops.</td><td>Availability</td><td>Cable/module lỗi hoặc congestion.</td></tr><tr><td>Route neighbor change</td><td>Neighbor down/up bất thường.</td><td>Routing log, peer, state.</td><td>Availability</td><td>Maintenance window.</td></tr></tbody></table></div>
+      </section>
+      <section class="report-section" id="5">
+        <div class="section-kicker">05 · Triage process</div>
+        <h2>Investigation Workflow</h2>
+        <ol><li>Xác định metric bất thường và thiết bị/port liên quan.</li><li>Kiểm tra thời điểm thay đổi có trùng maintenance không.</li><li>Đối chiếu traffic/security event nếu utilization tăng bất thường.</li><li>Khoanh vùng physical, L2, L3 hoặc policy issue.</li><li>Ghi recommendation cho NOC/SOC: monitor, replace cable, tune threshold hoặc investigate traffic source.</li></ol>
+      </section>
+      <section class="report-section" id="6">
+        <div class="section-kicker">06 · Evidence model</div>
+        <h2>Evidence Collected / Required</h2>
+        <div class="table-wrap"><table><thead><tr><th>Evidence</th><th>What it proves</th><th>Analyst value</th></tr></thead><tbody><tr><td>Interface counters</td><td>Utilization, errors, drops.</td><td>Đánh giá health của link.</td></tr><tr><td>State change logs</td><td>Up/down timestamp.</td><td>Xác định flap.</td></tr><tr><td>Routing status</td><td>Neighbor state và route table.</td><td>Đánh giá impact L3.</td></tr><tr><td>Traffic trend</td><td>Baseline và spike.</td><td>Hỗ trợ phát hiện bất thường.</td></tr></tbody></table></div>
+      </section>
+      <section class="report-section" id="7">
+        <div class="section-kicker">07 · Findings</div>
+        <h2>Key Findings</h2>
+        <ul><li>Telemetry giúp phát hiện vấn đề vận hành trước khi người dùng báo lỗi.</li><li>High utilization cần được phân biệt giữa backup hợp lệ và traffic bất thường.</li><li>Network health là context quan trọng khi phân tích security alert.</li></ul>
+      </section>
+      <section class="report-section" id="8">
+        <div class="section-kicker">08 · Response</div>
+        <h2>Recommendations</h2>
+        <ul><li>Định nghĩa baseline cho core link và access link.</li><li>Tách alert vận hành và alert bảo mật nhưng cho phép correlation.</li><li>Chuẩn hóa dashboard theo device, interface, severity và service impact.</li></ul>
+      </section>
+      <section class="report-section" id="9">
+        <div class="section-kicker">09 · Continuous improvement</div>
+        <h2>Limitations & Next Improvements</h2>
+        <ul><li>Thử collector bằng Python và dashboard đơn giản.</li><li>Tích hợp log thiết bị vào SIEM để correlation.</li><li>Tạo runbook cho link flap và high utilization.</li></ul>
+        <div class="callout warn"><b>Quality note:</b> Kết luận trong report luôn bám vào dữ liệu hiện có; nếu thiếu log hoặc thiếu context, phần limitation được ghi rõ để giữ tính chính xác của case.</div>
+      </section>
     </div>
   </section>
 </main>
-<footer>© 2026 Khánh Linh · SOC Analyst Portfolio</footer>
-</body></html>
+<footer>
+  <div class="container">© 2026 Khánh Linh · SOC Analyst Portfolio · Built for GitHub Pages</div>
+</footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

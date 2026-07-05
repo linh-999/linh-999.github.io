@@ -1,40 +1,108 @@
 <!DOCTYPE html>
-<html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>AI-Assisted SOC Alert Enrichment | Khánh Linh</title><link rel="stylesheet" href="../assets/style.css"></head>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI-Driven Cybersecurity Agent | Khánh Linh</title>
+  <meta name="description" content="SOC portfolio case report: AI-Driven Cybersecurity Agent" />
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
 <body>
-<header><div class="container"><nav><a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a><div class="nav-links"><a href="../index.html#projects">Projects</a><a href="../index.html#workflow">SOC Workflow</a><a href="../index.html#writeups">Write-ups</a><a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a></div></nav></div></header>
+<header>
+  <div class="container">
+    <nav>
+      <a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
+      <div class="nav-links">
+        <a href="../index.html#profile">Profile</a>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#casefiles">Case Files</a>
+        <a href="../index.html#workflow">SOC Workflow</a>
+        <a href="../index.html#writeups">Write-ups</a>
+        <a href="../index.html#skills">Skills</a>
+        <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </nav>
+  </div>
+</header>
 <main class="container">
   <section class="page-hero">
-    <div class="breadcrumb"><a href="../index.html">Home</a> / Projects / AI-Assisted SOC Alert Enrichment</div>
-    <div class="eyebrow"><span class="pulse"></span>Mar 2026 – Apr 2026 · SOC Automation Prototype</div>
-    <h1 class="page-title">AI-Assisted SOC Alert Enrichment</h1>
-    <p class="lead">Workflow Python/LLM hỗ trợ parse alert, enrich IOC, tạo checklist điều tra và draft report nhưng vẫn giữ analyst-in-the-loop.</p>
-    <div class="mini-tags"><span>Python</span><span>LLM</span><span>SOC Automation</span><span>IOC Enrichment</span><span>Report Draft</span><span>Human-in-the-loop</span></div>
+    <div class="breadcrumb"><a href="../index.html">Home</a> / Projects / AI-Driven Cybersecurity Agent</div>
+    <div class="eyebrow"><span class="pulse"></span> Mar 2026 – Apr 2026 · SOC Automation Prototype</div>
+    <h1 class="page-title">AI-Driven Cybersecurity Agent</h1>
+    <p class="lead">Prototype agent hỗ trợ analyst chuẩn hóa alert, trích xuất IOC, đề xuất checklist điều tra và tạo bản nháp báo cáo. Nội dung được thiết kế theo nguyên tắc evidence-first: mọi output phải được analyst xác minh bằng log hoặc artifact trước khi dùng trong ticket.</p>
+    <div class="mini-tags"><span>Python</span><span>LLM</span><span>SOC Workflow</span><span>IOC Enrichment</span><span>Report Draft</span><span>Human Review</span></div>
   </section>
   <section class="report-layout">
     <aside class="sidebar">
       <div class="panel">
         <p class="meta">Case metadata</p>
         <div class="info-grid" style="grid-template-columns:1fr">
-          <div class="info-box"><span>Priority</span><b>Innovation</b></div>
-          <div class="info-box"><span>Status</span><b>Prototype</b></div>
-          <div class="info-box"><span>Role</span><b>SOC Automation Learner</b></div>
+          <div class="info-box"><span>Priority</span><b>Medium</b></div>
+          <div class="info-box"><span>Status</span><b>Prototype concept completed</b></div>
+          <div class="info-box"><span>Role</span><b>SOC Analyst / Automation Learner</b></div>
+          <div class="info-box"><span>Analyst value</span><b>Kết nối kỹ năng SOC với automation, phù hợp định hướng Security Operations hiện đại.</b></div>
         </div>
       </div>
-      <div class="panel" style="margin-top:16px"><p class="meta">On this page</p><div class="toc"><a href="#summary">Executive Summary</a><a href="#scope">Objective & Scope</a><a href="#architecture">Architecture</a><a href="#detection">Detection Logic</a><a href="#workflow">Investigation Workflow</a><a href="#evidence">Evidence</a><a href="#findings">Findings</a><a href="#recommendations">Recommendations</a><a href="#next">Next Improvements</a></div></div>
+      <div class="panel" style="margin-top:16px">
+        <p class="meta">On this page</p>
+        <div class="toc"><a href="#1">Executive Summary</a><a href="#2">Objective & Scope</a><a href="#3">Architecture</a><a href="#4">Detection Logic</a><a href="#5">Investigation Workflow</a><a href="#6">Evidence</a><a href="#7">Findings</a><a href="#8">Recommendations</a><a href="#9">Next Improvements</a></div>
+      </div>
     </aside>
     <div>
-      <section class="report-section" id="summary"><h2>Executive Summary</h2><p>Project này tập trung vào hướng phát triển hiện đại của SOC: dùng automation/AI để giảm thời gian đọc alert và chuẩn hóa report. AI không thay analyst kết luận; nó hỗ trợ tóm tắt field, gợi ý pivot, tạo checklist và draft báo cáo để analyst kiểm tra lại.</p><div class="info-grid" style="margin-top:16px"><div class="info-box"><span>Data sources</span><div class="mini-tags"><span>SIEM alert JSON</span><span>IOC list</span><span>Reputation result</span><span>Analyst checklist</span><span>Generated report draft</span></div></div><div class="info-box"><span>MITRE / Analyst mapping</span><div class="mini-tags"><span>Multiple tactics depending on alert</span></div></div></div></section>
-      <section class="report-section" id="scope"><h2>Objective & Scope</h2><ul><li>Parse alert field thành summary dễ đọc.</li><li>Extract IOC gồm IP, domain, URL, hash, username, hostname.</li><li>Gợi ý triage checklist theo alert type.</li><li>Draft report theo format SOC nhưng yêu cầu analyst validate trước khi dùng.</li></ul></section>
-      <section class="report-section" id="architecture"><h2>Architecture / Log Flow</h2><div class="flow"><span>Alert / Event Source</span><i>→</i><span>Log Collection</span><i>→</i><span>SIEM / Dashboard</span><i>→</i><span>Analyst Triage</span><i>→</i><span>Verdict & Response</span></div><ul><li>SIEM xuất alert JSON hoặc analyst copy alert fields.</li><li>Python parser chuẩn hóa field và extract IOC.</li><li>Enrichment module gọi reputation/local lookup hoặc mapping internal context.</li><li>LLM tạo triage questions và report draft.</li><li>Analyst kiểm tra, chỉnh sửa và đưa verdict cuối.</li></ul><div class="evidence-note"><b>Evidence artifacts:</b> topology, dashboard, rule detail, raw event và command output được quản lý như bằng chứng kỹ thuật của case.</div></section>
-      <section class="report-section" id="detection"><h2>Detection Logic / Use Cases</h2><ul><li>Không tạo detection mới; tập trung enrichment và report automation.</li><li>Mapping alert type sang checklist: phishing, auth failure, endpoint suspicious process, network IDS.</li><li>Highlight missing evidence để analyst biết cần thu thập thêm.</li></ul><div class="codebox"><b># analyst-note</b><br>Detection should define: objective → data source → condition → expected evidence → false-positive notes → response action.</div></section>
-      <section class="report-section" id="workflow"><h2>Investigation Workflow</h2><ol><li>Input alert raw fields.</li><li>Extract IOC và chuẩn hóa timestamp/source/destination/user/host.</li><li>Tạo checklist investigation theo type.</li><li>Sinh draft summary, evidence table và recommendation.</li><li>Analyst review để loại bỏ hallucination và cập nhật verdict thật.</li></ol></section>
-      <section class="report-section" id="evidence"><h2>Evidence Collected</h2><table class="evidence-table"><thead><tr><th>Evidence</th><th>Analyst value</th></tr></thead><tbody><tr><td>Alert Fields</td><td>Dữ liệu gốc phải luôn được giữ để kiểm tra lại.</td></tr><tr><td>IOC List</td><td>IOC được extract giúp pivot nhanh.</td></tr><tr><td>Checklist</td><td>Checklist giúp analyst không bỏ sót bước điều tra.</td></tr><tr><td>Review Note</td><td>Human review là bắt buộc vì AI có thể suy diễn sai.</td></tr></tbody></table></section>
-      <section class="report-section" id="findings"><h2>Key Findings</h2><ul><li>AI hữu ích cho chuẩn hóa report và checklist.</li><li>Không nên dùng AI làm nguồn kết luận duy nhất.</li><li>Chất lượng output phụ thuộc chất lượng alert fields và prompt.</li></ul></section>
-      <section class="report-section" id="recommendations"><h2>Recommendations</h2><ul><li>Luôn lưu raw evidence cạnh AI summary.</li><li>Dùng template cố định để giảm hallucination.</li><li>Không đưa dữ liệu nhạy cảm lên dịch vụ ngoài nếu chưa được phép.</li><li>Gắn nhãn confidence và missing evidence trong output.</li></ul></section>
-      <section class="report-section" id="next"><h2>Limitations & Next Improvements</h2><ul><li>Tích hợp local rule-based parser.</li><li>Thêm export markdown report.</li><li>Xây bộ test alert mẫu để đánh giá chất lượng draft.</li></ul><p style="margin-top:12px">Limitation được ghi rõ để tránh phóng đại kết quả lab. Khi có ảnh/log thật, phần này nên được cập nhật bằng evidence cụ thể.</p></section>
-      <p style="margin:28px 0"><a class="btn btn-outline" href="../index.html#projects">← Back to project list</a></p>
+      <section class="report-section" id="1">
+        <div class="section-kicker">01 · Executive Summary</div>
+        <h2>Executive Summary</h2>
+        <p>Prototype agent hỗ trợ analyst chuẩn hóa alert, trích xuất IOC, đề xuất checklist điều tra và tạo bản nháp báo cáo. Nội dung được thiết kế theo nguyên tắc evidence-first: mọi output phải được analyst xác minh bằng log hoặc artifact trước khi dùng trong ticket.</p>
+        <div class="callout"><b>Security operations value:</b> Kết nối kỹ năng SOC với automation, phù hợp định hướng Security Operations hiện đại.</div>
+      </section>
+      <section class="report-section" id="2">
+        <div class="section-kicker">02 · Scope</div>
+        <h2>Objective & Scope</h2>
+        <ul><li>Parse alert thành các trường chuẩn.</li><li>Gợi ý câu hỏi điều tra theo loại alert.</li><li>Tạo report draft có section đầy đủ.</li><li>Giữ analyst review trước khi kết luận hoặc khuyến nghị action.</li></ul>
+      </section>
+      <section class="report-section" id="3">
+        <div class="section-kicker">03 · Data flow</div>
+        <h2>Architecture / Data Flow</h2>
+        <div class="flow"><span>Alert input</span><span>Field parser</span><span>IOC extractor</span><span>Enrichment workflow</span><span>Checklist builder</span><span>Report draft review</span></div>
+        <p>Luồng trên giúp case có điểm bắt đầu và điểm kết thúc rõ ràng: nguồn dữ liệu sinh event, hệ thống xử lý/correlation và analyst đưa kết luận dựa trên bằng chứng.</p>
+      </section>
+      <section class="report-section" id="4">
+        <div class="section-kicker">04 · Detection design</div>
+        <h2>Detection / Analysis Logic</h2>
+        <div class="table-wrap"><table><thead><tr><th>Use case</th><th>Condition</th><th>Expected evidence</th><th>MITRE / Analyst mapping</th><th>False-positive consideration</th></tr></thead><tbody><tr><td>Alert parsing</td><td>Chuẩn hóa hostname, IP, user, time, severity.</td><td>Parsed JSON/table.</td><td>Triage support</td><td>Input thiếu field.</td></tr><tr><td>IOC extraction</td><td>Nhận diện IP/domain/hash/URL.</td><td>IOC list, type, source field.</td><td>Enrichment</td><td>IOC trùng hoặc false extraction.</td></tr><tr><td>Checklist</td><td>Sinh bước kiểm tra phù hợp alert type.</td><td>Task list cho analyst.</td><td>Investigation</td><td>Checklist không thay thế raw log.</td></tr><tr><td>Report draft</td><td>Tổng hợp evidence đã xác minh.</td><td>Draft executive summary và recommendation.</td><td>Reporting</td><td>Cần kiểm duyệt thủ công.</td></tr></tbody></table></div>
+      </section>
+      <section class="report-section" id="5">
+        <div class="section-kicker">05 · Triage process</div>
+        <h2>Investigation Workflow</h2>
+        <ol><li>Nhận alert text hoặc JSON.</li><li>Chuẩn hóa field và phát hiện thiếu dữ liệu.</li><li>Extract IOC và gắn vào checklist.</li><li>Analyst kiểm tra log thật rồi cập nhật evidence.</li><li>Sinh report draft cuối cùng để review.</li></ol>
+      </section>
+      <section class="report-section" id="6">
+        <div class="section-kicker">06 · Evidence model</div>
+        <h2>Evidence Collected / Required</h2>
+        <div class="table-wrap"><table><thead><tr><th>Evidence</th><th>What it proves</th><th>Analyst value</th></tr></thead><tbody><tr><td>Parsed alert</td><td>Field được tách rõ.</td><td>Giảm lỗi nhập tay.</td></tr><tr><td>IOC list</td><td>IP/domain/hash/URL.</td><td>Tạo điểm pivot điều tra.</td></tr><tr><td>Checklist</td><td>Bước xác minh theo case.</td><td>Giảm bỏ sót.</td></tr><tr><td>Report draft</td><td>Cấu trúc report có evidence.</td><td>Tăng tốc viết ticket.</td></tr></tbody></table></div>
+      </section>
+      <section class="report-section" id="7">
+        <div class="section-kicker">07 · Findings</div>
+        <h2>Key Findings</h2>
+        <ul><li>Automation hữu ích ở khâu chuẩn hóa và hỗ trợ viết, không phải ở khâu tự kết luận.</li><li>Human review là bắt buộc với mọi verdict security.</li><li>Agent cần ghi nguồn dữ liệu để tránh hallucination trong report.</li></ul>
+      </section>
+      <section class="report-section" id="8">
+        <div class="section-kicker">08 · Response</div>
+        <h2>Recommendations</h2>
+        <ul><li>Thiết kế guardrail: không tự động block nếu chưa có rule rõ ràng.</li><li>Yêu cầu mọi kết luận phải có evidence source.</li><li>Tách phần suggestion và verified finding trong UI/report.</li></ul>
+      </section>
+      <section class="report-section" id="9">
+        <div class="section-kicker">09 · Continuous improvement</div>
+        <h2>Limitations & Next Improvements</h2>
+        <ul><li>Kết nối với Wazuh/ELK API trong lab.</li><li>Thêm prompt template riêng cho SOC-102, SOC-201, WAF và auth alerts.</li><li>Xuất report sang Markdown/HTML để lưu trong case management.</li></ul>
+        <div class="callout warn"><b>Quality note:</b> Kết luận trong report luôn bám vào dữ liệu hiện có; nếu thiếu log hoặc thiếu context, phần limitation được ghi rõ để giữ tính chính xác của case.</div>
+      </section>
     </div>
   </section>
 </main>
-<footer>© 2026 Khánh Linh · SOC Analyst Portfolio</footer>
-</body></html>
+<footer>
+  <div class="container">© 2026 Khánh Linh · SOC Analyst Portfolio · Built for GitHub Pages</div>
+</footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

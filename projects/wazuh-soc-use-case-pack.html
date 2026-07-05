@@ -1,14 +1,36 @@
 <!DOCTYPE html>
-<html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Wazuh SOC Use Case Pack | Khánh Linh</title><link rel="stylesheet" href="../assets/style.css"></head>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wazuh SOC Use Case Pack | Khánh Linh</title>
+  <meta name="description" content="SOC portfolio case report: Wazuh SOC Use Case Pack" />
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
 <body>
-<header><div class="container"><nav><a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a><div class="nav-links"><a href="../index.html#projects">Projects</a><a href="../index.html#workflow">SOC Workflow</a><a href="../index.html#writeups">Write-ups</a><a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a></div></nav></div></header>
+<header>
+  <div class="container">
+    <nav>
+      <a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
+      <div class="nav-links">
+        <a href="../index.html#profile">Profile</a>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#casefiles">Case Files</a>
+        <a href="../index.html#workflow">SOC Workflow</a>
+        <a href="../index.html#writeups">Write-ups</a>
+        <a href="../index.html#skills">Skills</a>
+        <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </nav>
+  </div>
+</header>
 <main class="container">
   <section class="page-hero">
     <div class="breadcrumb"><a href="../index.html">Home</a> / Projects / Wazuh SOC Use Case Pack</div>
-    <div class="eyebrow"><span class="pulse"></span>Nov 2025 – Dec 2025 · SOC Use Case Pack</div>
+    <div class="eyebrow"><span class="pulse"></span> Nov 2025 – Dec 2025 · SOC Use Case Pack</div>
     <h1 class="page-title">Wazuh SOC Use Case Pack</h1>
-    <p class="lead">Bộ use case Wazuh phục vụ SOC L1: File Integrity Monitoring, authentication failure, privileged command, suspicious process và MITRE ATT&amp;CK mapping.</p>
-    <div class="mini-tags"><span>Wazuh</span><span>FIM</span><span>MITRE ATT&amp;CK</span><span>Rule Tuning</span><span>Linux Audit</span><span>Alert Triage</span></div>
+    <p class="lead">Xây dựng bộ use case Wazuh cho SOC L1 gồm File Integrity Monitoring, authentication failure, privileged command và suspicious process. Mỗi use case được mô tả bằng mục tiêu phát hiện, nguồn log, điều kiện sinh alert, bằng chứng mong đợi, khả năng false positive và hành động phản hồi.</p>
+    <div class="mini-tags"><span>Wazuh</span><span>FIM</span><span>Linux Audit</span><span>MITRE ATT&amp;CK</span><span>Rule Tuning</span><span>Alert Triage</span></div>
   </section>
   <section class="report-layout">
     <aside class="sidebar">
@@ -16,25 +38,71 @@
         <p class="meta">Case metadata</p>
         <div class="info-grid" style="grid-template-columns:1fr">
           <div class="info-box"><span>Priority</span><b>High</b></div>
-          <div class="info-box"><span>Status</span><b>Lab report completed</b></div>
-          <div class="info-box"><span>Role</span><b>SOC Analyst / Use Case Writer</b></div>
+          <div class="info-box"><span>Status</span><b>Implemented lab documentation</b></div>
+          <div class="info-box"><span>Role</span><b>SOC Analyst / Wazuh Operator</b></div>
+          <div class="info-box"><span>Analyst value</span><b>Thể hiện khả năng chuyển yêu cầu giám sát thành rule/use case có thể vận hành và điều chỉnh noise.</b></div>
         </div>
       </div>
-      <div class="panel" style="margin-top:16px"><p class="meta">On this page</p><div class="toc"><a href="#summary">Executive Summary</a><a href="#scope">Objective & Scope</a><a href="#architecture">Architecture</a><a href="#detection">Detection Logic</a><a href="#workflow">Investigation Workflow</a><a href="#evidence">Evidence</a><a href="#findings">Findings</a><a href="#recommendations">Recommendations</a><a href="#next">Next Improvements</a></div></div>
+      <div class="panel" style="margin-top:16px">
+        <p class="meta">On this page</p>
+        <div class="toc"><a href="#1">Executive Summary</a><a href="#2">Objective & Scope</a><a href="#3">Architecture</a><a href="#4">Detection Logic</a><a href="#5">Investigation Workflow</a><a href="#6">Evidence</a><a href="#7">Findings</a><a href="#8">Recommendations</a><a href="#9">Next Improvements</a></div>
+      </div>
     </aside>
     <div>
-      <section class="report-section" id="summary"><h2>Executive Summary</h2><p>Project mô phỏng cách một SOC xây dựng use case trên Wazuh: xác định mục tiêu phát hiện, nguồn log cần thu thập, điều kiện rule, ví dụ alert, cách analyst điều tra và điểm cần tuning. Nội dung được viết theo hướng “detection content” chứ không chỉ hướng dẫn cài Wazuh.</p><div class="info-grid" style="margin-top:16px"><div class="info-box"><span>Data sources</span><div class="mini-tags"><span>Wazuh agent logs</span><span>Linux authentication log</span><span>FIM events</span><span>Audit command log</span><span>Wazuh dashboard</span></div></div><div class="info-box"><span>MITRE / Analyst mapping</span><div class="mini-tags"><span>Persistence</span><span>Privilege Escalation</span><span>Defense Evasion</span><span>Credential Access</span></div></div></div></section>
-      <section class="report-section" id="scope"><h2>Objective & Scope</h2><ul><li>Xây dựng use case giám sát thay đổi file nhạy cảm.</li><li>Theo dõi failed login, sudo command và suspicious command line.</li><li>Mapping alert sang MITRE ATT&amp;CK để tăng giá trị phân tích.</li><li>Tạo template report cho từng alert: context, evidence, verdict, recommended response.</li></ul></section>
-      <section class="report-section" id="architecture"><h2>Architecture / Log Flow</h2><div class="flow"><span>Alert / Event Source</span><i>→</i><span>Log Collection</span><i>→</i><span>SIEM / Dashboard</span><i>→</i><span>Analyst Triage</span><i>→</i><span>Verdict & Response</span></div><ul><li>Wazuh agent cài trên Linux endpoint.</li><li>Agent thu thập auth log, FIM event và command/audit log.</li><li>Wazuh manager decode, rule match và gán severity.</li><li>Indexer lưu dữ liệu phục vụ search và dashboard.</li><li>Dashboard hiển thị alert để analyst triage.</li></ul><div class="evidence-note"><b>Evidence artifacts:</b> topology, dashboard, rule detail, raw event và command output được quản lý như bằng chứng kỹ thuật của case.</div></section>
-      <section class="report-section" id="detection"><h2>Detection Logic / Use Cases</h2><ul><li>FIM: thay đổi trong /etc/passwd, /etc/shadow hoặc thư mục cấu hình quan trọng.</li><li>Privileged command: sudo/su command bất thường ngoài baseline.</li><li>Authentication: nhiều failed login từ cùng source hoặc cùng username.</li><li>Suspicious process: command có dấu hiệu download-execute hoặc encoded payload.</li></ul><div class="codebox"><b># analyst-note</b><br>Detection should define: objective → data source → condition → expected evidence → false-positive notes → response action.</div></section>
-      <section class="report-section" id="workflow"><h2>Investigation Workflow</h2><ol><li>Xác định alert type và severity.</li><li>Mở raw alert để lấy rule ID, agent name, file path hoặc command line.</li><li>Kiểm tra user, host, timestamp, parent process và hành động trước/sau alert.</li><li>Đối chiếu với change request hoặc hoạt động lab hợp lệ.</li><li>Phân loại: true positive, false positive, policy violation hoặc cần escalate.</li></ol></section>
-      <section class="report-section" id="evidence"><h2>Evidence Collected</h2><table class="evidence-table"><thead><tr><th>Evidence</th><th>Analyst value</th></tr></thead><tbody><tr><td>Rule ID</td><td>Rule ID và description thể hiện điều kiện phát hiện.</td></tr><tr><td>Agent Context</td><td>Tên endpoint, IP, user và timestamp dùng để xác định scope.</td></tr><tr><td>File Path / Command</td><td>File bị đổi hoặc command được thực thi là evidence chính.</td></tr><tr><td>MITRE Mapping</td><td>Mapping giúp trình bày intent của hành vi, nhưng không thay thế bằng chứng.</td></tr></tbody></table></section>
-      <section class="report-section" id="findings"><h2>Key Findings</h2><ul><li>Wazuh phù hợp để tạo use case SOC cơ bản với chi phí thấp.</li><li>FIM và auth monitoring tạo ra evidence rõ cho SOC L1.</li><li>Một số rule cần tuning vì admin activity hợp lệ dễ tạo false positive.</li></ul></section>
-      <section class="report-section" id="recommendations"><h2>Recommendations</h2><ul><li>Định nghĩa danh sách file critical và user/service account hợp lệ.</li><li>Tách severity theo asset criticality.</li><li>Viết playbook riêng cho FIM, auth failure và suspicious command.</li><li>Thêm enrichment từ CMDB hoặc owner của asset.</li></ul></section>
-      <section class="report-section" id="next"><h2>Limitations & Next Improvements</h2><ul><li>Viết custom rule cho encoded PowerShell/Bash suspicious pattern.</li><li>Tích hợp Slack/email notification cho severity cao.</li><li>Tạo dashboard theo MITRE tactic.</li></ul><p style="margin-top:12px">Limitation được ghi rõ để tránh phóng đại kết quả lab. Khi có ảnh/log thật, phần này nên được cập nhật bằng evidence cụ thể.</p></section>
-      <p style="margin:28px 0"><a class="btn btn-outline" href="../index.html#projects">← Back to project list</a></p>
+      <section class="report-section" id="1">
+        <div class="section-kicker">01 · Executive Summary</div>
+        <h2>Executive Summary</h2>
+        <p>Xây dựng bộ use case Wazuh cho SOC L1 gồm File Integrity Monitoring, authentication failure, privileged command và suspicious process. Mỗi use case được mô tả bằng mục tiêu phát hiện, nguồn log, điều kiện sinh alert, bằng chứng mong đợi, khả năng false positive và hành động phản hồi.</p>
+        <div class="callout"><b>Security operations value:</b> Thể hiện khả năng chuyển yêu cầu giám sát thành rule/use case có thể vận hành và điều chỉnh noise.</div>
+      </section>
+      <section class="report-section" id="2">
+        <div class="section-kicker">02 · Scope</div>
+        <h2>Objective & Scope</h2>
+        <ul><li>Theo dõi thay đổi file nhạy cảm trên endpoint.</li><li>Phát hiện đăng nhập thất bại bất thường và lệnh đặc quyền.</li><li>Chuẩn hóa mapping MITRE cho từng use case.</li><li>Thiết kế checklist triage cho SOC L1 khi nhận alert Wazuh.</li></ul>
+      </section>
+      <section class="report-section" id="3">
+        <div class="section-kicker">03 · Data flow</div>
+        <h2>Architecture / Data Flow</h2>
+        <div class="flow"><span>Linux/Windows endpoint</span><span>Wazuh agent</span><span>Wazuh manager</span><span>Ruleset / decoder</span><span>Indexer</span><span>Dashboard / analyst queue</span></div>
+        <p>Luồng trên giúp case có điểm bắt đầu và điểm kết thúc rõ ràng: nguồn dữ liệu sinh event, hệ thống xử lý/correlation và analyst đưa kết luận dựa trên bằng chứng.</p>
+      </section>
+      <section class="report-section" id="4">
+        <div class="section-kicker">04 · Detection design</div>
+        <h2>Detection / Analysis Logic</h2>
+        <div class="table-wrap"><table><thead><tr><th>Use case</th><th>Condition</th><th>Expected evidence</th><th>MITRE / Analyst mapping</th><th>False-positive consideration</th></tr></thead><tbody><tr><td>File Integrity Monitoring</td><td>File trong thư mục nhạy cảm bị sửa/xóa/tạo mới.</td><td>File path, hash before/after, user, timestamp.</td><td>Defense Evasion / Persistence</td><td>Update hợp lệ hoặc admin maintenance.</td></tr><tr><td>Authentication failure</td><td>Nhiều failed login trong time window ngắn.</td><td>Username, source IP, count, host, logon method.</td><td>Credential Access</td><td>Người dùng quên mật khẩu hoặc service account lỗi cấu hình.</td></tr><tr><td>Privileged command</td><td>Lệnh sudo/su hoặc thao tác quyền cao xuất hiện.</td><td>Command line, user, terminal, host.</td><td>Privilege Escalation</td><td>Admin thực hiện tác vụ bảo trì.</td></tr><tr><td>Suspicious process</td><td>Process hoặc command-line khớp pattern đáng ngờ.</td><td>Process name, parent process, arguments, user.</td><td>Execution</td><td>Tool quản trị hợp lệ nhưng chưa được allowlist.</td></tr></tbody></table></div>
+      </section>
+      <section class="report-section" id="5">
+        <div class="section-kicker">05 · Triage process</div>
+        <h2>Investigation Workflow</h2>
+        <ol><li>Kiểm tra rule ID, agent name, hostname và severity.</li><li>Đối chiếu raw log để tránh chỉ đọc mô tả alert.</li><li>Kiểm tra user/host có nằm trong maintenance window hoặc admin activity không.</li><li>Pivot sang các log trước/sau alert để xem chuỗi hành vi.</li><li>Đưa verdict: benign admin activity, suspicious cần monitor hoặc escalate.</li></ol>
+      </section>
+      <section class="report-section" id="6">
+        <div class="section-kicker">06 · Evidence model</div>
+        <h2>Evidence Collected / Required</h2>
+        <div class="table-wrap"><table><thead><tr><th>Evidence</th><th>What it proves</th><th>Analyst value</th></tr></thead><tbody><tr><td>Agent metadata</td><td>Tên host, IP, OS và agent ID.</td><td>Xác định asset bị ảnh hưởng.</td></tr><tr><td>Rule context</td><td>Rule ID, level, description và MITRE mapping.</td><td>Hiểu mục tiêu phát hiện.</td></tr><tr><td>Raw log</td><td>Thông điệp log gốc từ endpoint.</td><td>Bằng chứng chính để validate alert.</td></tr><tr><td>Tuning note</td><td>Nguồn false positive và điều kiện allowlist.</td><td>Giảm noise cho lần vận hành sau.</td></tr></tbody></table></div>
+      </section>
+      <section class="report-section" id="7">
+        <div class="section-kicker">07 · Findings</div>
+        <h2>Key Findings</h2>
+        <ul><li>Wazuh phù hợp cho lab SOC vì có agent, rule, dashboard và FIM tích hợp.</li><li>Use case cần được viết kèm điều kiện false positive để tránh alert overload.</li><li>Raw log quan trọng hơn phần mô tả alert vì mô tả có thể thiếu context.</li></ul>
+      </section>
+      <section class="report-section" id="8">
+        <div class="section-kicker">08 · Response</div>
+        <h2>Recommendations</h2>
+        <ul><li>Tách rule theo asset criticality và nhóm hệ thống.</li><li>Duy trì danh sách admin activity hợp lệ.</li><li>Tạo checklist triage cho từng nhóm alert.</li><li>Gắn MITRE mapping cho report để trình bày rõ hành vi tấn công.</li></ul>
+      </section>
+      <section class="report-section" id="9">
+        <div class="section-kicker">09 · Continuous improvement</div>
+        <h2>Limitations & Next Improvements</h2>
+        <ul><li>Tích hợp Sysmon cho Windows endpoint.</li><li>Tạo dashboard riêng cho authentication và privilege activity.</li><li>Viết correlation rule giữa failed login và successful login sau nhiều lần thất bại.</li></ul>
+        <div class="callout warn"><b>Quality note:</b> Kết luận trong report luôn bám vào dữ liệu hiện có; nếu thiếu log hoặc thiếu context, phần limitation được ghi rõ để giữ tính chính xác của case.</div>
+      </section>
     </div>
   </section>
 </main>
-<footer>© 2026 Khánh Linh · SOC Analyst Portfolio</footer>
-</body></html>
+<footer>
+  <div class="container">© 2026 Khánh Linh · SOC Analyst Portfolio · Built for GitHub Pages</div>
+</footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

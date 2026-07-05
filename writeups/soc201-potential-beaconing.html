@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SOC-201 Potential Beaconing Activity Investigation | Khánh Linh</title>
-  <meta name="description" content="SOC Analyst lab report: investigating potential C2 beaconing activity from HR-WIN-001 to an external IP over HTTPS with periodic intervals." />
+  <title>SOC-201: Potential Beaconing Activity Detected | Khánh Linh</title>
+  <meta name="description" content="SOC-201 potential beaconing activity investigation report" />
   <link rel="stylesheet" href="../assets/style.css" />
 </head>
 <body>
@@ -13,167 +13,31 @@
     <nav>
       <a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
       <div class="nav-links">
+        <a href="../index.html#profile">Profile</a>
         <a href="../index.html#projects">Projects</a>
         <a href="../index.html#casefiles">Case Files</a>
         <a href="../index.html#workflow">SOC Workflow</a>
         <a href="../index.html#writeups">Write-ups</a>
+        <a href="../index.html#skills">Skills</a>
         <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
     </nav>
   </div>
 </header>
 <main class="container">
-  <section class="page-hero">
-    <div class="breadcrumb"><a href="../index.html">Home</a> / Write-ups / SOC-201 Potential Beaconing Activity</div>
-    <div class="eyebrow"><span class="pulse"></span> Oct 2025 – Feb 2026 · C2 Beaconing Triage · High Severity SOC Lab</div>
-    <h1 class="page-title">SOC-201: Potential Beaconing Activity Detected</h1>
-    <p class="lead">Bài lab mô phỏng điều tra một alert có dấu hiệu C2 beaconing: host nội bộ kết nối định kỳ ra external IP qua port 443 với kích thước dữ liệu ổn định. Report tập trung vào cách SOC Analyst xác minh pattern, kiểm tra threat intelligence, xác định process và đề xuất containment.</p>
-    <div class="mini-tags"><span>C2 Beaconing</span><span>Periodic Connection</span><span>Endpoint Network</span><span>Threat Intel</span><span>Containment</span><span>Escalation</span></div>
-  </section>
-
-  <section class="report-layout">
-    <aside class="sidebar">
-      <div class="panel">
-        <p class="meta">Case metadata</p>
-        <div class="info-grid" style="grid-template-columns:1fr">
-          <div class="info-box"><span>Priority</span><b>High</b></div>
-          <div class="info-box"><span>Status</span><b>Escalate / Containment Required</b></div>
-          <div class="info-box"><span>Role</span><b>SOC Analyst L1 → Tier 2 Escalation</b></div>
-          <div class="info-box"><span>Alert type</span><b>Potential C2 Beaconing</b></div>
-        </div>
-      </div>
-      <div class="panel" style="margin-top:16px">
-        <p class="meta">On this page</p>
-        <div class="toc">
-          <a href="#summary">Executive Summary</a>
-          <a href="#alert">Alert Context</a>
-          <a href="#risk">Risk Assessment</a>
-          <a href="#evidence">Evidence Review</a>
-          <a href="#workflow">Investigation Workflow</a>
-          <a href="#verdict">Final Assessment</a>
-          <a href="#containment">Response Actions</a>
-          <a href="#next">Next Improvements</a>
-        </div>
-      </div>
-    </aside>
-
-    <div>
-      <section class="report-section" id="summary">
-        <div class="section-kicker">01 · Executive view</div>
-        <h2>Executive Summary</h2>
-        <p>SIEM phát hiện máy trạm <b>HR-WIN-001</b> với IP nội bộ <b>192.168.15.2</b> liên tục kết nối tới external IP <b>85.208.253.156</b> qua port <b>443</b>. Alert đáng chú ý vì kết nối xuất hiện đều mỗi <b>5 phút</b> và kích thước dữ liệu outbound/inbound gần như cố định.</p>
-        <p>Pattern này phù hợp với dấu hiệu ban đầu của <b>C2 beaconing</b>. Kết hợp với threat intelligence từ AbuseIPDB và endpoint evidence cho thấy process <b>pwnet.exe</b> tạo kết nối, case nên được xử lý như một security incident có rủi ro cao: isolate host, block destination IP, collect endpoint artifact và escalate sang Tier 2/IR.</p>
-        <div class="callout warn"><b>Important:</b> Report không kết luận tên malware/family khi chưa có memory/file analysis. Tuy nhiên, bằng chứng hiện có đủ để đánh giá đây là suspicious outbound C2-like behavior và cần containment.</div>
-        <figure class="lab-figure"><img src="../assets/labs/soc201/soc201-1.png" alt="SOC-201 alert details screenshot"><figcaption>Figure 1 · Alert details ghi nhận periodic connections từ HR-WIN-001 tới IP ngoài qua HTTPS.</figcaption></figure>
-      </section>
-
-      <section class="report-section" id="alert">
-        <div class="section-kicker">02 · Alert validation</div>
-        <h2>Alert Context & IOCs</h2>
-        <div class="info-grid">
-          <div class="info-box"><span>Event ID</span><b>2001</b></div>
-          <div class="info-box"><span>Rule name</span><b>SOC-201: Potential Beaconing Activity Detected</b></div>
-          <div class="info-box"><span>Severity</span><b>High</b></div>
-          <div class="info-box"><span>Alert time</span><b>Oct 10 2025, 3:11 PM</b></div>
-          <div class="info-box"><span>Source host</span><b>HR-WIN-001 · 192.168.15.2</b></div>
-          <div class="info-box"><span>Destination</span><b>85.208.253.156 · TCP/443</b></div>
-          <div class="info-box"><span>Beacon interval</span><b>5 minutes</b></div>
-          <div class="info-box"><span>Data size</span><b>Outbound 230–234 bytes · Inbound 406–411 bytes</b></div>
-        </div>
-        <div class="callout warn"><b>Timestamp note:</b> Alert xảy ra Oct 10 2025 nhưng investigation start time là Feb 14 2026. Trong môi trường thật, cần xác minh delay, log retention, SIEM ingestion time và case management timestamp.</div>
-      </section>
-
-      <section class="report-section" id="risk">
-        <div class="section-kicker">03 · Risk assessment</div>
-        <h2>Why This Alert Matters</h2>
-        <div class="risk-grid">
-          <div class="risk-card"><span>Affected asset</span><b>HR workstation</b><p style="color:var(--muted);margin-top:6px">Máy HR có thể chứa dữ liệu nhân sự, hợp đồng, lương hoặc thông tin nội bộ nhạy cảm.</p></div>
-          <div class="risk-card"><span>Traffic channel</span><b>HTTPS / 443</b><p style="color:var(--muted);margin-top:6px">C2 thường dùng port hợp lệ để tránh bị firewall chặn hoặc giảm sự chú ý.</p></div>
-          <div class="risk-card"><span>Behavioral pattern</span><b>Fixed interval</b><p style="color:var(--muted);margin-top:6px">5-minute interval và size ổn định là dấu hiệu đáng chú ý của beaconing.</p></div>
-        </div>
-        <table class="evidence-table" style="margin-top:16px">
-          <thead><tr><th>Indicator</th><th>Analyst interpretation</th></tr></thead>
-          <tbody>
-            <tr><td><b>Regular interval</b></td><td>User browsing bình thường thường không đều theo chu kỳ cố định; interval đều gợi ý automated callback.</td></tr>
-            <tr><td><b>Stable byte size</b></td><td>Outbound 230–234 bytes và inbound 406–411 bytes cho thấy request/response có format lặp lại.</td></tr>
-            <tr><td><b>External IP reputation</b></td><td>IP xuất hiện trong AbuseIPDB và có lịch sử bị report trong case, cần xem là high-risk observable.</td></tr>
-            <tr><td><b>Endpoint process</b></td><td>Process pwnet.exe không phải browser/update service phổ biến; cần thu thập file hash/path và kiểm tra persistence.</td></tr>
-          </tbody>
-        </table>
-      </section>
-
-      <section class="report-section" id="evidence">
-        <div class="section-kicker">04 · Evidence review</div>
-        <h2>Evidence Collected</h2>
-        <div class="image-grid">
-          <figure class="lab-figure"><img src="../assets/labs/soc201/soc201-2.png" alt="Log management view with periodic outbound connections"><figcaption>Log evidence · Destination IP xuất hiện lặp lại theo chu kỳ, phù hợp với beaconing pattern.</figcaption></figure>
-          <figure class="lab-figure"><img src="../assets/labs/soc201/soc201-3.png" alt="AbuseIPDB result for 85.208.253.156"><figcaption>Threat intelligence · IP 85.208.253.156 có lịch sử bị report trong AbuseIPDB theo nội dung lab.</figcaption></figure>
-        </div>
-        <table class="evidence-table advanced-table">
-          <thead><tr><th>Evidence source</th><th>Observed evidence</th><th>Analyst value</th><th>Action impact</th></tr></thead>
-          <tbody>
-            <tr><td><b>SIEM alert</b></td><td>Periodic connection every 5 minutes; stable outbound/inbound size; TCP/443.</td><td>Xác nhận đây là behavior-based alert, không chỉ là single outbound connection.</td><td>Ưu tiên high severity triage.</td></tr>
-            <tr><td><b>Network log</b></td><td>HR-WIN-001 kết nối tới 85.208.253.156 nhiều lần trong time range.</td><td>Xác định source/destination rõ ràng để containment.</td><td>Block IP và hunt cùng destination.</td></tr>
-            <tr><td><b>Threat intelligence</b></td><td>AbuseIPDB hiển thị IP đã từng bị report nhiều lần trong case.</td><td>Tăng risk score của destination IP.</td><td>Không nên close as benign.</td></tr>
-            <tr><td><b>Endpoint process</b></td><td>Process <b>pwnet.exe</b> tạo kết nối ra destination IP, PID 1294 trong ảnh lab.</td><td>Điểm then chốt để chuyển từ network anomaly sang endpoint investigation.</td><td>Collect hash/path, isolate host, escalate.</td></tr>
-          </tbody>
-        </table>
-        <figure class="lab-figure"><img src="../assets/labs/soc201/soc201-4.png" alt="Endpoint network history showing pwnet.exe"><figcaption>Endpoint evidence · Network history cho thấy process pwnet.exe tạo kết nối tới external IP qua TCP/443.</figcaption></figure>
-      </section>
-
-      <section class="report-section" id="workflow">
-        <div class="section-kicker">05 · SOC investigation workflow</div>
-        <h2>Investigation Workflow</h2>
-        <ol class="case-timeline">
-          <li><b>Validate beaconing pattern:</b> kiểm tra timestamp giữa các connection, xác nhận interval khoảng 5 phút và byte size có lặp lại không.</li>
-          <li><b>Confirm source asset:</b> xác định hostname HR-WIN-001, IP nội bộ 192.168.15.2, owner/business unit và mức độ nhạy cảm.</li>
-          <li><b>Check destination reputation:</b> tra cứu IP 85.208.253.156 trên AbuseIPDB, VirusTotal, OTX, Talos hoặc nguồn TI nội bộ.</li>
-          <li><b>Pivot to endpoint:</b> xác định process, PID, path, hash, parent process, user context và command line tạo kết nối.</li>
-          <li><b>Scope the impact:</b> hunt destination IP/domain trên proxy/firewall/DNS để biết có host nội bộ khác beaconing không.</li>
-          <li><b>Contain safely:</b> nếu process không hợp lệ hoặc IP có reputation xấu, isolate host và block destination ở firewall/proxy.</li>
-          <li><b>Escalate:</b> chuyển Tier 2/IR với evidence package: alert screenshot, network log, process evidence, TI result và timeline.</li>
-        </ol>
-      </section>
-
-      <section class="report-section" id="verdict">
-        <div class="section-kicker">06 · Analyst assessment</div>
-        <h2>Final Assessment</h2>
-        <div class="report-summary">
-          <p><b>Verdict:</b> Suspicious / likely true positive C2-like beaconing. Escalation required.</p>
-          <p><b>Reason:</b> Alert có periodic interval 5 phút, stable data size, destination IP có lịch sử abuse trong case, và endpoint evidence chỉ ra process pwnet.exe tạo kết nối.</p>
-          <p><b>Confidence:</b> High for suspicious beaconing behavior; medium for confirmed malware until file hash, process path, memory capture and persistence evidence are validated.</p>
-          <p><b>Business impact:</b> HR workstation có thể chứa dữ liệu nhạy cảm; cần containment nhanh để giảm nguy cơ C2 communication hoặc data exfiltration.</p>
-          <p><b>Escalation package:</b> source host, internal IP, destination IP, port, beacon interval, process name/PID, TI result, timestamp discrepancy note.</p>
-        </div>
-      </section>
-
-      <section class="report-section" id="containment">
-        <div class="section-kicker">07 · Response actions</div>
-        <h2>Recommendations & Containment</h2>
-        <ul>
-          <li>Isolate <b>HR-WIN-001</b> khỏi network hoặc chuyển sang VLAN quarantine nếu chính sách cho phép.</li>
-          <li>Block outbound connection tới <b>85.208.253.156</b> trên firewall/proxy và tạo rule monitoring nếu có destination liên quan.</li>
-          <li>Collect endpoint evidence: process path, file hash, parent process, command line, autoruns/persistence, recent file changes và network connections.</li>
-          <li>Hunt toàn môi trường theo destination IP, process name <b>pwnet.exe</b>, beacon interval tương tự và TLS/HTTPS metadata nếu có.</li>
-          <li>Kiểm tra tài khoản user đăng nhập trên HR-WIN-001; reset credential nếu có dấu hiệu compromise.</li>
-          <li>Preserve evidence trước khi remediation: screenshot alert, export raw logs, collect sample nếu chính sách cho phép.</li>
-        </ul>
-      </section>
-
-      <section class="report-section" id="next">
-        <div class="section-kicker">08 · Detection improvement</div>
-        <h2>Limitations & Next Improvements</h2>
-        <ul>
-          <li>Bổ sung DNS/proxy/firewall log để biết process kết nối tới IP trực tiếp hay qua domain.</li>
-          <li>Thêm EDR/Sysmon telemetry để có command line, parent process, file hash và persistence location.</li>
-          <li>Viết correlation rule: periodic outbound + low reputation destination + uncommon process + sensitive asset = High severity.</li>
-          <li>Thêm baseline theo ứng dụng hợp lệ để tránh nhầm với update agent hoặc health-check service.</li>
-          <li>Tạo hunt query cho toàn hệ thống: destination.ip = 85.208.253.156 OR process.name = pwnet.exe.</li>
-        </ul>
-      </section>
-    </div>
-  </section>
-</main>
-<footer>© Khánh Linh · SOC Analyst Portfolio · Evidence-based reports</footer>
+<section class="page-hero"><div class="breadcrumb"><a href="../index.html">Home</a> / Write-ups / SOC-201</div><div class="eyebrow"><span class="pulse"></span> Oct 2025 – Feb 2026 · C2 Beaconing Triage</div><h1 class="page-title">SOC-201: Potential Beaconing Activity Detected</h1><p class="lead">SIEM phát hiện HR-WIN-001 kết nối định kỳ tới external IP 85.208.253.156 qua TCP/443 với chu kỳ 5 phút và byte size ổn định. Case được xử lý như suspicious outbound C2-like behavior, cần containment và escalation dựa trên network pattern, threat intelligence và endpoint evidence.</p><div class="mini-tags"><span>C2 Beaconing</span><span>Periodic Connection</span><span>Endpoint Network</span><span>Threat Intel</span><span>Containment</span><span>Escalation</span></div></section>
+<section class="report-layout"><aside class="sidebar"><div class="panel"><p class="meta">Case metadata</p><div class="info-grid" style="grid-template-columns:1fr"><div class="info-box"><span>Priority</span><b>High</b></div><div class="info-box"><span>Status</span><b>Escalate / Containment Recommended</b></div><div class="info-box"><span>Role</span><b>SOC Analyst L1 → Tier 2</b></div><div class="info-box"><span>Behavior</span><b>Periodic outbound traffic</b></div></div></div><div class="panel" style="margin-top:16px"><p class="meta">On this page</p><div class="toc"><a href="#summary">Executive Summary</a><a href="#alert">Alert Context</a><a href="#risk">Risk Assessment</a><a href="#evidence">Evidence Review</a><a href="#workflow">Investigation Workflow</a><a href="#verdict">Final Assessment</a><a href="#containment">Response Actions</a></div></div></aside>
+<div>
+<section class="report-section" id="summary"><div class="section-kicker">01 · Executive view</div><h2>Executive Summary</h2><p>SIEM phát hiện máy trạm <b>HR-WIN-001</b> (<b>192.168.15.2</b>) liên tục kết nối tới external IP <b>85.208.253.156</b> qua TCP/443. Kết nối xuất hiện đều mỗi <b>5 phút</b>, outbound size khoảng <b>230–234 bytes</b> và inbound size khoảng <b>406–411 bytes</b>.</p><p>Pattern đều về thời gian và kích thước dữ liệu phù hợp với dấu hiệu ban đầu của C2 beaconing. Kết hợp với IP reputation có lịch sử abuse và endpoint evidence cho thấy <b>svchost.exe</b> tạo outbound connection, case cần được xử lý như suspicious C2-like activity: isolate host, block destination, collect endpoint artifact và escalate.</p><div class="callout warn"><b>Analyst caution:</b> svchost.exe có thể là process hợp lệ của Windows, vì vậy report không kết luận malware family nếu chưa có path, signer, hash và memory/file analysis. Tuy nhiên, beaconing pattern đủ nghiêm trọng để containment.</div><figure class="lab-figure"><img src="../assets/labs/soc201/soc201-1.png" alt="SOC-201 alert details showing potential beaconing"><figcaption>Figure 1 · Alert details ghi nhận periodic outbound connections từ HR-WIN-001.</figcaption></figure></section>
+<section class="report-section" id="alert"><div class="section-kicker">02 · Alert validation</div><h2>Alert Context & IOCs</h2><div class="table-wrap"><table><thead><tr><th>Field</th><th>Value</th><th>Analyst note</th></tr></thead><tbody><tr><td>Event ID</td><td>2001</td><td>SOC-201: Potential Beaconing Activity Detected.</td></tr><tr><td>Source host</td><td>HR-WIN-001 · 192.168.15.2</td><td>Máy nội bộ thuộc bộ phận HR, có khả năng chứa dữ liệu nhạy cảm.</td></tr><tr><td>Destination</td><td>85.208.253.156 · TCP/443</td><td>External IP qua HTTPS, cần kiểm tra TI và firewall/proxy logs.</td></tr><tr><td>Pattern</td><td>5-minute interval; stable byte size</td><td>Dấu hiệu beaconing cần ưu tiên cao.</td></tr><tr><td>Process</td><td>svchost.exe · PID 1234</td><td>Cần xác minh path, signer, command line và parent process.</td></tr></tbody></table></div></section>
+<section class="report-section" id="risk"><div class="section-kicker">03 · Risk</div><h2>Risk Assessment</h2><ul><li>Port 443 thường được phép đi ra Internet nên có thể bị lạm dụng để che giấu C2 traffic.</li><li>Interval 5 phút và byte size ổn định không giống browsing người dùng thông thường.</li><li>Source host HR-WIN-001 có rủi ro dữ liệu cao hơn vì thuộc nhóm nhân sự.</li><li>Có chênh lệch giữa alert time và investigation start time; cần kiểm tra retention và timestamp source khi vận hành thật.</li></ul></section>
+<section class="report-section" id="evidence"><div class="section-kicker">04 · Evidence review</div><h2>Evidence Collected</h2><div class="table-wrap"><table><thead><tr><th>Evidence source</th><th>Observed evidence</th><th>Analyst value</th><th>Assessment</th></tr></thead><tbody><tr><td>SIEM alert</td><td>Kết nối ra 85.208.253.156 qua 443, interval 5 phút.</td><td>Xác định behavior có tính chu kỳ.</td><td>Suspicious beaconing pattern.</td></tr><tr><td>Log management</td><td>Nhiều event lặp lại trong cùng time window.</td><td>Xác nhận pattern không phải event đơn lẻ.</td><td>High confidence anomaly.</td></tr><tr><td>Threat intelligence</td><td>IP 85.208.253.156 có lịch sử bị report abuse trong case evidence.</td><td>Tăng rủi ro đối với destination.</td><td>Block candidate.</td></tr><tr><td>Endpoint network history</td><td>svchost.exe PID 1234 tạo outbound connection tới destination IP.</td><td>Chuyển từ network alert sang endpoint triage.</td><td>Cần collect hash/path/signature.</td></tr></tbody></table></div><figure class="lab-figure"><img src="../assets/labs/soc201/soc201-2.png" alt="SOC-201 log management showing repeated connections"><figcaption>Figure 2 · Log view xác nhận các kết nối lặp lại theo interval.</figcaption></figure><figure class="lab-figure"><img src="../assets/labs/soc201/soc201-3.png" alt="SOC-201 AbuseIPDB evidence for destination IP"><figcaption>Figure 3 · Threat-intelligence evidence làm tăng mức ưu tiên điều tra destination IP.</figcaption></figure><figure class="lab-figure"><img src="../assets/labs/soc201/soc201-4.png" alt="SOC-201 endpoint network history showing svchost.exe PID 1234"><figcaption>Figure 4 · Endpoint network history cho thấy svchost.exe PID 1234 tạo kết nối outbound tới 85.208.253.156.</figcaption></figure></section>
+<section class="report-section" id="workflow"><div class="section-kicker">05 · Triage process</div><h2>Investigation Workflow</h2><ol><li>Validate timestamp, source host, destination IP, protocol, port và byte-size pattern.</li><li>Kiểm tra log management để xác nhận interval 5 phút có lặp lại nhiều lần.</li><li>Tra cứu external IP trên threat-intelligence sources và ghi confidence.</li><li>Pivot sang endpoint network history để xác định process/PID tạo kết nối.</li><li>Kiểm tra scope: hunt IP 85.208.253.156 trên proxy/firewall/DNS để biết có host nội bộ khác liên quan không.</li><li>Chuẩn bị escalation package gồm IOC, timeline, process evidence và recommended containment.</li></ol></section>
+<section class="report-section" id="verdict"><div class="section-kicker">06 · Assessment</div><h2>Final Assessment</h2><p><span class="verdict-badge true">Suspicious C2-like Beaconing · Escalation Required</span></p><p><b>Reason:</b> Network pattern có chu kỳ đều, byte size ổn định, destination IP có reputation xấu trong case evidence và endpoint cho thấy process tạo outbound connection. Chưa đủ dữ liệu để đặt tên malware family, nhưng đủ để xử lý theo quy trình containment.</p></section>
+<section class="report-section" id="containment"><div class="section-kicker">07 · Response</div><h2>Response Actions</h2><ul><li>Isolate HR-WIN-001 khỏi mạng sản xuất để ngăn traffic outbound tiếp tục.</li><li>Block hoặc sinkhole destination IP 85.208.253.156 tại firewall/proxy trong khi điều tra.</li><li>Collect endpoint artifacts: process path, hash, command line, parent process, signer, autoruns, scheduled tasks và recent files.</li><li>Hunt cùng IOC trên toàn bộ môi trường để xác định có lateral spread hoặc host khác beaconing không.</li><li>Escalate sang Tier 2/Incident Response kèm timeline, screenshots và IOC list.</li></ul></section>
+</div></section></main><footer>
+  <div class="container">© 2026 Khánh Linh · SOC Analyst Portfolio · Built for GitHub Pages</div>
+</footer>
+<script src="../assets/app.js"></script>
 </body>
 </html>
