@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="Avatar placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffe7ef"/>
+      <stop offset="0.5" stop-color="#e9ddff"/>
+      <stop offset="1" stop-color="#d9f7ff"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="20%" r="70%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="600" rx="120" fill="url(#bg)"/>
+  <rect width="600" height="600" rx="120" fill="url(#glow)"/>
+  <circle cx="300" cy="240" r="92" fill="#ffffff" opacity="0.72"/>
+  <path d="M150 520c24-104 84-156 150-156s126 52 150 156" fill="#ffffff" opacity="0.72"/>
+  <text x="300" y="565" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#7c6aa8">Chèn avatar tại đây</text>
+</svg>

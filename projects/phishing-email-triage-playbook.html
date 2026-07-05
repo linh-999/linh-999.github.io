@@ -1,107 +1,108 @@
 <!DOCTYPE html>
+
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Phishing Email Triage Playbook | Khánh Linh</title>
-  <meta name="description" content="SOC portfolio case report: Phishing Email Triage Playbook" />
-  <link rel="stylesheet" href="../assets/style.css" />
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Phishing Email Triage Playbook | Khánh Linh</title>
+<meta content="SOC portfolio case report: Phishing Email Triage Playbook" name="description"/>
+<link href="../assets/style.css" rel="stylesheet"/>
 </head>
 <body>
 <header>
-  <div class="container">
-    <nav>
-      <a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
-      <div class="nav-links">
-        <a href="../index.html#profile">Profile</a>
-        <a href="../index.html#projects">Projects</a>
-        <a href="../index.html#casefiles">Case Files</a>
-        <a href="../index.html#workflow">SOC Workflow</a>
-        <a href="../index.html#writeups">Write-ups</a>
-        <a href="../index.html#skills">Skills</a>
-        <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
-      </div>
-    </nav>
-  </div>
+<div class="container">
+<nav>
+<a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
+<div class="nav-links">
+<a href="../index.html#profile">Hành trình</a>
+<a href="../index.html#projects">Dự án</a>
+<a href="../index.html#casefiles">Bài lab</a>
+<a href="../index.html#workflow">Cách mình học</a>
+<a href="../index.html#writeups">Ghi chú</a>
+<a href="../index.html#skills">Kỹ năng</a>
+<a class="nav-cta" href="https://github.com/linh-999" rel="noopener noreferrer" target="_blank">GitHub</a>
+</div>
+</nav>
+</div>
 </header>
 <main class="container">
-  <section class="page-hero">
-    <div class="breadcrumb"><a href="../index.html">Home</a> / Projects / Phishing Email Triage Playbook</div>
-    <div class="eyebrow"><span class="pulse"></span> Jan 2026 – Feb 2026 · Email Security Case</div>
-    <h1 class="page-title">Phishing Email Triage Playbook</h1>
-    <p class="lead">Playbook điều tra email nghi phishing theo hướng SOC L1: kiểm tra header, sender authentication, URL, attachment, brand impersonation, user impact và recommended response. Trọng tâm là phân biệt suspicious email, phishing confirmed và benign marketing email.</p>
-    <div class="mini-tags"><span>Phishing</span><span>Email Header</span><span>URL Analysis</span><span>Attachment Triage</span><span>IOC</span><span>User Awareness</span></div>
-  </section>
-  <section class="report-layout">
-    <aside class="sidebar">
-      <div class="panel">
-        <p class="meta">Case metadata</p>
-        <div class="info-grid" style="grid-template-columns:1fr">
-          <div class="info-box"><span>Priority</span><b>Medium–High</b></div>
-          <div class="info-box"><span>Status</span><b>SOC playbook ready</b></div>
-          <div class="info-box"><span>Role</span><b>SOC Analyst L1</b></div>
-          <div class="info-box"><span>Analyst value</span><b>Giúp chứng minh tư duy điều tra email không chỉ dựa vào tiêu đề hay cảm giác, mà dựa vào artifact và bằng chứng.</b></div>
-        </div>
-      </div>
-      <div class="panel" style="margin-top:16px">
-        <p class="meta">On this page</p>
-        <div class="toc"><a href="#1">Executive Summary</a><a href="#2">Objective & Scope</a><a href="#3">Architecture</a><a href="#4">Detection Logic</a><a href="#5">Investigation Workflow</a><a href="#6">Evidence</a><a href="#7">Findings</a><a href="#8">Recommendations</a><a href="#9">Next Improvements</a></div>
-      </div>
-    </aside>
-    <div>
-      <section class="report-section" id="1">
-        <div class="section-kicker">01 · Executive Summary</div>
-        <h2>Executive Summary</h2>
-        <p>Playbook điều tra email nghi phishing theo hướng SOC L1: kiểm tra header, sender authentication, URL, attachment, brand impersonation, user impact và recommended response. Trọng tâm là phân biệt suspicious email, phishing confirmed và benign marketing email.</p>
-        <div class="callout"><b>Security operations value:</b> Giúp chứng minh tư duy điều tra email không chỉ dựa vào tiêu đề hay cảm giác, mà dựa vào artifact và bằng chứng.</div>
-      </section>
-      <section class="report-section" id="2">
-        <div class="section-kicker">02 · Scope</div>
-        <h2>Objective & Scope</h2>
-        <ul><li>Xác định email có dấu hiệu spoofing, phishing hay credential harvesting.</li><li>Kiểm tra SPF/DKIM/DMARC, Reply-To, Return-Path và sender reputation.</li><li>Phân tích URL/attachment theo mức an toàn phù hợp.</li><li>Đề xuất block, quarantine, user reset password hoặc close as benign.</li></ul>
-      </section>
-      <section class="report-section" id="3">
-        <div class="section-kicker">03 · Data flow</div>
-        <h2>Architecture / Data Flow</h2>
-        <div class="flow"><span>User report / email gateway alert</span><span>Header and authentication check</span><span>URL and attachment analysis</span><span>Threat intelligence lookup</span><span>User impact assessment</span><span>Containment and awareness</span></div>
-        <p>Luồng trên giúp case có điểm bắt đầu và điểm kết thúc rõ ràng: nguồn dữ liệu sinh event, hệ thống xử lý/correlation và analyst đưa kết luận dựa trên bằng chứng.</p>
-      </section>
-      <section class="report-section" id="4">
-        <div class="section-kicker">04 · Detection design</div>
-        <h2>Detection / Analysis Logic</h2>
-        <div class="table-wrap"><table><thead><tr><th>Use case</th><th>Condition</th><th>Expected evidence</th><th>MITRE / Analyst mapping</th><th>False-positive consideration</th></tr></thead><tbody><tr><td>Sender mismatch</td><td>Display name không khớp domain gửi hoặc Reply-To lạ.</td><td>From, Reply-To, Return-Path, authentication result.</td><td>Initial Access</td><td>Hệ thống gửi mail bên thứ ba hợp lệ.</td></tr><tr><td>Suspicious URL</td><td>URL rút gọn, domain mới, path giả login hoặc brand impersonation.</td><td>URL, domain age, redirect chain, page title.</td><td>Credential Access</td><td>Link marketing/tracking hợp lệ.</td></tr><tr><td>Malicious attachment</td><td>File macro/script/archive đáng nghi.</td><td>Filename, hash, file type, sandbox result.</td><td>Execution</td><td>Tài liệu công việc hợp lệ nhưng chưa được phân loại.</td></tr><tr><td>User impact</td><td>Người dùng đã click, tải file hoặc nhập credential.</td><td>Proxy log, EDR event, IAM log.</td><td>Impact / Credential Access</td><td>Click vào link training/phishing simulation.</td></tr></tbody></table></div>
-      </section>
-      <section class="report-section" id="5">
-        <div class="section-kicker">05 · Triage process</div>
-        <h2>Investigation Workflow</h2>
-        <ol><li>Thu thập bản gốc email hoặc message ID từ gateway.</li><li>Kiểm tra authentication result và header chain.</li><li>Extract URL, domain, attachment hash và sender indicators.</li><li>Tra cứu reputation và kiểm tra proxy/EDR để xác định user đã tương tác chưa.</li><li>Phân loại verdict và thực hiện action: quarantine, block IOC, reset password hoặc awareness note.</li></ol>
-      </section>
-      <section class="report-section" id="6">
-        <div class="section-kicker">06 · Evidence model</div>
-        <h2>Evidence Collected / Required</h2>
-        <div class="table-wrap"><table><thead><tr><th>Evidence</th><th>What it proves</th><th>Analyst value</th></tr></thead><tbody><tr><td>Email header</td><td>SPF/DKIM/DMARC, Return-Path, Received chain.</td><td>Xác minh nguồn gửi.</td></tr><tr><td>URL artifact</td><td>Domain, path, redirect, HTTP status.</td><td>Đánh giá phishing/benign.</td></tr><tr><td>Attachment metadata</td><td>Hash, MIME type, macro/script presence.</td><td>Xác định nguy cơ thực thi.</td></tr><tr><td>User activity</td><td>Click/open/download/credential submission.</td><td>Đánh giá impact thực tế.</td></tr></tbody></table></div>
-      </section>
-      <section class="report-section" id="7">
-        <div class="section-kicker">07 · Findings</div>
-        <h2>Key Findings</h2>
-        <ul><li>Một email chỉ đáng nghi khi nhiều tín hiệu cùng củng cố giả thuyết phishing.</li><li>Sender display name không đủ để kết luận spoofing nếu thiếu header evidence.</li><li>Business context và campaign nội bộ giúp giảm false positive.</li></ul>
-      </section>
-      <section class="report-section" id="8">
-        <div class="section-kicker">08 · Response</div>
-        <h2>Recommendations</h2>
-        <ul><li>Chuẩn hóa template báo cáo phishing gồm IOC, user impact và action.</li><li>Tích hợp email gateway với SIEM để tự động enrich URL/hash.</li><li>Huấn luyện user báo cáo email kèm message headers.</li></ul>
-      </section>
-      <section class="report-section" id="9">
-        <div class="section-kicker">09 · Continuous improvement</div>
-        <h2>Limitations & Next Improvements</h2>
-        <ul><li>Tạo checklist riêng cho BEC, credential phishing và malware attachment.</li><li>Kết hợp proxy log để xác nhận click-through.</li><li>Tự động hóa IOC extraction bằng script an toàn.</li></ul>
-        <div class="callout warn"><b>Quality note:</b> Kết luận trong report luôn bám vào dữ liệu hiện có; nếu thiếu log hoặc thiếu context, phần limitation được ghi rõ để giữ tính chính xác của case.</div>
-      </section>
-    </div>
-  </section>
+<section class="page-hero">
+<div class="breadcrumb"><a href="../index.html">Home</a> / Projects / Phishing Email Triage Playbook</div>
+<div class="eyebrow"><span class="pulse"></span> Jan 2026 – Feb 2026 · Email Security Case</div>
+<h1 class="page-title">Phishing Email Triage Playbook</h1>
+<p class="lead">Playbook điều tra email nghi phishing theo hướng SOC L1: kiểm tra header, sender authentication, URL, attachment, brand impersonation, user impact và recommended response. Trọng tâm là phân biệt suspicious email, phishing confirmed và benign marketing email.</p>
+<div class="mini-tags"><span>Phishing</span><span>Email Header</span><span>URL Analysis</span><span>Attachment Triage</span><span>IOC</span><span>User Awareness</span></div>
+</section>
+<section class="report-layout">
+<aside class="sidebar">
+<div class="panel">
+<p class="meta">Case metadata</p>
+<div class="info-grid" style="grid-template-columns:1fr">
+<div class="info-box"><span>Priority</span><b>Medium–High</b></div>
+<div class="info-box"><span>Status</span><b>SOC playbook ready</b></div>
+<div class="info-box"><span>Role</span><b>SOC Analyst L1</b></div>
+<div class="info-box"><span>Analyst value</span><b>Giúp chứng minh tư duy điều tra email không chỉ dựa vào tiêu đề hay cảm giác, mà dựa vào artifact và bằng chứng.</b></div>
+</div>
+</div>
+<div class="panel" style="margin-top:16px">
+<p class="meta">On this page</p>
+<div class="toc"><a href="#1">Executive Summary</a><a href="#2">Objective &amp; Scope</a><a href="#3">Architecture</a><a href="#4">Detection Logic</a><a href="#5">Investigation Workflow</a><a href="#6">Evidence</a><a href="#7">Findings</a><a href="#8">Recommendations</a><a href="#9">Next Improvements</a></div>
+</div>
+</aside>
+<div>
+<section class="report-section" id="1">
+<div class="section-kicker">01 · Executive Summary</div>
+<h2>Executive Summary</h2>
+<p>Playbook điều tra email nghi phishing theo hướng SOC L1: kiểm tra header, sender authentication, URL, attachment, brand impersonation, user impact và recommended response. Trọng tâm là phân biệt suspicious email, phishing confirmed và benign marketing email.</p>
+<div class="callout"><b>Security operations value:</b> Giúp chứng minh tư duy điều tra email không chỉ dựa vào tiêu đề hay cảm giác, mà dựa vào artifact và bằng chứng.</div>
+</section>
+<section class="report-section" id="2">
+<div class="section-kicker">02 · Scope</div>
+<h2>Objective &amp; Scope</h2>
+<ul><li>Xác định email có dấu hiệu spoofing, phishing hay credential harvesting.</li><li>Kiểm tra SPF/DKIM/DMARC, Reply-To, Return-Path và sender reputation.</li><li>Phân tích URL/attachment theo mức an toàn phù hợp.</li><li>Đề xuất block, quarantine, user reset password hoặc close as benign.</li></ul>
+</section>
+<section class="report-section" id="3">
+<div class="section-kicker">03 · Data flow</div>
+<h2>Architecture / Data Flow</h2>
+<div class="flow"><span>User report / email gateway alert</span><span>Header and authentication check</span><span>URL and attachment analysis</span><span>Threat intelligence lookup</span><span>User impact assessment</span><span>Containment and awareness</span></div>
+<p>Luồng trên giúp case có điểm bắt đầu và điểm kết thúc rõ ràng: nguồn dữ liệu sinh event, hệ thống xử lý/correlation và analyst đưa kết luận dựa trên bằng chứng.</p>
+</section>
+<section class="report-section" id="4">
+<div class="section-kicker">04 · Detection design</div>
+<h2>Detection / Analysis Logic</h2>
+<div class="table-wrap"><table><thead><tr><th>Use case</th><th>Condition</th><th>Expected evidence</th><th>MITRE / Analyst mapping</th><th>False-positive consideration</th></tr></thead><tbody><tr><td>Sender mismatch</td><td>Display name không khớp domain gửi hoặc Reply-To lạ.</td><td>From, Reply-To, Return-Path, authentication result.</td><td>Initial Access</td><td>Hệ thống gửi mail bên thứ ba hợp lệ.</td></tr><tr><td>Suspicious URL</td><td>URL rút gọn, domain mới, path giả login hoặc brand impersonation.</td><td>URL, domain age, redirect chain, page title.</td><td>Credential Access</td><td>Link marketing/tracking hợp lệ.</td></tr><tr><td>Malicious attachment</td><td>File macro/script/archive đáng nghi.</td><td>Filename, hash, file type, sandbox result.</td><td>Execution</td><td>Tài liệu công việc hợp lệ nhưng chưa được phân loại.</td></tr><tr><td>User impact</td><td>Người dùng đã click, tải file hoặc nhập credential.</td><td>Proxy log, EDR event, IAM log.</td><td>Impact / Credential Access</td><td>Click vào link training/phishing simulation.</td></tr></tbody></table></div>
+</section>
+<section class="report-section" id="5">
+<div class="section-kicker">05 · Triage process</div>
+<h2>Investigation Workflow</h2>
+<ol><li>Thu thập bản gốc email hoặc message ID từ gateway.</li><li>Kiểm tra authentication result và header chain.</li><li>Extract URL, domain, attachment hash và sender indicators.</li><li>Tra cứu reputation và kiểm tra proxy/EDR để xác định user đã tương tác chưa.</li><li>Phân loại verdict và thực hiện action: quarantine, block IOC, reset password hoặc awareness note.</li></ol>
+</section>
+<section class="report-section" id="6">
+<div class="section-kicker">06 · Evidence model</div>
+<h2>Evidence Collected / Required</h2>
+<div class="table-wrap"><table><thead><tr><th>Evidence</th><th>What it proves</th><th>Analyst value</th></tr></thead><tbody><tr><td>Email header</td><td>SPF/DKIM/DMARC, Return-Path, Received chain.</td><td>Xác minh nguồn gửi.</td></tr><tr><td>URL artifact</td><td>Domain, path, redirect, HTTP status.</td><td>Đánh giá phishing/benign.</td></tr><tr><td>Attachment metadata</td><td>Hash, MIME type, macro/script presence.</td><td>Xác định nguy cơ thực thi.</td></tr><tr><td>User activity</td><td>Click/open/download/credential submission.</td><td>Đánh giá impact thực tế.</td></tr></tbody></table></div>
+</section>
+<section class="report-section" id="7">
+<div class="section-kicker">07 · Findings</div>
+<h2>Key Findings</h2>
+<ul><li>Một email chỉ đáng nghi khi nhiều tín hiệu cùng củng cố giả thuyết phishing.</li><li>Sender display name không đủ để kết luận spoofing nếu thiếu header evidence.</li><li>Business context và campaign nội bộ giúp giảm false positive.</li></ul>
+</section>
+<section class="report-section" id="8">
+<div class="section-kicker">08 · Response</div>
+<h2>Recommendations</h2>
+<ul><li>Chuẩn hóa template báo cáo phishing gồm IOC, user impact và action.</li><li>Tích hợp email gateway với SIEM để tự động enrich URL/hash.</li><li>Huấn luyện user báo cáo email kèm message headers.</li></ul>
+</section>
+<section class="report-section" id="9">
+<div class="section-kicker">09 · Continuous improvement</div>
+<h2>Limitations &amp; Next Improvements</h2>
+<ul><li>Tạo checklist riêng cho BEC, credential phishing và malware attachment.</li><li>Kết hợp proxy log để xác nhận click-through.</li><li>Tự động hóa IOC extraction bằng script an toàn.</li></ul>
+<div class="callout warn"><b>Quality note:</b> Kết luận trong report luôn bám vào dữ liệu hiện có; nếu thiếu log hoặc thiếu context, phần limitation được ghi rõ để giữ tính chính xác của case.</div>
+</section>
+</div>
+</section>
 </main>
 <footer>
-  <div class="container">© 2026 Khánh Linh · SOC Analyst Portfolio · Built for GitHub Pages</div>
+<div class="container">© 2026 Khánh Linh · Learning Journey &amp; Security Portfolio · Built for GitHub Pages</div>
 </footer>
 <script src="../assets/app.js"></script>
 </body>

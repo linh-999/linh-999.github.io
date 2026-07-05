@@ -1,107 +1,108 @@
 <!DOCTYPE html>
+
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CCNA Network Security Foundation | Khánh Linh</title>
-  <meta name="description" content="SOC portfolio case report: CCNA Network Security Foundation" />
-  <link rel="stylesheet" href="../assets/style.css" />
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CCNA Network Security Foundation | Khánh Linh</title>
+<meta content="SOC portfolio case report: CCNA Network Security Foundation" name="description"/>
+<link href="../assets/style.css" rel="stylesheet"/>
 </head>
 <body>
 <header>
-  <div class="container">
-    <nav>
-      <a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
-      <div class="nav-links">
-        <a href="../index.html#profile">Profile</a>
-        <a href="../index.html#projects">Projects</a>
-        <a href="../index.html#casefiles">Case Files</a>
-        <a href="../index.html#workflow">SOC Workflow</a>
-        <a href="../index.html#writeups">Write-ups</a>
-        <a href="../index.html#skills">Skills</a>
-        <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
-      </div>
-    </nav>
-  </div>
+<div class="container">
+<nav>
+<a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
+<div class="nav-links">
+<a href="../index.html#profile">Hành trình</a>
+<a href="../index.html#projects">Dự án</a>
+<a href="../index.html#casefiles">Bài lab</a>
+<a href="../index.html#workflow">Cách mình học</a>
+<a href="../index.html#writeups">Ghi chú</a>
+<a href="../index.html#skills">Kỹ năng</a>
+<a class="nav-cta" href="https://github.com/linh-999" rel="noopener noreferrer" target="_blank">GitHub</a>
+</div>
+</nav>
+</div>
 </header>
 <main class="container">
-  <section class="page-hero">
-    <div class="breadcrumb"><a href="../index.html">Home</a> / Projects / CCNA Network Security Foundation</div>
-    <div class="eyebrow"><span class="pulse"></span> Aug 2024 – Dec 2024 · Network Foundation</div>
-    <h1 class="page-title">CCNA Network Security Foundation</h1>
-    <p class="lead">Tổng hợp nền tảng mạng phục vụ SOC và Network Operations: subnetting, VLAN, routing, ACL, NAT, default gateway, troubleshooting bằng ping/traceroute/show commands. Project được trình bày theo hướng ứng dụng vào phân tích alert và xác định luồng traffic.</p>
-    <div class="mini-tags"><span>TCP/IP</span><span>VLAN</span><span>Routing</span><span>ACL</span><span>NAT</span><span>Troubleshooting</span></div>
-  </section>
-  <section class="report-layout">
-    <aside class="sidebar">
-      <div class="panel">
-        <p class="meta">Case metadata</p>
-        <div class="info-grid" style="grid-template-columns:1fr">
-          <div class="info-box"><span>Priority</span><b>Foundation</b></div>
-          <div class="info-box"><span>Status</span><b>Learning portfolio completed</b></div>
-          <div class="info-box"><span>Role</span><b>Network / Security Operations Learner</b></div>
-          <div class="info-box"><span>Analyst value</span><b>Nền tảng mạng giúp SOC Analyst hiểu source/destination, route path, segment, gateway và firewall/ACL impact khi điều tra sự cố.</b></div>
-        </div>
-      </div>
-      <div class="panel" style="margin-top:16px">
-        <p class="meta">On this page</p>
-        <div class="toc"><a href="#1">Executive Summary</a><a href="#2">Objective & Scope</a><a href="#3">Architecture</a><a href="#4">Detection Logic</a><a href="#5">Investigation Workflow</a><a href="#6">Evidence</a><a href="#7">Findings</a><a href="#8">Recommendations</a><a href="#9">Next Improvements</a></div>
-      </div>
-    </aside>
-    <div>
-      <section class="report-section" id="1">
-        <div class="section-kicker">01 · Executive Summary</div>
-        <h2>Executive Summary</h2>
-        <p>Tổng hợp nền tảng mạng phục vụ SOC và Network Operations: subnetting, VLAN, routing, ACL, NAT, default gateway, troubleshooting bằng ping/traceroute/show commands. Project được trình bày theo hướng ứng dụng vào phân tích alert và xác định luồng traffic.</p>
-        <div class="callout"><b>Security operations value:</b> Nền tảng mạng giúp SOC Analyst hiểu source/destination, route path, segment, gateway và firewall/ACL impact khi điều tra sự cố.</div>
-      </section>
-      <section class="report-section" id="2">
-        <div class="section-kicker">02 · Scope</div>
-        <h2>Objective & Scope</h2>
-        <ul><li>Nắm VLSM/subnet để đọc IP, mask và gateway trong alert.</li><li>Hiểu VLAN/routing để xác định segment bị ảnh hưởng.</li><li>Dùng ACL/NAT như biện pháp kiểm soát traffic.</li><li>Thực hành command verification để tìm lỗi kết nối.</li></ul>
-      </section>
-      <section class="report-section" id="3">
-        <div class="section-kicker">03 · Data flow</div>
-        <h2>Architecture / Data Flow</h2>
-        <div class="flow"><span>End hosts</span><span>Access switch</span><span>VLAN segmentation</span><span>Router / L3 gateway</span><span>ACL / NAT</span><span>Verification commands</span></div>
-        <p>Luồng trên giúp case có điểm bắt đầu và điểm kết thúc rõ ràng: nguồn dữ liệu sinh event, hệ thống xử lý/correlation và analyst đưa kết luận dựa trên bằng chứng.</p>
-      </section>
-      <section class="report-section" id="4">
-        <div class="section-kicker">04 · Detection design</div>
-        <h2>Detection / Analysis Logic</h2>
-        <div class="table-wrap"><table><thead><tr><th>Use case</th><th>Condition</th><th>Expected evidence</th><th>MITRE / Analyst mapping</th><th>False-positive consideration</th></tr></thead><tbody><tr><td>Subnet validation</td><td>IP thuộc đúng network và gateway không.</td><td>IP/mask/gateway, ARP, route.</td><td>Network Access</td><td>Sai mask hoặc gateway gây mất kết nối.</td></tr><tr><td>VLAN segmentation</td><td>Host thuộc VLAN đúng và trunk/access port đúng.</td><td>Switchport, VLAN table, MAC table.</td><td>Lateral Movement control</td><td>Cấu hình lab chưa đồng bộ.</td></tr><tr><td>ACL filtering</td><td>Traffic được permit/deny theo rule.</td><td>ACL hit count, source/destination.</td><td>Defense</td><td>Rule đặt sai thứ tự.</td></tr><tr><td>Routing issue</td><td>Route thiếu hoặc next-hop sai.</td><td>Routing table, traceroute.</td><td>Availability</td><td>Link down hoặc default route thiếu.</td></tr></tbody></table></div>
-      </section>
-      <section class="report-section" id="5">
-        <div class="section-kicker">05 · Triage process</div>
-        <h2>Investigation Workflow</h2>
-        <ol><li>Xác định IP/subnet của host trong alert.</li><li>Kiểm tra gateway, VLAN và path đến destination.</li><li>Xác minh ACL/NAT nếu traffic bị block hoặc đi sai hướng.</li><li>Dùng ping/traceroute/show command để khoanh vùng lỗi.</li><li>Ghi lại topology và kết luận network impact.</li></ol>
-      </section>
-      <section class="report-section" id="6">
-        <div class="section-kicker">06 · Evidence model</div>
-        <h2>Evidence Collected / Required</h2>
-        <div class="table-wrap"><table><thead><tr><th>Evidence</th><th>What it proves</th><th>Analyst value</th></tr></thead><tbody><tr><td>Addressing table</td><td>IP, mask, gateway của từng host.</td><td>Xác định segment.</td></tr><tr><td>Show commands</td><td>show ip route, show vlan brief, show access-lists.</td><td>Chứng minh cấu hình.</td></tr><tr><td>Connectivity test</td><td>Ping/traceroute theo từng hop.</td><td>Khoanh vùng sự cố.</td></tr><tr><td>ACL hit count</td><td>Rule có match traffic không.</td><td>Xác nhận filter hoạt động.</td></tr></tbody></table></div>
-      </section>
-      <section class="report-section" id="7">
-        <div class="section-kicker">07 · Findings</div>
-        <h2>Key Findings</h2>
-        <ul><li>Nhiều lỗi lab đến từ gateway/mask/VLAN không khớp.</li><li>SOC Analyst cần đọc được network path để hiểu alert không bị tách rời khỏi topology.</li><li>ACL/NAT vừa là công cụ bảo vệ vừa có thể gây false positive trong troubleshooting.</li></ul>
-      </section>
-      <section class="report-section" id="8">
-        <div class="section-kicker">08 · Response</div>
-        <h2>Recommendations</h2>
-        <ul><li>Lưu sơ đồ topology và addressing table cho mỗi lab.</li><li>Gắn network segment vào asset inventory.</li><li>Ghi rõ command evidence khi viết report network issue.</li></ul>
-      </section>
-      <section class="report-section" id="9">
-        <div class="section-kicker">09 · Continuous improvement</div>
-        <h2>Limitations & Next Improvements</h2>
-        <ul><li>Mở rộng sang OSPF, DHCP snooping và port security.</li><li>Tạo lab mô phỏng segmentation để hạn chế lateral movement.</li><li>Kết hợp Packet Tracer với Wireshark để quan sát packet flow.</li></ul>
-        <div class="callout warn"><b>Quality note:</b> Kết luận trong report luôn bám vào dữ liệu hiện có; nếu thiếu log hoặc thiếu context, phần limitation được ghi rõ để giữ tính chính xác của case.</div>
-      </section>
-    </div>
-  </section>
+<section class="page-hero">
+<div class="breadcrumb"><a href="../index.html">Home</a> / Projects / CCNA Network Security Foundation</div>
+<div class="eyebrow"><span class="pulse"></span> Aug 2024 – Dec 2024 · Network Foundation</div>
+<h1 class="page-title">CCNA Network Security Foundation</h1>
+<p class="lead">Tổng hợp nền tảng mạng phục vụ SOC và Network Operations: subnetting, VLAN, routing, ACL, NAT, default gateway, troubleshooting bằng ping/traceroute/show commands. Project được trình bày theo hướng ứng dụng vào phân tích alert và xác định luồng traffic.</p>
+<div class="mini-tags"><span>TCP/IP</span><span>VLAN</span><span>Routing</span><span>ACL</span><span>NAT</span><span>Troubleshooting</span></div>
+</section>
+<section class="report-layout">
+<aside class="sidebar">
+<div class="panel">
+<p class="meta">Case metadata</p>
+<div class="info-grid" style="grid-template-columns:1fr">
+<div class="info-box"><span>Priority</span><b>Foundation</b></div>
+<div class="info-box"><span>Status</span><b>Learning portfolio completed</b></div>
+<div class="info-box"><span>Role</span><b>Network / Security Operations Learner</b></div>
+<div class="info-box"><span>Analyst value</span><b>Nền tảng mạng giúp SOC Analyst hiểu source/destination, route path, segment, gateway và firewall/ACL impact khi điều tra sự cố.</b></div>
+</div>
+</div>
+<div class="panel" style="margin-top:16px">
+<p class="meta">On this page</p>
+<div class="toc"><a href="#1">Executive Summary</a><a href="#2">Objective &amp; Scope</a><a href="#3">Architecture</a><a href="#4">Detection Logic</a><a href="#5">Investigation Workflow</a><a href="#6">Evidence</a><a href="#7">Findings</a><a href="#8">Recommendations</a><a href="#9">Next Improvements</a></div>
+</div>
+</aside>
+<div>
+<section class="report-section" id="1">
+<div class="section-kicker">01 · Executive Summary</div>
+<h2>Executive Summary</h2>
+<p>Tổng hợp nền tảng mạng phục vụ SOC và Network Operations: subnetting, VLAN, routing, ACL, NAT, default gateway, troubleshooting bằng ping/traceroute/show commands. Project được trình bày theo hướng ứng dụng vào phân tích alert và xác định luồng traffic.</p>
+<div class="callout"><b>Security operations value:</b> Nền tảng mạng giúp SOC Analyst hiểu source/destination, route path, segment, gateway và firewall/ACL impact khi điều tra sự cố.</div>
+</section>
+<section class="report-section" id="2">
+<div class="section-kicker">02 · Scope</div>
+<h2>Objective &amp; Scope</h2>
+<ul><li>Nắm VLSM/subnet để đọc IP, mask và gateway trong alert.</li><li>Hiểu VLAN/routing để xác định segment bị ảnh hưởng.</li><li>Dùng ACL/NAT như biện pháp kiểm soát traffic.</li><li>Thực hành command verification để tìm lỗi kết nối.</li></ul>
+</section>
+<section class="report-section" id="3">
+<div class="section-kicker">03 · Data flow</div>
+<h2>Architecture / Data Flow</h2>
+<div class="flow"><span>End hosts</span><span>Access switch</span><span>VLAN segmentation</span><span>Router / L3 gateway</span><span>ACL / NAT</span><span>Verification commands</span></div>
+<p>Luồng trên giúp case có điểm bắt đầu và điểm kết thúc rõ ràng: nguồn dữ liệu sinh event, hệ thống xử lý/correlation và analyst đưa kết luận dựa trên bằng chứng.</p>
+</section>
+<section class="report-section" id="4">
+<div class="section-kicker">04 · Detection design</div>
+<h2>Detection / Analysis Logic</h2>
+<div class="table-wrap"><table><thead><tr><th>Use case</th><th>Condition</th><th>Expected evidence</th><th>MITRE / Analyst mapping</th><th>False-positive consideration</th></tr></thead><tbody><tr><td>Subnet validation</td><td>IP thuộc đúng network và gateway không.</td><td>IP/mask/gateway, ARP, route.</td><td>Network Access</td><td>Sai mask hoặc gateway gây mất kết nối.</td></tr><tr><td>VLAN segmentation</td><td>Host thuộc VLAN đúng và trunk/access port đúng.</td><td>Switchport, VLAN table, MAC table.</td><td>Lateral Movement control</td><td>Cấu hình lab chưa đồng bộ.</td></tr><tr><td>ACL filtering</td><td>Traffic được permit/deny theo rule.</td><td>ACL hit count, source/destination.</td><td>Defense</td><td>Rule đặt sai thứ tự.</td></tr><tr><td>Routing issue</td><td>Route thiếu hoặc next-hop sai.</td><td>Routing table, traceroute.</td><td>Availability</td><td>Link down hoặc default route thiếu.</td></tr></tbody></table></div>
+</section>
+<section class="report-section" id="5">
+<div class="section-kicker">05 · Triage process</div>
+<h2>Investigation Workflow</h2>
+<ol><li>Xác định IP/subnet của host trong alert.</li><li>Kiểm tra gateway, VLAN và path đến destination.</li><li>Xác minh ACL/NAT nếu traffic bị block hoặc đi sai hướng.</li><li>Dùng ping/traceroute/show command để khoanh vùng lỗi.</li><li>Ghi lại topology và kết luận network impact.</li></ol>
+</section>
+<section class="report-section" id="6">
+<div class="section-kicker">06 · Evidence model</div>
+<h2>Evidence Collected / Required</h2>
+<div class="table-wrap"><table><thead><tr><th>Evidence</th><th>What it proves</th><th>Analyst value</th></tr></thead><tbody><tr><td>Addressing table</td><td>IP, mask, gateway của từng host.</td><td>Xác định segment.</td></tr><tr><td>Show commands</td><td>show ip route, show vlan brief, show access-lists.</td><td>Chứng minh cấu hình.</td></tr><tr><td>Connectivity test</td><td>Ping/traceroute theo từng hop.</td><td>Khoanh vùng sự cố.</td></tr><tr><td>ACL hit count</td><td>Rule có match traffic không.</td><td>Xác nhận filter hoạt động.</td></tr></tbody></table></div>
+</section>
+<section class="report-section" id="7">
+<div class="section-kicker">07 · Findings</div>
+<h2>Key Findings</h2>
+<ul><li>Nhiều lỗi lab đến từ gateway/mask/VLAN không khớp.</li><li>SOC Analyst cần đọc được network path để hiểu alert không bị tách rời khỏi topology.</li><li>ACL/NAT vừa là công cụ bảo vệ vừa có thể gây false positive trong troubleshooting.</li></ul>
+</section>
+<section class="report-section" id="8">
+<div class="section-kicker">08 · Response</div>
+<h2>Recommendations</h2>
+<ul><li>Lưu sơ đồ topology và addressing table cho mỗi lab.</li><li>Gắn network segment vào asset inventory.</li><li>Ghi rõ command evidence khi viết report network issue.</li></ul>
+</section>
+<section class="report-section" id="9">
+<div class="section-kicker">09 · Continuous improvement</div>
+<h2>Limitations &amp; Next Improvements</h2>
+<ul><li>Mở rộng sang OSPF, DHCP snooping và port security.</li><li>Tạo lab mô phỏng segmentation để hạn chế lateral movement.</li><li>Kết hợp Packet Tracer với Wireshark để quan sát packet flow.</li></ul>
+<div class="callout warn"><b>Quality note:</b> Kết luận trong report luôn bám vào dữ liệu hiện có; nếu thiếu log hoặc thiếu context, phần limitation được ghi rõ để giữ tính chính xác của case.</div>
+</section>
+</div>
+</section>
 </main>
 <footer>
-  <div class="container">© 2026 Khánh Linh · SOC Analyst Portfolio · Built for GitHub Pages</div>
+<div class="container">© 2026 Khánh Linh · Learning Journey &amp; Security Portfolio · Built for GitHub Pages</div>
 </footer>
 <script src="../assets/app.js"></script>
 </body>

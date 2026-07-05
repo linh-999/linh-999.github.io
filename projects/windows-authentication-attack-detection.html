@@ -1,107 +1,108 @@
 <!DOCTYPE html>
+
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Windows Authentication Attack Detection | Khánh Linh</title>
-  <meta name="description" content="SOC portfolio case report: Windows Authentication Attack Detection" />
-  <link rel="stylesheet" href="../assets/style.css" />
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Windows Authentication Attack Detection | Khánh Linh</title>
+<meta content="SOC portfolio case report: Windows Authentication Attack Detection" name="description"/>
+<link href="../assets/style.css" rel="stylesheet"/>
 </head>
 <body>
 <header>
-  <div class="container">
-    <nav>
-      <a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
-      <div class="nav-links">
-        <a href="../index.html#profile">Profile</a>
-        <a href="../index.html#projects">Projects</a>
-        <a href="../index.html#casefiles">Case Files</a>
-        <a href="../index.html#workflow">SOC Workflow</a>
-        <a href="../index.html#writeups">Write-ups</a>
-        <a href="../index.html#skills">Skills</a>
-        <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
-      </div>
-    </nav>
-  </div>
+<div class="container">
+<nav>
+<a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
+<div class="nav-links">
+<a href="../index.html#profile">Hành trình</a>
+<a href="../index.html#projects">Dự án</a>
+<a href="../index.html#casefiles">Bài lab</a>
+<a href="../index.html#workflow">Cách mình học</a>
+<a href="../index.html#writeups">Ghi chú</a>
+<a href="../index.html#skills">Kỹ năng</a>
+<a class="nav-cta" href="https://github.com/linh-999" rel="noopener noreferrer" target="_blank">GitHub</a>
+</div>
+</nav>
+</div>
 </header>
 <main class="container">
-  <section class="page-hero">
-    <div class="breadcrumb"><a href="../index.html">Home</a> / Projects / Windows Authentication Attack Detection</div>
-    <div class="eyebrow"><span class="pulse"></span> Feb 2026 – Mar 2026 · Windows Security Monitoring</div>
-    <h1 class="page-title">Windows Authentication Attack Detection</h1>
-    <p class="lead">Thiết kế logic phát hiện các hành vi tấn công xác thực trên Windows như brute force, password spray, successful login sau nhiều lần thất bại và quyền đặc biệt được cấp sau đăng nhập. Project tập trung vào cách đọc Event ID và correlation theo user, source IP, host và time window.</p>
-    <div class="mini-tags"><span>Windows Event Log</span><span>Event ID 4625</span><span>Password Spray</span><span>Brute Force</span><span>Privilege Use</span><span>SIEM Rule</span></div>
-  </section>
-  <section class="report-layout">
-    <aside class="sidebar">
-      <div class="panel">
-        <p class="meta">Case metadata</p>
-        <div class="info-grid" style="grid-template-columns:1fr">
-          <div class="info-box"><span>Priority</span><b>High</b></div>
-          <div class="info-box"><span>Status</span><b>Detection design completed</b></div>
-          <div class="info-box"><span>Role</span><b>SOC Analyst / Windows Log Analyst</b></div>
-          <div class="info-box"><span>Analyst value</span><b>Tạo nền tảng quan trọng cho SOC L1 vì authentication alert là nhóm cảnh báo thường gặp trong môi trường doanh nghiệp.</b></div>
-        </div>
-      </div>
-      <div class="panel" style="margin-top:16px">
-        <p class="meta">On this page</p>
-        <div class="toc"><a href="#1">Executive Summary</a><a href="#2">Objective & Scope</a><a href="#3">Architecture</a><a href="#4">Detection Logic</a><a href="#5">Investigation Workflow</a><a href="#6">Evidence</a><a href="#7">Findings</a><a href="#8">Recommendations</a><a href="#9">Next Improvements</a></div>
-      </div>
-    </aside>
-    <div>
-      <section class="report-section" id="1">
-        <div class="section-kicker">01 · Executive Summary</div>
-        <h2>Executive Summary</h2>
-        <p>Thiết kế logic phát hiện các hành vi tấn công xác thực trên Windows như brute force, password spray, successful login sau nhiều lần thất bại và quyền đặc biệt được cấp sau đăng nhập. Project tập trung vào cách đọc Event ID và correlation theo user, source IP, host và time window.</p>
-        <div class="callout"><b>Security operations value:</b> Tạo nền tảng quan trọng cho SOC L1 vì authentication alert là nhóm cảnh báo thường gặp trong môi trường doanh nghiệp.</div>
-      </section>
-      <section class="report-section" id="2">
-        <div class="section-kicker">02 · Scope</div>
-        <h2>Objective & Scope</h2>
-        <ul><li>Phân biệt brute force theo một user và password spray theo nhiều user.</li><li>Correlation Event ID 4625, 4624, 4672 và 4740.</li><li>Đánh giá rủi ro dựa trên account type, source IP và logon type.</li><li>Đề xuất lock account, reset password hoặc block source khi cần.</li></ul>
-      </section>
-      <section class="report-section" id="3">
-        <div class="section-kicker">03 · Data flow</div>
-        <h2>Architecture / Data Flow</h2>
-        <div class="flow"><span>Windows endpoint / Domain Controller</span><span>Security Event Log</span><span>Log forwarder</span><span>SIEM correlation rule</span><span>Analyst triage</span><span>Account response</span></div>
-        <p>Luồng trên giúp case có điểm bắt đầu và điểm kết thúc rõ ràng: nguồn dữ liệu sinh event, hệ thống xử lý/correlation và analyst đưa kết luận dựa trên bằng chứng.</p>
-      </section>
-      <section class="report-section" id="4">
-        <div class="section-kicker">04 · Detection design</div>
-        <h2>Detection / Analysis Logic</h2>
-        <div class="table-wrap"><table><thead><tr><th>Use case</th><th>Condition</th><th>Expected evidence</th><th>MITRE / Analyst mapping</th><th>False-positive consideration</th></tr></thead><tbody><tr><td>Brute force</td><td>Nhiều Event ID 4625 trên cùng username từ cùng source.</td><td>Username, source IP, failure reason, logon type.</td><td>Credential Access</td><td>Ứng dụng cấu hình sai password.</td></tr><tr><td>Password spray</td><td>Một source thử nhiều username với tần suất thấp.</td><td>Distinct username count, source IP, time window.</td><td>Credential Access</td><td>Scanner kiểm thử nội bộ.</td></tr><tr><td>Success after failures</td><td>4624 xuất hiện sau nhiều 4625 cùng source/user.</td><td>Failed count, success time, target host.</td><td>Valid Accounts</td><td>User nhập sai rồi nhập đúng.</td></tr><tr><td>Privilege login</td><td>4672 xuất hiện với tài khoản đặc quyền.</td><td>Account name, privileges, host, time.</td><td>Privilege Escalation</td><td>Admin đăng nhập hợp lệ.</td></tr></tbody></table></div>
-      </section>
-      <section class="report-section" id="5">
-        <div class="section-kicker">05 · Triage process</div>
-        <h2>Investigation Workflow</h2>
-        <ol><li>Xác định alert là brute force, password spray hay privilege login.</li><li>Kiểm tra source IP nội bộ/ngoài, user affected và host affected.</li><li>Pivot theo username để xem có successful login sau failed attempts không.</li><li>Kiểm tra account criticality và thời gian hoạt động bất thường.</li><li>Ghi verdict và đề xuất: monitor, reset password, disable account, block source hoặc escalate.</li></ol>
-      </section>
-      <section class="report-section" id="6">
-        <div class="section-kicker">06 · Evidence model</div>
-        <h2>Evidence Collected / Required</h2>
-        <div class="table-wrap"><table><thead><tr><th>Evidence</th><th>What it proves</th><th>Analyst value</th></tr></thead><tbody><tr><td>4625 failures</td><td>Số lần đăng nhập thất bại và reason code.</td><td>Xác nhận attempt pattern.</td></tr><tr><td>4624 success</td><td>Đăng nhập thành công sau chuỗi thất bại.</td><td>Đánh giá khả năng compromise.</td></tr><tr><td>4672 special privileges</td><td>Quyền đặc biệt sau login.</td><td>Ưu tiên điều tra admin account.</td></tr><tr><td>Account lockout</td><td>Event 4740 nếu xảy ra.</td><td>Chứng minh tác động đến account.</td></tr></tbody></table></div>
-      </section>
-      <section class="report-section" id="7">
-        <div class="section-kicker">07 · Findings</div>
-        <h2>Key Findings</h2>
-        <ul><li>Cần nhìn pattern theo time window, không đánh giá từng event riêng lẻ.</li><li>Password spray thường có count mỗi user thấp nhưng số user bị thử cao.</li><li>Successful login sau nhiều failed attempts là tín hiệu cần ưu tiên cao hơn.</li></ul>
-      </section>
-      <section class="report-section" id="8">
-        <div class="section-kicker">08 · Response</div>
-        <h2>Recommendations</h2>
-        <ul><li>Tách rule cho brute force và password spray để giảm false positive.</li><li>Bổ sung allowlist cho vulnerability scanner hoặc IAM test hợp lệ.</li><li>Cảnh báo riêng cho privileged account và service account.</li></ul>
-      </section>
-      <section class="report-section" id="9">
-        <div class="section-kicker">09 · Continuous improvement</div>
-        <h2>Limitations & Next Improvements</h2>
-        <ul><li>Thêm enrichment asset/user criticality từ CMDB.</li><li>Kết hợp VPN log để xác định source từ remote access.</li><li>Tạo dashboard failed/success login theo user, host và source IP.</li></ul>
-        <div class="callout warn"><b>Quality note:</b> Kết luận trong report luôn bám vào dữ liệu hiện có; nếu thiếu log hoặc thiếu context, phần limitation được ghi rõ để giữ tính chính xác của case.</div>
-      </section>
-    </div>
-  </section>
+<section class="page-hero">
+<div class="breadcrumb"><a href="../index.html">Home</a> / Projects / Windows Authentication Attack Detection</div>
+<div class="eyebrow"><span class="pulse"></span> Feb 2026 – Mar 2026 · Windows Security Monitoring</div>
+<h1 class="page-title">Windows Authentication Attack Detection</h1>
+<p class="lead">Thiết kế logic phát hiện các hành vi tấn công xác thực trên Windows như brute force, password spray, successful login sau nhiều lần thất bại và quyền đặc biệt được cấp sau đăng nhập. Project tập trung vào cách đọc Event ID và correlation theo user, source IP, host và time window.</p>
+<div class="mini-tags"><span>Windows Event Log</span><span>Event ID 4625</span><span>Password Spray</span><span>Brute Force</span><span>Privilege Use</span><span>SIEM Rule</span></div>
+</section>
+<section class="report-layout">
+<aside class="sidebar">
+<div class="panel">
+<p class="meta">Case metadata</p>
+<div class="info-grid" style="grid-template-columns:1fr">
+<div class="info-box"><span>Priority</span><b>High</b></div>
+<div class="info-box"><span>Status</span><b>Detection design completed</b></div>
+<div class="info-box"><span>Role</span><b>SOC Analyst / Windows Log Analyst</b></div>
+<div class="info-box"><span>Analyst value</span><b>Tạo nền tảng quan trọng cho SOC L1 vì authentication alert là nhóm cảnh báo thường gặp trong môi trường doanh nghiệp.</b></div>
+</div>
+</div>
+<div class="panel" style="margin-top:16px">
+<p class="meta">On this page</p>
+<div class="toc"><a href="#1">Executive Summary</a><a href="#2">Objective &amp; Scope</a><a href="#3">Architecture</a><a href="#4">Detection Logic</a><a href="#5">Investigation Workflow</a><a href="#6">Evidence</a><a href="#7">Findings</a><a href="#8">Recommendations</a><a href="#9">Next Improvements</a></div>
+</div>
+</aside>
+<div>
+<section class="report-section" id="1">
+<div class="section-kicker">01 · Executive Summary</div>
+<h2>Executive Summary</h2>
+<p>Thiết kế logic phát hiện các hành vi tấn công xác thực trên Windows như brute force, password spray, successful login sau nhiều lần thất bại và quyền đặc biệt được cấp sau đăng nhập. Project tập trung vào cách đọc Event ID và correlation theo user, source IP, host và time window.</p>
+<div class="callout"><b>Security operations value:</b> Tạo nền tảng quan trọng cho SOC L1 vì authentication alert là nhóm cảnh báo thường gặp trong môi trường doanh nghiệp.</div>
+</section>
+<section class="report-section" id="2">
+<div class="section-kicker">02 · Scope</div>
+<h2>Objective &amp; Scope</h2>
+<ul><li>Phân biệt brute force theo một user và password spray theo nhiều user.</li><li>Correlation Event ID 4625, 4624, 4672 và 4740.</li><li>Đánh giá rủi ro dựa trên account type, source IP và logon type.</li><li>Đề xuất lock account, reset password hoặc block source khi cần.</li></ul>
+</section>
+<section class="report-section" id="3">
+<div class="section-kicker">03 · Data flow</div>
+<h2>Architecture / Data Flow</h2>
+<div class="flow"><span>Windows endpoint / Domain Controller</span><span>Security Event Log</span><span>Log forwarder</span><span>SIEM correlation rule</span><span>Analyst triage</span><span>Account response</span></div>
+<p>Luồng trên giúp case có điểm bắt đầu và điểm kết thúc rõ ràng: nguồn dữ liệu sinh event, hệ thống xử lý/correlation và analyst đưa kết luận dựa trên bằng chứng.</p>
+</section>
+<section class="report-section" id="4">
+<div class="section-kicker">04 · Detection design</div>
+<h2>Detection / Analysis Logic</h2>
+<div class="table-wrap"><table><thead><tr><th>Use case</th><th>Condition</th><th>Expected evidence</th><th>MITRE / Analyst mapping</th><th>False-positive consideration</th></tr></thead><tbody><tr><td>Brute force</td><td>Nhiều Event ID 4625 trên cùng username từ cùng source.</td><td>Username, source IP, failure reason, logon type.</td><td>Credential Access</td><td>Ứng dụng cấu hình sai password.</td></tr><tr><td>Password spray</td><td>Một source thử nhiều username với tần suất thấp.</td><td>Distinct username count, source IP, time window.</td><td>Credential Access</td><td>Scanner kiểm thử nội bộ.</td></tr><tr><td>Success after failures</td><td>4624 xuất hiện sau nhiều 4625 cùng source/user.</td><td>Failed count, success time, target host.</td><td>Valid Accounts</td><td>User nhập sai rồi nhập đúng.</td></tr><tr><td>Privilege login</td><td>4672 xuất hiện với tài khoản đặc quyền.</td><td>Account name, privileges, host, time.</td><td>Privilege Escalation</td><td>Admin đăng nhập hợp lệ.</td></tr></tbody></table></div>
+</section>
+<section class="report-section" id="5">
+<div class="section-kicker">05 · Triage process</div>
+<h2>Investigation Workflow</h2>
+<ol><li>Xác định alert là brute force, password spray hay privilege login.</li><li>Kiểm tra source IP nội bộ/ngoài, user affected và host affected.</li><li>Pivot theo username để xem có successful login sau failed attempts không.</li><li>Kiểm tra account criticality và thời gian hoạt động bất thường.</li><li>Ghi verdict và đề xuất: monitor, reset password, disable account, block source hoặc escalate.</li></ol>
+</section>
+<section class="report-section" id="6">
+<div class="section-kicker">06 · Evidence model</div>
+<h2>Evidence Collected / Required</h2>
+<div class="table-wrap"><table><thead><tr><th>Evidence</th><th>What it proves</th><th>Analyst value</th></tr></thead><tbody><tr><td>4625 failures</td><td>Số lần đăng nhập thất bại và reason code.</td><td>Xác nhận attempt pattern.</td></tr><tr><td>4624 success</td><td>Đăng nhập thành công sau chuỗi thất bại.</td><td>Đánh giá khả năng compromise.</td></tr><tr><td>4672 special privileges</td><td>Quyền đặc biệt sau login.</td><td>Ưu tiên điều tra admin account.</td></tr><tr><td>Account lockout</td><td>Event 4740 nếu xảy ra.</td><td>Chứng minh tác động đến account.</td></tr></tbody></table></div>
+</section>
+<section class="report-section" id="7">
+<div class="section-kicker">07 · Findings</div>
+<h2>Key Findings</h2>
+<ul><li>Cần nhìn pattern theo time window, không đánh giá từng event riêng lẻ.</li><li>Password spray thường có count mỗi user thấp nhưng số user bị thử cao.</li><li>Successful login sau nhiều failed attempts là tín hiệu cần ưu tiên cao hơn.</li></ul>
+</section>
+<section class="report-section" id="8">
+<div class="section-kicker">08 · Response</div>
+<h2>Recommendations</h2>
+<ul><li>Tách rule cho brute force và password spray để giảm false positive.</li><li>Bổ sung allowlist cho vulnerability scanner hoặc IAM test hợp lệ.</li><li>Cảnh báo riêng cho privileged account và service account.</li></ul>
+</section>
+<section class="report-section" id="9">
+<div class="section-kicker">09 · Continuous improvement</div>
+<h2>Limitations &amp; Next Improvements</h2>
+<ul><li>Thêm enrichment asset/user criticality từ CMDB.</li><li>Kết hợp VPN log để xác định source từ remote access.</li><li>Tạo dashboard failed/success login theo user, host và source IP.</li></ul>
+<div class="callout warn"><b>Quality note:</b> Kết luận trong report luôn bám vào dữ liệu hiện có; nếu thiếu log hoặc thiếu context, phần limitation được ghi rõ để giữ tính chính xác của case.</div>
+</section>
+</div>
+</section>
 </main>
 <footer>
-  <div class="container">© 2026 Khánh Linh · SOC Analyst Portfolio · Built for GitHub Pages</div>
+<div class="container">© 2026 Khánh Linh · Learning Journey &amp; Security Portfolio · Built for GitHub Pages</div>
 </footer>
 <script src="../assets/app.js"></script>
 </body>

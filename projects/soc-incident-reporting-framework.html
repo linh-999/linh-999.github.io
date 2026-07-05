@@ -1,107 +1,108 @@
 <!DOCTYPE html>
+
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SOC Incident Reporting Framework | Khánh Linh</title>
-  <meta name="description" content="SOC portfolio case report: SOC Incident Reporting Framework" />
-  <link rel="stylesheet" href="../assets/style.css" />
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SOC Incident Reporting Framework | Khánh Linh</title>
+<meta content="SOC portfolio case report: SOC Incident Reporting Framework" name="description"/>
+<link href="../assets/style.css" rel="stylesheet"/>
 </head>
 <body>
 <header>
-  <div class="container">
-    <nav>
-      <a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
-      <div class="nav-links">
-        <a href="../index.html#profile">Profile</a>
-        <a href="../index.html#projects">Projects</a>
-        <a href="../index.html#casefiles">Case Files</a>
-        <a href="../index.html#workflow">SOC Workflow</a>
-        <a href="../index.html#writeups">Write-ups</a>
-        <a href="../index.html#skills">Skills</a>
-        <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
-      </div>
-    </nav>
-  </div>
+<div class="container">
+<nav>
+<a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
+<div class="nav-links">
+<a href="../index.html#profile">Hành trình</a>
+<a href="../index.html#projects">Dự án</a>
+<a href="../index.html#casefiles">Bài lab</a>
+<a href="../index.html#workflow">Cách mình học</a>
+<a href="../index.html#writeups">Ghi chú</a>
+<a href="../index.html#skills">Kỹ năng</a>
+<a class="nav-cta" href="https://github.com/linh-999" rel="noopener noreferrer" target="_blank">GitHub</a>
+</div>
+</nav>
+</div>
 </header>
 <main class="container">
-  <section class="page-hero">
-    <div class="breadcrumb"><a href="../index.html">Home</a> / Projects / SOC Incident Reporting Framework</div>
-    <div class="eyebrow"><span class="pulse"></span> Jul 2025 – Sep 2025 · SOC Documentation</div>
-    <h1 class="page-title">SOC Incident Reporting Framework</h1>
-    <p class="lead">Xây dựng framework viết báo cáo điều tra SOC theo cấu trúc thống nhất: alert context, affected asset, data sources, evidence table, investigation workflow, verdict, confidence, limitation và recommended action. Framework dùng chung cho các case như phishing, beaconing, WAF, endpoint và authentication.</p>
-    <div class="mini-tags"><span>Incident Report</span><span>Evidence Table</span><span>Verdict</span><span>Recommendation</span><span>Case Management</span><span>Escalation</span></div>
-  </section>
-  <section class="report-layout">
-    <aside class="sidebar">
-      <div class="panel">
-        <p class="meta">Case metadata</p>
-        <div class="info-grid" style="grid-template-columns:1fr">
-          <div class="info-box"><span>Priority</span><b>High</b></div>
-          <div class="info-box"><span>Status</span><b>Reusable framework completed</b></div>
-          <div class="info-box"><span>Role</span><b>SOC Analyst / Report Writer</b></div>
-          <div class="info-box"><span>Analyst value</span><b>Giúp portfolio thể hiện năng lực viết report rõ ràng, có thể đọc được bởi SOC lead, IT owner và người không trực tiếp điều tra.</b></div>
-        </div>
-      </div>
-      <div class="panel" style="margin-top:16px">
-        <p class="meta">On this page</p>
-        <div class="toc"><a href="#1">Executive Summary</a><a href="#2">Objective & Scope</a><a href="#3">Architecture</a><a href="#4">Detection Logic</a><a href="#5">Investigation Workflow</a><a href="#6">Evidence</a><a href="#7">Findings</a><a href="#8">Recommendations</a><a href="#9">Next Improvements</a></div>
-      </div>
-    </aside>
-    <div>
-      <section class="report-section" id="1">
-        <div class="section-kicker">01 · Executive Summary</div>
-        <h2>Executive Summary</h2>
-        <p>Xây dựng framework viết báo cáo điều tra SOC theo cấu trúc thống nhất: alert context, affected asset, data sources, evidence table, investigation workflow, verdict, confidence, limitation và recommended action. Framework dùng chung cho các case như phishing, beaconing, WAF, endpoint và authentication.</p>
-        <div class="callout"><b>Security operations value:</b> Giúp portfolio thể hiện năng lực viết report rõ ràng, có thể đọc được bởi SOC lead, IT owner và người không trực tiếp điều tra.</div>
-      </section>
-      <section class="report-section" id="2">
-        <div class="section-kicker">02 · Scope</div>
-        <h2>Objective & Scope</h2>
-        <ul><li>Chuẩn hóa report để không bỏ sót trường quan trọng.</li><li>Tách rõ observed evidence và analyst assessment.</li><li>Ghi limitation để tránh kết luận vượt quá bằng chứng.</li><li>Tạo format dễ dùng cho SOC L1 khi escalate.</li></ul>
-      </section>
-      <section class="report-section" id="3">
-        <div class="section-kicker">03 · Data flow</div>
-        <h2>Architecture / Data Flow</h2>
-        <div class="flow"><span>Alert intake</span><span>Case context</span><span>Evidence collection</span><span>Analysis notes</span><span>Verdict and confidence</span><span>Recommendation and closure</span></div>
-        <p>Luồng trên giúp case có điểm bắt đầu và điểm kết thúc rõ ràng: nguồn dữ liệu sinh event, hệ thống xử lý/correlation và analyst đưa kết luận dựa trên bằng chứng.</p>
-      </section>
-      <section class="report-section" id="4">
-        <div class="section-kicker">04 · Detection design</div>
-        <h2>Detection / Analysis Logic</h2>
-        <div class="table-wrap"><table><thead><tr><th>Use case</th><th>Condition</th><th>Expected evidence</th><th>MITRE / Analyst mapping</th><th>False-positive consideration</th></tr></thead><tbody><tr><td>Alert context</td><td>Alert name, severity, source, time, affected asset.</td><td>Case header đầy đủ.</td><td>Triage</td><td>Thiếu timezone hoặc hostname.</td></tr><tr><td>Evidence table</td><td>Raw log, screenshot, command output, IOC result.</td><td>Chứng minh kết luận.</td><td>Investigation</td><td>Evidence không đủ context.</td></tr><tr><td>Verdict</td><td>True positive, false positive, benign activity hoặc needs escalation.</td><td>Kết luận rõ ràng.</td><td>Response</td><td>Kết luận mơ hồ không có confidence.</td></tr><tr><td>Recommendation</td><td>Block, monitor, tune rule, isolate, reset password.</td><td>Action thực thi được.</td><td>Mitigation</td><td>Action quá rộng hoặc thiếu owner.</td></tr></tbody></table></div>
-      </section>
-      <section class="report-section" id="5">
-        <div class="section-kicker">05 · Triage process</div>
-        <h2>Investigation Workflow</h2>
-        <ol><li>Đọc alert và ghi scope điều tra.</li><li>Liệt kê data sources đã kiểm tra và chưa kiểm tra.</li><li>Tạo evidence table theo từng phát hiện.</li><li>Viết verdict kèm confidence và limitation.</li><li>Đề xuất action cụ thể có owner và priority.</li></ol>
-      </section>
-      <section class="report-section" id="6">
-        <div class="section-kicker">06 · Evidence model</div>
-        <h2>Evidence Collected / Required</h2>
-        <div class="table-wrap"><table><thead><tr><th>Evidence</th><th>What it proves</th><th>Analyst value</th></tr></thead><tbody><tr><td>Raw event</td><td>Log gốc từ SIEM/tool.</td><td>Nguồn bằng chứng chính.</td></tr><tr><td>Screenshot</td><td>Dashboard hoặc alert details.</td><td>Minh họa phát hiện.</td></tr><tr><td>IOC lookup</td><td>IP/domain/hash reputation.</td><td>Hỗ trợ đánh giá risk.</td></tr><tr><td>Timeline</td><td>Chuỗi event theo thời gian.</td><td>Hiểu diễn tiến case.</td></tr></tbody></table></div>
-      </section>
-      <section class="report-section" id="7">
-        <div class="section-kicker">07 · Findings</div>
-        <h2>Key Findings</h2>
-        <ul><li>Report tốt giúp người đọc hiểu vì sao alert được đóng hoặc escalation.</li><li>Thiếu limitation dễ làm report bị phóng đại.</li><li>Evidence table là phần quan trọng nhất để chứng minh năng lực analyst.</li></ul>
-      </section>
-      <section class="report-section" id="8">
-        <div class="section-kicker">08 · Response</div>
-        <h2>Recommendations</h2>
-        <ul><li>Dùng cùng format cho mọi project trong portfolio.</li><li>Đặt verdict ở đầu và giải thích bằng evidence phía dưới.</li><li>Ghi rõ action đã làm và action đề xuất.</li></ul>
-      </section>
-      <section class="report-section" id="9">
-        <div class="section-kicker">09 · Continuous improvement</div>
-        <h2>Limitations & Next Improvements</h2>
-        <ul><li>Thêm severity rubric theo impact/confidence.</li><li>Tạo template Markdown/HTML có thể tái sử dụng.</li><li>Tự động sinh mục lục từ các section report.</li></ul>
-        <div class="callout warn"><b>Quality note:</b> Kết luận trong report luôn bám vào dữ liệu hiện có; nếu thiếu log hoặc thiếu context, phần limitation được ghi rõ để giữ tính chính xác của case.</div>
-      </section>
-    </div>
-  </section>
+<section class="page-hero">
+<div class="breadcrumb"><a href="../index.html">Home</a> / Projects / SOC Incident Reporting Framework</div>
+<div class="eyebrow"><span class="pulse"></span> Jul 2025 – Sep 2025 · SOC Documentation</div>
+<h1 class="page-title">SOC Incident Reporting Framework</h1>
+<p class="lead">Xây dựng framework viết báo cáo điều tra SOC theo cấu trúc thống nhất: alert context, affected asset, data sources, evidence table, investigation workflow, verdict, confidence, limitation và recommended action. Framework dùng chung cho các case như phishing, beaconing, WAF, endpoint và authentication.</p>
+<div class="mini-tags"><span>Incident Report</span><span>Evidence Table</span><span>Verdict</span><span>Recommendation</span><span>Case Management</span><span>Escalation</span></div>
+</section>
+<section class="report-layout">
+<aside class="sidebar">
+<div class="panel">
+<p class="meta">Case metadata</p>
+<div class="info-grid" style="grid-template-columns:1fr">
+<div class="info-box"><span>Priority</span><b>High</b></div>
+<div class="info-box"><span>Status</span><b>Reusable framework completed</b></div>
+<div class="info-box"><span>Role</span><b>SOC Analyst / Report Writer</b></div>
+<div class="info-box"><span>Analyst value</span><b>Giúp portfolio thể hiện năng lực viết report rõ ràng, có thể đọc được bởi SOC lead, IT owner và người không trực tiếp điều tra.</b></div>
+</div>
+</div>
+<div class="panel" style="margin-top:16px">
+<p class="meta">On this page</p>
+<div class="toc"><a href="#1">Executive Summary</a><a href="#2">Objective &amp; Scope</a><a href="#3">Architecture</a><a href="#4">Detection Logic</a><a href="#5">Investigation Workflow</a><a href="#6">Evidence</a><a href="#7">Findings</a><a href="#8">Recommendations</a><a href="#9">Next Improvements</a></div>
+</div>
+</aside>
+<div>
+<section class="report-section" id="1">
+<div class="section-kicker">01 · Executive Summary</div>
+<h2>Executive Summary</h2>
+<p>Xây dựng framework viết báo cáo điều tra SOC theo cấu trúc thống nhất: alert context, affected asset, data sources, evidence table, investigation workflow, verdict, confidence, limitation và recommended action. Framework dùng chung cho các case như phishing, beaconing, WAF, endpoint và authentication.</p>
+<div class="callout"><b>Security operations value:</b> Giúp portfolio thể hiện năng lực viết report rõ ràng, có thể đọc được bởi SOC lead, IT owner và người không trực tiếp điều tra.</div>
+</section>
+<section class="report-section" id="2">
+<div class="section-kicker">02 · Scope</div>
+<h2>Objective &amp; Scope</h2>
+<ul><li>Chuẩn hóa report để không bỏ sót trường quan trọng.</li><li>Tách rõ observed evidence và analyst assessment.</li><li>Ghi limitation để tránh kết luận vượt quá bằng chứng.</li><li>Tạo format dễ dùng cho SOC L1 khi escalate.</li></ul>
+</section>
+<section class="report-section" id="3">
+<div class="section-kicker">03 · Data flow</div>
+<h2>Architecture / Data Flow</h2>
+<div class="flow"><span>Alert intake</span><span>Case context</span><span>Evidence collection</span><span>Analysis notes</span><span>Verdict and confidence</span><span>Recommendation and closure</span></div>
+<p>Luồng trên giúp case có điểm bắt đầu và điểm kết thúc rõ ràng: nguồn dữ liệu sinh event, hệ thống xử lý/correlation và analyst đưa kết luận dựa trên bằng chứng.</p>
+</section>
+<section class="report-section" id="4">
+<div class="section-kicker">04 · Detection design</div>
+<h2>Detection / Analysis Logic</h2>
+<div class="table-wrap"><table><thead><tr><th>Use case</th><th>Condition</th><th>Expected evidence</th><th>MITRE / Analyst mapping</th><th>False-positive consideration</th></tr></thead><tbody><tr><td>Alert context</td><td>Alert name, severity, source, time, affected asset.</td><td>Case header đầy đủ.</td><td>Triage</td><td>Thiếu timezone hoặc hostname.</td></tr><tr><td>Evidence table</td><td>Raw log, screenshot, command output, IOC result.</td><td>Chứng minh kết luận.</td><td>Investigation</td><td>Evidence không đủ context.</td></tr><tr><td>Verdict</td><td>True positive, false positive, benign activity hoặc needs escalation.</td><td>Kết luận rõ ràng.</td><td>Response</td><td>Kết luận mơ hồ không có confidence.</td></tr><tr><td>Recommendation</td><td>Block, monitor, tune rule, isolate, reset password.</td><td>Action thực thi được.</td><td>Mitigation</td><td>Action quá rộng hoặc thiếu owner.</td></tr></tbody></table></div>
+</section>
+<section class="report-section" id="5">
+<div class="section-kicker">05 · Triage process</div>
+<h2>Investigation Workflow</h2>
+<ol><li>Đọc alert và ghi scope điều tra.</li><li>Liệt kê data sources đã kiểm tra và chưa kiểm tra.</li><li>Tạo evidence table theo từng phát hiện.</li><li>Viết verdict kèm confidence và limitation.</li><li>Đề xuất action cụ thể có owner và priority.</li></ol>
+</section>
+<section class="report-section" id="6">
+<div class="section-kicker">06 · Evidence model</div>
+<h2>Evidence Collected / Required</h2>
+<div class="table-wrap"><table><thead><tr><th>Evidence</th><th>What it proves</th><th>Analyst value</th></tr></thead><tbody><tr><td>Raw event</td><td>Log gốc từ SIEM/tool.</td><td>Nguồn bằng chứng chính.</td></tr><tr><td>Screenshot</td><td>Dashboard hoặc alert details.</td><td>Minh họa phát hiện.</td></tr><tr><td>IOC lookup</td><td>IP/domain/hash reputation.</td><td>Hỗ trợ đánh giá risk.</td></tr><tr><td>Timeline</td><td>Chuỗi event theo thời gian.</td><td>Hiểu diễn tiến case.</td></tr></tbody></table></div>
+</section>
+<section class="report-section" id="7">
+<div class="section-kicker">07 · Findings</div>
+<h2>Key Findings</h2>
+<ul><li>Report tốt giúp người đọc hiểu vì sao alert được đóng hoặc escalation.</li><li>Thiếu limitation dễ làm report bị phóng đại.</li><li>Evidence table là phần quan trọng nhất để chứng minh năng lực analyst.</li></ul>
+</section>
+<section class="report-section" id="8">
+<div class="section-kicker">08 · Response</div>
+<h2>Recommendations</h2>
+<ul><li>Dùng cùng format cho mọi project trong portfolio.</li><li>Đặt verdict ở đầu và giải thích bằng evidence phía dưới.</li><li>Ghi rõ action đã làm và action đề xuất.</li></ul>
+</section>
+<section class="report-section" id="9">
+<div class="section-kicker">09 · Continuous improvement</div>
+<h2>Limitations &amp; Next Improvements</h2>
+<ul><li>Thêm severity rubric theo impact/confidence.</li><li>Tạo template Markdown/HTML có thể tái sử dụng.</li><li>Tự động sinh mục lục từ các section report.</li></ul>
+<div class="callout warn"><b>Quality note:</b> Kết luận trong report luôn bám vào dữ liệu hiện có; nếu thiếu log hoặc thiếu context, phần limitation được ghi rõ để giữ tính chính xác của case.</div>
+</section>
+</div>
+</section>
 </main>
 <footer>
-  <div class="container">© 2026 Khánh Linh · SOC Analyst Portfolio · Built for GitHub Pages</div>
+<div class="container">© 2026 Khánh Linh · Learning Journey &amp; Security Portfolio · Built for GitHub Pages</div>
 </footer>
 <script src="../assets/app.js"></script>
 </body>

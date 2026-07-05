@@ -1,107 +1,108 @@
 <!DOCTYPE html>
+
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Network Troubleshooting Case Notes | Khánh Linh</title>
-  <meta name="description" content="SOC portfolio case report: Network Troubleshooting Case Notes" />
-  <link rel="stylesheet" href="../assets/style.css" />
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Network Troubleshooting Case Notes | Khánh Linh</title>
+<meta content="SOC portfolio case report: Network Troubleshooting Case Notes" name="description"/>
+<link href="../assets/style.css" rel="stylesheet"/>
 </head>
 <body>
 <header>
-  <div class="container">
-    <nav>
-      <a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
-      <div class="nav-links">
-        <a href="../index.html#profile">Profile</a>
-        <a href="../index.html#projects">Projects</a>
-        <a href="../index.html#casefiles">Case Files</a>
-        <a href="../index.html#workflow">SOC Workflow</a>
-        <a href="../index.html#writeups">Write-ups</a>
-        <a href="../index.html#skills">Skills</a>
-        <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
-      </div>
-    </nav>
-  </div>
+<div class="container">
+<nav>
+<a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
+<div class="nav-links">
+<a href="../index.html#profile">Hành trình</a>
+<a href="../index.html#projects">Dự án</a>
+<a href="../index.html#casefiles">Bài lab</a>
+<a href="../index.html#workflow">Cách mình học</a>
+<a href="../index.html#writeups">Ghi chú</a>
+<a href="../index.html#skills">Kỹ năng</a>
+<a class="nav-cta" href="https://github.com/linh-999" rel="noopener noreferrer" target="_blank">GitHub</a>
+</div>
+</nav>
+</div>
 </header>
 <main class="container">
-  <section class="page-hero">
-    <div class="breadcrumb"><a href="../index.html">Home</a> / Projects / Network Troubleshooting Case Notes</div>
-    <div class="eyebrow"><span class="pulse"></span> Jul 2025 – Sep 2025 · Network Operations Notes</div>
-    <h1 class="page-title">Network Troubleshooting Case Notes</h1>
-    <p class="lead">Bộ ghi chú xử lý sự cố mạng theo phương pháp có cấu trúc: xác định symptom, scope, layer nghi vấn, command kiểm tra, root cause và corrective action. Nội dung phù hợp với SOC/NOC vì nhiều alert bảo mật cần loại trừ lỗi mạng trước khi kết luận incident.</p>
-    <div class="mini-tags"><span>Troubleshooting</span><span>Layered Approach</span><span>Ping</span><span>Traceroute</span><span>Show Commands</span><span>Root Cause</span></div>
-  </section>
-  <section class="report-layout">
-    <aside class="sidebar">
-      <div class="panel">
-        <p class="meta">Case metadata</p>
-        <div class="info-grid" style="grid-template-columns:1fr">
-          <div class="info-box"><span>Priority</span><b>Medium</b></div>
-          <div class="info-box"><span>Status</span><b>Case notes completed</b></div>
-          <div class="info-box"><span>Role</span><b>Network / SOC Operations Learner</b></div>
-          <div class="info-box"><span>Analyst value</span><b>Thể hiện tư duy vận hành: không đoán lỗi, mà khoanh vùng bằng bằng chứng.</b></div>
-        </div>
-      </div>
-      <div class="panel" style="margin-top:16px">
-        <p class="meta">On this page</p>
-        <div class="toc"><a href="#1">Executive Summary</a><a href="#2">Objective & Scope</a><a href="#3">Architecture</a><a href="#4">Detection Logic</a><a href="#5">Investigation Workflow</a><a href="#6">Evidence</a><a href="#7">Findings</a><a href="#8">Recommendations</a><a href="#9">Next Improvements</a></div>
-      </div>
-    </aside>
-    <div>
-      <section class="report-section" id="1">
-        <div class="section-kicker">01 · Executive Summary</div>
-        <h2>Executive Summary</h2>
-        <p>Bộ ghi chú xử lý sự cố mạng theo phương pháp có cấu trúc: xác định symptom, scope, layer nghi vấn, command kiểm tra, root cause và corrective action. Nội dung phù hợp với SOC/NOC vì nhiều alert bảo mật cần loại trừ lỗi mạng trước khi kết luận incident.</p>
-        <div class="callout"><b>Security operations value:</b> Thể hiện tư duy vận hành: không đoán lỗi, mà khoanh vùng bằng bằng chứng.</div>
-      </section>
-      <section class="report-section" id="2">
-        <div class="section-kicker">02 · Scope</div>
-        <h2>Objective & Scope</h2>
-        <ul><li>Chuẩn hóa cách tiếp nhận sự cố network.</li><li>Phân biệt lỗi host, VLAN, routing, ACL, DNS hoặc service.</li><li>Ghi lại command evidence cho mỗi giả thuyết.</li><li>Đưa corrective action rõ ràng và kiểm tra sau sửa.</li></ul>
-      </section>
-      <section class="report-section" id="3">
-        <div class="section-kicker">03 · Data flow</div>
-        <h2>Architecture / Data Flow</h2>
-        <div class="flow"><span>Symptom intake</span><span>Scope definition</span><span>Layered checks</span><span>Command evidence</span><span>Root cause</span><span>Corrective action</span></div>
-        <p>Luồng trên giúp case có điểm bắt đầu và điểm kết thúc rõ ràng: nguồn dữ liệu sinh event, hệ thống xử lý/correlation và analyst đưa kết luận dựa trên bằng chứng.</p>
-      </section>
-      <section class="report-section" id="4">
-        <div class="section-kicker">04 · Detection design</div>
-        <h2>Detection / Analysis Logic</h2>
-        <div class="table-wrap"><table><thead><tr><th>Use case</th><th>Condition</th><th>Expected evidence</th><th>MITRE / Analyst mapping</th><th>False-positive consideration</th></tr></thead><tbody><tr><td>No connectivity</td><td>Host không tới được gateway hoặc destination.</td><td>Ping gateway, ARP, interface status.</td><td>Availability</td><td>Host firewall chặn ICMP.</td></tr><tr><td>VLAN mismatch</td><td>Host cùng switch nhưng khác VLAN.</td><td>show vlan, MAC table.</td><td>Segmentation</td><td>Port cấu hình sai mode.</td></tr><tr><td>Route missing</td><td>Có gateway nhưng không tới remote network.</td><td>show ip route, traceroute.</td><td>Routing</td><td>Default route thiếu.</td></tr><tr><td>ACL deny</td><td>Routing đúng nhưng traffic bị chặn.</td><td>ACL hit count, firewall log.</td><td>Policy</td><td>Rule order sai hoặc thiếu permit.</td></tr></tbody></table></div>
-      </section>
-      <section class="report-section" id="5">
-        <div class="section-kicker">05 · Triage process</div>
-        <h2>Investigation Workflow</h2>
-        <ol><li>Ghi symptom và thời điểm xảy ra.</li><li>Xác định phạm vi: một user, một VLAN, một site hay nhiều service.</li><li>Kiểm tra theo layer từ thấp đến cao.</li><li>Thu thập output command trước khi thay đổi cấu hình.</li><li>Xác nhận recovery và ghi root cause.</li></ol>
-      </section>
-      <section class="report-section" id="6">
-        <div class="section-kicker">06 · Evidence model</div>
-        <h2>Evidence Collected / Required</h2>
-        <div class="table-wrap"><table><thead><tr><th>Evidence</th><th>What it proves</th><th>Analyst value</th></tr></thead><tbody><tr><td>Ping/ARP</td><td>Kiểm tra local connectivity.</td><td>Loại trừ lỗi host/gateway.</td></tr><tr><td>Traceroute</td><td>Xác định hop dừng.</td><td>Khoanh vùng routing.</td></tr><tr><td>Show commands</td><td>Interface, route, VLAN, ACL.</td><td>Chứng minh cấu hình.</td></tr><tr><td>Change note</td><td>Thay đổi đã thực hiện và kết quả.</td><td>Phục vụ post-incident review.</td></tr></tbody></table></div>
-      </section>
-      <section class="report-section" id="7">
-        <div class="section-kicker">07 · Findings</div>
-        <h2>Key Findings</h2>
-        <ul><li>Scope definition quyết định tốc độ xử lý sự cố.</li><li>Một lỗi nhỏ như sai gateway có thể tạo triệu chứng giống sự cố lớn.</li><li>Evidence trước/sau sửa giúp report đáng tin hơn.</li></ul>
-      </section>
-      <section class="report-section" id="8">
-        <div class="section-kicker">08 · Response</div>
-        <h2>Recommendations</h2>
-        <ul><li>Dùng checklist cố định cho sự cố connectivity.</li><li>Ghi root cause bằng câu ngắn, tránh mô tả chung chung.</li><li>Lưu lại command output quan trọng trong case note.</li></ul>
-      </section>
-      <section class="report-section" id="9">
-        <div class="section-kicker">09 · Continuous improvement</div>
-        <h2>Limitations & Next Improvements</h2>
-        <ul><li>Tạo decision tree cho từng nhóm lỗi.</li><li>Kết hợp network log với SIEM để biết thời điểm thay đổi.</li><li>Tự động hóa kiểm tra basic connectivity bằng script.</li></ul>
-        <div class="callout warn"><b>Quality note:</b> Kết luận trong report luôn bám vào dữ liệu hiện có; nếu thiếu log hoặc thiếu context, phần limitation được ghi rõ để giữ tính chính xác của case.</div>
-      </section>
-    </div>
-  </section>
+<section class="page-hero">
+<div class="breadcrumb"><a href="../index.html">Home</a> / Projects / Network Troubleshooting Case Notes</div>
+<div class="eyebrow"><span class="pulse"></span> Jul 2025 – Sep 2025 · Network Operations Notes</div>
+<h1 class="page-title">Network Troubleshooting Case Notes</h1>
+<p class="lead">Bộ ghi chú xử lý sự cố mạng theo phương pháp có cấu trúc: xác định symptom, scope, layer nghi vấn, command kiểm tra, root cause và corrective action. Nội dung phù hợp với SOC/NOC vì nhiều alert bảo mật cần loại trừ lỗi mạng trước khi kết luận incident.</p>
+<div class="mini-tags"><span>Troubleshooting</span><span>Layered Approach</span><span>Ping</span><span>Traceroute</span><span>Show Commands</span><span>Root Cause</span></div>
+</section>
+<section class="report-layout">
+<aside class="sidebar">
+<div class="panel">
+<p class="meta">Case metadata</p>
+<div class="info-grid" style="grid-template-columns:1fr">
+<div class="info-box"><span>Priority</span><b>Medium</b></div>
+<div class="info-box"><span>Status</span><b>Case notes completed</b></div>
+<div class="info-box"><span>Role</span><b>Network / SOC Operations Learner</b></div>
+<div class="info-box"><span>Analyst value</span><b>Thể hiện tư duy vận hành: không đoán lỗi, mà khoanh vùng bằng bằng chứng.</b></div>
+</div>
+</div>
+<div class="panel" style="margin-top:16px">
+<p class="meta">On this page</p>
+<div class="toc"><a href="#1">Executive Summary</a><a href="#2">Objective &amp; Scope</a><a href="#3">Architecture</a><a href="#4">Detection Logic</a><a href="#5">Investigation Workflow</a><a href="#6">Evidence</a><a href="#7">Findings</a><a href="#8">Recommendations</a><a href="#9">Next Improvements</a></div>
+</div>
+</aside>
+<div>
+<section class="report-section" id="1">
+<div class="section-kicker">01 · Executive Summary</div>
+<h2>Executive Summary</h2>
+<p>Bộ ghi chú xử lý sự cố mạng theo phương pháp có cấu trúc: xác định symptom, scope, layer nghi vấn, command kiểm tra, root cause và corrective action. Nội dung phù hợp với SOC/NOC vì nhiều alert bảo mật cần loại trừ lỗi mạng trước khi kết luận incident.</p>
+<div class="callout"><b>Security operations value:</b> Thể hiện tư duy vận hành: không đoán lỗi, mà khoanh vùng bằng bằng chứng.</div>
+</section>
+<section class="report-section" id="2">
+<div class="section-kicker">02 · Scope</div>
+<h2>Objective &amp; Scope</h2>
+<ul><li>Chuẩn hóa cách tiếp nhận sự cố network.</li><li>Phân biệt lỗi host, VLAN, routing, ACL, DNS hoặc service.</li><li>Ghi lại command evidence cho mỗi giả thuyết.</li><li>Đưa corrective action rõ ràng và kiểm tra sau sửa.</li></ul>
+</section>
+<section class="report-section" id="3">
+<div class="section-kicker">03 · Data flow</div>
+<h2>Architecture / Data Flow</h2>
+<div class="flow"><span>Symptom intake</span><span>Scope definition</span><span>Layered checks</span><span>Command evidence</span><span>Root cause</span><span>Corrective action</span></div>
+<p>Luồng trên giúp case có điểm bắt đầu và điểm kết thúc rõ ràng: nguồn dữ liệu sinh event, hệ thống xử lý/correlation và analyst đưa kết luận dựa trên bằng chứng.</p>
+</section>
+<section class="report-section" id="4">
+<div class="section-kicker">04 · Detection design</div>
+<h2>Detection / Analysis Logic</h2>
+<div class="table-wrap"><table><thead><tr><th>Use case</th><th>Condition</th><th>Expected evidence</th><th>MITRE / Analyst mapping</th><th>False-positive consideration</th></tr></thead><tbody><tr><td>No connectivity</td><td>Host không tới được gateway hoặc destination.</td><td>Ping gateway, ARP, interface status.</td><td>Availability</td><td>Host firewall chặn ICMP.</td></tr><tr><td>VLAN mismatch</td><td>Host cùng switch nhưng khác VLAN.</td><td>show vlan, MAC table.</td><td>Segmentation</td><td>Port cấu hình sai mode.</td></tr><tr><td>Route missing</td><td>Có gateway nhưng không tới remote network.</td><td>show ip route, traceroute.</td><td>Routing</td><td>Default route thiếu.</td></tr><tr><td>ACL deny</td><td>Routing đúng nhưng traffic bị chặn.</td><td>ACL hit count, firewall log.</td><td>Policy</td><td>Rule order sai hoặc thiếu permit.</td></tr></tbody></table></div>
+</section>
+<section class="report-section" id="5">
+<div class="section-kicker">05 · Triage process</div>
+<h2>Investigation Workflow</h2>
+<ol><li>Ghi symptom và thời điểm xảy ra.</li><li>Xác định phạm vi: một user, một VLAN, một site hay nhiều service.</li><li>Kiểm tra theo layer từ thấp đến cao.</li><li>Thu thập output command trước khi thay đổi cấu hình.</li><li>Xác nhận recovery và ghi root cause.</li></ol>
+</section>
+<section class="report-section" id="6">
+<div class="section-kicker">06 · Evidence model</div>
+<h2>Evidence Collected / Required</h2>
+<div class="table-wrap"><table><thead><tr><th>Evidence</th><th>What it proves</th><th>Analyst value</th></tr></thead><tbody><tr><td>Ping/ARP</td><td>Kiểm tra local connectivity.</td><td>Loại trừ lỗi host/gateway.</td></tr><tr><td>Traceroute</td><td>Xác định hop dừng.</td><td>Khoanh vùng routing.</td></tr><tr><td>Show commands</td><td>Interface, route, VLAN, ACL.</td><td>Chứng minh cấu hình.</td></tr><tr><td>Change note</td><td>Thay đổi đã thực hiện và kết quả.</td><td>Phục vụ post-incident review.</td></tr></tbody></table></div>
+</section>
+<section class="report-section" id="7">
+<div class="section-kicker">07 · Findings</div>
+<h2>Key Findings</h2>
+<ul><li>Scope definition quyết định tốc độ xử lý sự cố.</li><li>Một lỗi nhỏ như sai gateway có thể tạo triệu chứng giống sự cố lớn.</li><li>Evidence trước/sau sửa giúp report đáng tin hơn.</li></ul>
+</section>
+<section class="report-section" id="8">
+<div class="section-kicker">08 · Response</div>
+<h2>Recommendations</h2>
+<ul><li>Dùng checklist cố định cho sự cố connectivity.</li><li>Ghi root cause bằng câu ngắn, tránh mô tả chung chung.</li><li>Lưu lại command output quan trọng trong case note.</li></ul>
+</section>
+<section class="report-section" id="9">
+<div class="section-kicker">09 · Continuous improvement</div>
+<h2>Limitations &amp; Next Improvements</h2>
+<ul><li>Tạo decision tree cho từng nhóm lỗi.</li><li>Kết hợp network log với SIEM để biết thời điểm thay đổi.</li><li>Tự động hóa kiểm tra basic connectivity bằng script.</li></ul>
+<div class="callout warn"><b>Quality note:</b> Kết luận trong report luôn bám vào dữ liệu hiện có; nếu thiếu log hoặc thiếu context, phần limitation được ghi rõ để giữ tính chính xác của case.</div>
+</section>
+</div>
+</section>
 </main>
 <footer>
-  <div class="container">© 2026 Khánh Linh · SOC Analyst Portfolio · Built for GitHub Pages</div>
+<div class="container">© 2026 Khánh Linh · Learning Journey &amp; Security Portfolio · Built for GitHub Pages</div>
 </footer>
 <script src="../assets/app.js"></script>
 </body>

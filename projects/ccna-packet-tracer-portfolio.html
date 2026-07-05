@@ -1,107 +1,108 @@
 <!DOCTYPE html>
+
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CCNA Packet Tracer Lab Portfolio | Khánh Linh</title>
-  <meta name="description" content="SOC portfolio case report: CCNA Packet Tracer Lab Portfolio" />
-  <link rel="stylesheet" href="../assets/style.css" />
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CCNA Packet Tracer Lab Portfolio | Khánh Linh</title>
+<meta content="SOC portfolio case report: CCNA Packet Tracer Lab Portfolio" name="description"/>
+<link href="../assets/style.css" rel="stylesheet"/>
 </head>
 <body>
 <header>
-  <div class="container">
-    <nav>
-      <a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
-      <div class="nav-links">
-        <a href="../index.html#profile">Profile</a>
-        <a href="../index.html#projects">Projects</a>
-        <a href="../index.html#casefiles">Case Files</a>
-        <a href="../index.html#workflow">SOC Workflow</a>
-        <a href="../index.html#writeups">Write-ups</a>
-        <a href="../index.html#skills">Skills</a>
-        <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
-      </div>
-    </nav>
-  </div>
+<div class="container">
+<nav>
+<a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
+<div class="nav-links">
+<a href="../index.html#profile">Hành trình</a>
+<a href="../index.html#projects">Dự án</a>
+<a href="../index.html#casefiles">Bài lab</a>
+<a href="../index.html#workflow">Cách mình học</a>
+<a href="../index.html#writeups">Ghi chú</a>
+<a href="../index.html#skills">Kỹ năng</a>
+<a class="nav-cta" href="https://github.com/linh-999" rel="noopener noreferrer" target="_blank">GitHub</a>
+</div>
+</nav>
+</div>
 </header>
 <main class="container">
-  <section class="page-hero">
-    <div class="breadcrumb"><a href="../index.html">Home</a> / Projects / CCNA Packet Tracer Lab Portfolio</div>
-    <div class="eyebrow"><span class="pulse"></span> Aug 2024 – Dec 2024 · Network Lab Portfolio</div>
-    <h1 class="page-title">CCNA Packet Tracer Lab Portfolio</h1>
-    <p class="lead">Bộ lab Packet Tracer dùng để rèn nền tảng mạng: VLSM, VLAN, routing, switch management, ACL và troubleshooting. Nội dung được viết lại theo hướng portfolio: mỗi lab có mục tiêu, topology, addressing plan, cấu hình chính, verification command và lỗi thường gặp.</p>
-    <div class="mini-tags"><span>Packet Tracer</span><span>VLSM</span><span>VLAN</span><span>Routing</span><span>ACL</span><span>Verification</span></div>
-  </section>
-  <section class="report-layout">
-    <aside class="sidebar">
-      <div class="panel">
-        <p class="meta">Case metadata</p>
-        <div class="info-grid" style="grid-template-columns:1fr">
-          <div class="info-box"><span>Priority</span><b>Foundation</b></div>
-          <div class="info-box"><span>Status</span><b>Lab documentation completed</b></div>
-          <div class="info-box"><span>Role</span><b>Network Operations Learner</b></div>
-          <div class="info-box"><span>Analyst value</span><b>Giúp nhà tuyển dụng thấy nền tảng network đủ để đọc alert và làm việc với firewall/router/switch trong môi trường SOC/NOC.</b></div>
-        </div>
-      </div>
-      <div class="panel" style="margin-top:16px">
-        <p class="meta">On this page</p>
-        <div class="toc"><a href="#1">Executive Summary</a><a href="#2">Objective & Scope</a><a href="#3">Architecture</a><a href="#4">Detection Logic</a><a href="#5">Investigation Workflow</a><a href="#6">Evidence</a><a href="#7">Findings</a><a href="#8">Recommendations</a><a href="#9">Next Improvements</a></div>
-      </div>
-    </aside>
-    <div>
-      <section class="report-section" id="1">
-        <div class="section-kicker">01 · Executive Summary</div>
-        <h2>Executive Summary</h2>
-        <p>Bộ lab Packet Tracer dùng để rèn nền tảng mạng: VLSM, VLAN, routing, switch management, ACL và troubleshooting. Nội dung được viết lại theo hướng portfolio: mỗi lab có mục tiêu, topology, addressing plan, cấu hình chính, verification command và lỗi thường gặp.</p>
-        <div class="callout"><b>Security operations value:</b> Giúp nhà tuyển dụng thấy nền tảng network đủ để đọc alert và làm việc với firewall/router/switch trong môi trường SOC/NOC.</div>
-      </section>
-      <section class="report-section" id="2">
-        <div class="section-kicker">02 · Scope</div>
-        <h2>Objective & Scope</h2>
-        <ul><li>Thực hành chia subnet theo VLSM chính xác.</li><li>Cấu hình VLAN, gateway và routing cơ bản.</li><li>Kiểm tra kết nối end-to-end bằng lệnh phù hợp.</li><li>Ghi lỗi cấu hình thường gặp và cách sửa.</li></ul>
-      </section>
-      <section class="report-section" id="3">
-        <div class="section-kicker">03 · Data flow</div>
-        <h2>Architecture / Data Flow</h2>
-        <div class="flow"><span>PC / server hosts</span><span>Access switches</span><span>Router / L3 interface</span><span>VLAN / subnet plan</span><span>ACL policy</span><span>Verification commands</span></div>
-        <p>Luồng trên giúp case có điểm bắt đầu và điểm kết thúc rõ ràng: nguồn dữ liệu sinh event, hệ thống xử lý/correlation và analyst đưa kết luận dựa trên bằng chứng.</p>
-      </section>
-      <section class="report-section" id="4">
-        <div class="section-kicker">04 · Detection design</div>
-        <h2>Detection / Analysis Logic</h2>
-        <div class="table-wrap"><table><thead><tr><th>Use case</th><th>Condition</th><th>Expected evidence</th><th>MITRE / Analyst mapping</th><th>False-positive consideration</th></tr></thead><tbody><tr><td>Addressing</td><td>IP/mask/gateway đúng network.</td><td>Address table, ping test.</td><td>Foundation</td><td>Sai mask hoặc gateway.</td></tr><tr><td>Switching</td><td>VLAN và access port đúng.</td><td>show vlan brief, show interfaces status.</td><td>Segmentation</td><td>Cắm sai port hoặc VLAN thiếu.</td></tr><tr><td>Routing</td><td>Route đến remote network tồn tại.</td><td>show ip route, traceroute.</td><td>Connectivity</td><td>Default route thiếu.</td></tr><tr><td>ACL</td><td>Rule permit/deny đúng yêu cầu.</td><td>show access-lists, hit count.</td><td>Policy Control</td><td>Sai thứ tự rule.</td></tr></tbody></table></div>
-      </section>
-      <section class="report-section" id="5">
-        <div class="section-kicker">05 · Triage process</div>
-        <h2>Investigation Workflow</h2>
-        <ol><li>Đọc yêu cầu host/subnet.</li><li>Thiết kế addressing table trước khi cấu hình.</li><li>Cấu hình thiết bị theo từng lớp: host, switch, router, ACL.</li><li>Verify từng bước bằng command evidence.</li><li>Ghi troubleshooting notes nếu ping/traceroute thất bại.</li></ol>
-      </section>
-      <section class="report-section" id="6">
-        <div class="section-kicker">06 · Evidence model</div>
-        <h2>Evidence Collected / Required</h2>
-        <div class="table-wrap"><table><thead><tr><th>Evidence</th><th>What it proves</th><th>Analyst value</th></tr></thead><tbody><tr><td>Addressing table</td><td>IP/mask/gateway.</td><td>Nền tảng cấu hình.</td></tr><tr><td>Running config excerpt</td><td>Interface, route, ACL.</td><td>Chứng minh cấu hình.</td></tr><tr><td>Ping/traceroute</td><td>Kết nối thành công/thất bại.</td><td>Xác minh end-to-end.</td></tr><tr><td>Show command</td><td>Output kiểm tra VLAN/route/ACL.</td><td>Hỗ trợ troubleshooting.</td></tr></tbody></table></div>
-      </section>
-      <section class="report-section" id="7">
-        <div class="section-kicker">07 · Findings</div>
-        <h2>Key Findings</h2>
-        <ul><li>Thiết kế IP trước giúp giảm lỗi cấu hình.</li><li>Troubleshooting cần đi theo lớp: physical → VLAN → IP → route → ACL.</li><li>Network foundation hỗ trợ rất nhiều khi điều tra alert có source/destination phức tạp.</li></ul>
-      </section>
-      <section class="report-section" id="8">
-        <div class="section-kicker">08 · Response</div>
-        <h2>Recommendations</h2>
-        <ul><li>Mỗi lab nên lưu addressing table và verification output.</li><li>Ghi rõ lỗi gặp phải và nguyên nhân để thể hiện tư duy troubleshooting.</li><li>Liên hệ lab network với use case security như segmentation và ACL.</li></ul>
-      </section>
-      <section class="report-section" id="9">
-        <div class="section-kicker">09 · Continuous improvement</div>
-        <h2>Limitations & Next Improvements</h2>
-        <ul><li>Thêm lab OSPF, DHCP, NAT và inter-VLAN routing.</li><li>Mô phỏng firewall rule và network segmentation.</li><li>Tạo sơ đồ topology rõ ràng cho từng case.</li></ul>
-        <div class="callout warn"><b>Quality note:</b> Kết luận trong report luôn bám vào dữ liệu hiện có; nếu thiếu log hoặc thiếu context, phần limitation được ghi rõ để giữ tính chính xác của case.</div>
-      </section>
-    </div>
-  </section>
+<section class="page-hero">
+<div class="breadcrumb"><a href="../index.html">Home</a> / Projects / CCNA Packet Tracer Lab Portfolio</div>
+<div class="eyebrow"><span class="pulse"></span> Aug 2024 – Dec 2024 · Network Lab Portfolio</div>
+<h1 class="page-title">CCNA Packet Tracer Lab Portfolio</h1>
+<p class="lead">Bộ lab Packet Tracer dùng để rèn nền tảng mạng: VLSM, VLAN, routing, switch management, ACL và troubleshooting. Nội dung được viết lại theo hướng portfolio: mỗi lab có mục tiêu, topology, addressing plan, cấu hình chính, verification command và lỗi thường gặp.</p>
+<div class="mini-tags"><span>Packet Tracer</span><span>VLSM</span><span>VLAN</span><span>Routing</span><span>ACL</span><span>Verification</span></div>
+</section>
+<section class="report-layout">
+<aside class="sidebar">
+<div class="panel">
+<p class="meta">Case metadata</p>
+<div class="info-grid" style="grid-template-columns:1fr">
+<div class="info-box"><span>Priority</span><b>Foundation</b></div>
+<div class="info-box"><span>Status</span><b>Lab documentation completed</b></div>
+<div class="info-box"><span>Role</span><b>Network Operations Learner</b></div>
+<div class="info-box"><span>Analyst value</span><b>Giúp nhà tuyển dụng thấy nền tảng network đủ để đọc alert và làm việc với firewall/router/switch trong môi trường SOC/NOC.</b></div>
+</div>
+</div>
+<div class="panel" style="margin-top:16px">
+<p class="meta">On this page</p>
+<div class="toc"><a href="#1">Executive Summary</a><a href="#2">Objective &amp; Scope</a><a href="#3">Architecture</a><a href="#4">Detection Logic</a><a href="#5">Investigation Workflow</a><a href="#6">Evidence</a><a href="#7">Findings</a><a href="#8">Recommendations</a><a href="#9">Next Improvements</a></div>
+</div>
+</aside>
+<div>
+<section class="report-section" id="1">
+<div class="section-kicker">01 · Executive Summary</div>
+<h2>Executive Summary</h2>
+<p>Bộ lab Packet Tracer dùng để rèn nền tảng mạng: VLSM, VLAN, routing, switch management, ACL và troubleshooting. Nội dung được viết lại theo hướng portfolio: mỗi lab có mục tiêu, topology, addressing plan, cấu hình chính, verification command và lỗi thường gặp.</p>
+<div class="callout"><b>Security operations value:</b> Giúp nhà tuyển dụng thấy nền tảng network đủ để đọc alert và làm việc với firewall/router/switch trong môi trường SOC/NOC.</div>
+</section>
+<section class="report-section" id="2">
+<div class="section-kicker">02 · Scope</div>
+<h2>Objective &amp; Scope</h2>
+<ul><li>Thực hành chia subnet theo VLSM chính xác.</li><li>Cấu hình VLAN, gateway và routing cơ bản.</li><li>Kiểm tra kết nối end-to-end bằng lệnh phù hợp.</li><li>Ghi lỗi cấu hình thường gặp và cách sửa.</li></ul>
+</section>
+<section class="report-section" id="3">
+<div class="section-kicker">03 · Data flow</div>
+<h2>Architecture / Data Flow</h2>
+<div class="flow"><span>PC / server hosts</span><span>Access switches</span><span>Router / L3 interface</span><span>VLAN / subnet plan</span><span>ACL policy</span><span>Verification commands</span></div>
+<p>Luồng trên giúp case có điểm bắt đầu và điểm kết thúc rõ ràng: nguồn dữ liệu sinh event, hệ thống xử lý/correlation và analyst đưa kết luận dựa trên bằng chứng.</p>
+</section>
+<section class="report-section" id="4">
+<div class="section-kicker">04 · Detection design</div>
+<h2>Detection / Analysis Logic</h2>
+<div class="table-wrap"><table><thead><tr><th>Use case</th><th>Condition</th><th>Expected evidence</th><th>MITRE / Analyst mapping</th><th>False-positive consideration</th></tr></thead><tbody><tr><td>Addressing</td><td>IP/mask/gateway đúng network.</td><td>Address table, ping test.</td><td>Foundation</td><td>Sai mask hoặc gateway.</td></tr><tr><td>Switching</td><td>VLAN và access port đúng.</td><td>show vlan brief, show interfaces status.</td><td>Segmentation</td><td>Cắm sai port hoặc VLAN thiếu.</td></tr><tr><td>Routing</td><td>Route đến remote network tồn tại.</td><td>show ip route, traceroute.</td><td>Connectivity</td><td>Default route thiếu.</td></tr><tr><td>ACL</td><td>Rule permit/deny đúng yêu cầu.</td><td>show access-lists, hit count.</td><td>Policy Control</td><td>Sai thứ tự rule.</td></tr></tbody></table></div>
+</section>
+<section class="report-section" id="5">
+<div class="section-kicker">05 · Triage process</div>
+<h2>Investigation Workflow</h2>
+<ol><li>Đọc yêu cầu host/subnet.</li><li>Thiết kế addressing table trước khi cấu hình.</li><li>Cấu hình thiết bị theo từng lớp: host, switch, router, ACL.</li><li>Verify từng bước bằng command evidence.</li><li>Ghi troubleshooting notes nếu ping/traceroute thất bại.</li></ol>
+</section>
+<section class="report-section" id="6">
+<div class="section-kicker">06 · Evidence model</div>
+<h2>Evidence Collected / Required</h2>
+<div class="table-wrap"><table><thead><tr><th>Evidence</th><th>What it proves</th><th>Analyst value</th></tr></thead><tbody><tr><td>Addressing table</td><td>IP/mask/gateway.</td><td>Nền tảng cấu hình.</td></tr><tr><td>Running config excerpt</td><td>Interface, route, ACL.</td><td>Chứng minh cấu hình.</td></tr><tr><td>Ping/traceroute</td><td>Kết nối thành công/thất bại.</td><td>Xác minh end-to-end.</td></tr><tr><td>Show command</td><td>Output kiểm tra VLAN/route/ACL.</td><td>Hỗ trợ troubleshooting.</td></tr></tbody></table></div>
+</section>
+<section class="report-section" id="7">
+<div class="section-kicker">07 · Findings</div>
+<h2>Key Findings</h2>
+<ul><li>Thiết kế IP trước giúp giảm lỗi cấu hình.</li><li>Troubleshooting cần đi theo lớp: physical → VLAN → IP → route → ACL.</li><li>Network foundation hỗ trợ rất nhiều khi điều tra alert có source/destination phức tạp.</li></ul>
+</section>
+<section class="report-section" id="8">
+<div class="section-kicker">08 · Response</div>
+<h2>Recommendations</h2>
+<ul><li>Mỗi lab nên lưu addressing table và verification output.</li><li>Ghi rõ lỗi gặp phải và nguyên nhân để thể hiện tư duy troubleshooting.</li><li>Liên hệ lab network với use case security như segmentation và ACL.</li></ul>
+</section>
+<section class="report-section" id="9">
+<div class="section-kicker">09 · Continuous improvement</div>
+<h2>Limitations &amp; Next Improvements</h2>
+<ul><li>Thêm lab OSPF, DHCP, NAT và inter-VLAN routing.</li><li>Mô phỏng firewall rule và network segmentation.</li><li>Tạo sơ đồ topology rõ ràng cho từng case.</li></ul>
+<div class="callout warn"><b>Quality note:</b> Kết luận trong report luôn bám vào dữ liệu hiện có; nếu thiếu log hoặc thiếu context, phần limitation được ghi rõ để giữ tính chính xác của case.</div>
+</section>
+</div>
+</section>
 </main>
 <footer>
-  <div class="container">© 2026 Khánh Linh · SOC Analyst Portfolio · Built for GitHub Pages</div>
+<div class="container">© 2026 Khánh Linh · Learning Journey &amp; Security Portfolio · Built for GitHub Pages</div>
 </footer>
 <script src="../assets/app.js"></script>
 </body>

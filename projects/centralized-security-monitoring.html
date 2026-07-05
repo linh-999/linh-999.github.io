@@ -1,107 +1,108 @@
 <!DOCTYPE html>
+
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Centralized Security Monitoring System | Khánh Linh</title>
-  <meta name="description" content="SOC portfolio case report: Centralized Security Monitoring System" />
-  <link rel="stylesheet" href="../assets/style.css" />
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Centralized Security Monitoring System | Khánh Linh</title>
+<meta content="SOC portfolio case report: Centralized Security Monitoring System" name="description"/>
+<link href="../assets/style.css" rel="stylesheet"/>
 </head>
 <body>
 <header>
-  <div class="container">
-    <nav>
-      <a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
-      <div class="nav-links">
-        <a href="../index.html#profile">Profile</a>
-        <a href="../index.html#projects">Projects</a>
-        <a href="../index.html#casefiles">Case Files</a>
-        <a href="../index.html#workflow">SOC Workflow</a>
-        <a href="../index.html#writeups">Write-ups</a>
-        <a href="../index.html#skills">Skills</a>
-        <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
-      </div>
-    </nav>
-  </div>
+<div class="container">
+<nav>
+<a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
+<div class="nav-links">
+<a href="../index.html#profile">Hành trình</a>
+<a href="../index.html#projects">Dự án</a>
+<a href="../index.html#casefiles">Bài lab</a>
+<a href="../index.html#workflow">Cách mình học</a>
+<a href="../index.html#writeups">Ghi chú</a>
+<a href="../index.html#skills">Kỹ năng</a>
+<a class="nav-cta" href="https://github.com/linh-999" rel="noopener noreferrer" target="_blank">GitHub</a>
+</div>
+</nav>
+</div>
 </header>
 <main class="container">
-  <section class="page-hero">
-    <div class="breadcrumb"><a href="../index.html">Home</a> / Projects / Centralized Security Monitoring System</div>
-    <div class="eyebrow"><span class="pulse"></span> Sep 2025 – Oct 2025 · SIEM Engineering Lab</div>
-    <h1 class="page-title">Centralized Security Monitoring System</h1>
-    <p class="lead">Thiết kế một pipeline giám sát bảo mật tập trung để chuyển cảnh báo network-level thành case triage có cấu trúc. Project không dừng ở việc cài Snort/ELK, mà tập trung vào cách analyst đọc alert, kiểm tra raw event, xác định source/destination, so sánh với baseline lab và đưa verdict có bằng chứng.</p>
-    <div class="mini-tags"><span>Snort IDS</span><span>ELK Stack</span><span>Filebeat</span><span>Kibana</span><span>Alert Triage</span><span>Rule Tuning</span></div>
-  </section>
-  <section class="report-layout">
-    <aside class="sidebar">
-      <div class="panel">
-        <p class="meta">Case metadata</p>
-        <div class="info-grid" style="grid-template-columns:1fr">
-          <div class="info-box"><span>Priority</span><b>High learning value</b></div>
-          <div class="info-box"><span>Status</span><b>Report-ready lab</b></div>
-          <div class="info-box"><span>Role</span><b>SOC Analyst / SIEM Operator</b></div>
-          <div class="info-box"><span>Analyst value</span><b>Chứng minh khả năng hiểu luồng log end-to-end và trình bày một SIEM use case theo ngôn ngữ vận hành SOC.</b></div>
-        </div>
-      </div>
-      <div class="panel" style="margin-top:16px">
-        <p class="meta">On this page</p>
-        <div class="toc"><a href="#1">Executive Summary</a><a href="#2">Objective & Scope</a><a href="#3">Architecture</a><a href="#4">Detection Logic</a><a href="#5">Investigation Workflow</a><a href="#6">Evidence</a><a href="#7">Findings</a><a href="#8">Recommendations</a><a href="#9">Next Improvements</a></div>
-      </div>
-    </aside>
-    <div>
-      <section class="report-section" id="1">
-        <div class="section-kicker">01 · Executive Summary</div>
-        <h2>Executive Summary</h2>
-        <p>Thiết kế một pipeline giám sát bảo mật tập trung để chuyển cảnh báo network-level thành case triage có cấu trúc. Project không dừng ở việc cài Snort/ELK, mà tập trung vào cách analyst đọc alert, kiểm tra raw event, xác định source/destination, so sánh với baseline lab và đưa verdict có bằng chứng.</p>
-        <div class="callout"><b>Security operations value:</b> Chứng minh khả năng hiểu luồng log end-to-end và trình bày một SIEM use case theo ngôn ngữ vận hành SOC.</div>
-      </section>
-      <section class="report-section" id="2">
-        <div class="section-kicker">02 · Scope</div>
-        <h2>Objective & Scope</h2>
-        <ul><li>Thiết kế luồng thu thập alert từ sensor về dashboard tập trung.</li><li>Xây dựng use case phát hiện port scanning, SSH brute force, suspicious outbound traffic và high-volume connection.</li><li>Chuẩn hóa format report gồm timestamp, source, destination, evidence, verdict và recommended action.</li><li>Ghi rõ điểm giới hạn khi thiếu endpoint telemetry hoặc threat intelligence.</li></ul>
-      </section>
-      <section class="report-section" id="3">
-        <div class="section-kicker">03 · Data flow</div>
-        <h2>Architecture / Data Flow</h2>
-        <div class="flow"><span>Traffic source / endpoint lab</span><span>Snort IDS sensor</span><span>Filebeat log shipper</span><span>Elasticsearch index</span><span>Kibana dashboard</span><span>SOC analyst triage</span></div>
-        <p>Luồng trên giúp case có điểm bắt đầu và điểm kết thúc rõ ràng: nguồn dữ liệu sinh event, hệ thống xử lý/correlation và analyst đưa kết luận dựa trên bằng chứng.</p>
-      </section>
-      <section class="report-section" id="4">
-        <div class="section-kicker">04 · Detection design</div>
-        <h2>Detection / Analysis Logic</h2>
-        <div class="table-wrap"><table><thead><tr><th>Use case</th><th>Condition</th><th>Expected evidence</th><th>MITRE / Analyst mapping</th><th>False-positive consideration</th></tr></thead><tbody><tr><td>Port scanning</td><td>Nhiều destination port được truy cập trong thời gian ngắn từ cùng một source.</td><td>Snort alert volume, destination port distribution, time range spike.</td><td>Reconnaissance / Discovery</td><td>Scanner nội bộ hoặc hoạt động kiểm thử hợp lệ.</td></tr><tr><td>SSH brute force</td><td>Nhiều kết nối/attempt tới TCP/22 với pattern lặp lại.</td><td>Alert count theo source IP, destination host và protocol.</td><td>Credential Access</td><td>Admin nhập sai mật khẩu nhiều lần hoặc scanner được cấp phép.</td></tr><tr><td>Suspicious outbound</td><td>Host nội bộ kết nối tới IP/port không phổ biến so với baseline.</td><td>Source host, external IP, port, byte count, time correlation.</td><td>Command and Control</td><td>Dịch vụ cloud hợp lệ chưa được đưa vào allowlist.</td></tr><tr><td>Potential DoS</td><td>Spike traffic bất thường so với baseline lab.</td><td>High alert volume, repeated destination, packet/flow pattern.</td><td>Impact</td><td>Stress test hoặc lab traffic hợp lệ.</td></tr></tbody></table></div>
-      </section>
-      <section class="report-section" id="5">
-        <div class="section-kicker">05 · Triage process</div>
-        <h2>Investigation Workflow</h2>
-        <ol><li>Validate alert timestamp và xác định time window cần điều tra.</li><li>Pivot từ dashboard sang raw event để lấy rule SID, source IP, destination IP, port và protocol.</li><li>Kiểm tra scope: một host hay nhiều host, một destination hay nhiều destination.</li><li>Đối chiếu với traffic lab hợp lệ để phân loại true positive, benign test hoặc false positive.</li><li>Ghi verdict kèm confidence, limitation và action: monitor, tune rule, block source hoặc escalate.</li></ol>
-      </section>
-      <section class="report-section" id="6">
-        <div class="section-kicker">06 · Evidence model</div>
-        <h2>Evidence Collected / Required</h2>
-        <div class="table-wrap"><table><thead><tr><th>Evidence</th><th>What it proves</th><th>Analyst value</th></tr></thead><tbody><tr><td>Alert volume</td><td>Số lượng alert tăng trong khung giờ kiểm thử.</td><td>Giúp analyst biết đây là spike có ý nghĩa hay chỉ là event rời rạc.</td></tr><tr><td>Rule match</td><td>Snort rule khớp đúng pattern được thiết kế.</td><td>Giải thích vì sao alert sinh ra thay vì chỉ nhìn severity.</td></tr><tr><td>Network context</td><td>Source/destination/port/protocol được giữ trong raw event.</td><td>Phục vụ truy vết và viết ticket rõ ràng.</td></tr><tr><td>Baseline gap</td><td>Thiếu endpoint process và asset inventory.</td><td>Giúp không phóng đại kết luận khi evidence chưa đủ.</td></tr></tbody></table></div>
-      </section>
-      <section class="report-section" id="7">
-        <div class="section-kicker">07 · Findings</div>
-        <h2>Key Findings</h2>
-        <ul><li>Hệ thống phát hiện tốt các hành vi network-level rõ ràng như scan, brute force và traffic spike.</li><li>Dashboard hỗ trợ ưu tiên alert theo source IP, severity và time range.</li><li>False positive có thể xuất hiện nếu scanner nội bộ hoặc maintenance traffic chưa được allowlist.</li><li>Project thể hiện được vòng đời SIEM use case: data source → rule → alert → triage → tuning.</li></ul>
-      </section>
-      <section class="report-section" id="8">
-        <div class="section-kicker">08 · Response</div>
-        <h2>Recommendations</h2>
-        <ul><li>Bổ sung asset inventory để phân biệt server quan trọng, máy người dùng và máy lab.</li><li>Tích hợp threat intelligence để enrich external IP/domain trước khi kết luận.</li><li>Correlation thêm endpoint log để xác định process/user tạo traffic.</li><li>Duy trì allowlist có owner và thời hạn cho scanner nội bộ hoặc maintenance window.</li></ul>
-      </section>
-      <section class="report-section" id="9">
-        <div class="section-kicker">09 · Continuous improvement</div>
-        <h2>Limitations & Next Improvements</h2>
-        <ul><li>Thêm Zeek/Suricata để tăng network context như DNS, HTTP, TLS và JA3.</li><li>Mapping mỗi use case với MITRE ATT&amp;CK tactic/technique.</li><li>Tạo template ticket tự động từ các trường alert quan trọng.</li><li>Định nghĩa severity dựa trên asset criticality và confidence thay vì chỉ dựa vào rule name.</li></ul>
-        <div class="callout warn"><b>Quality note:</b> Kết luận trong report luôn bám vào dữ liệu hiện có; nếu thiếu log hoặc thiếu context, phần limitation được ghi rõ để giữ tính chính xác của case.</div>
-      </section>
-    </div>
-  </section>
+<section class="page-hero">
+<div class="breadcrumb"><a href="../index.html">Home</a> / Projects / Centralized Security Monitoring System</div>
+<div class="eyebrow"><span class="pulse"></span> Sep 2025 – Oct 2025 · SIEM Engineering Lab</div>
+<h1 class="page-title">Centralized Security Monitoring System</h1>
+<p class="lead">Thiết kế một pipeline giám sát bảo mật tập trung để chuyển cảnh báo network-level thành case triage có cấu trúc. Project không dừng ở việc cài Snort/ELK, mà tập trung vào cách analyst đọc alert, kiểm tra raw event, xác định source/destination, so sánh với baseline lab và đưa verdict có bằng chứng.</p>
+<div class="mini-tags"><span>Snort IDS</span><span>ELK Stack</span><span>Filebeat</span><span>Kibana</span><span>Alert Triage</span><span>Rule Tuning</span></div>
+</section>
+<section class="report-layout">
+<aside class="sidebar">
+<div class="panel">
+<p class="meta">Case metadata</p>
+<div class="info-grid" style="grid-template-columns:1fr">
+<div class="info-box"><span>Priority</span><b>High learning value</b></div>
+<div class="info-box"><span>Status</span><b>Report-ready lab</b></div>
+<div class="info-box"><span>Role</span><b>SOC Analyst / SIEM Operator</b></div>
+<div class="info-box"><span>Analyst value</span><b>Chứng minh khả năng hiểu luồng log end-to-end và trình bày một SIEM use case theo ngôn ngữ vận hành SOC.</b></div>
+</div>
+</div>
+<div class="panel" style="margin-top:16px">
+<p class="meta">On this page</p>
+<div class="toc"><a href="#1">Executive Summary</a><a href="#2">Objective &amp; Scope</a><a href="#3">Architecture</a><a href="#4">Detection Logic</a><a href="#5">Investigation Workflow</a><a href="#6">Evidence</a><a href="#7">Findings</a><a href="#8">Recommendations</a><a href="#9">Next Improvements</a></div>
+</div>
+</aside>
+<div>
+<section class="report-section" id="1">
+<div class="section-kicker">01 · Executive Summary</div>
+<h2>Executive Summary</h2>
+<p>Thiết kế một pipeline giám sát bảo mật tập trung để chuyển cảnh báo network-level thành case triage có cấu trúc. Project không dừng ở việc cài Snort/ELK, mà tập trung vào cách analyst đọc alert, kiểm tra raw event, xác định source/destination, so sánh với baseline lab và đưa verdict có bằng chứng.</p>
+<div class="callout"><b>Security operations value:</b> Chứng minh khả năng hiểu luồng log end-to-end và trình bày một SIEM use case theo ngôn ngữ vận hành SOC.</div>
+</section>
+<section class="report-section" id="2">
+<div class="section-kicker">02 · Scope</div>
+<h2>Objective &amp; Scope</h2>
+<ul><li>Thiết kế luồng thu thập alert từ sensor về dashboard tập trung.</li><li>Xây dựng use case phát hiện port scanning, SSH brute force, suspicious outbound traffic và high-volume connection.</li><li>Chuẩn hóa format report gồm timestamp, source, destination, evidence, verdict và recommended action.</li><li>Ghi rõ điểm giới hạn khi thiếu endpoint telemetry hoặc threat intelligence.</li></ul>
+</section>
+<section class="report-section" id="3">
+<div class="section-kicker">03 · Data flow</div>
+<h2>Architecture / Data Flow</h2>
+<div class="flow"><span>Traffic source / endpoint lab</span><span>Snort IDS sensor</span><span>Filebeat log shipper</span><span>Elasticsearch index</span><span>Kibana dashboard</span><span>SOC analyst triage</span></div>
+<p>Luồng trên giúp case có điểm bắt đầu và điểm kết thúc rõ ràng: nguồn dữ liệu sinh event, hệ thống xử lý/correlation và analyst đưa kết luận dựa trên bằng chứng.</p>
+</section>
+<section class="report-section" id="4">
+<div class="section-kicker">04 · Detection design</div>
+<h2>Detection / Analysis Logic</h2>
+<div class="table-wrap"><table><thead><tr><th>Use case</th><th>Condition</th><th>Expected evidence</th><th>MITRE / Analyst mapping</th><th>False-positive consideration</th></tr></thead><tbody><tr><td>Port scanning</td><td>Nhiều destination port được truy cập trong thời gian ngắn từ cùng một source.</td><td>Snort alert volume, destination port distribution, time range spike.</td><td>Reconnaissance / Discovery</td><td>Scanner nội bộ hoặc hoạt động kiểm thử hợp lệ.</td></tr><tr><td>SSH brute force</td><td>Nhiều kết nối/attempt tới TCP/22 với pattern lặp lại.</td><td>Alert count theo source IP, destination host và protocol.</td><td>Credential Access</td><td>Admin nhập sai mật khẩu nhiều lần hoặc scanner được cấp phép.</td></tr><tr><td>Suspicious outbound</td><td>Host nội bộ kết nối tới IP/port không phổ biến so với baseline.</td><td>Source host, external IP, port, byte count, time correlation.</td><td>Command and Control</td><td>Dịch vụ cloud hợp lệ chưa được đưa vào allowlist.</td></tr><tr><td>Potential DoS</td><td>Spike traffic bất thường so với baseline lab.</td><td>High alert volume, repeated destination, packet/flow pattern.</td><td>Impact</td><td>Stress test hoặc lab traffic hợp lệ.</td></tr></tbody></table></div>
+</section>
+<section class="report-section" id="5">
+<div class="section-kicker">05 · Triage process</div>
+<h2>Investigation Workflow</h2>
+<ol><li>Validate alert timestamp và xác định time window cần điều tra.</li><li>Pivot từ dashboard sang raw event để lấy rule SID, source IP, destination IP, port và protocol.</li><li>Kiểm tra scope: một host hay nhiều host, một destination hay nhiều destination.</li><li>Đối chiếu với traffic lab hợp lệ để phân loại true positive, benign test hoặc false positive.</li><li>Ghi verdict kèm confidence, limitation và action: monitor, tune rule, block source hoặc escalate.</li></ol>
+</section>
+<section class="report-section" id="6">
+<div class="section-kicker">06 · Evidence model</div>
+<h2>Evidence Collected / Required</h2>
+<div class="table-wrap"><table><thead><tr><th>Evidence</th><th>What it proves</th><th>Analyst value</th></tr></thead><tbody><tr><td>Alert volume</td><td>Số lượng alert tăng trong khung giờ kiểm thử.</td><td>Giúp analyst biết đây là spike có ý nghĩa hay chỉ là event rời rạc.</td></tr><tr><td>Rule match</td><td>Snort rule khớp đúng pattern được thiết kế.</td><td>Giải thích vì sao alert sinh ra thay vì chỉ nhìn severity.</td></tr><tr><td>Network context</td><td>Source/destination/port/protocol được giữ trong raw event.</td><td>Phục vụ truy vết và viết ticket rõ ràng.</td></tr><tr><td>Baseline gap</td><td>Thiếu endpoint process và asset inventory.</td><td>Giúp không phóng đại kết luận khi evidence chưa đủ.</td></tr></tbody></table></div>
+</section>
+<section class="report-section" id="7">
+<div class="section-kicker">07 · Findings</div>
+<h2>Key Findings</h2>
+<ul><li>Hệ thống phát hiện tốt các hành vi network-level rõ ràng như scan, brute force và traffic spike.</li><li>Dashboard hỗ trợ ưu tiên alert theo source IP, severity và time range.</li><li>False positive có thể xuất hiện nếu scanner nội bộ hoặc maintenance traffic chưa được allowlist.</li><li>Project thể hiện được vòng đời SIEM use case: data source → rule → alert → triage → tuning.</li></ul>
+</section>
+<section class="report-section" id="8">
+<div class="section-kicker">08 · Response</div>
+<h2>Recommendations</h2>
+<ul><li>Bổ sung asset inventory để phân biệt server quan trọng, máy người dùng và máy lab.</li><li>Tích hợp threat intelligence để enrich external IP/domain trước khi kết luận.</li><li>Correlation thêm endpoint log để xác định process/user tạo traffic.</li><li>Duy trì allowlist có owner và thời hạn cho scanner nội bộ hoặc maintenance window.</li></ul>
+</section>
+<section class="report-section" id="9">
+<div class="section-kicker">09 · Continuous improvement</div>
+<h2>Limitations &amp; Next Improvements</h2>
+<ul><li>Thêm Zeek/Suricata để tăng network context như DNS, HTTP, TLS và JA3.</li><li>Mapping mỗi use case với MITRE ATT&amp;CK tactic/technique.</li><li>Tạo template ticket tự động từ các trường alert quan trọng.</li><li>Định nghĩa severity dựa trên asset criticality và confidence thay vì chỉ dựa vào rule name.</li></ul>
+<div class="callout warn"><b>Quality note:</b> Kết luận trong report luôn bám vào dữ liệu hiện có; nếu thiếu log hoặc thiếu context, phần limitation được ghi rõ để giữ tính chính xác của case.</div>
+</section>
+</div>
+</section>
 </main>
 <footer>
-  <div class="container">© 2026 Khánh Linh · SOC Analyst Portfolio · Built for GitHub Pages</div>
+<div class="container">© 2026 Khánh Linh · Learning Journey &amp; Security Portfolio · Built for GitHub Pages</div>
 </footer>
 <script src="../assets/app.js"></script>
 </body>

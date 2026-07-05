@@ -1,28 +1,29 @@
 <!DOCTYPE html>
+
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CCNA VLSM Design &amp; Verification | Khánh Linh</title>
-  <meta name="description" content="Technical write-up: CCNA VLSM Design &amp; Verification" />
-  <link rel="stylesheet" href="../assets/style.css" />
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CCNA VLSM Design &amp; Verification | Khánh Linh</title>
+<meta content="Technical write-up: CCNA VLSM Design &amp; Verification" name="description"/>
+<link href="../assets/style.css" rel="stylesheet"/>
 </head>
 <body>
 <header>
-  <div class="container">
-    <nav>
-      <a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
-      <div class="nav-links">
-        <a href="../index.html#profile">Profile</a>
-        <a href="../index.html#projects">Projects</a>
-        <a href="../index.html#casefiles">Case Files</a>
-        <a href="../index.html#workflow">SOC Workflow</a>
-        <a href="../index.html#writeups">Write-ups</a>
-        <a href="../index.html#skills">Skills</a>
-        <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
-      </div>
-    </nav>
-  </div>
+<div class="container">
+<nav>
+<a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
+<div class="nav-links">
+<a href="../index.html#profile">Hành trình</a>
+<a href="../index.html#projects">Dự án</a>
+<a href="../index.html#casefiles">Bài lab</a>
+<a href="../index.html#workflow">Cách mình học</a>
+<a href="../index.html#writeups">Ghi chú</a>
+<a href="../index.html#skills">Kỹ năng</a>
+<a class="nav-cta" href="https://github.com/linh-999" rel="noopener noreferrer" target="_blank">GitHub</a>
+</div>
+</nav>
+</div>
 </header>
 <main class="container">
 <section class="page-hero">
@@ -35,7 +36,7 @@
 <section class="report-layout">
 <aside class="sidebar"><div class="panel"><p class="meta">Write-up type</p><div class="info-grid" style="grid-template-columns:1fr"><div class="info-box"><span>Focus</span><b>Network Foundation Write-up</b></div><div class="info-box"><span>Role</span><b>SOC / Security Operations Learner</b></div><div class="info-box"><span>Status</span><b>Complete technical note</b></div></div></div><div class="panel" style="margin-top:16px"><p class="meta">On this page</p><div class="toc"><a href="#s1">Design approach</a><a href="#s2">Verification</a><a href="#s3">Common mistakes</a><a href="#s4">SOC relevance</a></div></div></aside>
 <div><section class="report-section" id="s1"><div class="section-kicker">01 · Notes</div><h2>Design approach</h2><ul><li>Sắp xếp LAN theo số host từ lớn đến nhỏ.</li><li>Chọn subnet mask đủ host và không chồng lấn.</li><li>Ghi network address, first usable, last usable, broadcast và gateway.</li></ul></section><section class="report-section" id="s2"><div class="section-kicker">02 · Notes</div><h2>Verification</h2><ul><li>Kiểm tra IP/mask/gateway trên PC.</li><li>Dùng ping đến default gateway trước khi ping remote network.</li><li>Dùng show ip interface brief và show ip route trên router.</li></ul></section><section class="report-section" id="s3"><div class="section-kicker">03 · Notes</div><h2>Common mistakes</h2><ul><li>Đặt gateway không nằm trong subnet của host.</li><li>Dùng nhầm mask giữa các LAN.</li><li>Quên no shutdown hoặc thiếu route giữa router.</li></ul></section><section class="report-section" id="s4"><div class="section-kicker">04 · Notes</div><h2>SOC relevance</h2><ul><li>Hiểu subnet giúp analyst xác định host thuộc VLAN/site nào.</li><li>Giúp phân biệt internal traffic, inter-VLAN traffic và outbound traffic khi đọc log.</li></ul></section></div></section></main><footer>
-  <div class="container">© 2026 Khánh Linh · SOC Analyst Portfolio · Built for GitHub Pages</div>
+<div class="container">© 2026 Khánh Linh · Learning Journey &amp; Security Portfolio · Built for GitHub Pages</div>
 </footer>
 <script src="../assets/app.js"></script>
 </body>
