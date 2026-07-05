@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Remote Administration &amp; Site-to-Site VPN Lab | Khánh Linh</title>
+  <meta name="description" content="Technical portfolio report: Remote Administration &amp; Site-to-Site VPN Lab"/>
+  <link rel="stylesheet" href="../assets/style.css"/>
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav>
+      <a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
+      <button class="nav-toggle" aria-label="Mở menu">☰</button>
+      <div class="nav-links">
+        <a href="../index.html#profile">Hành trình</a>
+        <a href="../index.html#projects">Dự án</a>
+        <a href="../index.html#casefiles">Lab cases</a>
+        <a href="../index.html#workflow">Cách học</a>
+        <a href="../index.html#skills">Kỹ năng</a>
+        <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<main class="container">
+  <section class="page-hero">
+    <div class="breadcrumb"><a href="../index.html">Home</a> / Projects / Remote Administration &amp; Site-to-Site VPN Lab</div>
+    <div class="eyebrow"><span class="pulse"></span> May 2026 · Network Security Monitoring</div>
+    <h1 class="page-title">Remote Administration &amp; Site-to-Site VPN Lab</h1>
+    <p class="lead">Lab mô phỏng doanh nghiệp HQ gồm nhiều tòa nhà và một chi nhánh. Mục tiêu là triển khai phân đoạn mạng, quản trị từ xa an toàn, DMZ, NAT, hardening access switch và IPSec VPN site-to-site giữa HQ và Branch.</p>
+    <div class="mini-tags"><span>VLAN/VTP/Trunk</span><span>EtherChannel</span><span>NAT/PAT</span><span>DMZ</span><span>SSH</span><span>IPSec VPN</span><span>RADIUS</span></div>
+  </section>
+  <section class="report-layout">
+    <aside class="sidebar">
+      <div class="panel"><p class="meta">Case metadata</p><div class="info-grid" style="grid-template-columns:1fr"><div class="info-box"><span>Priority</span><b>High relevance</b></div><div class="info-box"><span>Status</span><b>Lab case</b></div><div class="info-box"><span>Role</span><b>Network Security / SOC Monitoring</b></div><div class="info-box"><span>Source project</span><b>NSMS Lab 01 · 2026</b></div></div></div>
+      <div class="panel" style="margin-top:16px"><p class="meta">On this page</p><div class="toc"><a href="#1">Executive Summary</a><a href="#2">Network Scenario</a><a href="#3">Technical Scope</a><a href="#4">Traffic Flow</a><a href="#5">Verification Checklist</a><a href="#6">SOC/NOC Monitoring Angle</a><a href="#7">Findings</a><a href="#8">Recommendations</a></div></div>
+    </aside>
+    <div><section class="report-section" id="1"><div class="section-kicker">01 · summary</div><h2>Executive Summary</h2><p>Lab phù hợp để đưa vào portfolio vì bám sát vận hành mạng thật: phân đoạn mạng, xuất bản dịch vụ DMZ, quản trị tập trung, hardening access layer và kết nối site-to-site VPN.</p></section>
+<section class="report-section" id="2"><div class="section-kicker">02 · scenario</div><h2>Network Scenario</h2><ul><li>HQ có 3 tòa nhà và một chi nhánh Branch.</li><li>Ứng dụng nội bộ đặt tại HQ, chi nhánh truy cập qua VPN site-to-site.</li><li>Dịch vụ Web/Mail được publish qua Static NAT ở vùng DMZ.</li><li>Người dùng nội bộ truy cập Internet qua NAT Overload/PAT.</li></ul></section>
+<section class="report-section" id="3"><div class="section-kicker">03 · scope</div><h2>Technical Scope</h2><div class="table-wrap"><table><thead><tr><th>Component</th><th>Configuration goal</th><th>Security value</th></tr></thead><tbody><tr><td>VLAN/VTP/Trunk</td><td>Tách Servers, Users, DMZ, Management.</td><td>Giảm broadcast domain và chia vùng tin cậy.</td></tr><tr><td>EtherChannel</td><td>Gộp uplink giữa switch.</td><td>Tăng bandwidth/dự phòng.</td></tr><tr><td>Routing</td><td>OSPF/EIGRP tùy thiết kế.</td><td>Đảm bảo các VLAN/site liên lạc đúng.</td></tr><tr><td>NAT</td><td>PAT cho user, Static NAT cho Web/Mail.</td><td>Kiểm soát publish dịch vụ.</td></tr><tr><td>Hardening</td><td>DHCP Snooping, Port Security, shutdown unused ports.</td><td>Giảm rủi ro rogue DHCP/MAC flooding.</td></tr><tr><td>VPN</td><td>IPSec tunnel HQ ↔ Branch.</td><td>Bảo vệ traffic site-to-site.</td></tr></tbody></table></div></section>
+<section class="report-section" id="4"><div class="section-kicker">04 · flow</div><h2>Traffic Flow</h2><div class="flow"><span>Branch LAN</span><span>Branch edge</span><span>IPSec tunnel</span><span>HQ edge firewall</span><span>Core/DMZ/Server VLAN</span><span>Internal services</span></div><p>Điểm cần chú ý là ACL/NAT exemption để traffic VPN không bị NAT sai trước khi mã hóa.</p></section>
+<section class="report-section" id="5"><div class="section-kicker">05 · checklist</div><h2>Verification Checklist</h2><ul><li>Ping/inter-VLAN theo policy cho phép.</li><li>SSH chỉ truy cập từ Management VLAN.</li><li>NAT Overload hoạt động cho user Internet.</li><li>Static NAT publish Web/Mail đúng IP public.</li><li>VPN tunnel up, phase 1/phase 2 ổn định, traffic được mã hóa.</li><li>DHCP/DNS hoạt động xuyên VLAN theo thiết kế.</li></ul></section>
+<section class="report-section" id="6"><div class="section-kicker">06 · monitoring</div><h2>SOC/NOC Monitoring Angle</h2><ul><li>Monitor trạng thái VPN tunnel và số byte mã hóa/giải mã.</li><li>Alert khi có cấu hình port-security violation hoặc DHCP Snooping drop.</li><li>Theo dõi firewall deny log giữa VLAN để phát hiện truy cập trái phép.</li><li>Dashboard cho NAT/VPN/DMZ service availability.</li></ul></section>
+<section class="report-section" id="7"><div class="section-kicker">07 · findings</div><h2>Findings</h2><div class="callout good"><b>Learning value:</b> Lab này cho thấy bảo mật mạng không tách rời vận hành. NAT, routing, VLAN và VPN phải khớp nhau thì hệ thống vừa chạy được, vừa kiểm soát được rủi ro.</div></section>
+<section class="report-section" id="8"><div class="section-kicker">08 · recommendations</div><h2>Recommendations</h2><ul><li>Viết runbook troubleshooting cho VPN down/NAT conflict/inter-VLAN fail.</li><li>Đặt naming convention rõ cho VLAN, ACL và object firewall.</li><li>Lưu cấu hình phiên bản và ghi chú thay đổi.</li><li>Bổ sung syslog/SNMP/NetFlow về hệ thống giám sát tập trung.</li></ul></section>
+</div>
+  </section>
+</main>
+<footer>
+  <div class="container">© 2026 Khánh Linh · Security Learning Portfolio · Built for GitHub Pages</div>
+</footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

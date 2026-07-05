@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Voice Controlled Robot using STM32 &amp; Bluetooth | Khánh Linh</title>
+  <meta name="description" content="Technical portfolio report: Voice Controlled Robot using STM32 &amp; Bluetooth"/>
+  <link rel="stylesheet" href="../assets/style.css"/>
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav>
+      <a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
+      <button class="nav-toggle" aria-label="Mở menu">☰</button>
+      <div class="nav-links">
+        <a href="../index.html#profile">Hành trình</a>
+        <a href="../index.html#projects">Dự án</a>
+        <a href="../index.html#casefiles">Lab cases</a>
+        <a href="../index.html#workflow">Cách học</a>
+        <a href="../index.html#skills">Kỹ năng</a>
+        <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<main class="container">
+  <section class="page-hero">
+    <div class="breadcrumb"><a href="../index.html">Home</a> / Projects / Voice Controlled Robot using STM32 &amp; Bluetooth</div>
+    <div class="eyebrow"><span class="pulse"></span> Dec 2025 · Embedded / IoT Engineering</div>
+    <h1 class="page-title">Voice Controlled Robot using STM32 &amp; Bluetooth</h1>
+    <p class="lead">Dự án hệ thống nhúng xây dựng robot điều khiển bằng giọng nói sử dụng STM32F103C8T6, Bluetooth, điều khiển động cơ và các khối phần cứng/phần mềm liên quan. Đây không phải project bảo mật chính, nhưng được đưa vào portfolio để thể hiện nền tảng embedded/IoT và tư duy hệ thống.</p>
+    <div class="mini-tags"><span>STM32F103C8T6</span><span>Bluetooth</span><span>PWM</span><span>DFPlayer Mini</span><span>Odometry</span><span>Embedded System</span></div>
+  </section>
+  <section class="report-layout">
+    <aside class="sidebar">
+      <div class="panel"><p class="meta">Case metadata</p><div class="info-grid" style="grid-template-columns:1fr"><div class="info-box"><span>Priority</span><b>Medium</b></div><div class="info-box"><span>Status</span><b>Engineering side project</b></div><div class="info-box"><span>Role</span><b>Embedded / IoT learner</b></div><div class="info-box"><span>Source project</span><b>Hệ thống nhúng · 2025</b></div></div></div>
+      <div class="panel" style="margin-top:16px"><p class="meta">On this page</p><div class="toc"><a href="#1">Executive Summary</a><a href="#2">System Architecture</a><a href="#3">Technical Components</a><a href="#4">Testing Approach</a><a href="#5">Security Angle</a><a href="#6">Portfolio Value</a></div></div>
+    </aside>
+    <div><section class="report-section" id="1"><div class="section-kicker">01 · summary</div><h2>Executive Summary</h2><p>Project tập trung vào thiết kế robot di động điều khiển bằng giọng nói. Khi đưa vào portfolio security, giá trị chính là nền tảng IoT/embedded: giao tiếp không dây, điều khiển thiết bị, reliability testing và khả năng đọc hệ thống phần cứng/phần mềm.</p></section>
+<section class="report-section" id="2"><div class="section-kicker">02 · architecture</div><h2>System Architecture</h2><div class="flow"><span>Voice command</span><span>Mobile/Bluetooth module</span><span>STM32 controller</span><span>Motor driver / PWM</span><span>Sensors / feedback</span><span>Robot movement</span></div><p>STM32 đóng vai trò trung tâm, nhận lệnh qua Bluetooth, xử lý logic điều khiển và xuất tín hiệu tới động cơ/thiết bị ngoại vi.</p></section>
+<section class="report-section" id="3"><div class="section-kicker">03 · components</div><h2>Technical Components</h2><div class="table-wrap"><table><thead><tr><th>Component</th><th>Role</th><th>Learning value</th></tr></thead><tbody><tr><td>STM32 Blue Pill</td><td>Vi điều khiển ARM xử lý logic chính.</td><td>Nền tảng firmware/embedded.</td></tr><tr><td>Bluetooth module</td><td>Nhận lệnh điều khiển không dây.</td><td>Hiểu giao tiếp wireless/IoT.</td></tr><tr><td>Motor control / PWM</td><td>Điều khiển tốc độ/hướng động cơ.</td><td>Real-time control basics.</td></tr><tr><td>DFPlayer Mini</td><td>Phản hồi âm thanh.</td><td>Peripheral integration.</td></tr><tr><td>Odometry concept</td><td>Theo dõi chuyển động/định vị.</td><td>Hệ thống cảm biến và thuật toán.</td></tr></tbody></table></div></section>
+<section class="report-section" id="4"><div class="section-kicker">04 · testing</div><h2>Testing Approach</h2><ul><li>Kiểm thử nhận lệnh giọng nói và mapping sang hành động.</li><li>Kiểm thử Bluetooth pairing/range trong môi trường trong nhà.</li><li>Kiểm thử PWM/motor response và độ ổn định nguồn.</li><li>Ghi nhận limitation về nhận diện giọng nói và nhiễu môi trường.</li></ul></section>
+<section class="report-section" id="5"><div class="section-kicker">05 · security</div><h2>Security Angle</h2><ul><li>IoT/embedded device cần kiểm soát pairing Bluetooth và quyền điều khiển.</li><li>Thiết bị điều khiển bằng lệnh cần xác thực hoặc giới hạn nguồn lệnh.</li><li>Log/trạng thái vận hành giúp phát hiện hành vi bất thường.</li><li>Project có thể mở rộng theo hướng IoT security hardening.</li></ul></section>
+<section class="report-section" id="6"><div class="section-kicker">06 · value</div><h2>Portfolio Value</h2><div class="callout"><b>Why include it carefully:</b> Không đặt làm project bảo mật chủ lực, nhưng dùng để chứng minh nền tảng hệ thống, phần cứng, giao tiếp không dây và tư duy engineering.</div></section>
+</div>
+  </section>
+</main>
+<footer>
+  <div class="container">© 2026 Khánh Linh · Security Learning Portfolio · Built for GitHub Pages</div>
+</footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

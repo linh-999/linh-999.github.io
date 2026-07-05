@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Web Application Security Assessment | Khánh Linh</title>
+  <meta name="description" content="Technical portfolio report: Web Application Security Assessment"/>
+  <link rel="stylesheet" href="../assets/style.css"/>
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav>
+      <a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
+      <button class="nav-toggle" aria-label="Mở menu">☰</button>
+      <div class="nav-links">
+        <a href="../index.html#profile">Hành trình</a>
+        <a href="../index.html#projects">Dự án</a>
+        <a href="../index.html#casefiles">Lab cases</a>
+        <a href="../index.html#workflow">Cách học</a>
+        <a href="../index.html#skills">Kỹ năng</a>
+        <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<main class="container">
+  <section class="page-hero">
+    <div class="breadcrumb"><a href="../index.html">Home</a> / Projects / Web Application Security Assessment</div>
+    <div class="eyebrow"><span class="pulse"></span> Apr 2026 · Web/AppSec Project</div>
+    <h1 class="page-title">Web Application Security Assessment</h1>
+    <p class="lead">Phân tích và kiểm thử bảo mật một hệ thống website được xây bằng Spring Boot, Thymeleaf/Bootstrap, JPA/MySQL, JWT, WebSocket, Cloudinary, Google Maps API và VNPAY. Project thể hiện cả năng lực hiểu kiến trúc ứng dụng và năng lực kiểm thử lỗ hổng OWASP.</p>
+    <div class="mini-tags"><span>Spring Boot</span><span>JWT</span><span>WebSocket</span><span>MySQL</span><span>Burp Suite</span><span>OWASP ZAP</span><span>OWASP Top 10</span></div>
+  </section>
+  <section class="report-layout">
+    <aside class="sidebar">
+      <div class="panel"><p class="meta">Case metadata</p><div class="info-grid" style="grid-template-columns:1fr"><div class="info-box"><span>Priority</span><b>Very high</b></div><div class="info-box"><span>Status</span><b>Selected for portfolio</b></div><div class="info-box"><span>Role</span><b>Web Security Analyst / Pentest Intern</b></div><div class="info-box"><span>Source project</span><b>An toàn ứng dụng Web · 2026</b></div></div></div>
+      <div class="panel" style="margin-top:16px"><p class="meta">On this page</p><div class="toc"><a href="#1">Executive Summary</a><a href="#2">System Overview</a><a href="#3">Assessment Scope</a><a href="#4">Testing Workflow</a><a href="#5">Finding Matrix</a><a href="#6">Evidence Standard</a><a href="#7">Recommendations</a><a href="#8">Portfolio Value</a></div></div>
+    </aside>
+    <div><section class="report-section" id="1"><div class="section-kicker">01 · summary</div><h2>Executive Summary</h2><p>Đây là project phù hợp mạnh với hướng Web/AppSec vì có đầy đủ vòng đời: phân tích chức năng, thiết kế database, triển khai ứng dụng, tích hợp dịch vụ ngoài và kiểm thử lỗ hổng. Nội dung được viết lại theo dạng security assessment thay vì chỉ là báo cáo môn học.</p></section>
+<section class="report-section" id="2"><div class="section-kicker">02 · system</div><h2>System Overview</h2><div class="table-wrap"><table><thead><tr><th>Layer</th><th>Components</th><th>Security relevance</th></tr></thead><tbody><tr><td>Frontend</td><td>Thymeleaf, Bootstrap, form/user interaction.</td><td>Kiểm tra input validation, CSRF, clickjacking, XSS.</td></tr><tr><td>Backend</td><td>Spring Boot MVC + Service + Repository.</td><td>Kiểm soát authorization, business logic, API handling.</td></tr><tr><td>Data</td><td>JPA, MySQL, Flyway schema.</td><td>Kiểm tra SQLi, data exposure, migration hygiene.</td></tr><tr><td>Auth</td><td>JWT, roles, password recovery/OTP.</td><td>Kiểm tra auth bypass, token handling, missing authentication.</td></tr><tr><td>Integration</td><td>WebSocket, Cloudinary, Google Maps, VNPAY.</td><td>Kiểm tra origin, upload, API key, payment flow.</td></tr></tbody></table></div></section>
+<section class="report-section" id="3"><div class="section-kicker">03 · scope</div><h2>Assessment Scope</h2><ul><li>Broken Access Control: IDOR, Missing Authentication.</li><li>CSRF và session-sensitive action.</li><li>Security Misconfiguration: file upload, CORS/WebSocket origin, Clickjacking.</li><li>Injection: SQL Injection và Stored XSS.</li><li>Insecure Design và HTTPS/Transport Security hardening.</li></ul></section>
+<section class="report-section" id="4"><div class="section-kicker">04 · workflow</div><h2>Testing Workflow</h2><div class="flow"><span>Map feature & role</span><span>Identify attack surface</span><span>Manual test with Burp</span><span>Automated scan with ZAP</span><span>Validate evidence</span><span>Risk rating</span><span>Fix recommendation</span></div><p>Quy trình nhấn mạnh xác thực bằng evidence thật. Scanner chỉ hỗ trợ gợi ý; kết luận phải dựa trên reproduction, impact và affected role.</p></section>
+<section class="report-section" id="5"><div class="section-kicker">05 · findings</div><h2>Finding Matrix</h2><div class="table-wrap"><table><thead><tr><th>Finding group</th><th>Risk</th><th>Evidence expected</th><th>Remediation direction</th></tr></thead><tbody><tr><td>IDOR / Broken Access Control</td><td>High</td><td>User A truy cập/sửa tài nguyên của User B qua object ID.</td><td>Enforce object-level authorization ở service layer.</td></tr><tr><td>CSRF</td><td>Medium</td><td>Sensitive action thiếu CSRF token hoặc origin validation.</td><td>Enable CSRF protection, SameSite cookie, re-auth for critical actions.</td></tr><tr><td>File Upload</td><td>High</td><td>Upload file không kiểm soát loại/extension/content.</td><td>Validate MIME/content, randomize filename, store outside webroot.</td></tr><tr><td>CORS/WebSocket origin</td><td>Medium</td><td>Origin quá rộng hoặc WebSocket accept origin không kiểm soát.</td><td>Restrict allowed origins and authenticate WebSocket handshake.</td></tr><tr><td>Clickjacking</td><td>Medium</td><td>Thiếu X-Frame-Options/CSP frame-ancestors.</td><td>Set security headers.</td></tr><tr><td>SQLi / Stored XSS</td><td>High</td><td>Payload tác động query/rendered content.</td><td>Parameterized query, output encoding, input validation.</td></tr></tbody></table></div></section>
+<section class="report-section" id="6"><div class="section-kicker">06 · evidence</div><h2>Evidence Standard</h2><div class="table-wrap"><table><thead><tr><th>Evidence</th><th>Minimum requirement</th><th>Why it matters</th></tr></thead><tbody><tr><td>HTTP request/response</td><td>Method, endpoint, parameter, status code.</td><td>Cho thấy lỗ hổng không chỉ là nhận định.</td></tr><tr><td>Role/account context</td><td>User role, object owner, session.</td><td>Chứng minh authorization impact.</td></tr><tr><td>Screenshot/log</td><td>Kết quả trước/sau khi test.</td><td>Dễ trình bày trong report.</td></tr><tr><td>Fix validation</td><td>Retest sau khi vá.</td><td>Đảm bảo remediation hiệu quả.</td></tr></tbody></table></div></section>
+<section class="report-section" id="7"><div class="section-kicker">07 · recommendations</div><h2>Recommendations</h2><ul><li>Đưa authorization check vào service layer thay vì chỉ ẩn nút trên UI.</li><li>Chuẩn hóa security headers: CSP, HSTS, X-Frame-Options/frame-ancestors, X-Content-Type-Options.</li><li>Thiết kế upload pipeline an toàn và scan file nếu có thể.</li><li>Giới hạn CORS/WebSocket theo domain hợp lệ.</li><li>Duy trì checklist OWASP Top 10 cho mỗi release.</li></ul></section>
+<section class="report-section" id="8"><div class="section-kicker">08 · value</div><h2>Portfolio Value</h2><div class="callout good"><b>Why this project stands out:</b> Project này vừa có phần xây dựng hệ thống thật, vừa có phần kiểm thử bảo mật theo OWASP. Đây là nội dung rất phù hợp để trình bày khi ứng tuyển Web Security Intern, SOC Analyst có nhiệm vụ đọc web log/WAF alert hoặc Pentest Intern.</div></section>
+</div>
+  </section>
+</main>
+<footer>
+  <div class="container">© 2026 Khánh Linh · Security Learning Portfolio · Built for GitHub Pages</div>
+</footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Secure Chat with Public-Key Cryptography | Khánh Linh</title>
+  <meta name="description" content="Technical portfolio report: Secure Chat with Public-Key Cryptography"/>
+  <link rel="stylesheet" href="../assets/style.css"/>
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav>
+      <a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
+      <button class="nav-toggle" aria-label="Mở menu">☰</button>
+      <div class="nav-links">
+        <a href="../index.html#profile">Hành trình</a>
+        <a href="../index.html#projects">Dự án</a>
+        <a href="../index.html#casefiles">Lab cases</a>
+        <a href="../index.html#workflow">Cách học</a>
+        <a href="../index.html#skills">Kỹ năng</a>
+        <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<main class="container">
+  <section class="page-hero">
+    <div class="breadcrumb"><a href="../index.html">Home</a> / Projects / Secure Chat with Public-Key Cryptography</div>
+    <div class="eyebrow"><span class="pulse"></span> May 2025 · Cryptography Application</div>
+    <h1 class="page-title">Secure Chat with Public-Key Cryptography</h1>
+    <p class="lead">Ứng dụng chat minh họa cách dùng thuật toán mã hóa khóa công khai trong trao đổi tin nhắn. Project được đưa vào portfolio vì thể hiện nền tảng mật mã, quản lý khóa, luồng gửi/nhận tin và khả năng phát triển giao diện/kiểm thử bảo mật.</p>
+    <div class="mini-tags"><span>RSA</span><span>Public Key Cryptography</span><span>Secure Chat</span><span>Key Management</span><span>UI Development</span></div>
+  </section>
+  <section class="report-layout">
+    <aside class="sidebar">
+      <div class="panel"><p class="meta">Case metadata</p><div class="info-grid" style="grid-template-columns:1fr"><div class="info-box"><span>Priority</span><b>Medium–High</b></div><div class="info-box"><span>Status</span><b>Selected foundation project</b></div><div class="info-box"><span>Role</span><b>Research / UI / Security Testing</b></div><div class="info-box"><span>Source project</span><b>Mật mã ứng dụng · 2025</b></div></div></div>
+      <div class="panel" style="margin-top:16px"><p class="meta">On this page</p><div class="toc"><a href="#1">Executive Summary</a><a href="#2">Security Concept</a><a href="#3">Application Flow</a><a href="#4">Technical Components</a><a href="#5">Limitations</a><a href="#6">Recommendations</a><a href="#7">Portfolio Value</a></div></div>
+    </aside>
+    <div><section class="report-section" id="1"><div class="section-kicker">01 · summary</div><h2>Executive Summary</h2><p>Project nghiên cứu RSA, Merkle-Hellman, ElGamal và xây dựng ứng dụng chat sử dụng mã hóa khóa công khai. Vai trò phù hợp để trình bày là nghiên cứu thuật toán, phát triển giao diện, kiểm thử và đánh giá bảo mật.</p></section>
+<section class="report-section" id="2"><div class="section-kicker">02 · concept</div><h2>Security Concept</h2><ul><li>Khóa công khai dùng để mã hóa hoặc trao đổi thông tin an toàn.</li><li>Khóa riêng được giữ bởi người nhận để giải mã.</li><li>Mô hình giúp giải quyết bài toán chia sẻ khóa trong môi trường không tin cậy.</li><li>Ứng dụng chat là case dễ hiểu để minh họa confidentiality.</li></ul></section>
+<section class="report-section" id="3"><div class="section-kicker">03 · flow</div><h2>Application Flow</h2><div class="flow"><span>User login/register</span><span>Generate/load key pair</span><span>Exchange public key</span><span>Encrypt message</span><span>Send via chat app</span><span>Decrypt with private key</span></div><p>Trong portfolio, luồng này giúp người đọc thấy rõ mật mã được đặt vào ứng dụng như thế nào thay vì chỉ học công thức.</p></section>
+<section class="report-section" id="4"><div class="section-kicker">04 · components</div><h2>Technical Components</h2><div class="table-wrap"><table><thead><tr><th>Component</th><th>Purpose</th><th>Security note</th></tr></thead><tbody><tr><td>SimpleRSA module</td><td>Sinh khóa, mã hóa, giải mã.</td><td>Cần hiểu limitation nếu triển khai production.</td></tr><tr><td>Chat UI</td><td>Đăng nhập, đăng ký, gửi/nhận tin.</td><td>Không hiển thị khóa riêng hoặc thông tin nhạy cảm.</td></tr><tr><td>Database</td><td>Lưu tài khoản/tin nhắn/thông tin cần thiết.</td><td>Cần bảo vệ password và dữ liệu nhạy cảm.</td></tr><tr><td>Testing</td><td>Kiểm thử gửi/nhận và giải mã.</td><td>Xác nhận đúng luồng mã hóa.</td></tr></tbody></table></div></section>
+<section class="report-section" id="5"><div class="section-kicker">05 · limitations</div><h2>Limitations</h2><ul><li>SimpleRSA phù hợp minh họa học thuật, không thay thế thư viện crypto production.</li><li>Cần bổ sung padding an toàn, xác thực khóa công khai và bảo vệ private key.</li><li>Cần TLS cho transport layer và hash mật khẩu đúng chuẩn.</li><li>Cần threat model cho MITM/key substitution.</li></ul></section>
+<section class="report-section" id="6"><div class="section-kicker">06 · recommendations</div><h2>Recommendations</h2><ul><li>Dùng thư viện crypto chuẩn nếu triển khai thực tế.</li><li>Bổ sung digital signature để xác thực người gửi.</li><li>Mã hóa private key khi lưu cục bộ.</li><li>Thiết kế cơ chế fingerprint/QR để xác minh khóa công khai.</li></ul></section>
+<section class="report-section" id="7"><div class="section-kicker">07 · value</div><h2>Portfolio Value</h2><div class="callout good"><b>Learning value:</b> Project này hỗ trợ nền tảng security fundamentals: confidentiality, key management, secure communication và secure design thinking.</div></section>
+</div>
+  </section>
+</main>
+<footer>
+  <div class="container">© 2026 Khánh Linh · Security Learning Portfolio · Built for GitHub Pages</div>
+</footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

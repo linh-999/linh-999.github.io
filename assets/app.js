@@ -1,1 +1,9 @@
 document.documentElement.classList.add('js-ready');
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelector('.nav-links');
+if (navToggle && navLinks) {
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', navLinks.classList.contains('open') ? 'true' : 'false');
+  });
+}
