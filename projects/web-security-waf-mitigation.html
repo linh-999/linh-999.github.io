@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Web Security: Penetration Testing & WAF Mitigation | Khánh Linh</title>
+  <title>Web Security & WAF Mitigation Lab | Khánh Linh</title>
   <link rel="stylesheet" href="../assets/style.css" />
 </head>
 <body>
@@ -27,65 +27,25 @@
 
   <main class="article-layout container">
     <article class="article">
-      <p class="meta"><a class="text-link" href="../index.html">← Back to Home</a> · Project · Mar 2026 – Apr 2026</p>
-      <h1>🧱 Web Security: Penetration Testing & WAF Mitigation</h1>
-      <p class="lead">Phân tích web attack theo góc nhìn SOC: từ payload kiểm thử, WAF alert, web log evidence đến đánh giá rủi ro và khuyến nghị giảm thiểu.</p>
-      <div class="tag-list" style="justify-content:flex-start; margin-bottom: 28px;"><span class="tag">FortiWeb WAF</span><span class="tag">Burp Suite</span><span class="tag">OWASP ZAP</span><span class="tag">DVWA</span><span class="tag">Web Logs</span></div>
+      <p class="meta"><a class="text-link" href="../index.html">← Back to Home</a> · Project · Mar 2025 – Apr 2025</p>
+      <h1>🌐 Web Security & WAF Mitigation Lab</h1>
+      <p class="lead">Phân tích web attack dưới góc nhìn SOC Analyst: payload, WAF event, web access log, false positive và khuyến nghị mitigation.</p>
+      <div class="tag-list" style="justify-content:flex-start; margin-bottom: 28px;"><span class="tag">WAF</span><span class="tag">Burp Suite</span><span class="tag">OWASP ZAP</span><span class="tag">OWASP Top 10</span><span class="tag">DVWA</span><span class="tag">Web Logs</span></div>
       
-      <div class="soc-summary">
-        <div class="summary-card"><strong>Role</strong><span>Security Analyst focusing on Web/WAF log review</span></div>
-        <div class="summary-card"><strong>Goal</strong><span>Hiểu payload, rule match và bằng chứng trong HTTP log.</span></div>
-        <div class="summary-card"><strong>Outcome</strong><span>Biết trình bày vulnerability + WAF mitigation theo format báo cáo.</span></div>
-      </div>
+<div class="report-hero"><h2>Executive Summary</h2><p>Project mô phỏng quy trình SOC/Web Security khi nhận các event từ Web Application Firewall. Mục tiêu là không chỉ kiểm thử payload OWASP, mà còn đọc log WAF, hiểu rule nào kích hoạt, kiểm tra request gốc, đánh giá có phải tấn công thật hay false positive và viết khuyến nghị phòng thủ.</p><div class="report-meta-grid"><div class="report-meta-card"><strong>Timeline</strong><span>Mar 2025 – Apr 2025</span></div><div class="report-meta-card"><strong>Role</strong><span>SOC Analyst with Web Security focus</span></div><div class="report-meta-card"><strong>Target</strong><span>DVWA / vulnerable web app lab</span></div><div class="report-meta-card"><strong>Output</strong><span>WAF event analysis + mitigation notes</span></div></div></div>
+<h2>1. Scope</h2><p>Phạm vi lab gồm các nhóm lỗi phổ biến: SQL Injection, reflected XSS, command injection pattern, file upload risk và brute-force login. Các payload được tạo trong môi trường lab để quan sát WAF event, không áp dụng trên hệ thống thật khi chưa được phép.</p>
+<h2>2. Test & Detection Flow</h2><div class="lab-flow"><div class="flow-node"><strong>Tester</strong><span>Burp/ZAP request</span></div><div class="flow-node"><strong>WAF</strong><span>Inspect payload</span></div><div class="flow-node"><strong>Web Server</strong><span>Access/error log</span></div><div class="flow-node"><strong>SIEM View</strong><span>Correlation</span></div><div class="flow-node"><strong>Report</strong><span>Assessment</span></div></div>
+<h2>3. Detection Use Cases</h2><table class="info-table"><tr><th>Use case</th><th>Log indicator</th><th>Analyst question</th><th>Expected action</th></tr><tr><td>SQL Injection attempt</td><td>Payload có pattern <code>union select</code>, quote escape, boolean condition.</td><td>Payload có tới application không hay bị block tại WAF?</td><td>Block, review parameter, recommend prepared statement.</td></tr><tr><td>Reflected XSS attempt</td><td>Script tag, event handler, encoded payload.</td><td>Payload có reflect trong response không?</td><td>Block, validate output encoding, tune WAF if noisy.</td></tr><tr><td>Brute force login</td><td>Nhiều POST tới login endpoint từ cùng IP.</td><td>Có nhiều username hay một account bị target?</td><td>Rate limit, lockout policy, monitor source IP.</td></tr><tr><td>Suspicious file upload</td><td>Upload extension bất thường hoặc MIME mismatch.</td><td>File có được lưu trên server không?</td><td>Restrict extension, scan file, block executable upload.</td></tr></table>
+<h2>4. Evidence Collection</h2><ul><li>Request raw trong Burp Suite: method, endpoint, parameter, payload.</li><li>WAF event: rule ID, action block/monitor, severity, source IP, URI.</li><li>Web access log: status code, response size, user-agent, timestamp.</li><li>Application behavior: payload có thực thi hay chỉ bị ghi log.</li></ul><div class="evidence-box"><strong>Placeholder ảnh cần chèn</strong><p>Ảnh Burp request, WAF blocked event, web access log cùng timestamp và bảng mapping payload → WAF rule.</p></div>
+<h2>5. Sample Finding</h2><table class="info-table"><tr><th>Finding</th><th>Severity</th><th>Evidence</th><th>Recommendation</th></tr><tr><td>SQLi payload detected on login parameter</td><td><span class="finding-medium">Medium</span></td><td>WAF triggered SQLi rule and returned block page; web log shows 403.</td><td>Keep WAF block, validate backend query, add alert threshold if repeated.</td></tr><tr><td>XSS payload detected but endpoint is lab-only</td><td><span class="finding-low">Low</span></td><td>Payload blocked in lab; no production asset impacted.</td><td>Tag as lab traffic, avoid over-counting in real SOC metrics.</td></tr><tr><td>Repeated failed login attempts</td><td><span class="finding-medium">Medium</span></td><td>Multiple POST requests in short window from same source.</td><td>Enable rate limit and account monitoring.</td></tr></table>
+<h2>6. SOC Analyst Conclusion</h2><p>Lab chứng minh WAF có thể phát hiện nhiều payload phổ biến, nhưng analyst không nên kết luận “bị tấn công thành công” chỉ dựa trên alert. Cần đối chiếu WAF action, web status code, server log và application behavior. Một alert bị block vẫn là một security event, nhưng impact thấp hơn so với payload bypass và tới được backend.</p>
+<h2>7. Limitations & Improvement</h2><ul><li>WAF signature-based detection dễ bị bypass nếu payload encode hoặc biến thể phức tạp.</li><li>Cần log correlation với authentication log để đánh giá account compromise.</li><li>Nên thêm dashboard theo top URI, top rule ID, top source IP, action block/allow.</li><li>Nâng cấp project bằng cách viết playbook: WAF SQLi Alert, WAF XSS Alert, Brute Force Web Login.</li></ul>
 
-      <h2>1. Objective</h2>
-      <p>Dự án mô phỏng quy trình kiểm thử một ứng dụng web lab, sau đó phân tích log từ WAF/web server để xác định request nào bị chặn, request nào chỉ được ghi nhận và rule nào cần tuning.</p>
-
-      <h2>2. Analysis Flow</h2>
-      <div class="lab-flow">
-        <div class="flow-node"><strong>Browser / Burp</strong><span>Gửi request kiểm thử</span></div>
-        <div class="flow-node"><strong>DVWA / Web App</strong><span>Endpoint nhận payload</span></div>
-        <div class="flow-node"><strong>FortiWeb WAF</strong><span>Detect / Block / Log</span></div>
-        <div class="flow-node"><strong>Web Logs</strong><span>Status code, URI, parameter</span></div>
-        <div class="flow-node"><strong>Analyst Report</strong><span>Evidence, impact, recommendation</span></div>
-      </div>
-
-      <h2>3. Use Cases</h2>
-      <table class="info-table">
-        <tr><th>Attack class</th><th>Evidence cần kiểm tra</th><th>Recommendation</th></tr>
-        <tr><td>SQL Injection</td><td>URI, parameter, payload pattern, DB error, WAF signature.</td><td>Parameterized query, input validation, WAF signature tuning.</td></tr>
-        <tr><td>Broken Access Control</td><td>User role, object ID, response code, unauthorized access attempt.</td><td>Server-side authorization, deny-by-default policy, audit log.</td></tr>
-        <tr><td>XSS</td><td>Script payload, reflected/stored location, response body context.</td><td>Output encoding, CSP, input sanitization.</td></tr>
-      </table>
-
-      <h2>4. SOC-style Investigation Notes</h2>
-      <ul>
-        <li>Xác định alert là <strong>true positive</strong> khi payload khớp rule và request có dấu hiệu khai thác rõ ràng.</li>
-        <li>Xác định <strong>false positive</strong> khi request hợp lệ nhưng bị rule nhận nhầm do pattern quá rộng.</li>
-        <li>Luôn ghi rõ source IP, user-agent, URI, parameter, HTTP method, status code và thời điểm xảy ra.</li>
-        <li>Đối chiếu WAF log với web access/error log để biết request có thật sự đi tới ứng dụng hay đã bị chặn trước.</li>
-      </ul>
-
-      <h2>5. Report Output</h2>
-      <div class="phase-grid">
-        <div class="phase-card"><h3>Description</h3><p>Mô tả ngắn lỗ hổng hoặc hành vi tấn công được quan sát.</p></div>
-        <div class="phase-card"><h3>Evidence</h3><p>Ảnh Burp request, WAF event, web log, status code và payload đã mask nếu cần.</p></div>
-        <div class="phase-card"><h3>Impact</h3><p>Đánh giá ảnh hưởng đến confidentiality, integrity hoặc availability.</p></div>
-        <div class="phase-card"><h3>Mitigation</h3><p>Đề xuất fix code, hardening config, WAF rule và monitoring dashboard.</p></div>
-      </div>
-
-      <h2>6. Limitations & Improvement</h2>
-      <ul>
-        <li>Lab chưa đại diện toàn bộ môi trường production, cần thêm authentication flow và real application logs.</li>
-        <li>Cần chuẩn hóa severity theo CVSS hoặc risk matrix nội bộ.</li>
-        <li>Cần mapping OWASP Top 10 với detection rule để portfolio mạnh hơn.</li>
-      </ul>
-    
     </article>
   </main>
 
   <footer>
-    © 2026 Khánh Linh. Built with GitHub Pages.
+    © Khánh Linh. Cybersecurity Portfolio & Technical Write-ups.
   </footer>
 </body>
 </html>

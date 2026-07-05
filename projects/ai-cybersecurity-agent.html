@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI-Driven Cybersecurity Agent for Network Automation | Khánh Linh</title>
+  <title>AI-Driven Cybersecurity Agent | Khánh Linh</title>
   <link rel="stylesheet" href="../assets/style.css" />
 </head>
 <body>
@@ -28,62 +28,36 @@
   <main class="article-layout container">
     <article class="article">
       <p class="meta"><a class="text-link" href="../index.html">← Back to Home</a> · Project · Mar 2026 – Apr 2026</p>
-      <h1>🤖 AI-Driven Cybersecurity Agent for Network Automation</h1>
-      <p class="lead">Ý tưởng assistant hỗ trợ SOC/NOC Analyst trong bước enrichment, tóm tắt evidence, sinh checklist điều tra và tạo báo cáo ngắn có cấu trúc.</p>
-      <div class="tag-list" style="justify-content:flex-start; margin-bottom: 28px;"><span class="tag">Python</span><span class="tag">Scapy</span><span class="tag">LangChain</span><span class="tag">LLM Workflow</span><span class="tag">Wireshark</span></div>
+      <h1>🤖 AI-Driven Cybersecurity Agent for SOC/NOC Automation</h1>
+      <p class="lead">Thiết kế workflow hỗ trợ analyst: parse alert, enrich IOC, sinh checklist điều tra và tạo bản nháp báo cáo có kiểm soát.</p>
+      <div class="tag-list" style="justify-content:flex-start; margin-bottom: 28px;"><span class="tag">Python</span><span class="tag">Scapy</span><span class="tag">LangChain</span><span class="tag">LLM Workflow</span><span class="tag">SOC Automation</span><span class="tag">Report Draft</span></div>
       
-      <div class="soc-summary">
-        <div class="summary-card"><strong>Role</strong><span>Automation-focused SOC/NOC Analyst</span></div>
-        <div class="summary-card"><strong>Goal</strong><span>Giảm thời gian ghi chú và chuẩn hóa bước điều tra ban đầu.</span></div>
-        <div class="summary-card"><strong>Outcome</strong><span>Thiết kế workflow: parse → enrich → assess → report.</span></div>
-      </div>
+<div class="report-hero"><h2>Executive Summary</h2><p>Project thiết kế một assistant hỗ trợ SOC/NOC Analyst trong các bước lặp lại: đọc alert thô, trích xuất IOC, sinh checklist điều tra, gợi ý câu hỏi cần xác minh và tạo bản nháp báo cáo. Hệ thống không thay analyst ra quyết định, mà giúp chuẩn hóa quy trình và giảm thời gian viết báo cáo.</p><div class="report-meta-grid"><div class="report-meta-card"><strong>Timeline</strong><span>Mar 2026 – Apr 2026</span></div><div class="report-meta-card"><strong>Role</strong><span>SOC/NOC Automation Analyst</span></div><div class="report-meta-card"><strong>Approach</strong><span>Human-in-the-loop</span></div><div class="report-meta-card"><strong>Output</strong><span>Enrichment + checklist + report draft</span></div></div></div>
+<h2>1. Problem Statement</h2><p>Trong SOC Tier 1, nhiều alert cần các bước giống nhau: xác định IP/domain/hash, kiểm tra reputation, đọc log liên quan, hỏi “có impact không?”, rồi viết kết luận. Nếu không có template, báo cáo dễ thiếu thông tin hoặc mỗi người viết một kiểu. Project này tập trung tự động hóa phần hỗ trợ, nhưng vẫn yêu cầu analyst xác nhận trước khi kết luận.</p>
+<h2>2. Workflow</h2><div class="lab-flow"><div class="flow-node"><strong>Alert Input</strong><span>SIEM text/log</span></div><div class="flow-node"><strong>Parser</strong><span>Extract IOC</span></div><div class="flow-node"><strong>Enrichment</strong><span>Reputation/context</span></div><div class="flow-node"><strong>Checklist</strong><span>Questions/actions</span></div><div class="flow-node"><strong>Report Draft</strong><span>Analyst review</span></div></div>
+<h2>3. Core Features</h2><div class="phase-grid"><div class="phase-card"><h3>IOC Extraction</h3><p>Tự động nhận diện IP, domain, URL, hash, username, hostname từ alert text hoặc log mẫu.</p></div><div class="phase-card"><h3>Context Builder</h3><p>Tạo bảng context gồm source, destination, timestamp, rule name, severity và asset role nếu có.</p></div><div class="phase-card"><h3>Investigation Checklist</h3><p>Sinh câu hỏi cần kiểm tra: endpoint có process lạ không, DNS có domain liên quan không, firewall có block không.</p></div><div class="phase-card"><h3>Report Draft</h3><p>Xuất bản nháp gồm summary, evidence, assessment, recommended action và limitation.</p></div></div>
+<h2>4. Analyst Guardrails</h2><table class="info-table"><tr><th>Risk</th><th>Control</th><th>Reason</th></tr><tr><td>AI kết luận quá mức</td><td>Bắt buộc ghi “analyst verification required”.</td><td>Tránh nhầm alert thành incident khi thiếu evidence.</td></tr><tr><td>IOC reputation thiếu nguồn</td><td>Hiển thị field “source/time checked” trong report.</td><td>Reputation có thể thay đổi theo thời gian.</td></tr><tr><td>Thiếu log liên quan</td><td>Assistant chỉ được gợi ý, không khẳng định compromise.</td><td>Không có endpoint/DNS/proxy log thì conclusion phải thận trọng.</td></tr><tr><td>Dữ liệu nhạy cảm</td><td>Mask username/token trước khi đưa vào prompt.</td><td>Giảm rủi ro lộ dữ liệu trong quy trình phân tích.</td></tr></table>
+<h2>5. Sample Output Template</h2><pre>Alert Summary:
+- Alert name: Suspicious outbound connection
+- Source host: WIN-CLIENT01
+- Destination IOC: 44.x.x.x
+- First seen: 2026-04-xx 10:15
+- Initial severity: Medium
 
-      <h2>1. Problem Statement</h2>
-      <p>Khi nhận alert, analyst thường mất thời gian gom log, đọc packet, tra IOC và viết báo cáo. Project này đề xuất một AI assistant đóng vai trò hỗ trợ, không thay thế analyst, giúp tóm tắt dữ liệu và gợi ý câu hỏi điều tra tiếp theo.</p>
+Analyst Checklist:
+[ ] Check endpoint process tree around alert time
+[ ] Check DNS/proxy logs for related domain
+[ ] Check firewall action: allowed or blocked
+[ ] Check whether destination IP is repeated by other hosts
+[ ] Decide: False Positive / Benign True Positive / True Positive / Escalate</pre>
+<h2>6. Findings</h2><ul><li>Assistant hữu ích nhất ở bước chuẩn hóa câu hỏi điều tra và format báo cáo.</li><li>Không nên dùng AI để tự động đóng incident nếu thiếu evidence từ log thật.</li><li>Cần kết hợp parser/rule-based extraction trước, LLM chỉ hỗ trợ diễn giải và trình bày.</li><li>Phù hợp cho portfolio vì thể hiện tư duy SOC + automation + reporting.</li></ul>
+<h2>7. Improvement Plan</h2><ul><li>Thêm connector đọc CSV/JSON export từ SIEM.</li><li>Thêm mapping MITRE ATT&CK theo rule name hoặc kỹ thuật liên quan.</li><li>Thêm risk scoring dựa trên asset criticality, reputation, frequency và action allowed/blocked.</li><li>Xuất report dạng Markdown/PDF để đính kèm vào case.</li></ul>
 
-      <h2>2. Proposed Workflow</h2>
-      <div class="lab-flow">
-        <div class="flow-node"><strong>Input</strong><span>Log, packet summary, alert text</span></div>
-        <div class="flow-node"><strong>Parser</strong><span>Extract IP, domain, user, host</span></div>
-        <div class="flow-node"><strong>Enrichment</strong><span>Reputation, context, timeline</span></div>
-        <div class="flow-node"><strong>Reasoning Checklist</strong><span>Next steps for analyst</span></div>
-        <div class="flow-node"><strong>Report Draft</strong><span>Assessment & recommendation</span></div>
-      </div>
-
-      <h2>3. Core Features</h2>
-      <table class="info-table">
-        <tr><th>Feature</th><th>Mô tả</th><th>Giá trị SOC</th></tr>
-        <tr><td>IOC Extraction</td><td>Tách IP, domain, hash, URL, username, hostname từ alert/log.</td><td>Giảm lỗi bỏ sót artifact quan trọng.</td></tr>
-        <tr><td>Alert Summary</td><td>Tóm tắt alert theo 5W1H: who, what, when, where, why, how.</td><td>Giúp analyst nắm nhanh bối cảnh.</td></tr>
-        <tr><td>Investigation Checklist</td><td>Đề xuất bước kiểm tra theo loại alert.</td><td>Chuẩn hóa quy trình cho SOC Tier 1.</td></tr>
-        <tr><td>Report Template</td><td>Sinh bản nháp gồm evidence, assessment, recommendation.</td><td>Tăng chất lượng báo cáo và handoff.</td></tr>
-      </table>
-
-      <h2>4. Guardrails for Professional Use</h2>
-      <ul>
-        <li>Không để AI tự kết luận incident nếu chưa có evidence đủ mạnh.</li>
-        <li>Luôn yêu cầu analyst xác nhận IOC, asset criticality và business context.</li>
-        <li>Mask dữ liệu nhạy cảm trước khi đưa vào workflow xử lý.</li>
-        <li>Log lại prompt/output để kiểm tra chất lượng và tránh hallucination.</li>
-      </ul>
-
-      <h2>5. Example Output Format</h2>
-      <blockquote>
-        Alert Summary → Key Evidence → IOC List → Suggested Pivot → Preliminary Assessment → Recommended Action
-      </blockquote>
-
-      <h2>6. Limitations & Improvement</h2>
-      <ul>
-        <li>Cần dữ liệu log mẫu đa dạng hơn để kiểm tra độ ổn định của prompt.</li>
-        <li>Cần tích hợp API reputation hoặc SIEM query để enrichment có bằng chứng thật.</li>
-        <li>Cần thêm cơ chế confidence score và human approval trước khi tạo ticket/action.</li>
-      </ul>
-    
     </article>
   </main>
 
   <footer>
-    © 2026 Khánh Linh. Built with GitHub Pages.
+    © Khánh Linh. Cybersecurity Portfolio & Technical Write-ups.
   </footer>
 </body>
 </html>

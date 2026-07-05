@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CTF Forensics Study Notes: Quy trình phân tích bằng chứng | Khánh Linh</title>
+  <title>CTF Forensics Study Notes | Khánh Linh</title>
   <link rel="stylesheet" href="../assets/style.css" />
 </head>
 <body>
@@ -18,6 +18,7 @@
           <a href="../index.html#posts">Posts</a>
           <a href="../index.html#tags">Tags</a>
           <a href="../index.html#skills">Skills</a>
+          <a href="../index.html#roadmap">Roadmap</a>
           <a href="../index.html#contact">Contact</a>
         </div>
       </nav>
@@ -26,64 +27,21 @@
 
   <main class="article-layout container">
     <article class="article">
-      <p class="meta"><a class="text-link" href="../index.html">← Back to Home</a> · Write-up · Jun 2026</p>
+      <p class="meta"><a class="text-link" href="../index.html">← Back to Home</a> · Write-up · Dec 2024</p>
       <h1>🔎 CTF Forensics Study Notes: Quy trình phân tích bằng chứng</h1>
-      <p class="lead">Ghi chú cách tiếp cận challenge forensics: xác định loại file, kiểm tra metadata, strings, timeline, hidden data và viết lại solve path.</p>
-      <div class="tag-list" style="justify-content:flex-start; margin-bottom: 28px;"><span class="tag">CTF</span><span class="tag">Forensics</span><span class="tag">Write-up</span><span class="tag">Evidence</span></div>
-      <h2>Mục tiêu</h2>
-      <ul>
-        <li>Có checklist giải bài Forensics CTF từ cơ bản đến trung bình.</li>
-        <li>Biết cách ghi lại bằng chứng thay vì chỉ ghi flag.</li>
-        <li>Rèn khả năng trình bày solve path rõ ràng.</li>
-      </ul>
-      <h2>Checklist phân tích</h2>
-      <ul>
-        <li>Xác định loại file bằng file command hoặc signature.</li>
-        <li>Kiểm tra metadata bằng exiftool nếu là ảnh/tài liệu.</li>
-        <li>Dùng strings để tìm chuỗi đáng chú ý.</li>
-        <li>Kiểm tra archive, hidden file, steganography hoặc dữ liệu bị nối cuối file.</li>
-        <li>Lập timeline nếu challenge liên quan log, disk image hoặc mobile backup.</li>
-      </ul>
-      <h2>Cách viết write-up</h2>
-      <ul>
-        <li>Nêu đề bài và mục tiêu.</li>
-        <li>Liệt kê công cụ sử dụng.</li>
-        <li>Ghi từng bước phân tích và ảnh/bằng chứng.</li>
-        <li>Giải thích vì sao chọn hướng tiếp cận đó.</li>
-        <li>Kết luận flag hoặc kết quả tìm được.</li>
-      </ul>
-      <h2>Công cụ thường dùng</h2>
-      <ul>
-        <li>file, strings, binwalk, exiftool.</li>
-        <li>Wireshark cho pcap.</li>
-        <li>Autopsy/FTK Imager cho disk image.</li>
-        <li>SQLite Browser cho database.</li>
-        <li>CyberChef cho decode/convert dữ liệu.</li>
-      </ul>
-      <h2>Lỗi thường gặp</h2>
-      <ul>
-        <li>Nhảy thẳng vào tool mà không xác định file type.</li>
-        <li>Không ghi lại command đã chạy nên khó viết lại write-up.</li>
-        <li>Chỉ ghi flag, thiếu giải thích quá trình tìm ra flag.</li>
-      </ul>
-      <h2>Kỹ năng rút ra</h2>
-      <ul>
-        <li>Tư duy điều tra theo bằng chứng.</li>
-        <li>Khả năng dùng công cụ forensics cơ bản.</li>
-        <li>Viết báo cáo kỹ thuật ngắn gọn và dễ đọc.</li>
-      </ul>
-      <h2>Command / Query tham khảo</h2>
-      <pre><code>file challenge.bin
-strings challenge.bin | head
-exiftool image.png</code></pre>
-      <div class="note">
-        <p><strong>Ghi chú:</strong> Nội dung này được viết theo hướng portfolio sinh viên/thực tập, có thể bổ sung ảnh lab, topology, screenshot dashboard hoặc log evidence sau khi có dữ liệu thực tế.</p>
-      </div>
+      <p class="lead">Checklist phân tích Forensics CTF theo hướng bằng chứng: file type, metadata, strings, embedded data, timeline và conclusion.</p>
+      <div class="tag-list" style="justify-content:flex-start; margin-bottom: 28px;"><span class="tag">CTF</span><span class="tag">Forensics</span><span class="tag">Evidence</span><span class="tag">Write-up</span><span class="tag">Timeline</span></div>
+      
+<div class="report-hero"><h2>Study Note Summary</h2><p>Ghi chú Forensics CTF theo hướng rèn tư duy bằng chứng. Thay vì chỉ ghi flag, write-up cần mô tả đường đi phân tích, công cụ dùng, evidence tìm được và lý do kết luận.</p><div class="report-meta-grid"><div class="report-meta-card"><strong>Date</strong><span>Dec 2024</span></div><div class="report-meta-card"><strong>Focus</strong><span>Forensics evidence</span></div><div class="report-meta-card"><strong>Tools</strong><span>file, strings, exiftool, binwalk</span></div><div class="report-meta-card"><strong>Output</strong><span>Checklist + solve path</span></div></div></div>
+<h2>1. Checklist</h2><ul><li>Xác định loại file thật bằng magic bytes, không chỉ dựa vào extension.</li><li>Kiểm tra metadata, timestamp, author/tool nếu có.</li><li>Dùng strings để tìm text, URL, path hoặc flag fragment.</li><li>Kiểm tra embedded file bằng binwalk/foremost nếu nghi có file ẩn.</li><li>Tạo timeline nếu có nhiều log/file liên quan.</li><li>Ghi lại lệnh đã chạy và output quan trọng.</li></ul>
+<h2>2. Report Format</h2><table class="info-table"><tr><th>Section</th><th>Content</th></tr><tr><td>Initial observation</td><td>File name, size, type, hint.</td></tr><tr><td>Analysis steps</td><td>Lệnh/công cụ đã dùng và lý do dùng.</td></tr><tr><td>Evidence</td><td>Chuỗi, metadata, hidden file, timestamp liên quan.</td></tr><tr><td>Conclusion</td><td>Flag hoặc finding và cách xác minh.</td></tr></table>
+<h2>3. SOC Relevance</h2><p>Forensics CTF giúp luyện cách không bỏ sót bằng chứng và không kết luận khi chưa có dữ liệu. Kỹ năng này chuyển sang SOC rất tốt: khi điều tra alert, analyst cũng cần timeline, evidence, hypothesis và conclusion rõ ràng.</p>
+
     </article>
   </main>
 
   <footer>
-    © 2026 Khánh Linh. Built with GitHub Pages.
+    © Khánh Linh. Cybersecurity Portfolio & Technical Write-ups.
   </footer>
 </body>
 </html>

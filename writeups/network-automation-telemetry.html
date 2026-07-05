@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Research Notes: Core IP, Streaming Telemetry &amp; Network Automation | Khánh Linh</title>
+  <title>Network Automation & Streaming Telemetry | Khánh Linh</title>
   <link rel="stylesheet" href="../assets/style.css" />
 </head>
 <body>
@@ -18,6 +18,7 @@
           <a href="../index.html#posts">Posts</a>
           <a href="../index.html#tags">Tags</a>
           <a href="../index.html#skills">Skills</a>
+          <a href="../index.html#roadmap">Roadmap</a>
           <a href="../index.html#contact">Contact</a>
         </div>
       </nav>
@@ -26,60 +27,22 @@
 
   <main class="article-layout container">
     <article class="article">
-      <p class="meta"><a class="text-link" href="../index.html">← Back to Home</a> · Write-up · Jun 2026</p>
-      <h1>⚙️ Research Notes: Core IP, Streaming Telemetry &amp; Network Automation</h1>
-      <p class="lead">Tổng hợp hướng nghiên cứu về vận hành Core IP/Truyền dẫn, thu thập telemetry, tự động hóa kiểm tra cấu hình và hỗ trợ NOC/SOC.</p>
-      <div class="tag-list" style="justify-content:flex-start; margin-bottom: 28px;"><span class="tag">Network Operations</span><span class="tag">Automation</span><span class="tag">Telemetry</span><span class="tag">AIOps</span></div>
-      <h2>Mục tiêu</h2>
-      <ul>
-        <li>Xây dựng hướng nghiên cứu phù hợp vị trí Network Operations/Core IP.</li>
-        <li>Hiểu vì sao automation giúp giảm thao tác thủ công trong vận hành mạng.</li>
-        <li>Đề xuất lab nhỏ để kiểm tra trạng thái thiết bị, cấu hình và cảnh báo bất thường.</li>
-      </ul>
-      <h2>Vấn đề trong vận hành mạng</h2>
-      <ul>
-        <li>Hệ thống Core IP/Truyền dẫn có nhiều thiết bị, link và dịch vụ.</li>
-        <li>Nếu chỉ kiểm tra thủ công bằng CLI, kỹ sư mất nhiều thời gian và dễ bỏ sót lỗi.</li>
-        <li>Sự cố mạng cần phát hiện nhanh: link down, CPU cao, interface error, route thay đổi hoặc mất neighbor.</li>
-      </ul>
-      <h2>Ý tưởng giải pháp</h2>
-      <ul>
-        <li>Dùng script để thu thập thông tin thiết bị định kỳ.</li>
-        <li>Chuẩn hóa template cấu hình để giảm sai sót.</li>
-        <li>Dùng telemetry để lấy dữ liệu trạng thái gần real-time.</li>
-        <li>Tạo dashboard hoặc báo cáo giúp NOC theo dõi sức khỏe mạng.</li>
-      </ul>
-      <h2>Lab đề xuất</h2>
-      <ul>
-        <li>Packet Tracer/GNS3/EVE-NG dựng mô hình router-switch cơ bản.</li>
-        <li>Python Netmiko/NAPALM kết nối thiết bị và lấy show command.</li>
-        <li>So sánh running-config với baseline.</li>
-        <li>Gửi cảnh báo khi interface down hoặc route biến mất.</li>
-      </ul>
-      <h2>Hướng phát triển</h2>
-      <ul>
-        <li>Kết hợp AI assistant để tóm tắt log và đề xuất bước kiểm tra.</li>
-        <li>Tự động tạo checklist troubleshooting theo loại sự cố.</li>
-        <li>Tích hợp với ticket/SOAR để quản lý quy trình xử lý.</li>
-      </ul>
-      <h2>Kỹ năng rút ra</h2>
-      <ul>
-        <li>Có tư duy vận hành mạng theo hướng tự động hóa.</li>
-        <li>Biết liên kết kiến thức CCNA với automation và monitoring.</li>
-        <li>Phù hợp portfolio cho Network Operations, NOC, SOC hạ tầng.</li>
-      </ul>
-      <h2>Command / Query tham khảo</h2>
-      <pre><code>show interfaces status
-show ip route
-show ip ospf neighbor</code></pre>
-      <div class="note">
-        <p><strong>Ghi chú:</strong> Nội dung này được viết theo hướng portfolio sinh viên/thực tập, có thể bổ sung ảnh lab, topology, screenshot dashboard hoặc log evidence sau khi có dữ liệu thực tế.</p>
-      </div>
+      <p class="meta"><a class="text-link" href="../index.html">← Back to Home</a> · Write-up · May 2026</p>
+      <h1>⚙️ Research Notes: Core IP, Telemetry & Network Automation</h1>
+      <p class="lead">Ghi chú nghiên cứu automation/telemetry cho vận hành mạng và cách biến metric thành alert có thể điều tra.</p>
+      <div class="tag-list" style="justify-content:flex-start; margin-bottom: 28px;"><span class="tag">Network Operations</span><span class="tag">Automation</span><span class="tag">Telemetry</span><span class="tag">AIOps</span><span class="tag">NOC</span><span class="tag">SOC</span></div>
+      
+<div class="report-hero"><h2>Research Note Summary</h2><p>Nội dung nghiên cứu hướng Core IP/Transmission + Automation + SOC/NOC. Trọng tâm là cách thu thập telemetry, phát hiện bất thường vận hành và tạo cảnh báo có thể điều tra được.</p><div class="report-meta-grid"><div class="report-meta-card"><strong>Date</strong><span>May 2026</span></div><div class="report-meta-card"><strong>Focus</strong><span>Network Automation & Telemetry</span></div><div class="report-meta-card"><strong>Role</strong><span>NOC/SOC Automation Learner</span></div><div class="report-meta-card"><strong>Output</strong><span>Concept + lab roadmap</span></div></div></div>
+<h2>1. Why it matters</h2><p>Trong mạng Core IP/Truyền dẫn, outage hoặc degradation có thể đến từ interface error, link flap, congestion, routing change hoặc cấu hình sai. Polling thủ công không đủ nhanh và khó scale. Streaming telemetry/automation giúp thu thập trạng thái liên tục hơn và tạo baseline để phát hiện bất thường.</p>
+<h2>2. Proposed Flow</h2><div class="lab-flow"><div class="flow-node"><strong>Network Devices</strong><span>Router/switch</span></div><div class="flow-node"><strong>Telemetry</strong><span>Interface/routing metrics</span></div><div class="flow-node"><strong>Collector</strong><span>Normalize data</span></div><div class="flow-node"><strong>Rule/Baseline</strong><span>Anomaly check</span></div><div class="flow-node"><strong>NOC/SOC</strong><span>Alert & report</span></div></div>
+<h2>3. Lab Roadmap</h2><ul><li>Giai đoạn 1: dùng Python/Netmiko lấy show command và xuất CSV/JSON.</li><li>Giai đoạn 2: kiểm tra interface status, error counter, CPU/memory, routing neighbor.</li><li>Giai đoạn 3: tạo rule cảnh báo nếu interface down, error tăng nhanh hoặc route biến mất.</li><li>Giai đoạn 4: đẩy kết quả vào dashboard hoặc SIEM để NOC/SOC theo dõi.</li></ul>
+<h2>4. SOC/NOC Output</h2><p>Báo cáo tốt cần có: affected device, affected interface, first seen, current status, probable cause, impact, action taken và next check. Cách viết này giống incident report trong SOC nhưng áp dụng cho hạ tầng mạng.</p>
+
     </article>
   </main>
 
   <footer>
-    © 2026 Khánh Linh. Built with GitHub Pages.
+    © Khánh Linh. Cybersecurity Portfolio & Technical Write-ups.
   </footer>
 </body>
 </html>

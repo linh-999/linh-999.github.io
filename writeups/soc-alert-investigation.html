@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SOC Alert Investigation: Triage cảnh báo IP độc hại | Khánh Linh</title>
+  <title>SOC Alert Investigation | Khánh Linh</title>
   <link rel="stylesheet" href="../assets/style.css" />
 </head>
 <body>
@@ -18,6 +18,7 @@
           <a href="../index.html#posts">Posts</a>
           <a href="../index.html#tags">Tags</a>
           <a href="../index.html#skills">Skills</a>
+          <a href="../index.html#roadmap">Roadmap</a>
           <a href="../index.html#contact">Contact</a>
         </div>
       </nav>
@@ -26,58 +27,35 @@
 
   <main class="article-layout container">
     <article class="article">
-      <p class="meta"><a class="text-link" href="../index.html">← Back to Home</a> · Write-up · Jul 2026</p>
+      <p class="meta"><a class="text-link" href="../index.html">← Back to Home</a> · Write-up · Jul 2025</p>
       <h1>🛡️ SOC Alert Investigation: Triage cảnh báo IP độc hại</h1>
-      <p class="lead">Quy trình điều tra alert theo hướng SOC Tier 1: đọc alert, thu thập context, kiểm tra IOC, phân loại false positive/true positive và viết kết luận.</p>
-      <div class="tag-list" style="justify-content:flex-start; margin-bottom: 28px;"><span class="tag">SOC</span><span class="tag">SIEM</span><span class="tag">Alert Triage</span><span class="tag">IOC</span></div>
-      <h2>Mục tiêu</h2>
-      <ul>
-        <li>Xây dựng flow điều tra một cảnh báo bảo mật ở mức Tier 1.</li>
-        <li>Biết cách kiểm tra thông tin user, host, source IP, destination IP, process, log liên quan và mức độ rủi ro.</li>
-        <li>Tạo mẫu báo cáo ngắn gọn có thể dùng khi thực tập SOC.</li>
-      </ul>
-      <h2>Bối cảnh lab</h2>
-      <p>Một cảnh báo từ SIEM cho biết máy nội bộ có kết nối đến IP bị đánh dấu là malicious. Nhiệm vụ của SOC Analyst là xác định cảnh báo có đáng tin cậy không, có bằng chứng máy bị nhiễm mã độc không, và đề xuất hướng xử lý ban đầu.</p>
-      <h2>Quy trình điều tra</h2>
-      <ul>
-        <li>Đọc tên rule, mức độ severity, thời gian xảy ra và nguồn log sinh alert.</li>
-        <li>Xác định tài sản liên quan: hostname, IP nội bộ, user đăng nhập, hệ điều hành và vị trí mạng.</li>
-        <li>Kiểm tra IOC: IP/domain/hash bằng threat intelligence, reputation database hoặc nguồn nội bộ.</li>
-        <li>Pivot log theo mốc thời gian: DNS, proxy, firewall, endpoint, authentication và DHCP/NAC nếu có.</li>
-        <li>Đánh giá hành vi: kết nối một lần hay lặp lại, có download file không, có process bất thường không, user có hành vi login lạ không.</li>
-      </ul>
-      <h2>Bằng chứng cần ghi lại</h2>
-      <ul>
-        <li>Thời gian alert và timezone.</li>
-        <li>Source IP, destination IP/domain, port/protocol.</li>
-        <li>Tên rule/use case và nguồn log.</li>
-        <li>Kết quả kiểm tra reputation của IOC.</li>
-        <li>Ảnh chụp hoặc log chứng minh quá trình pivot.</li>
-        <li>Kết luận: True Positive, False Positive hoặc Need More Information.</li>
-      </ul>
-      <h2>Kết luận mẫu</h2>
-      <ul>
-        <li>Nếu IP được nhiều nguồn threat intelligence đánh dấu độc hại và endpoint có hành vi bất thường, cần escalate cho Tier 2/IR.</li>
-        <li>Nếu chỉ có một kết nối hợp lệ, không có process lạ, không có download đáng ngờ và IOC bị đánh dấu do shared hosting/CDN, có thể phân loại false positive nhưng vẫn cần ghi rõ bằng chứng.</li>
-      </ul>
-      <h2>Kỹ năng rút ra</h2>
-      <ul>
-        <li>Tư duy điều tra theo bằng chứng, không kết luận chỉ dựa vào tên alert.</li>
-        <li>Biết cách phân loại mức độ ưu tiên và viết báo cáo ngắn cho SOC.</li>
-        <li>Hiểu sự khác nhau giữa IOC, artifact, event và incident.</li>
-      </ul>
-      <h2>Command / Query tham khảo</h2>
-      <pre><code>index=* dest_ip=&quot;&lt;suspicious_ip&gt;&quot; earliest=-24h
-index=proxy OR index=firewall src_ip=&quot;&lt;internal_ip&gt;&quot;
-index=edr host=&quot;&lt;hostname&gt;&quot; process_name=*</code></pre>
-      <div class="note">
-        <p><strong>Ghi chú:</strong> Nội dung này được viết theo hướng portfolio sinh viên/thực tập, có thể bổ sung ảnh lab, topology, screenshot dashboard hoặc log evidence sau khi có dữ liệu thực tế.</p>
-      </div>
+      <p class="lead">Báo cáo điều tra cảnh báo IP độc hại theo chuẩn SOC Tier 1: context, evidence, decision tree, final classification và recommendation.</p>
+      <div class="tag-list" style="justify-content:flex-start; margin-bottom: 28px;"><span class="tag">SOC</span><span class="tag">SIEM</span><span class="tag">Alert Triage</span><span class="tag">IOC</span><span class="tag">Threat Intelligence</span><span class="tag">Incident Report</span></div>
+      
+<div class="report-hero"><h2>Case Summary</h2><p>Write-up mô phỏng quy trình SOC Tier 1 khi nhận cảnh báo máy nội bộ kết nối tới IP có reputation xấu. Mục tiêu là không kết luận vội, mà kiểm chứng bằng log, xác định phạm vi ảnh hưởng và đưa ra phân loại cuối cùng.</p><div class="report-meta-grid"><div class="report-meta-card"><strong>Date</strong><span>Jul 2025</span></div><div class="report-meta-card"><strong>Alert Type</strong><span>Malicious IP Connection</span></div><div class="report-meta-card"><strong>Initial Severity</strong><span>Medium</span></div><div class="report-meta-card"><strong>Final Output</strong><span>Triage report + recommendation</span></div></div></div>
+<h2>1. Alert Context</h2><table class="info-table"><tr><th>Field</th><th>Example value</th><th>Analyst note</th></tr><tr><td>Source host</td><td>Internal workstation</td><td>Cần xác định user, hostname, asset owner.</td></tr><tr><td>Destination IOC</td><td>External IP flagged malicious</td><td>Cần kiểm tra reputation, ASN, geo, first seen.</td></tr><tr><td>Direction</td><td>Outbound</td><td>Outbound tới IOC đáng chú ý hơn inbound scan bị block.</td></tr><tr><td>Action</td><td>Allowed/Blocked</td><td>Nếu allowed thì rủi ro cao hơn và cần scope kỹ hơn.</td></tr></table>
+<h2>2. Investigation Questions</h2><ul><li>IP này có thật sự known malicious ở thời điểm kiểm tra không?</li><li>Kết nối là một lần hay lặp lại nhiều lần?</li><li>Có domain/DNS request liên quan trước khi kết nối IP không?</li><li>Endpoint có process lạ, persistence, scheduled task hoặc file mới tạo không?</li><li>Có nhiều host nội bộ cùng kết nối tới IOC không?</li><li>Firewall/Proxy đã allow hay block traffic?</li></ul>
+<h2>3. Evidence Collection</h2><div class="checklist"><div class="check-item"><strong>SIEM alert:</strong> chụp rule name, severity, src_ip, dst_ip, timestamp, action.</div><div class="check-item"><strong>Threat intelligence:</strong> kiểm tra IP reputation từ nhiều nguồn, ghi lại thời điểm kiểm tra.</div><div class="check-item"><strong>Endpoint evidence:</strong> kiểm tra process/network connection quanh thời điểm alert.</div><div class="check-item"><strong>Network evidence:</strong> firewall/proxy/DNS log để xác định allow/block và domain liên quan.</div></div>
+<div class="evidence-box"><strong>Placeholder ảnh cần chèn</strong><p>Ảnh alert trên SIEM, kết quả reputation, log firewall/proxy và timeline các event liên quan.</p></div>
+<h2>4. Triage Decision Tree</h2><table class="info-table"><tr><th>Condition</th><th>Classification</th><th>Action</th></tr><tr><td>IOC malicious, connection allowed, endpoint có process lạ</td><td><span class="finding-high">True Positive</span></td><td>Escalate Tier 2/IR, isolate endpoint nếu cần.</td></tr><tr><td>IOC malicious, traffic blocked, không có event lặp lại</td><td><span class="finding-medium">Benign True Positive</span></td><td>Monitor, keep block, document evidence.</td></tr><tr><td>Reputation yếu/không thống nhất, không có dấu hiệu endpoint</td><td><span class="finding-low">False Positive / Monitor</span></td><td>Đánh dấu theo dõi, tuning nếu noise nhiều.</td></tr><tr><td>IP là cloud/CDN hợp lệ nhưng bị gắn reputation cũ</td><td><span class="finding-info">False Positive</span></td><td>Whitelist có điều kiện hoặc giảm severity.</td></tr></table>
+<h2>5. Final Report Template</h2><pre>Summary:
+A SIEM alert reported outbound traffic from an internal host to an IP address with malicious reputation. The alert was reviewed by checking SIEM context, network logs, IOC reputation, and endpoint evidence.
+
+Assessment:
+- IOC reputation: suspicious/malicious based on external reputation check.
+- Network action: blocked/allowed by firewall.
+- Endpoint evidence: no confirmed malicious process observed in current evidence.
+- Scope: single host / multiple hosts.
+
+Conclusion:
+Classify as [False Positive / Benign True Positive / True Positive / Escalate]. Continue monitoring and escalate if repeated connections or endpoint indicators appear.</pre>
+<h2>6. Lessons Learned</h2><ul><li>Reputation “malicious = yes” chưa đủ để kết luận máy bị nhiễm mã độc.</li><li>Phải phân biệt event bị block và event đã được allow.</li><li>Cần timeline theo phút để biết event nào xảy ra trước/sau.</li><li>Báo cáo tốt phải có evidence, classification và action rõ ràng.</li></ul>
+
     </article>
   </main>
 
   <footer>
-    © 2026 Khánh Linh. Built with GitHub Pages.
+    © Khánh Linh. Cybersecurity Portfolio & Technical Write-ups.
   </footer>
 </body>
 </html>
