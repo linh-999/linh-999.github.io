@@ -18,6 +18,7 @@
           <a href="../index.html#posts">Posts</a>
           <a href="../index.html#tags">Tags</a>
           <a href="../index.html#skills">Skills</a>
+          <a href="../index.html#roadmap">Roadmap</a>
           <a href="../index.html#contact">Contact</a>
         </div>
       </nav>
@@ -28,33 +29,61 @@
     <article class="article">
       <p class="meta"><a class="text-link" href="../index.html">← Back to Home</a> · Project · Sep 2025 – Oct 2025</p>
       <h1>📊 Centralized Security Monitoring System</h1>
-      <p class="lead">Mô hình giám sát bảo mật tập trung dùng IDS, log collection và dashboard để phát hiện port scan, DoS và sự kiện bất thường.</p>
-      <div class="tag-list" style="justify-content:flex-start; margin-bottom: 28px;"><span class="tag">Snort</span><span class="tag">ELK Stack</span><span class="tag">Filebeat</span><span class="tag">Linux</span></div>
-      <h2>Tổng quan</h2>
-      <p>Dự án mô phỏng hệ thống giám sát bảo mật tập trung cho mạng lab. Các nguồn log từ endpoint/network được thu thập về server, sau đó hiển thị trên dashboard để phục vụ quá trình monitoring và điều tra ban đầu.</p>
-      <h2>Vai trò của hệ thống</h2>
-      <ul>
-        <li>IDS phát hiện dấu hiệu tấn công dựa trên rule.</li>
-        <li>Filebeat/log shipper chuyển log về nền tảng phân tích.</li>
-        <li>Dashboard hỗ trợ lọc sự kiện theo thời gian, IP, rule và severity.</li>
-        <li>SOC Analyst dùng dashboard để triage alert và xác định sự kiện cần xử lý.</li>
-      </ul>
-      <h2>Nội dung đã thực hiện</h2>
-      <ul>
-        <li>Cấu hình IDS để phát hiện port scanning/DoS ở mức lab.</li>
-        <li>Xây dựng dashboard hiển thị alert theo thời gian và loại sự kiện.</li>
-        <li>Viết rule cơ bản và tinh chỉnh để giảm false positive.</li>
-        <li>Ghi lại quy trình điều tra alert theo hướng SOC Tier 1.</li>
-      </ul>
-      <h2>Kết quả</h2>
-      <ul>
-        <li>Hiểu luồng dữ liệu từ network event đến alert trên dashboard.</li>
-        <li>Có khả năng giải thích vì sao một alert được sinh ra.</li>
-        <li>Có nền tảng để mở rộng sang Wazuh, Splunk hoặc mô hình SIEM doanh nghiệp.</li>
-      </ul>
-      <div class="note">
-        <p><strong>Ghi chú:</strong> Nội dung này được viết theo hướng portfolio sinh viên/thực tập, có thể bổ sung ảnh lab, topology, screenshot dashboard hoặc log evidence sau khi có dữ liệu thực tế.</p>
+      <p class="lead">Thiết kế mô hình giám sát bảo mật tập trung theo tư duy SOC Analyst: thu thập log, phát hiện bất thường, triage alert và viết báo cáo điều tra.</p>
+      <div class="tag-list" style="justify-content:flex-start; margin-bottom: 28px;"><span class="tag">Snort IDS</span><span class="tag">ELK Stack</span><span class="tag">Filebeat</span><span class="tag">Linux</span><span class="tag">SOC Triage</span></div>
+      
+      <div class="soc-summary">
+        <div class="summary-card"><strong>Role</strong><span>SOC Analyst / Detection Lab Builder</span></div>
+        <div class="summary-card"><strong>Goal</strong><span>Phát hiện port scan, DoS và network anomaly trong môi trường lab.</span></div>
+        <div class="summary-card"><strong>Outcome</strong><span>Có dashboard, alert flow, rule logic và checklist điều tra.</span></div>
       </div>
+
+      <h2>1. Problem Statement</h2>
+      <p>Trong môi trường doanh nghiệp, log rời rạc từ nhiều endpoint và thiết bị mạng khiến analyst khó phát hiện hành vi bất thường. Project này mô phỏng cách gom log về một điểm trung tâm để SOC có thể giám sát, truy vấn và điều tra nhanh.</p>
+
+      <h2>2. Architecture & Log Flow</h2>
+      <div class="lab-flow">
+        <div class="flow-node"><strong>Endpoint / Attacker VM</strong><span>Sinh traffic scan, DoS, connection attempt</span></div>
+        <div class="flow-node"><strong>Snort IDS</strong><span>Match rule, tạo alert</span></div>
+        <div class="flow-node"><strong>Filebeat</strong><span>Forward IDS log</span></div>
+        <div class="flow-node"><strong>ELK Stack</strong><span>Index, parse, search</span></div>
+        <div class="flow-node"><strong>Kibana Dashboard</strong><span>Monitoring & investigation</span></div>
+      </div>
+
+      <h2>3. Detection Use Cases</h2>
+      <table class="info-table">
+        <tr><th>Use case</th><th>Detection logic</th><th>Analyst value</th></tr>
+        <tr><td>Port Scanning</td><td>Nhiều connection attempts đến nhiều port trong thời gian ngắn.</td><td>Nhận diện reconnaissance trước khi khai thác.</td></tr>
+        <tr><td>DoS Attempt</td><td>Lưu lượng bất thường, nhiều packet đến cùng một destination.</td><td>Đánh giá nguy cơ ảnh hưởng availability.</td></tr>
+        <tr><td>Suspicious External IP</td><td>IP lạ liên tục tương tác với host nội bộ.</td><td>Pivot sang threat intelligence và firewall log.</td></tr>
+      </table>
+
+      <h2>4. SOC Analyst Workflow</h2>
+      <div class="phase-grid">
+        <div class="phase-card"><h3>Triage</h3><p>Kiểm tra rule name, severity, source IP, destination IP, timestamp và tần suất alert.</p></div>
+        <div class="phase-card"><h3>Context Collection</h3><p>Pivot sang dashboard để xem traffic trước/sau alert, các host liên quan và pattern lặp lại.</p></div>
+        <div class="phase-card"><h3>Assessment</h3><p>Phân loại true positive / false positive dựa trên bằng chứng, whitelist, lab activity hoặc traffic hợp lệ.</p></div>
+        <div class="phase-card"><h3>Recommendation</h3><p>Đề xuất block IP, tune rule, tăng logging hoặc tạo dashboard theo dõi riêng.</p></div>
+      </div>
+
+      <h2>5. Evidence cần đưa vào portfolio</h2>
+      <div class="evidence-box"><strong>Ảnh nên chèn</strong><p>Topology lab, Snort rule, log alert, dashboard Kibana, query lọc theo source IP/rule, kết quả ping/nmap dùng để tái hiện alert.</p></div>
+
+      <h2>6. Kết quả & Impact</h2>
+      <div class="metric-row">
+        <div class="metric"><strong>Visibility</strong><span>Tập trung log để giảm phụ thuộc kiểm tra thủ công.</span></div>
+        <div class="metric"><strong>Detection</strong><span>Có rule phát hiện scan/DoS trong lab.</span></div>
+        <div class="metric"><strong>Triage</strong><span>Có checklist xử lý alert bước đầu.</span></div>
+        <div class="metric"><strong>Reporting</strong><span>Viết được kết luận có evidence.</span></div>
+      </div>
+
+      <h2>7. Limitations & Improvement</h2>
+      <ul>
+        <li>Rule lab còn đơn giản, chưa bao phủ đầy đủ kỹ thuật tấn công thực tế.</li>
+        <li>Cần thêm enrichment với threat intelligence để đánh giá IP/domain tốt hơn.</li>
+        <li>Cần mapping use case với MITRE ATT&amp;CK để chuyên nghiệp hóa detection report.</li>
+      </ul>
+    
     </article>
   </main>
 

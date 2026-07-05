@@ -49,14 +49,111 @@
         <li>SSH Brute Force: nhiều lần đăng nhập sai từ cùng một IP.</li>
         <li>Windows Security Event: theo dõi login failure, user creation hoặc policy change.</li>
       </ul>
-      <h2>Cách viết báo cáo lab</h2>
+      <h2>Báo cáo lab mẫu: File Integrity Monitoring bằng Wazuh</h2>
+      <p>Phần này có thể dùng trực tiếp làm nội dung write-up cho lab Wazuh. Khi có ảnh thật, chỉ cần thay các ô bằng chứng bằng screenshot của bạn.</p>
+
+      <h3>1. Mục tiêu use case</h3>
+      <p>Use case này mô phỏng tình huống SOC cần phát hiện thay đổi bất thường trên endpoint. Wazuh Agent được cấu hình theo dõi một thư mục quan trọng. Khi người dùng tạo, sửa hoặc xóa file trong thư mục đó, agent sẽ thu thập sự kiện, gửi về Wazuh Manager để đối chiếu rule và hiển thị alert trên Dashboard.</p>
       <ul>
-        <li>Mô tả mục tiêu use case.</li>
-        <li>Sơ đồ luồng log: Endpoint → Agent → Manager → Indexer → Dashboard.</li>
-        <li>Ảnh cấu hình agent/rule nếu có.</li>
-        <li>Ảnh alert trên dashboard.</li>
-        <li>Kết luận rule phát hiện được gì và còn hạn chế gì.</li>
+        <li>Phát hiện hành vi tạo mới file trong thư mục được giám sát.</li>
+        <li>Phát hiện hành vi chỉnh sửa nội dung file.</li>
+        <li>Phát hiện hành vi xóa file hoặc thay đổi metadata.</li>
+        <li>Ghi nhận thông tin endpoint, đường dẫn file, thời gian xảy ra sự kiện và mức độ cảnh báo.</li>
       </ul>
+
+      <h3>2. Sơ đồ luồng log</h3>
+      <div class="lab-flow">
+        <div class="flow-node"><strong>Endpoint</strong><span>Máy Linux/Windows phát sinh sự kiện</span></div>
+        <div class="flow-node"><strong>Agent</strong><span>Thu thập log và FIM event</span></div>
+        <div class="flow-node"><strong>Manager</strong><span>Phân tích, áp rule, tạo alert</span></div>
+        <div class="flow-node"><strong>Indexer</strong><span>Lưu trữ và lập chỉ mục dữ liệu</span></div>
+        <div class="flow-node"><strong>Dashboard</strong><span>SOC xem alert và điều tra</span></div>
+      </div>
+      <p>Luồng xử lý chính: Endpoint phát sinh sự kiện thay đổi file → Wazuh Agent đọc cấu hình giám sát → Agent gửi event về Manager → Manager so khớp rule → alert được lưu vào Indexer → Dashboard hiển thị cho SOC Analyst kiểm tra.</p>
+
+      <h3>3. Cấu hình agent/rule</h3>
+      <p>Trên endpoint, cấu hình File Integrity Monitoring có thể đặt trong file <code>ossec.conf</code>. Ví dụ bên dưới theo dõi thư mục lab <code>/home/khanhlinh/fim-lab</code>.</p>
+      <pre><code>&lt;syscheck&gt;
+  &lt;frequency&gt;300&lt;/frequency&gt;
+  &lt;directories check_all="yes" realtime="yes"&gt;/home/khanhlinh/fim-lab&lt;/directories&gt;
+&lt;/syscheck&gt;</code></pre>
+      <div class="evidence-box">
+        <strong>Ảnh cần chèn 1: Cấu hình agent</strong>
+        <p>Chèn ảnh file <code>ossec.conf</code> hoặc màn hình terminal thể hiện thư mục đang được Wazuh Agent giám sát.</p>
+      </div>
+      <div class="evidence-box">
+        <strong>Ảnh cần chèn 2: Trạng thái agent</strong>
+        <p>Chèn ảnh agent đã kết nối thành công với manager, ví dụ màn hình <code>agent_control -l</code> hoặc trang Agents trên Wazuh Dashboard.</p>
+      </div>
+
+      <h3>4. Các bước thực hiện lab</h3>
+      <ol>
+        <li>Tạo thư mục lab trên endpoint: <code>mkdir -p /home/khanhlinh/fim-lab</code>.</li>
+        <li>Cấu hình Wazuh Agent giám sát thư mục này.</li>
+        <li>Khởi động lại agent để nhận cấu hình mới: <code>sudo systemctl restart wazuh-agent</code>.</li>
+        <li>Tạo file kiểm thử: <code>echo "test fim" &gt; /home/khanhlinh/fim-lab/test.txt</code>.</li>
+        <li>Sửa nội dung file: <code>echo "update content" &gt;&gt; /home/khanhlinh/fim-lab/test.txt</code>.</li>
+        <li>Xóa file: <code>rm /home/khanhlinh/fim-lab/test.txt</code>.</li>
+        <li>Vào Wazuh Dashboard để kiểm tra alert liên quan đến File Integrity Monitoring.</li>
+      </ol>
+
+      <h3>5. Alert trên dashboard</h3>
+      <p>Khi rule hoạt động đúng, Dashboard sẽ hiển thị alert liên quan đến thay đổi file. SOC Analyst cần kiểm tra các trường quan trọng như agent name, rule ID, severity, file path, event type và timestamp.</p>
+      <table class="info-table">
+        <thead>
+          <tr>
+            <th>Trường thông tin</th>
+            <th>Ý nghĩa khi điều tra</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Agent / Hostname</td>
+            <td>Xác định endpoint nào phát sinh sự kiện.</td>
+          </tr>
+          <tr>
+            <td>Rule ID / Rule Description</td>
+            <td>Cho biết rule nào đã match và mô tả hành vi được phát hiện.</td>
+          </tr>
+          <tr>
+            <td>Severity Level</td>
+            <td>Ước lượng mức độ ưu tiên cần xử lý.</td>
+          </tr>
+          <tr>
+            <td>File Path</td>
+            <td>Xác định file hoặc thư mục bị tạo, sửa, xóa.</td>
+          </tr>
+          <tr>
+            <td>Timestamp</td>
+            <td>Xác định thời điểm xảy ra sự kiện để đối chiếu log khác.</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="evidence-box">
+        <strong>Ảnh cần chèn 3: Alert trên Wazuh Dashboard</strong>
+        <p>Chèn ảnh màn hình alert FIM, trong đó nhìn rõ agent, rule description, level, file path và thời gian phát hiện.</p>
+      </div>
+
+      <h3>6. Kết quả phân tích</h3>
+      <p>Sau khi kiểm tra alert, có thể kết luận Wazuh đã ghi nhận được sự kiện thay đổi file trong thư mục được giám sát. Alert có đủ thông tin để SOC Analyst biết máy nào phát sinh sự kiện, file nào bị tác động và hành vi thuộc loại tạo mới, chỉnh sửa hay xóa.</p>
+      <div class="checklist">
+        <div class="check-item"><strong>Phát hiện được:</strong> thay đổi file trong thư mục quan trọng, bao gồm tạo mới, sửa nội dung và xóa file.</div>
+        <div class="check-item"><strong>Bằng chứng chính:</strong> alert trên dashboard, rule ID, đường dẫn file, agent name và timestamp.</div>
+        <div class="check-item"><strong>Ý nghĩa SOC:</strong> hỗ trợ phát hiện thay đổi trái phép trên endpoint, đặc biệt ở thư mục cấu hình, thư mục web hoặc thư mục chứa dữ liệu nhạy cảm.</div>
+      </div>
+
+      <h3>7. Hạn chế của use case</h3>
+      <ul>
+        <li>Rule chỉ xác nhận có thay đổi file, chưa tự kết luận hành vi là độc hại hay hợp lệ.</li>
+        <li>Nếu thư mục giám sát quá rộng, hệ thống có thể sinh nhiều alert gây nhiễu.</li>
+        <li>Cần whitelist hoặc tuning cho các tiến trình hợp lệ như update phần mềm, backup hoặc deployment.</li>
+        <li>Để đánh giá chính xác hơn, cần đối chiếu thêm user login, process execution, command history và network connection.</li>
+      </ul>
+
+      <h3>8. Kết luận báo cáo</h3>
+      <blockquote>
+        Lab File Integrity Monitoring cho thấy Wazuh có thể phát hiện và ghi nhận các thay đổi trên endpoint thông qua agent. Luồng log từ Endpoint → Agent → Manager → Indexer → Dashboard hoạt động đúng, alert hiển thị đầy đủ thông tin phục vụ quá trình điều tra cơ bản. Tuy nhiên, để triển khai thực tế trong SOC, rule cần được tuning để giảm false positive và cần kết hợp thêm log xác thực, tiến trình và network để đánh giá mức độ rủi ro chính xác hơn.
+      </blockquote>
       <h2>Kỹ năng rút ra</h2>
       <ul>
         <li>Nắm được kiến trúc SIEM cơ bản.</li>

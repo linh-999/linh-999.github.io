@@ -1,20 +1,21 @@
-Cách upload đúng lên GitHub Pages:
+HƯỚNG DẪN UPLOAD PORTFOLIO
 
-1. Copy TOÀN BỘ các mục sau vào root repo linh-999.github.io:
-   - index.html
-   - assets/
-   - writeups/
-   - projects/
+1. Giải nén file ZIP này.
+2. Copy toàn bộ file/thư mục bên trong vào:
+   D:\IO\update\linh-999.github.io
 
-2. Cấu trúc đúng phải là:
-   D:\IO\update\linh-999.github.io\index.html
-   D:\IO\update\linh-999.github.io\assets\style.css
-   D:\IO\update\linh-999.github.io\writeups\soc-alert-investigation.html
-   D:\IO\update\linh-999.github.io\projects\centralized-security-monitoring.html
+Cấu trúc đúng:
+- index.html
+- assets/style.css
+- writeups/*.html
+- projects/*.html
 
-3. Nếu chỉ có index.html và assets/ thì bấm Write-ups/Projects sẽ bị 404.
-
-4. Push:
+3. Push lên GitHub:
    git add .
-   git commit -m "fix portfolio navigation"
+   git commit -m "upgrade soc analyst portfolio"
    git push origin main
+
+Nội dung đã nâng cấp:
+- Thêm roadmap dạng sơ đồ phát triển năng lực SOC Analyst.
+- Viết lại project theo format SOC Analyst chuyên nghiệp.
+- Bổ sung flow, use case, evidence, triage workflow, limitations và improvement.

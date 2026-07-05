@@ -18,6 +18,7 @@
           <a href="index.html#posts">Posts</a>
           <a href="index.html#tags">Tags</a>
           <a href="index.html#skills">Skills</a>
+          <a href="index.html#roadmap">Roadmap</a>
           <a href="index.html#contact">Contact</a>
         </div>
       </nav>
@@ -89,9 +90,9 @@
           <strong>Posts Index</strong>
           <span>Danh sách link trực tiếp đến từng bài.</span>
         </a>
-        <a class="quick-card" href="#tags">
-          <strong>Tags</strong>
-          <span>Lọc ý tưởng nội dung theo SOC, CCNA, Web Security.</span>
+        <a class="quick-card" href="#roadmap">
+          <strong>Roadmap</strong>
+          <span>Xem sơ đồ phát triển năng lực SOC Analyst.</span>
         </a>
       </div>
     </section>
@@ -171,43 +172,48 @@
     <section id="projects" class="container">
       <div class="section-title">
         <span>Projects</span>
-        <h2>Dự án nổi bật</h2>
+        <h2>Dự án nổi bật theo hướng SOC Analyst</h2>
       </div>
       <div class="grid">
-        <article class="card">
+        <article class="card project-card-pro">
           <div class="card-icon">📊</div>
           <p class="meta">Sep 2025 – Oct 2025 · Snort / ELK Stack</p>
           <h3>Centralized Security Monitoring System</h3>
-          <p>Mô hình giám sát bảo mật tập trung dùng IDS, log collection và dashboard để phát hiện port scan, DoS và sự kiện bất thường.</p>
-          <a href="projects/centralized-security-monitoring.html">Xem project →</a>
+          <p>Thiết kế pipeline giám sát tập trung từ IDS log đến dashboard, xây dựng rule phát hiện port scan/DoS và quy trình triage theo mức độ rủi ro.</p>
+          <div class="mini-tags"><span>Detection Engineering</span><span>Alert Triage</span><span>Dashboard</span></div>
+          <a href="projects/centralized-security-monitoring.html">Xem case study →</a>
         </article>
-        <article class="card">
+        <article class="card project-card-pro">
           <div class="card-icon">🧱</div>
           <p class="meta">Mar 2026 – Apr 2026 · FortiWeb WAF / Burp Suite</p>
           <h3>Web Security: Penetration Testing &amp; WAF Mitigation</h3>
-          <p>Lab kiểm thử OWASP Top 10, phân tích HTTP request/response và đề xuất rule WAF nhằm giảm rủi ro tấn công web.</p>
-          <a href="projects/web-security-waf-mitigation.html">Xem project →</a>
+          <p>Phân tích attack traffic theo OWASP Top 10, mapping payload vào WAF/web log, đánh giá true positive/false positive và đề xuất hardening rule.</p>
+          <div class="mini-tags"><span>OWASP</span><span>WAF Logs</span><span>Mitigation</span></div>
+          <a href="projects/web-security-waf-mitigation.html">Xem case study →</a>
         </article>
-        <article class="card">
+        <article class="card project-card-pro">
           <div class="card-icon">🤖</div>
           <p class="meta">Mar 2026 – Apr 2026 · Python / Scapy</p>
-          <h3>AI-Driven Cybersecurity Agent for Network Automation</h3>
-          <p>Ý tưởng agent hỗ trợ phân tích packet/log và gợi ý bước điều tra cho SOC/NOC bằng Python, Scapy và LLM workflow.</p>
-          <a href="projects/ai-cybersecurity-agent.html">Xem project →</a>
+          <h3>AI-Driven Cybersecurity Agent</h3>
+          <p>Xây dựng ý tưởng assistant hỗ trợ SOC/NOC: tóm tắt log/packet, chuẩn hóa evidence, gợi ý truy vấn điều tra và sinh báo cáo incident ngắn.</p>
+          <div class="mini-tags"><span>Automation</span><span>Investigation</span><span>Reporting</span></div>
+          <a href="projects/ai-cybersecurity-agent.html">Xem case study →</a>
         </article>
-        <article class="card">
+        <article class="card project-card-pro">
           <div class="card-icon">🖧</div>
           <p class="meta">2026 · CCNA / Packet Tracer</p>
           <h3>CCNA Packet Tracer Lab Portfolio</h3>
-          <p>Bộ lab nền tảng mạng: subnetting, VLAN, routing, OSPF, ACL, NAT, WLAN và troubleshooting theo format write-up dễ đọc.</p>
-          <a href="projects/ccna-packet-tracer-portfolio.html">Xem project →</a>
+          <p>Bộ lab routing-switching phục vụ SOC/NOC: đọc topology, kiểm tra connectivity, xác định root cause và viết báo cáo troubleshooting.</p>
+          <div class="mini-tags"><span>Network Baseline</span><span>OSI Troubleshooting</span><span>Verification</span></div>
+          <a href="projects/ccna-packet-tracer-portfolio.html">Xem case study →</a>
         </article>
-        <article class="card">
+        <article class="card project-card-pro">
           <div class="card-icon">🧭</div>
           <p class="meta">2026 · Network Operations / Troubleshooting</p>
           <h3>Network Troubleshooting Case Notes</h3>
-          <p>Template viết case study xử lý sự cố mạng: symptom, scope, hypothesis, root cause, solution, verification và lesson learned.</p>
-          <a href="projects/network-troubleshooting-notes.html">Xem project →</a>
+          <p>Chuẩn hóa case note vận hành mạng theo format analyst: symptom, scope, hypothesis, evidence, root cause, action và lesson learned.</p>
+          <div class="mini-tags"><span>Incident Notes</span><span>Root Cause</span><span>SLA Mindset</span></div>
+          <a href="projects/network-troubleshooting-notes.html">Xem case study →</a>
         </article>
       </div>
     </section>
@@ -283,23 +289,68 @@
     <section id="roadmap" class="container">
       <div class="section-title">
         <span>Roadmap</span>
-        <h2>Nội dung sẽ bổ sung tiếp</h2>
+        <h2>Sơ đồ phát triển năng lực SOC Analyst</h2>
       </div>
-      <div class="grid-2">
-        <div class="timeline-item">
-          <h3>Short-term</h3>
+      <p class="lead roadmap-lead">
+        Lộ trình này dùng để định hướng portfolio: mỗi giai đoạn đều có kiến thức cần học, lab cần làm và bằng chứng nên đưa lên GitHub Pages.
+      </p>
+
+      <div class="roadmap-diagram">
+        <div class="roadmap-step">
+          <div class="step-number">01</div>
+          <h3>Network & System Foundation</h3>
+          <p>TCP/IP, VLAN, routing, Linux, Windows, AD cơ bản.</p>
+          <span>Evidence: CCNA labs, troubleshooting notes</span>
+        </div>
+        <div class="roadmap-step">
+          <div class="step-number">02</div>
+          <h3>SOC Tier 1 Monitoring</h3>
+          <p>Đọc alert, phân tích log, kiểm tra IOC, phân loại severity.</p>
+          <span>Evidence: alert investigation write-ups</span>
+        </div>
+        <div class="roadmap-step">
+          <div class="step-number">03</div>
+          <h3>SIEM & Detection Use Cases</h3>
+          <p>Wazuh/Splunk/ELK, rule logic, dashboard, false positive tuning.</p>
+          <span>Evidence: SIEM dashboard, custom rules</span>
+        </div>
+        <div class="roadmap-step">
+          <div class="step-number">04</div>
+          <h3>Incident Response Mindset</h3>
+          <p>Scope, timeline, root cause, containment, recommendation.</p>
+          <span>Evidence: incident report templates</span>
+        </div>
+        <div class="roadmap-step">
+          <div class="step-number">05</div>
+          <h3>Blue Team Automation</h3>
+          <p>Python scripts, enrichment, report automation, SOAR mindset.</p>
+          <span>Evidence: automation mini-projects</span>
+        </div>
+      </div>
+
+      <div class="roadmap-panels">
+        <div class="roadmap-panel">
+          <h3>Short-term: 0–3 tháng</h3>
           <ul>
-            <li>Bổ sung ảnh lab, topology và screenshot dashboard cho từng write-up.</li>
-            <li>Viết thêm case study SOC: phishing email, malicious IP, brute force SSH.</li>
-            <li>Hoàn thiện bộ CCNA Packet Tracer write-up theo từng lab.</li>
+            <li>Hoàn thiện ảnh lab cho Wazuh, ELK/Snort và CCNA Packet Tracer.</li>
+            <li>Viết thêm 3 case SOC: malicious IP, brute force SSH, phishing email.</li>
+            <li>Chuẩn hóa mỗi bài theo format: Objective → Architecture → Evidence → Assessment → Recommendation.</li>
           </ul>
         </div>
-        <div class="timeline-item">
-          <h3>Long-term</h3>
+        <div class="roadmap-panel">
+          <h3>Mid-term: 3–6 tháng</h3>
           <ul>
-            <li>Xây dựng series Network Operations & Automation.</li>
-            <li>Thêm project Wazuh/Splunk investigation với dữ liệu log mẫu.</li>
-            <li>Chuẩn hóa portfolio để dùng khi ứng tuyển SOC/NOC/Network Security Intern.</li>
+            <li>Thêm detection rule mapping MITRE ATT&amp;CK cho từng use case.</li>
+            <li>Tạo dashboard theo severity, source IP, destination, rule name và timeline.</li>
+            <li>Thực hành viết báo cáo điều tra ngắn như SOC Analyst Tier 1.</li>
+          </ul>
+        </div>
+        <div class="roadmap-panel">
+          <h3>Long-term: 6–12 tháng</h3>
+          <ul>
+            <li>Xây dựng mini SOAR/automation flow: enrich IOC, tạo ticket, gợi ý action.</li>
+            <li>Mở rộng sang threat hunting cơ bản và incident response playbook.</li>
+            <li>Chuẩn bị portfolio ứng tuyển SOC Analyst L1 / NOC / Network Security Intern.</li>
           </ul>
         </div>
       </div>
