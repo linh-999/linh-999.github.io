@@ -1,48 +1,18 @@
 <!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Network Automation & Streaming Telemetry | Khánh Linh</title>
-  <link rel="stylesheet" href="../assets/style.css" />
-</head>
+<html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Network Automation &amp; Telemetry | Khánh Linh</title><link rel="stylesheet" href="../assets/style.css"></head>
 <body>
-  <header>
-    <div class="container">
-      <nav>
-        <a class="logo" href="../index.html">Khanh<span>Linh</span></a>
-        <div class="nav-links">
-          <a href="../index.html#about">About</a>
-          <a href="../index.html#writeups">Write-ups</a>
-          <a href="../index.html#projects">Projects</a>
-          <a href="../index.html#posts">Posts</a>
-          <a href="../index.html#tags">Tags</a>
-          <a href="../index.html#skills">Skills</a>
-          <a href="../index.html#roadmap">Roadmap</a>
-          <a href="../index.html#contact">Contact</a>
-        </div>
-      </nav>
+<header><div class="container"><nav><a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a><div class="nav-links"><a href="../index.html#projects">Projects</a><a href="../index.html#writeups">Write-ups</a><a href="../index.html#skills">Skills</a><a class="nav-cta" href="https://github.com/linh-999" target="_blank">GitHub</a></div></nav></div></header>
+<main class="container">
+  <section class="page-hero"><div class="breadcrumb"><a href="../index.html">Home</a> / Write-ups / Network Automation &amp; Telemetry</div><div class="eyebrow"><span class="pulse"></span>May 2026 · Lab Note</div><h1 class="page-title">Network Automation &amp; Telemetry</h1><p class="lead">Research note về streaming telemetry, automation và ứng dụng trong NOC/SOC operations.</p><div class="mini-tags"><span>NOC</span><span>Automation</span><span>Telemetry</span></div></section>
+  <section class="report-layout">
+    <aside class="sidebar"><div class="panel"><p class="meta">Linked full project</p><h3>Network Operations &amp; Streaming Telemetry Lab</h3><p style="color:var(--muted);margin:10px 0">Bài write-up này là phần ghi chú kỹ thuật hỗ trợ project/report chính.</p><a class="btn btn-outline" href="../projects/network-operations-telemetry-lab.html">Open full project</a></div></aside>
+    <div>
+      <section class="report-section"><h2>1. Lab Objective</h2><p>Mục tiêu của lab là ghi lại cách triển khai, kiểm thử và phân tích evidence theo hướng SOC Analyst. Bài viết không chỉ lưu command/cấu hình, mà phải trả lời: use case phát hiện gì, log đi qua đâu, evidence nào chứng minh alert và hạn chế hiện tại là gì.</p></section>
+      <section class="report-section"><h2>2. Use Case & Log Flow</h2><div class="flow"><span>Endpoint / Traffic</span><i>→</i><span>Agent / Sensor</span><i>→</i><span>Manager / SIEM</span><i>→</i><span>Dashboard</span><i>→</i><span>Analyst Report</span></div><ul><li>Network device sinh metric/log về interface, route và health.</li><li>Collector nhận dữ liệu định kỳ hoặc streaming.</li><li>Storage/indexer lưu metric theo time-series.</li><li>Dashboard hiển thị trạng thái và trend.</li><li>Automation script tạo health-check report hoặc cảnh báo.</li></ul></section>
+      <section class="report-section"><h2>3. Configuration / Evidence Placeholder</h2><div class="placeholder">Chèn ảnh cấu hình agent/rule/dashboard/alert detail tại đây.</div><p style="margin-top:12px">Khi thêm ảnh, nên đặt tên file rõ ràng như <span class="kbd">wazuh-rule-file-integrity.png</span> hoặc <span class="kbd">kibana-portscan-dashboard.png</span>.</p></section>
+      <section class="report-section"><h2>4. Detection & Analysis</h2><ul><li>Interface flap: trạng thái link đổi liên tục trong thời gian ngắn.</li><li>High error/discard: counter lỗi tăng bất thường.</li><li>Latency/loss spike: ảnh hưởng chất lượng dịch vụ.</li><li>Routing change: thay đổi route/neighbor cần kiểm tra.</li></ul><table class="evidence-table"><thead><tr><th>Field</th><th>What to document</th></tr></thead><tbody><tr><td>Timestamp</td><td>Thời điểm alert xảy ra và múi giờ nếu có.</td></tr><tr><td>Source / Destination</td><td>IP, host, user, process hoặc email sender tùy case.</td></tr><tr><td>Rule / Signature</td><td>Rule ID, description, severity và điều kiện match.</td></tr><tr><td>Verdict</td><td>True positive, false positive, benign activity hoặc needs escalation.</td></tr></tbody></table></section>
+      <section class="report-section"><h2>5. Conclusion</h2><p>Lab liên quan trực tiếp đến project <b>Network Operations &amp; Streaming Telemetry Lab</b>. Kết luận cần ghi rõ rule phát hiện được gì, còn thiếu dữ liệu nào và action nào phù hợp nếu đây là môi trường thật.</p><ul><li>Chuẩn hóa checklist health-check theo thiết bị/dịch vụ.</li><li>Lưu baseline để phát hiện deviation.</li><li>Tạo báo cáo định kỳ cho link/device critical.</li></ul></section>
+      <p style="margin:28px 0"><a class="btn btn-outline" href="../index.html#writeups">← Back to write-ups</a></p>
     </div>
-  </header>
-
-  <main class="article-layout container">
-    <article class="article">
-      <p class="meta"><a class="text-link" href="../index.html">← Back to Home</a> · Write-up · May 2026</p>
-      <h1>⚙️ Research Notes: Core IP, Telemetry & Network Automation</h1>
-      <p class="lead">Ghi chú nghiên cứu automation/telemetry cho vận hành mạng và cách biến metric thành alert có thể điều tra.</p>
-      <div class="tag-list" style="justify-content:flex-start; margin-bottom: 28px;"><span class="tag">Network Operations</span><span class="tag">Automation</span><span class="tag">Telemetry</span><span class="tag">AIOps</span><span class="tag">NOC</span><span class="tag">SOC</span></div>
-      
-<div class="report-hero"><h2>Research Note Summary</h2><p>Nội dung nghiên cứu hướng Core IP/Transmission + Automation + SOC/NOC. Trọng tâm là cách thu thập telemetry, phát hiện bất thường vận hành và tạo cảnh báo có thể điều tra được.</p><div class="report-meta-grid"><div class="report-meta-card"><strong>Date</strong><span>May 2026</span></div><div class="report-meta-card"><strong>Focus</strong><span>Network Automation & Telemetry</span></div><div class="report-meta-card"><strong>Role</strong><span>NOC/SOC Automation Learner</span></div><div class="report-meta-card"><strong>Output</strong><span>Concept + lab roadmap</span></div></div></div>
-<h2>1. Why it matters</h2><p>Trong mạng Core IP/Truyền dẫn, outage hoặc degradation có thể đến từ interface error, link flap, congestion, routing change hoặc cấu hình sai. Polling thủ công không đủ nhanh và khó scale. Streaming telemetry/automation giúp thu thập trạng thái liên tục hơn và tạo baseline để phát hiện bất thường.</p>
-<h2>2. Proposed Flow</h2><div class="lab-flow"><div class="flow-node"><strong>Network Devices</strong><span>Router/switch</span></div><div class="flow-node"><strong>Telemetry</strong><span>Interface/routing metrics</span></div><div class="flow-node"><strong>Collector</strong><span>Normalize data</span></div><div class="flow-node"><strong>Rule/Baseline</strong><span>Anomaly check</span></div><div class="flow-node"><strong>NOC/SOC</strong><span>Alert & report</span></div></div>
-<h2>3. Lab Roadmap</h2><ul><li>Giai đoạn 1: dùng Python/Netmiko lấy show command và xuất CSV/JSON.</li><li>Giai đoạn 2: kiểm tra interface status, error counter, CPU/memory, routing neighbor.</li><li>Giai đoạn 3: tạo rule cảnh báo nếu interface down, error tăng nhanh hoặc route biến mất.</li><li>Giai đoạn 4: đẩy kết quả vào dashboard hoặc SIEM để NOC/SOC theo dõi.</li></ul>
-<h2>4. SOC/NOC Output</h2><p>Báo cáo tốt cần có: affected device, affected interface, first seen, current status, probable cause, impact, action taken và next check. Cách viết này giống incident report trong SOC nhưng áp dụng cho hạ tầng mạng.</p>
-
-    </article>
-  </main>
-
-  <footer>
-    © Khánh Linh. Cybersecurity Portfolio & Technical Write-ups.
-  </footer>
-</body>
-</html>
+  </section>
+</main><footer>© 2026 Khánh Linh · Lab Write-up</footer></body></html>

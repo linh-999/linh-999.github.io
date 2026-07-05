@@ -1,23 +1,21 @@
-HƯỚNG DẪN UPLOAD PORTFOLIO - BẢN SOC QUALITY REPORT
+# Khánh Linh Premium SOC Analyst Portfolio
 
-1. Giải nén file ZIP này.
-2. Copy toàn bộ file/thư mục bên trong vào:
-   D:\IO\update\linh-999.github.io
+Cách upload lên GitHub Pages:
 
-Cấu trúc đúng:
-- index.html
-- assets/style.css
-- writeups/*.html
-- projects/*.html
+1. Giải nén file zip.
+2. Copy toàn bộ nội dung bên trong thư mục này vào root repo `linh-999.github.io`.
+3. Kiểm tra cấu trúc phải có:
+   - index.html
+   - assets/style.css
+   - assets/app.js
+   - projects/*.html
+   - writeups/*.html
+4. Chạy lệnh:
 
-3. Push lên GitHub:
-   git add .
-   git commit -m "upgrade project reports for soc analyst portfolio"
-   git push origin main
+```powershell
+git add .
+git commit -m "upgrade premium soc analyst portfolio"
+git push origin main
+```
 
-Nội dung đã nâng cấp:
-- Project/report viết theo format SOC Analyst chuyên nghiệp hơn.
-- Dùng timeline 2024, 2025, 2026 để portfolio có câu chuyện phát triển rõ ràng.
-- Mỗi project có Executive Summary, Objective, Architecture/Flow, Use Case, Evidence, Findings, Conclusion, Limitations, Improvement.
-- Wazuh lab, SIEM project, WAF lab, SOC alert investigation được viết sâu hơn để đưa lên portfolio.
-- Có placeholder ảnh dashboard/config để bạn chèn screenshot lab thật sau.
+Nếu trang chưa cập nhật ngay, mở https://linh-999.github.io bằng tab ẩn danh hoặc nhấn Ctrl + F5.

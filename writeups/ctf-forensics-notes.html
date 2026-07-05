@@ -1,47 +1,18 @@
 <!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CTF Forensics Study Notes | Khánh Linh</title>
-  <link rel="stylesheet" href="../assets/style.css" />
-</head>
+<html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>CTF Forensics Study Notes | Khánh Linh</title><link rel="stylesheet" href="../assets/style.css"></head>
 <body>
-  <header>
-    <div class="container">
-      <nav>
-        <a class="logo" href="../index.html">Khanh<span>Linh</span></a>
-        <div class="nav-links">
-          <a href="../index.html#about">About</a>
-          <a href="../index.html#writeups">Write-ups</a>
-          <a href="../index.html#projects">Projects</a>
-          <a href="../index.html#posts">Posts</a>
-          <a href="../index.html#tags">Tags</a>
-          <a href="../index.html#skills">Skills</a>
-          <a href="../index.html#roadmap">Roadmap</a>
-          <a href="../index.html#contact">Contact</a>
-        </div>
-      </nav>
+<header><div class="container"><nav><a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a><div class="nav-links"><a href="../index.html#projects">Projects</a><a href="../index.html#writeups">Write-ups</a><a href="../index.html#skills">Skills</a><a class="nav-cta" href="https://github.com/linh-999" target="_blank">GitHub</a></div></nav></div></header>
+<main class="container">
+  <section class="page-hero"><div class="breadcrumb"><a href="../index.html">Home</a> / Write-ups / CTF Forensics Study Notes</div><div class="eyebrow"><span class="pulse"></span>Dec 2024 · Lab Note</div><h1 class="page-title">CTF Forensics Study Notes</h1><p class="lead">Checklist phân tích file, metadata, timeline, strings và cách viết solve path có evidence.</p><div class="mini-tags"><span>Forensics</span><span>CTF</span><span>Evidence</span></div></section>
+  <section class="report-layout">
+    <aside class="sidebar"><div class="panel"><p class="meta">Linked full project</p><h3>Network IDS &amp; PCAP Investigation</h3><p style="color:var(--muted);margin:10px 0">Bài write-up này là phần ghi chú kỹ thuật hỗ trợ project/report chính.</p><a class="btn btn-outline" href="../projects/network-ids-pcap-investigation.html">Open full project</a></div></aside>
+    <div>
+      <section class="report-section"><h2>1. Lab Objective</h2><p>Mục tiêu của lab là ghi lại cách triển khai, kiểm thử và phân tích evidence theo hướng SOC Analyst. Bài viết không chỉ lưu command/cấu hình, mà phải trả lời: use case phát hiện gì, log đi qua đâu, evidence nào chứng minh alert và hạn chế hiện tại là gì.</p></section>
+      <section class="report-section"><h2>2. Use Case & Log Flow</h2><div class="flow"><span>Endpoint / Traffic</span><i>→</i><span>Agent / Sensor</span><i>→</i><span>Manager / SIEM</span><i>→</i><span>Dashboard</span><i>→</i><span>Analyst Report</span></div><ul><li>IDS sinh alert từ traffic capture.</li><li>PCAP được mở bằng Wireshark để follow stream.</li><li>Analyst filter theo IP/port/protocol/time.</li><li>Packet evidence được trích ra report.</li><li>Verdict được đưa ra kèm limitation.</li></ul></section>
+      <section class="report-section"><h2>3. Configuration / Evidence Placeholder</h2><div class="placeholder">Chèn ảnh cấu hình agent/rule/dashboard/alert detail tại đây.</div><p style="margin-top:12px">Khi thêm ảnh, nên đặt tên file rõ ràng như <span class="kbd">wazuh-rule-file-integrity.png</span> hoặc <span class="kbd">kibana-portscan-dashboard.png</span>.</p></section>
+      <section class="report-section"><h2>4. Detection & Analysis</h2><ul><li>Port scan: nhiều SYN tới nhiều port/host.</li><li>Suspicious HTTP: user-agent lạ, path bất thường, payload encoded.</li><li>DNS anomaly: domain dài, query lặp, pattern giống tunneling.</li><li>Potential exfiltration: outbound data volume hoặc file transfer không bình thường.</li></ul><table class="evidence-table"><thead><tr><th>Field</th><th>What to document</th></tr></thead><tbody><tr><td>Timestamp</td><td>Thời điểm alert xảy ra và múi giờ nếu có.</td></tr><tr><td>Source / Destination</td><td>IP, host, user, process hoặc email sender tùy case.</td></tr><tr><td>Rule / Signature</td><td>Rule ID, description, severity và điều kiện match.</td></tr><tr><td>Verdict</td><td>True positive, false positive, benign activity hoặc needs escalation.</td></tr></tbody></table></section>
+      <section class="report-section"><h2>5. Conclusion</h2><p>Lab liên quan trực tiếp đến project <b>Network IDS &amp; PCAP Investigation</b>. Kết luận cần ghi rõ rule phát hiện được gì, còn thiếu dữ liệu nào và action nào phù hợp nếu đây là môi trường thật.</p><ul><li>Lưu PCAP mẫu cho các case training.</li><li>Tạo cheat sheet filter Wireshark cho SOC L1.</li><li>Kết hợp IDS alert với DNS/proxy log nếu có.</li></ul></section>
+      <p style="margin:28px 0"><a class="btn btn-outline" href="../index.html#writeups">← Back to write-ups</a></p>
     </div>
-  </header>
-
-  <main class="article-layout container">
-    <article class="article">
-      <p class="meta"><a class="text-link" href="../index.html">← Back to Home</a> · Write-up · Dec 2024</p>
-      <h1>🔎 CTF Forensics Study Notes: Quy trình phân tích bằng chứng</h1>
-      <p class="lead">Checklist phân tích Forensics CTF theo hướng bằng chứng: file type, metadata, strings, embedded data, timeline và conclusion.</p>
-      <div class="tag-list" style="justify-content:flex-start; margin-bottom: 28px;"><span class="tag">CTF</span><span class="tag">Forensics</span><span class="tag">Evidence</span><span class="tag">Write-up</span><span class="tag">Timeline</span></div>
-      
-<div class="report-hero"><h2>Study Note Summary</h2><p>Ghi chú Forensics CTF theo hướng rèn tư duy bằng chứng. Thay vì chỉ ghi flag, write-up cần mô tả đường đi phân tích, công cụ dùng, evidence tìm được và lý do kết luận.</p><div class="report-meta-grid"><div class="report-meta-card"><strong>Date</strong><span>Dec 2024</span></div><div class="report-meta-card"><strong>Focus</strong><span>Forensics evidence</span></div><div class="report-meta-card"><strong>Tools</strong><span>file, strings, exiftool, binwalk</span></div><div class="report-meta-card"><strong>Output</strong><span>Checklist + solve path</span></div></div></div>
-<h2>1. Checklist</h2><ul><li>Xác định loại file thật bằng magic bytes, không chỉ dựa vào extension.</li><li>Kiểm tra metadata, timestamp, author/tool nếu có.</li><li>Dùng strings để tìm text, URL, path hoặc flag fragment.</li><li>Kiểm tra embedded file bằng binwalk/foremost nếu nghi có file ẩn.</li><li>Tạo timeline nếu có nhiều log/file liên quan.</li><li>Ghi lại lệnh đã chạy và output quan trọng.</li></ul>
-<h2>2. Report Format</h2><table class="info-table"><tr><th>Section</th><th>Content</th></tr><tr><td>Initial observation</td><td>File name, size, type, hint.</td></tr><tr><td>Analysis steps</td><td>Lệnh/công cụ đã dùng và lý do dùng.</td></tr><tr><td>Evidence</td><td>Chuỗi, metadata, hidden file, timestamp liên quan.</td></tr><tr><td>Conclusion</td><td>Flag hoặc finding và cách xác minh.</td></tr></table>
-<h2>3. SOC Relevance</h2><p>Forensics CTF giúp luyện cách không bỏ sót bằng chứng và không kết luận khi chưa có dữ liệu. Kỹ năng này chuyển sang SOC rất tốt: khi điều tra alert, analyst cũng cần timeline, evidence, hypothesis và conclusion rõ ràng.</p>
-
-    </article>
-  </main>
-
-  <footer>
-    © Khánh Linh. Cybersecurity Portfolio & Technical Write-ups.
-  </footer>
-</body>
-</html>
+  </section>
+</main><footer>© 2026 Khánh Linh · Lab Write-up</footer></body></html>

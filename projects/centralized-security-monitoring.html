@@ -1,65 +1,40 @@
 <!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Centralized Security Monitoring System | Khánh Linh</title>
-  <link rel="stylesheet" href="../assets/style.css" />
-</head>
+<html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Centralized Security Monitoring System | Khánh Linh</title><link rel="stylesheet" href="../assets/style.css"></head>
 <body>
-  <header>
-    <div class="container">
-      <nav>
-        <a class="logo" href="../index.html">Khanh<span>Linh</span></a>
-        <div class="nav-links">
-          <a href="../index.html#about">About</a>
-          <a href="../index.html#writeups">Write-ups</a>
-          <a href="../index.html#projects">Projects</a>
-          <a href="../index.html#posts">Posts</a>
-          <a href="../index.html#tags">Tags</a>
-          <a href="../index.html#skills">Skills</a>
-          <a href="../index.html#roadmap">Roadmap</a>
-          <a href="../index.html#contact">Contact</a>
+<header><div class="container"><nav><a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a><div class="nav-links"><a href="../index.html#projects">Projects</a><a href="../index.html#workflow">SOC Workflow</a><a href="../index.html#writeups">Write-ups</a><a class="nav-cta" href="https://github.com/linh-999" target="_blank">GitHub</a></div></nav></div></header>
+<main class="container">
+  <section class="page-hero">
+    <div class="breadcrumb"><a href="../index.html">Home</a> / Projects / Centralized Security Monitoring System</div>
+    <div class="eyebrow"><span class="pulse"></span>Sep 2025 – Oct 2025 · SIEM Engineering Lab</div>
+    <h1 class="page-title">Centralized Security Monitoring System</h1>
+    <p class="lead">Thiết kế mô hình giám sát tập trung dùng Snort IDS, Filebeat và ELK để phục vụ alert triage theo workflow SOC Tier 1.</p>
+    <div class="mini-tags"><span>Snort IDS</span><span>ELK Stack</span><span>Filebeat</span><span>Kibana</span><span>Detection Use Case</span><span>SOC Report</span></div>
+  </section>
+  <section class="report-layout">
+    <aside class="sidebar">
+      <div class="panel">
+        <p class="meta">Case metadata</p>
+        <div class="info-grid" style="grid-template-columns:1fr">
+          <div class="info-box"><span>Priority</span><b>High learning value</b></div>
+          <div class="info-box"><span>Status</span><b>Report-ready lab</b></div>
+          <div class="info-box"><span>Role</span><b>SOC Analyst / SIEM Operator</b></div>
         </div>
-      </nav>
+      </div>
+      <div class="panel" style="margin-top:16px"><p class="meta">On this page</p><div class="toc"><a href="#summary">Executive Summary</a><a href="#scope">Objective & Scope</a><a href="#architecture">Architecture</a><a href="#detection">Detection Logic</a><a href="#workflow">Investigation Workflow</a><a href="#evidence">Evidence</a><a href="#findings">Findings</a><a href="#recommendations">Recommendations</a><a href="#next">Next Improvements</a></div></div>
+    </aside>
+    <div>
+      <section class="report-section" id="summary"><h2>Executive Summary</h2><p>Project tập trung vào cách xây dựng một hệ thống SIEM nhỏ nhưng có tư duy vận hành thật: endpoint/network sinh log, agent ship log, SIEM chuẩn hóa dữ liệu, dashboard hiển thị tín hiệu bất thường và analyst dùng evidence để kết luận alert. Điểm mạnh của project là không chỉ “cài tool”, mà trình bày được luồng log, rule phát hiện, cách phân loại alert, lý do false positive và hành động khuyến nghị.</p><div class="info-grid" style="margin-top:16px"><div class="info-box"><span>Data sources</span><div class="mini-tags"><span>Snort alert log</span><span>Linux system log</span><span>Network traffic sample</span><span>Filebeat pipeline</span><span>Kibana dashboard</span></div></div><div class="info-box"><span>MITRE / Analyst mapping</span><div class="mini-tags"><span>Reconnaissance</span><span>Credential Access</span><span>Command and Control</span></div></div></div></section>
+      <section class="report-section" id="scope"><h2>Objective & Scope</h2><ul><li>Thiết kế luồng giám sát tập trung từ sensor/endpoint về SIEM dashboard.</li><li>Tạo các use case cơ bản: port scan, brute force, suspicious outbound traffic, high-volume connection.</li><li>Viết mẫu report điều tra alert có timestamp, source, destination, evidence, verdict và recommendation.</li><li>Đánh giá hạn chế của rule khi thiếu threat intelligence hoặc endpoint context.</li></ul></section>
+      <section class="report-section" id="architecture"><h2>Architecture / Log Flow</h2><div class="flow"><span>Alert / Event Source</span><i>→</i><span>Log Collection</span><i>→</i><span>SIEM / Dashboard</span><i>→</i><span>Analyst Triage</span><i>→</i><span>Verdict & Response</span></div><ul><li>Endpoint / attacker VM tạo traffic kiểm thử.</li><li>Snort IDS giám sát traffic và sinh alert theo rule.</li><li>Filebeat thu thập alert log và đẩy về Elasticsearch.</li><li>Kibana dashboard trực quan hóa alert theo severity, source IP, destination port và time range.</li><li>SOC analyst thực hiện triage dựa trên dashboard, raw event và packet/log evidence.</li></ul><div class="placeholder">Chèn ảnh lab tại đây: topology, dashboard, rule, event detail hoặc command output.</div></section>
+      <section class="report-section" id="detection"><h2>Detection Logic / Use Cases</h2><ul><li>Port scanning: nhiều connection tới nhiều destination port trong thời gian ngắn.</li><li>SSH brute force: nhiều authentication failure từ một source IP.</li><li>Suspicious outbound: kết nối tới IP/domain lạ hoặc port không phổ biến.</li><li>Potential DoS: spike traffic bất thường so với baseline lab.</li></ul><div class="codebox"><b># analyst-note</b><br>Detection should define: objective → data source → condition → expected evidence → false-positive notes → response action.</div></section>
+      <section class="report-section" id="workflow"><h2>Investigation Workflow</h2><ol><li>Validate alert timestamp và kiểm tra dashboard có spike bất thường hay không.</li><li>Pivot sang raw event để lấy rule sid, source IP, destination IP, port, protocol.</li><li>Kiểm tra scope: một host hay nhiều host bị ảnh hưởng, một user hay nhiều user liên quan.</li><li>So sánh với traffic lab hợp lệ để phân loại true positive, benign test hoặc false positive.</li><li>Ghi verdict và đề xuất action: monitor, block source, tune rule hoặc escalate.</li></ol></section>
+      <section class="report-section" id="evidence"><h2>Evidence Collected</h2><table class="evidence-table"><thead><tr><th>Evidence</th><th>Analyst value</th></tr></thead><tbody><tr><td>Alert Volume</td><td>Kibana hiển thị số alert tăng trong thời gian kiểm thử scan/brute force.</td></tr><tr><td>Rule Match</td><td>Snort rule match đúng pattern traffic được thiết kế.</td></tr><tr><td>Source Context</td><td>Source IP, destination IP, port và protocol được ghi lại đầy đủ để truy vết.</td></tr><tr><td>Limitation</td><td>Thiếu endpoint telemetry nên chưa chứng minh được process/user gây traffic.</td></tr></tbody></table></section>
+      <section class="report-section" id="findings"><h2>Key Findings</h2><ul><li>Hệ thống phát hiện được hành vi network-level rõ ràng như scan và brute force.</li><li>Dashboard hỗ trợ analyst ưu tiên alert theo source, severity và time range.</li><li>Một số alert có thể false positive nếu traffic đến từ scanner nội bộ hoặc hoạt động kiểm thử hợp lệ.</li></ul></section>
+      <section class="report-section" id="recommendations"><h2>Recommendations</h2><ul><li>Bổ sung asset inventory để phân biệt server quan trọng và máy lab.</li><li>Tích hợp threat intelligence để enrich IP/domain trước khi kết luận.</li><li>Thêm correlation với endpoint log để xác định process/user liên quan.</li><li>Xây allowlist cho scanner nội bộ và maintenance window để giảm noise.</li></ul></section>
+      <section class="report-section" id="next"><h2>Limitations & Next Improvements</h2><ul><li>Thêm Suricata/Zeek để tăng context network.</li><li>Viết detection rule mapping MITRE rõ hơn.</li><li>Tự động sinh ticket summary từ alert fields.</li></ul><p style="margin-top:12px">Limitation được ghi rõ để tránh phóng đại kết quả lab. Khi có ảnh/log thật, phần này nên được cập nhật bằng evidence cụ thể.</p></section>
+      <p style="margin:28px 0"><a class="btn btn-outline" href="../index.html#projects">← Back to project list</a></p>
     </div>
-  </header>
-
-  <main class="article-layout container">
-    <article class="article">
-      <p class="meta"><a class="text-link" href="../index.html">← Back to Home</a> · Project · Sep 2025 – Oct 2025</p>
-      <h1>📊 Centralized Security Monitoring System</h1>
-      <p class="lead">Thiết kế SIEM lab theo tư duy SOC: thu thập log, phát hiện bất thường, triage alert, phân loại mức độ rủi ro và đề xuất tuning.</p>
-      <div class="tag-list" style="justify-content:flex-start; margin-bottom: 28px;"><span class="tag">Snort IDS</span><span class="tag">ELK Stack</span><span class="tag">Filebeat</span><span class="tag">Kibana</span><span class="tag">SOC Triage</span><span class="tag">Detection Engineering</span></div>
-      
-<div class="report-hero">
-  <h2>Executive Summary</h2>
-  <p>Project xây dựng mô hình giám sát bảo mật tập trung cho môi trường lab doanh nghiệp nhỏ. Trọng tâm không chỉ là cài công cụ, mà là chứng minh được một SOC Analyst có thể theo dõi log, hiểu luồng dữ liệu, viết use case phát hiện, đọc alert trên dashboard và đưa ra kết luận điều tra có bằng chứng.</p>
-  <div class="report-meta-grid"><div class="report-meta-card"><strong>Timeline</strong><span>Sep 2025 – Oct 2025</span></div><div class="report-meta-card"><strong>Role</strong><span>SOC Analyst / Detection Lab Builder</span></div><div class="report-meta-card"><strong>Severity Focus</strong><span>Scan, DoS, suspicious network behavior</span></div><div class="report-meta-card"><strong>Deliverable</strong><span>Dashboard + rules + triage report</span></div></div>
-</div>
-<h2>1. Business/Security Objective</h2>
-<p>Mục tiêu của hệ thống là gom log từ nhiều nguồn về một nơi để giảm tình trạng “mỗi thiết bị một log”. Khi có hành vi bất thường như port scanning, high connection rate hoặc truy cập tới dịch vụ nhạy cảm, SOC Analyst cần có đủ dữ liệu để trả lời nhanh: máy nào liên quan, thời điểm nào, dấu hiệu nào, mức độ rủi ro ra sao và nên xử lý bước tiếp theo như thế nào.</p>
-<h2>2. Architecture & Log Flow</h2>
-<div class="lab-flow"><div class="flow-node"><strong>Endpoint/Attacker</strong><span>Generate traffic</span></div><div class="flow-node"><strong>Snort IDS</strong><span>Inspect packets</span></div><div class="flow-node"><strong>Filebeat</strong><span>Ship alert logs</span></div><div class="flow-node"><strong>Elasticsearch</strong><span>Index & search</span></div><div class="flow-node"><strong>Kibana</strong><span>Dashboard & triage</span></div></div>
-<table class="info-table"><tr><th>Component</th><th>Purpose</th><th>SOC value</th></tr><tr><td>Snort IDS</td><td>Phân tích network traffic và tạo alert theo rule.</td><td>Cung cấp tín hiệu phát hiện ban đầu cho analyst.</td></tr><tr><td>Filebeat</td><td>Đẩy log từ IDS về ELK pipeline.</td><td>Đảm bảo log được tập trung, không phải kiểm tra thủ công từng máy.</td></tr><tr><td>Elasticsearch</td><td>Lưu trữ, index và query sự kiện.</td><td>Hỗ trợ pivot theo IP, port, timestamp, signature.</td></tr><tr><td>Kibana</td><td>Dashboard hóa dữ liệu.</td><td>Giúp thấy pattern: spike, top source IP, top alert type.</td></tr></table>
-<h2>3. Detection Use Cases</h2>
-<div class="phase-grid"><div class="phase-card"><h3>UC-01: Port Scanning</h3><ul><li><strong>Signal:</strong> một source IP thử nhiều port trong thời gian ngắn.</li><li><strong>Data required:</strong> src_ip, dst_ip, dst_port, signature, timestamp.</li><li><strong>Expected analyst action:</strong> kiểm tra asset đích, xác định scan nội bộ hay bên ngoài.</li></ul></div><div class="phase-card"><h3>UC-02: DoS-like Traffic</h3><ul><li><strong>Signal:</strong> lượng packet/connection tăng bất thường tới cùng một service.</li><li><strong>Data required:</strong> connection rate, destination service, IDS signature.</li><li><strong>Expected analyst action:</strong> xác định có ảnh hưởng availability không.</li></ul></div><div class="phase-card"><h3>UC-03: Suspicious Service Access</h3><ul><li><strong>Signal:</strong> truy cập tới port quản trị hoặc service nhạy cảm.</li><li><strong>Data required:</strong> dst_port, protocol, direction, internal/external IP.</li><li><strong>Expected analyst action:</strong> kiểm tra baseline và policy.</li></ul></div><div class="phase-card"><h3>UC-04: Repeated Alert by Same Source</h3><ul><li><strong>Signal:</strong> một IP tạo nhiều loại alert.</li><li><strong>Data required:</strong> alert count, unique signatures, time window.</li><li><strong>Expected analyst action:</strong> nâng mức ưu tiên nếu có nhiều chỉ báo liên quan.</li></ul></div></div>
-<h2>4. Triage Workflow</h2>
-<ol><li><strong>Validate alert:</strong> kiểm tra alert có đủ timestamp, source, destination, signature và severity không.</li><li><strong>Scope affected asset:</strong> xác định máy đích là server, user endpoint hay lab VM.</li><li><strong>Pivot logs:</strong> lọc theo src_ip trong cùng khoảng thời gian để xem có nhiều hành vi khác không.</li><li><strong>Reputation check:</strong> nếu source là external IP, kiểm tra threat intelligence/reputation.</li><li><strong>Classification:</strong> true positive, benign true positive, false positive hoặc cần theo dõi thêm.</li><li><strong>Recommendation:</strong> block, monitor, tune rule hoặc escalate nếu có impact.</li></ol>
-<h2>5. Evidence Matrix</h2>
-<table class="info-table"><tr><th>Evidence</th><th>What to capture</th><th>Why it matters</th></tr><tr><td>IDS alert screenshot</td><td>Signature, source, destination, severity.</td><td>Chứng minh hệ thống đã phát hiện event.</td></tr><tr><td>Kibana filter view</td><td>Query theo src_ip/dst_ip/time window.</td><td>Cho thấy analyst đã pivot và kiểm tra bối cảnh.</td></tr><tr><td>Traffic sample</td><td>Packet/flow hoặc command test trong lab.</td><td>Đối chiếu alert với hành vi tạo ra alert.</td></tr><tr><td>Final assessment</td><td>Kết luận, phân loại, action.</td><td>Biến dữ liệu log thành quyết định vận hành.</td></tr></table>
-<div class="evidence-box"><strong>Placeholder ảnh cần chèn</strong><p>Dashboard Kibana: top IDS signatures, alert timeline, top source IP, chi tiết một alert đã filter theo thời gian.</p></div>
-<h2>6. Findings & Analyst Assessment</h2>
-<table class="info-table"><tr><th>Finding</th><th>Severity</th><th>Assessment</th><th>Action</th></tr><tr><td>Port scan generated by lab host</td><td><span class="finding-medium">Medium</span></td><td>Detection hoạt động đúng, nhưng cần phân biệt lab traffic và traffic thật.</td><td>Thêm whitelist lab subnet hoặc tag environment.</td></tr><tr><td>High alert volume during test</td><td><span class="finding-low">Low</span></td><td>Có nguy cơ noise nếu rule quá nhạy.</td><td>Tuning theo threshold/time window.</td></tr><tr><td>Dashboard thiếu field chuẩn hóa</td><td><span class="finding-info">Info</span></td><td>Một số field cần thống nhất để query dễ hơn.</td><td>Chuẩn hóa field src_ip, dst_ip, signature, severity.</td></tr></table>
-<h2>7. Limitations & Improvement</h2>
-<ul><li>Lab chưa có đầy đủ endpoint telemetry như process, user, parent process nên chưa kết luận được host compromise.</li><li>IDS alert cần correlation thêm với firewall/proxy/DNS để tăng độ tin cậy.</li><li>Cần thêm playbook cho từng use case: port scan, brute force, malware callback, web attack.</li><li>Hướng nâng cấp: thêm Wazuh Agent, Windows Event Log, Sigma rule, threat intel enrichment và dashboard risk score.</li></ul>
-<div class="analyst-note"><strong>Analyst note:</strong> Điểm mạnh của project là trình bày được end-to-end monitoring flow. Khi đưa vào CV/portfolio, nên chèn ảnh dashboard thật và một case điều tra cụ thể để nhà tuyển dụng thấy được tư duy SOC chứ không chỉ thấy công cụ.</div>
-
-    </article>
-  </main>
-
-  <footer>
-    © Khánh Linh. Cybersecurity Portfolio & Technical Write-ups.
-  </footer>
-</body>
-</html>
+  </section>
+</main>
+<footer>© 2026 Khánh Linh · SOC Analyst Portfolio</footer>
+</body></html>

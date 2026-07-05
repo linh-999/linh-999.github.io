@@ -1,61 +1,18 @@
 <!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SOC Alert Investigation | Khánh Linh</title>
-  <link rel="stylesheet" href="../assets/style.css" />
-</head>
+<html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>SOC Alert Investigation Report | Khánh Linh</title><link rel="stylesheet" href="../assets/style.css"></head>
 <body>
-  <header>
-    <div class="container">
-      <nav>
-        <a class="logo" href="../index.html">Khanh<span>Linh</span></a>
-        <div class="nav-links">
-          <a href="../index.html#about">About</a>
-          <a href="../index.html#writeups">Write-ups</a>
-          <a href="../index.html#projects">Projects</a>
-          <a href="../index.html#posts">Posts</a>
-          <a href="../index.html#tags">Tags</a>
-          <a href="../index.html#skills">Skills</a>
-          <a href="../index.html#roadmap">Roadmap</a>
-          <a href="../index.html#contact">Contact</a>
-        </div>
-      </nav>
+<header><div class="container"><nav><a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a><div class="nav-links"><a href="../index.html#projects">Projects</a><a href="../index.html#writeups">Write-ups</a><a href="../index.html#skills">Skills</a><a class="nav-cta" href="https://github.com/linh-999" target="_blank">GitHub</a></div></nav></div></header>
+<main class="container">
+  <section class="page-hero"><div class="breadcrumb"><a href="../index.html">Home</a> / Write-ups / SOC Alert Investigation Report</div><div class="eyebrow"><span class="pulse"></span>Jul 2025 · Lab Note</div><h1 class="page-title">SOC Alert Investigation Report</h1><p class="lead">Mẫu điều tra alert từ SIEM: scope, IOC, context, evidence, verdict và false positive reasoning.</p><div class="mini-tags"><span>Alert Triage</span><span>IOC</span><span>Verdict</span></div></section>
+  <section class="report-layout">
+    <aside class="sidebar"><div class="panel"><p class="meta">Linked full project</p><h3>SOC Incident Reporting Framework</h3><p style="color:var(--muted);margin:10px 0">Bài write-up này là phần ghi chú kỹ thuật hỗ trợ project/report chính.</p><a class="btn btn-outline" href="../projects/soc-incident-reporting-framework.html">Open full project</a></div></aside>
+    <div>
+      <section class="report-section"><h2>1. Lab Objective</h2><p>Mục tiêu của lab là ghi lại cách triển khai, kiểm thử và phân tích evidence theo hướng SOC Analyst. Bài viết không chỉ lưu command/cấu hình, mà phải trả lời: use case phát hiện gì, log đi qua đâu, evidence nào chứng minh alert và hạn chế hiện tại là gì.</p></section>
+      <section class="report-section"><h2>2. Use Case & Log Flow</h2><div class="flow"><span>Endpoint / Traffic</span><i>→</i><span>Agent / Sensor</span><i>→</i><span>Manager / SIEM</span><i>→</i><span>Dashboard</span><i>→</i><span>Analyst Report</span></div><ul><li>Alert intake nhận thông tin ban đầu.</li><li>Evidence collection thu thập log/screenshot/artifact.</li><li>Timeline reconstruction sắp xếp event theo thời gian.</li><li>Analysis &amp; verdict đánh giá true positive/false positive.</li><li>Response recommendation đưa hành động tiếp theo.</li></ul></section>
+      <section class="report-section"><h2>3. Configuration / Evidence Placeholder</h2><div class="placeholder">Chèn ảnh cấu hình agent/rule/dashboard/alert detail tại đây.</div><p style="margin-top:12px">Khi thêm ảnh, nên đặt tên file rõ ràng như <span class="kbd">wazuh-rule-file-integrity.png</span> hoặc <span class="kbd">kibana-portscan-dashboard.png</span>.</p></section>
+      <section class="report-section"><h2>4. Detection & Analysis</h2><ul><li>Framework không phát hiện trực tiếp, nhưng làm rõ chất lượng detection.</li><li>Mỗi detection được mô tả bằng objective, data source, logic và expected evidence.</li></ul><table class="evidence-table"><thead><tr><th>Field</th><th>What to document</th></tr></thead><tbody><tr><td>Timestamp</td><td>Thời điểm alert xảy ra và múi giờ nếu có.</td></tr><tr><td>Source / Destination</td><td>IP, host, user, process hoặc email sender tùy case.</td></tr><tr><td>Rule / Signature</td><td>Rule ID, description, severity và điều kiện match.</td></tr><tr><td>Verdict</td><td>True positive, false positive, benign activity hoặc needs escalation.</td></tr></tbody></table></section>
+      <section class="report-section"><h2>5. Conclusion</h2><p>Lab liên quan trực tiếp đến project <b>SOC Incident Reporting Framework</b>. Kết luận cần ghi rõ rule phát hiện được gì, còn thiếu dữ liệu nào và action nào phù hợp nếu đây là môi trường thật.</p><ul><li>Dùng cùng template cho mọi project.</li><li>Thêm screenshot thật khi có lab.</li><li>Tách rõ “observed evidence” và “analyst assessment”.</li></ul></section>
+      <p style="margin:28px 0"><a class="btn btn-outline" href="../index.html#writeups">← Back to write-ups</a></p>
     </div>
-  </header>
-
-  <main class="article-layout container">
-    <article class="article">
-      <p class="meta"><a class="text-link" href="../index.html">← Back to Home</a> · Write-up · Jul 2025</p>
-      <h1>🛡️ SOC Alert Investigation: Triage cảnh báo IP độc hại</h1>
-      <p class="lead">Báo cáo điều tra cảnh báo IP độc hại theo chuẩn SOC Tier 1: context, evidence, decision tree, final classification và recommendation.</p>
-      <div class="tag-list" style="justify-content:flex-start; margin-bottom: 28px;"><span class="tag">SOC</span><span class="tag">SIEM</span><span class="tag">Alert Triage</span><span class="tag">IOC</span><span class="tag">Threat Intelligence</span><span class="tag">Incident Report</span></div>
-      
-<div class="report-hero"><h2>Case Summary</h2><p>Write-up mô phỏng quy trình SOC Tier 1 khi nhận cảnh báo máy nội bộ kết nối tới IP có reputation xấu. Mục tiêu là không kết luận vội, mà kiểm chứng bằng log, xác định phạm vi ảnh hưởng và đưa ra phân loại cuối cùng.</p><div class="report-meta-grid"><div class="report-meta-card"><strong>Date</strong><span>Jul 2025</span></div><div class="report-meta-card"><strong>Alert Type</strong><span>Malicious IP Connection</span></div><div class="report-meta-card"><strong>Initial Severity</strong><span>Medium</span></div><div class="report-meta-card"><strong>Final Output</strong><span>Triage report + recommendation</span></div></div></div>
-<h2>1. Alert Context</h2><table class="info-table"><tr><th>Field</th><th>Example value</th><th>Analyst note</th></tr><tr><td>Source host</td><td>Internal workstation</td><td>Cần xác định user, hostname, asset owner.</td></tr><tr><td>Destination IOC</td><td>External IP flagged malicious</td><td>Cần kiểm tra reputation, ASN, geo, first seen.</td></tr><tr><td>Direction</td><td>Outbound</td><td>Outbound tới IOC đáng chú ý hơn inbound scan bị block.</td></tr><tr><td>Action</td><td>Allowed/Blocked</td><td>Nếu allowed thì rủi ro cao hơn và cần scope kỹ hơn.</td></tr></table>
-<h2>2. Investigation Questions</h2><ul><li>IP này có thật sự known malicious ở thời điểm kiểm tra không?</li><li>Kết nối là một lần hay lặp lại nhiều lần?</li><li>Có domain/DNS request liên quan trước khi kết nối IP không?</li><li>Endpoint có process lạ, persistence, scheduled task hoặc file mới tạo không?</li><li>Có nhiều host nội bộ cùng kết nối tới IOC không?</li><li>Firewall/Proxy đã allow hay block traffic?</li></ul>
-<h2>3. Evidence Collection</h2><div class="checklist"><div class="check-item"><strong>SIEM alert:</strong> chụp rule name, severity, src_ip, dst_ip, timestamp, action.</div><div class="check-item"><strong>Threat intelligence:</strong> kiểm tra IP reputation từ nhiều nguồn, ghi lại thời điểm kiểm tra.</div><div class="check-item"><strong>Endpoint evidence:</strong> kiểm tra process/network connection quanh thời điểm alert.</div><div class="check-item"><strong>Network evidence:</strong> firewall/proxy/DNS log để xác định allow/block và domain liên quan.</div></div>
-<div class="evidence-box"><strong>Placeholder ảnh cần chèn</strong><p>Ảnh alert trên SIEM, kết quả reputation, log firewall/proxy và timeline các event liên quan.</p></div>
-<h2>4. Triage Decision Tree</h2><table class="info-table"><tr><th>Condition</th><th>Classification</th><th>Action</th></tr><tr><td>IOC malicious, connection allowed, endpoint có process lạ</td><td><span class="finding-high">True Positive</span></td><td>Escalate Tier 2/IR, isolate endpoint nếu cần.</td></tr><tr><td>IOC malicious, traffic blocked, không có event lặp lại</td><td><span class="finding-medium">Benign True Positive</span></td><td>Monitor, keep block, document evidence.</td></tr><tr><td>Reputation yếu/không thống nhất, không có dấu hiệu endpoint</td><td><span class="finding-low">False Positive / Monitor</span></td><td>Đánh dấu theo dõi, tuning nếu noise nhiều.</td></tr><tr><td>IP là cloud/CDN hợp lệ nhưng bị gắn reputation cũ</td><td><span class="finding-info">False Positive</span></td><td>Whitelist có điều kiện hoặc giảm severity.</td></tr></table>
-<h2>5. Final Report Template</h2><pre>Summary:
-A SIEM alert reported outbound traffic from an internal host to an IP address with malicious reputation. The alert was reviewed by checking SIEM context, network logs, IOC reputation, and endpoint evidence.
-
-Assessment:
-- IOC reputation: suspicious/malicious based on external reputation check.
-- Network action: blocked/allowed by firewall.
-- Endpoint evidence: no confirmed malicious process observed in current evidence.
-- Scope: single host / multiple hosts.
-
-Conclusion:
-Classify as [False Positive / Benign True Positive / True Positive / Escalate]. Continue monitoring and escalate if repeated connections or endpoint indicators appear.</pre>
-<h2>6. Lessons Learned</h2><ul><li>Reputation “malicious = yes” chưa đủ để kết luận máy bị nhiễm mã độc.</li><li>Phải phân biệt event bị block và event đã được allow.</li><li>Cần timeline theo phút để biết event nào xảy ra trước/sau.</li><li>Báo cáo tốt phải có evidence, classification và action rõ ràng.</li></ul>
-
-    </article>
-  </main>
-
-  <footer>
-    © Khánh Linh. Cybersecurity Portfolio & Technical Write-ups.
-  </footer>
-</body>
-</html>
+  </section>
+</main><footer>© 2026 Khánh Linh · Lab Write-up</footer></body></html>

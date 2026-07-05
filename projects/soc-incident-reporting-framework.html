@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>SOC Incident Reporting Framework | Khánh Linh</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body>
+<header><div class="container"><nav><a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a><div class="nav-links"><a href="../index.html#projects">Projects</a><a href="../index.html#workflow">SOC Workflow</a><a href="../index.html#writeups">Write-ups</a><a class="nav-cta" href="https://github.com/linh-999" target="_blank">GitHub</a></div></nav></div></header>
+<main class="container">
+  <section class="page-hero">
+    <div class="breadcrumb"><a href="../index.html">Home</a> / Projects / SOC Incident Reporting Framework</div>
+    <div class="eyebrow"><span class="pulse"></span>2025 – 2026 · Professional Reporting Framework</div>
+    <h1 class="page-title">SOC Incident Reporting Framework</h1>
+    <p class="lead">Framework viết report điều tra alert theo chuẩn evidence-based: executive summary, scope, timeline, artifacts, verdict và recommendation.</p>
+    <div class="mini-tags"><span>Incident Report</span><span>Evidence</span><span>Timeline</span><span>Verdict</span><span>Recommendation</span><span>SOC Quality</span></div>
+  </section>
+  <section class="report-layout">
+    <aside class="sidebar">
+      <div class="panel">
+        <p class="meta">Case metadata</p>
+        <div class="info-grid" style="grid-template-columns:1fr">
+          <div class="info-box"><span>Priority</span><b>Portfolio differentiator</b></div>
+          <div class="info-box"><span>Status</span><b>Reusable framework</b></div>
+          <div class="info-box"><span>Role</span><b>SOC Analyst / Report Writer</b></div>
+        </div>
+      </div>
+      <div class="panel" style="margin-top:16px"><p class="meta">On this page</p><div class="toc"><a href="#summary">Executive Summary</a><a href="#scope">Objective & Scope</a><a href="#architecture">Architecture</a><a href="#detection">Detection Logic</a><a href="#workflow">Investigation Workflow</a><a href="#evidence">Evidence</a><a href="#findings">Findings</a><a href="#recommendations">Recommendations</a><a href="#next">Next Improvements</a></div></div>
+    </aside>
+    <div>
+      <section class="report-section" id="summary"><h2>Executive Summary</h2><p>Project này đóng vai trò “xương sống” cho toàn bộ portfolio: một framework giúp mọi lab/report nhìn thống nhất và chuyên nghiệp. Điểm quan trọng là mỗi kết luận đều đi kèm bằng chứng, confidence và limitation, tránh viết chung chung.</p><div class="info-grid" style="margin-top:16px"><div class="info-box"><span>Data sources</span><div class="mini-tags"><span>Alert details</span><span>Timeline</span><span>IOC list</span><span>Raw logs</span><span>Screenshots</span><span>Analyst notes</span></div></div><div class="info-box"><span>MITRE / Analyst mapping</span><div class="mini-tags"><span>Used as reporting enrichment</span></div></div></div></section>
+      <section class="report-section" id="scope"><h2>Objective & Scope</h2><ul><li>Chuẩn hóa cấu trúc report SOC cho project và write-up.</li><li>Tạo bảng evidence để người đọc kiểm chứng kết luận.</li><li>Tách rõ finding, impact, recommendation và limitation.</li><li>Dùng cùng format cho phishing, endpoint, network, SIEM và WAF case.</li></ul></section>
+      <section class="report-section" id="architecture"><h2>Architecture / Log Flow</h2><div class="flow"><span>Alert / Event Source</span><i>→</i><span>Log Collection</span><i>→</i><span>SIEM / Dashboard</span><i>→</i><span>Analyst Triage</span><i>→</i><span>Verdict & Response</span></div><ul><li>Alert intake nhận thông tin ban đầu.</li><li>Evidence collection thu thập log/screenshot/artifact.</li><li>Timeline reconstruction sắp xếp event theo thời gian.</li><li>Analysis &amp; verdict đánh giá true positive/false positive.</li><li>Response recommendation đưa hành động tiếp theo.</li></ul><div class="placeholder">Chèn ảnh lab tại đây: topology, dashboard, rule, event detail hoặc command output.</div></section>
+      <section class="report-section" id="detection"><h2>Detection Logic / Use Cases</h2><ul><li>Framework không phát hiện trực tiếp, nhưng làm rõ chất lượng detection.</li><li>Mỗi detection được mô tả bằng objective, data source, logic và expected evidence.</li></ul><div class="codebox"><b># analyst-note</b><br>Detection should define: objective → data source → condition → expected evidence → false-positive notes → response action.</div></section>
+      <section class="report-section" id="workflow"><h2>Investigation Workflow</h2><ol><li>Viết executive summary 3–5 dòng.</li><li>Ghi scope: user, host, IP, asset, time range.</li><li>Liệt kê evidence có nguồn rõ ràng.</li><li>Lập timeline nếu có nhiều event.</li><li>Đưa verdict kèm confidence và limitation.</li><li>Đề xuất response action cụ thể.</li></ol></section>
+      <section class="report-section" id="evidence"><h2>Evidence Collected</h2><table class="evidence-table"><thead><tr><th>Evidence</th><th>Analyst value</th></tr></thead><tbody><tr><td>Scope</td><td>User/host/IP/time range giúp tránh kết luận quá rộng.</td></tr><tr><td>Timeline</td><td>Chuỗi sự kiện giúp xác định nguyên nhân và impact.</td></tr><tr><td>Artifact Table</td><td>IOC/log/screenshot/hash làm report có tính kiểm chứng.</td></tr><tr><td>Verdict</td><td>Kết luận phải đi kèm confidence và lý do.</td></tr></tbody></table></section>
+      <section class="report-section" id="findings"><h2>Key Findings</h2><ul><li>Report tốt giúp analyst thể hiện tư duy hơn là chỉ liệt kê tool.</li><li>Evidence table làm portfolio đáng tin và dễ review.</li><li>Limitation thể hiện sự chuyên nghiệp vì không phỏng đoán quá mức.</li></ul></section>
+      <section class="report-section" id="recommendations"><h2>Recommendations</h2><ul><li>Dùng cùng template cho mọi project.</li><li>Thêm screenshot thật khi có lab.</li><li>Tách rõ “observed evidence” và “analyst assessment”.</li></ul></section>
+      <section class="report-section" id="next"><h2>Limitations & Next Improvements</h2><ul><li>Tạo markdown template reusable.</li><li>Thêm severity matrix.</li><li>Thêm executive one-page report cho hiring manager.</li></ul><p style="margin-top:12px">Limitation được ghi rõ để tránh phóng đại kết quả lab. Khi có ảnh/log thật, phần này nên được cập nhật bằng evidence cụ thể.</p></section>
+      <p style="margin:28px 0"><a class="btn btn-outline" href="../index.html#projects">← Back to project list</a></p>
+    </div>
+  </section>
+</main>
+<footer>© 2026 Khánh Linh · SOC Analyst Portfolio</footer>
+</body></html>
