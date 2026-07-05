@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Khánh Linh | Premium SOC Analyst Portfolio</title>
-  <meta name="description" content="Premium SOC Analyst portfolio: SIEM, Wazuh, phishing triage, Windows authentication detection, endpoint triage, network forensics and SOC reporting." />
+  <title>Khánh Linh | SOC Analyst Portfolio</title>
+  <meta name="description" content="SOC Analyst portfolio: SIEM, Wazuh, phishing triage, Windows authentication detection, endpoint triage, network forensics and SOC reporting." />
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
@@ -19,7 +19,7 @@
         <a href="#writeups">Write-ups</a>
         <a href="#skills">Skills</a>
         <a href="#roadmap">Roadmap</a>
-        <a class="nav-cta" href="https://github.com/linh-999" target="_blank">GitHub</a>
+        <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
     </nav>
   </div>
@@ -27,17 +27,17 @@
 <main>
   <section class="hero container" id="home">
     <div>
-      <div class="eyebrow"><span class="pulse"></span> Premium SOC Analyst Portfolio · Evidence-based Investigation · Detection Engineering</div>
+      <div class="eyebrow"><span class="pulse"></span> SOC Analyst Portfolio · Evidence-based Investigation · Detection Engineering</div>
       <h1>Security Operations <br><span class="gradient">Case Portfolio</span></h1>
-      <p class="lead">Mình là <b>Khánh Linh</b>. Portfolio này được thiết kế như một SOC casebook chuyên nghiệp: mỗi project không chỉ ghi tool đã dùng, mà thể hiện rõ alert context, log source, detection logic, investigation workflow, evidence, verdict, limitation và recommendation.</p>
+      <p class="lead">Khánh Linh là sinh viên An toàn thông tin định hướng SOC Analyst / Security Operations. Portfolio này tập trung vào các case study điều tra bảo mật: alert context, log source, detection logic, investigation workflow, evidence, verdict, limitation và recommendation.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#projects">View premium case reports</a>
+        <a class="btn btn-primary" href="#projects">View case reports</a>
         <a class="btn btn-outline" href="#workflow">SOC report standard</a>
-        <a class="btn btn-outline" href="https://github.com/linh-999" target="_blank">GitHub profile</a>
+        <a class="btn btn-outline" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub profile</a>
       </div>
       <div class="metrics">
-        <div class="metric"><strong>11</strong><span>case-style projects</span></div>
-        <div class="metric"><strong>06</strong><span>lab write-ups</span></div>
+        <div class="metric"><strong>13</strong><span>case-style projects</span></div>
+        <div class="metric"><strong>08</strong><span>lab write-ups</span></div>
         <div class="metric"><strong>2024–2026</strong><span>growth timeline</span></div>
         <div class="metric"><strong>SOC L1+</strong><span>triage mindset</span></div>
       </div>
@@ -46,7 +46,7 @@
       <div class="console-head"><div class="dots"><i></i><i></i><i></i></div><span class="kbd">soc-console / analyst-view</span></div>
       <div class="screen-grid">
         <div class="screen-card"><h3>Alert trend</h3><div class="signal"><span></span><span></span><span></span><span></span><span></span></div></div>
-        <div class="screen-card"><h3>Queue</h3><div class="event-list"><div class="event"><b>PHISH-042</b><span class="sev high">High</span></div><div class="event"><b>AUTH-118</b><span class="sev">Medium</span></div><div class="event"><b>EDR-021</b><span class="sev high">High</span></div><div class="event"><b>WAF-074</b><span class="sev low">Low</span></div></div></div>
+        <div class="screen-card"><h3>Queue</h3><div class="event-list"><div class="event"><b>SOC-201</b><span class="sev high">High</span></div><div class="event"><b>SOC-102</b><span class="sev">Medium</span></div><div class="event"><b>AUTH-118</b><span class="sev">Medium</span></div><div class="event"><b>WAF-074</b><span class="sev low">Low</span></div></div></div>
         <div class="screen-card terminal">
           <h3>Analyst notes</h3>
           <p><em>$</em> scope = user + host + src_ip + timestamp</p>
@@ -59,9 +59,9 @@
 
   <section class="section container" id="projects">
     <div class="section-title">
-      <span>Professional SOC case studies</span>
-      <h2>Project được trình bày như hồ sơ điều tra của SOC Analyst</h2>
-      <p>Mỗi project được viết theo tư duy vận hành thật: xác định nguồn log, mô tả detection logic, kiểm chứng evidence, đánh giá false positive, đưa verdict và khuyến nghị xử lý. Nội dung bên dưới không chỉ liệt kê tool, mà cho thấy cách một analyst suy luận từ alert đến hành động.</p>
+      <span>Security Operations Projects</span>
+      <h2>Case study điều tra bảo mật & vận hành SOC</h2>
+      <p>Các project bên dưới được xây dựng theo hướng thực hành SOC: nhận alert, xác định nguồn dữ liệu, kiểm tra log, đối chiếu bằng chứng, đánh giá false positive/true positive và đề xuất hành động xử lý phù hợp.</p>
     </div>
 
     <div class="featured">
@@ -105,6 +105,30 @@
     </div>
 
     <div class="grid" style="margin-top:20px">
+
+      <article class="card">
+        <div>
+          <div class="card-icon">⏱</div>
+          <p class="meta">Oct 2025 – Feb 2026 · C2 Beaconing Investigation</p>
+          <h3>SOC-201 Potential Beaconing Activity</h3>
+          <p>Điều tra host HR-WIN-001 kết nối định kỳ ra external IP qua TCP/443 với chu kỳ 5 phút và byte size ổn định. Case tập trung vào beaconing pattern, threat intelligence, endpoint process và containment recommendation.</p>
+          <div class="analyst-focus"><strong>Analyst value:</strong> biết chuyển từ network anomaly sang endpoint investigation, xác định process liên quan và escalation package cho Tier 2/IR.</div>
+          <div class="mini-tags"><span>C2 Beaconing</span><span>Threat Intel</span><span>Endpoint Process</span><span>Containment</span><span>Escalation</span></div>
+        </div>
+        <a href="writeups/soc201-potential-beaconing.html">Open full case report →</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <div class="card-icon">◍</div>
+          <p class="meta">Oct 2025 – May 2026 · Suspicious Domain Investigation</p>
+          <h3>SOC-102 Newly Registered Domain</h3>
+          <p>Phân tích workstation FIN-WIN-001 truy cập newly registered domain trên AWS. Report đối chiếu SIEM alert, proxy log, VirusTotal, endpoint process và email nội bộ để phân loại false positive hợp lệ.</p>
+          <div class="analyst-focus"><strong>Analyst value:</strong> không kết luận domain là malicious chỉ vì mới đăng ký; verdict dựa trên evidence và business context.</div>
+          <div class="mini-tags"><span>Suspicious Domain</span><span>Proxy Log</span><span>Threat Intel</span><span>False Positive</span><span>Rule Tuning</span></div>
+        </div>
+        <a href="writeups/soc102-newly-registered-domain.html">Open full case report →</a>
+      </article>
       <article class="card">
         <div>
           <div class="card-icon">▦</div>
@@ -204,7 +228,7 @@
   </section>
 
   <section class="section container" id="casefiles">
-    <div class="section-title"><span>Case file quality</span><h2>Điểm “pro” nằm ở cách phân tích, không chỉ ở giao diện</h2><p>Mỗi project dùng cùng một chuẩn trình bày để nhìn giống một analyst case report thật.</p></div>
+    <div class="section-title"><span>Investigation framework</span><h2>Chuẩn trình bày case report</h2><p>Mỗi case được trình bày theo cùng một cấu trúc điều tra để người đọc có thể theo dõi rõ: alert đến từ đâu, bằng chứng nào được kiểm chứng, vì sao đưa ra verdict và hành động xử lý tiếp theo là gì.</p></div>
     <div class="matrix">
       <div class="matrix-box"><h3>01 · Alert context</h3><p>Ghi rõ alert type, source, affected asset, time range, severity và lý do cần triage.</p></div>
       <div class="matrix-box"><h3>02 · Data sources</h3><p>Nêu log đến từ đâu: SIEM, Wazuh, Windows Event, WAF, PCAP, email header hay endpoint.</p></div>
@@ -214,7 +238,7 @@
   </section>
 
   <section class="section container" id="workflow">
-    <div class="section-title"><span>SOC report standard</span><h2>Workflow điều tra xuyên suốt portfolio</h2><p>Đây là flow bạn có thể dùng khi viết mọi bài lab/report sau này.</p></div>
+    <div class="section-title"><span>SOC workflow</span><h2>Quy trình điều tra được áp dụng trong các case</h2><p>Workflow này mô tả cách một alert được xử lý từ bước triage ban đầu đến khi có verdict, response action và khuyến nghị cải thiện detection.</p></div>
     <div class="workflow">
       <div class="step"><strong>01</strong><span>Triage</span><p>Xác định alert type, severity, source, destination, user, host, timestamp.</p></div>
       <div class="step"><strong>02</strong><span>Scope</span><p>Ảnh hưởng một endpoint, một user, một subnet hay nhiều asset?</p></div>
@@ -227,6 +251,20 @@
   <section class="section container" id="writeups">
     <div class="section-title"><span>Lab write-ups</span><h2>Write-up & technical notes</h2><p>Các bài này hỗ trợ project chính, dùng để ghi lại cách cấu hình, ảnh dashboard, command kiểm thử và bằng chứng.</p></div>
     <div class="grid"><article class="card">
+      <div class="card-icon">⏱</div>
+      <p class="meta">Feb 2026</p>
+      <h3>SOC-201: Potential Beaconing Activity</h3>
+      <p>Report điều tra C2-like beaconing từ HR-WIN-001: 5-minute interval, external IP reputation, endpoint process và containment action.</p>
+      <div class="mini-tags"><span>C2 Beaconing</span><span>Endpoint</span><span>Escalation</span></div>
+      <a href="writeups/soc201-potential-beaconing.html">Read lab note →</a>
+    </article><article class="card">
+      <div class="card-icon">◍</div>
+      <p class="meta">May 2026</p>
+      <h3>SOC-102: Newly Registered Domain</h3>
+      <p>Report xác minh suspicious domain bằng proxy log, endpoint process, threat intelligence và business email để kết luận false positive.</p>
+      <div class="mini-tags"><span>Domain Triage</span><span>Proxy</span><span>False Positive</span></div>
+      <a href="writeups/soc102-newly-registered-domain.html">Read lab note →</a>
+    </article><article class="card">
       <div class="card-icon">◆</div>
       <p class="meta">Jul 2025</p>
       <h3>SOC Alert Investigation Report</h3>
@@ -290,12 +328,12 @@
 
   <section class="section container">
     <div class="cta">
-      <div><h2>Portfolio này sẵn sàng để gắn screenshot lab thật</h2><p>Chỉ cần bổ sung ảnh Wazuh/Kibana dashboard, rule, PCAP filter, Windows event, WAF log là các case sẽ nhìn như report thực chiến hơn nữa.</p></div>
-      <a class="btn btn-primary" href="https://github.com/linh-999" target="_blank">Open GitHub</a>
+      <div><h2>Security lab repository</h2><p>Kho lưu trữ các bài lab, case report và ghi chú kỹ thuật về SIEM, alert triage, network security, web security và incident reporting.</p></div>
+      <a class="btn btn-primary" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">Open GitHub</a>
     </div>
   </section>
 </main>
-<footer>© 2026 Khánh Linh · Premium SOC Analyst Portfolio · Built for GitHub Pages</footer>
+<footer>© 2026 Khánh Linh · SOC Analyst Portfolio · Built for GitHub Pages</footer>
 <script src="assets/app.js"></script>
 </body>
 </html>

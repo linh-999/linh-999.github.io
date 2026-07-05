@@ -1,18 +1,20 @@
-Khánh Linh SOC Analyst Portfolio - Premium Report Update
+Cách upload portfolio Khánh Linh lên GitHub Pages
 
-Cách dùng:
-1. Giải nén file zip.
-2. Copy toàn bộ file/thư mục vào root repo: D:\IO\update\linh-999.github.io
-3. Chạy:
+1. Giải nén zip này.
+2. Copy toàn bộ file/thư mục bên trong vào root repo:
+   D:\IO\update\linh-999.github.io
+3. Cấu trúc đúng cần có:
+   index.html
+   assets/
+   projects/
+   writeups/
+4. Push:
    git add .
-   git commit -m "complete centralized siem case report"
+   git commit -m "add soc102 soc201 investigation labs"
    git push origin main
 
-Trang đã nâng cấp mạnh:
-- projects/centralized-security-monitoring.html
-
-Lưu ý:
-- Các ảnh lab/topology/dashboard nên được thay bằng ảnh thật sau khi chạy lab.
-- Không nên xóa thư mục assets, projects, writeups vì link trên index sẽ bị 404.
-
-UPDATE: index.html project cards were rewritten as SOC Analyst case summaries with analyst value, evidence mindset, and clearer investigation wording.
+Lab mới đã thêm:
+- writeups/soc102-newly-registered-domain.html
+- writeups/soc201-potential-beaconing.html
+- assets/labs/soc102/*
+- assets/labs/soc201/*

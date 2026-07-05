@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SOC-102 Newly Registered Domain Investigation | Khánh Linh</title>
+  <meta name="description" content="SOC Analyst lab report: investigating a connection to a newly registered domain, validating threat intelligence, proxy evidence, endpoint process and business context." />
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav>
+      <a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
+      <div class="nav-links">
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#casefiles">Case Files</a>
+        <a href="../index.html#workflow">SOC Workflow</a>
+        <a href="../index.html#writeups">Write-ups</a>
+        <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<main class="container">
+  <section class="page-hero">
+    <div class="breadcrumb"><a href="../index.html">Home</a> / Write-ups / SOC-102 Newly Registered Domain</div>
+    <div class="eyebrow"><span class="pulse"></span> Oct 2025 – May 2026 · Suspicious Domain Access · SOC L1 Investigation Lab</div>
+    <h1 class="page-title">SOC-102: Connection to Newly Registered Domain</h1>
+    <p class="lead">Bài lab mô phỏng quy trình SOC Analyst điều tra một workstation truy cập domain mới đăng ký. Trọng tâm là xác minh alert bằng nhiều nguồn log: SIEM alert, proxy log, threat intelligence, endpoint process và business context trước khi đưa verdict.</p>
+    <div class="mini-tags"><span>Suspicious Domain</span><span>Proxy Log</span><span>Threat Intel</span><span>Endpoint Context</span><span>False Positive</span><span>Business Validation</span></div>
+  </section>
+
+  <section class="report-layout">
+    <aside class="sidebar">
+      <div class="panel">
+        <p class="meta">Case metadata</p>
+        <div class="info-grid" style="grid-template-columns:1fr">
+          <div class="info-box"><span>Priority</span><b>Medium</b></div>
+          <div class="info-box"><span>Status</span><b>False Positive / Closed</b></div>
+          <div class="info-box"><span>Role</span><b>SOC Analyst L1</b></div>
+          <div class="info-box"><span>Alert type</span><b>Newly Registered Domain</b></div>
+        </div>
+      </div>
+      <div class="panel" style="margin-top:16px">
+        <p class="meta">On this page</p>
+        <div class="toc">
+          <a href="#summary">Executive Summary</a>
+          <a href="#alert">Alert Context</a>
+          <a href="#scope">Objective & Scope</a>
+          <a href="#evidence">Evidence Review</a>
+          <a href="#workflow">Investigation Workflow</a>
+          <a href="#verdict">Final Verdict</a>
+          <a href="#recommendations">Recommendations</a>
+          <a href="#next">Next Improvements</a>
+        </div>
+      </div>
+    </aside>
+
+    <div>
+      <section class="report-section" id="summary">
+        <div class="section-kicker">01 · Executive view</div>
+        <h2>Executive Summary</h2>
+        <p>SOC nhận alert <b>SOC-102: Connection to Newly Registered Domain</b> khi workstation <b>FIN-WIN-001</b> truy cập domain <b>cdn-assets.finovabank-promo.com</b>. Domain được đăng ký gần thời điểm alert và trỏ về IP <b>44.203.90.18</b> trên AWS, nên cần được xác minh như một suspicious observable.</p>
+        <p>Kết quả điều tra cho thấy user truy cập bằng <b>Chrome</b>, proxy log chỉ ghi nhận static assets như <b>styles.css</b> và <b>banner.jpg</b>, VirusTotal không đánh dấu IP là malicious, đồng thời email nội bộ xác nhận domain thuộc chiến dịch Marketing. Vì vậy, alert được phân loại là <span class="verdict-badge false">False Positive · Authorized Marketing Activity</span>.</p>
+        <div class="callout good"><b>Analyst value:</b> Case này thể hiện tư duy quan trọng của SOC: domain mới đăng ký không đồng nghĩa là malicious. Analyst phải kiểm tra IOC, proxy, endpoint và business context trước khi kết luận.</div>
+        <figure class="lab-figure"><img src="../assets/labs/soc102/soc102-1.png" alt="SOC-102 alert details screenshot"><figcaption>Figure 1 · Alert details cho thấy workstation FIN-WIN-001 truy cập newly registered domain trên AWS.</figcaption></figure>
+      </section>
+
+      <section class="report-section" id="alert">
+        <div class="section-kicker">02 · Initial alert validation</div>
+        <h2>Alert Context & IOCs</h2>
+        <div class="info-grid">
+          <div class="info-box"><span>Event ID</span><b>1002</b></div>
+          <div class="info-box"><span>Rule name</span><b>SOC-102: Connection to Newly Registered Domain</b></div>
+          <div class="info-box"><span>Severity</span><b>Medium</b></div>
+          <div class="info-box"><span>Alert time</span><b>Oct 08 2025, 10:22 AM</b></div>
+          <div class="info-box"><span>Source host</span><b>FIN-WIN-001 · 192.168.15.3</b></div>
+          <div class="info-box"><span>Destination</span><b>cdn-assets.finovabank-promo.com · 44.203.90.18</b></div>
+        </div>
+        <div class="callout warn"><b>Timestamp note:</b> Alert time là Oct 08 2025 nhưng investigation start time là May 11 2026. Trong môi trường thật, đây là điểm cần kiểm tra: timezone, SIEM ingestion time, case creation time hoặc dữ liệu lab/test không đồng bộ.</div>
+        <table class="evidence-table">
+          <thead><tr><th>Observable</th><th>Analyst interpretation</th></tr></thead>
+          <tbody>
+            <tr><td><b>Newly registered domain</b></td><td>Tín hiệu đáng nghi ban đầu vì domain mới thường được dùng trong phishing, malware delivery hoặc campaign tạm thời.</td></tr>
+            <tr><td><b>finovabank-promo.com</b></td><td>Tên domain chứa keyword giống thương hiệu/ngân hàng và từ khóa promo; cần kiểm tra có phải marketing hợp lệ hay phishing giả mạo.</td></tr>
+            <tr><td><b>AWS hosting</b></td><td>AWS là cloud provider hợp lệ nhưng cũng có thể bị lạm dụng; không thể kết luận chỉ dựa trên provider.</td></tr>
+            <tr><td><b>Successful access</b></td><td>Proxy cần được kiểm tra để biết user tải file gì, status code, size và user-agent.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="report-section" id="scope">
+        <div class="section-kicker">03 · Investigation objectives</div>
+        <h2>Objective & Scope</h2>
+        <div class="split">
+          <div>
+            <h3>Objectives</h3>
+            <ul>
+              <li>Xác minh alert có hợp lệ và có đủ dữ liệu để điều tra không.</li>
+              <li>Kiểm tra FIN-WIN-001 có thực sự kết nối đến domain nghi vấn không.</li>
+              <li>Đánh giá domain/IP có dấu hiệu phishing, malware, C2 hoặc hạ tầng độc hại không.</li>
+              <li>Xác định process/user tạo ra kết nối.</li>
+              <li>Tìm business context để phân loại true positive hay false positive.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Scope boundary</h3>
+            <ul>
+              <li>Case tập trung vào initial triage của SOC L1, không giả định compromise nếu chưa có malware/process bất thường.</li>
+              <li>Threat intelligence 0 detection không đủ để kết luận an toàn tuyệt đối; cần kết hợp proxy và endpoint evidence.</li>
+              <li>Verdict chỉ áp dụng cho domain/campaign đã xác minh trong case này.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="report-section" id="evidence">
+        <div class="section-kicker">04 · Evidence-based investigation</div>
+        <h2>Evidence Review</h2>
+        <div class="image-grid">
+          <figure class="lab-figure"><img src="../assets/labs/soc102/soc102-2.png" alt="Proxy log for styles.css"><figcaption>Proxy evidence · User truy cập <b>styles.css</b> với HTTP 200, không phải file thực thi.</figcaption></figure>
+          <figure class="lab-figure"><img src="../assets/labs/soc102/soc102-3.png" alt="Proxy log for banner.jpg"><figcaption>Proxy evidence · User truy cập <b>banner.jpg</b>, dạng static web asset.</figcaption></figure>
+        </div>
+        <table class="evidence-table advanced-table">
+          <thead><tr><th>Evidence source</th><th>Observed evidence</th><th>Analyst value</th><th>Impact on verdict</th></tr></thead>
+          <tbody>
+            <tr><td><b>Proxy log</b></td><td>URL truy cập: /styles.css và /banner.jpg; status 200; user-agent Mozilla/Chrome.</td><td>Xác nhận user đã load nội dung web tĩnh, không thấy executable download.</td><td>Giảm khả năng malware delivery.</td></tr>
+            <tr><td><b>Endpoint context</b></td><td>Process tạo kết nối là chrome.exe, parent process là explorer.exe, user thuy.le@finova.one.</td><td>Phù hợp với hành vi browsing bình thường, không phải PowerShell/CMD/script tự động.</td><td>Giảm khả năng automated malware connection.</td></tr>
+            <tr><td><b>Threat intelligence</b></td><td>VirusTotal ghi nhận IP 44.203.90.18 không bị vendor đánh dấu malicious trong case.</td><td>IP chưa được xác nhận là malicious IOC.</td><td>Chỉ giữ mức suspicious observable.</td></tr>
+            <tr><td><b>Email security / business context</b></td><td>Email nội bộ thông báo domain finovabank-promo.com dùng cho Q4 Marketing Campaign.</td><td>Cung cấp business justification và khớp với ngày launch Oct 8.</td><td>Chuyển verdict sang false positive hợp lệ.</td></tr>
+          </tbody>
+        </table>
+        <div class="image-grid">
+          <figure class="lab-figure"><img src="../assets/labs/soc102/soc102-4.png" alt="Internal email validating campaign domain"><figcaption>Email evidence · Nội bộ thông báo domain được đăng ký cho chiến dịch Marketing.</figcaption></figure>
+          <figure class="lab-figure"><img src="../assets/labs/soc102/soc102-5.png" alt="VirusTotal result for destination IP"><figcaption>Threat intel evidence · IP chưa bị gắn malicious trong kết quả kiểm tra của case.</figcaption></figure>
+        </div>
+      </section>
+
+      <section class="report-section" id="workflow">
+        <div class="section-kicker">05 · SOC L1 workflow</div>
+        <h2>Investigation Workflow</h2>
+        <ol class="case-timeline">
+          <li><b>Validate alert fields:</b> ghi nhận event ID, rule name, severity, hostname, internal IP, destination domain/IP và alert time.</li>
+          <li><b>Check domain/IP reputation:</b> tra cứu VirusTotal/AbuseIPDB/OTX/urlscan để xác định observable đã bị cộng đồng đánh dấu hay chưa.</li>
+          <li><b>Pivot to proxy logs:</b> kiểm tra user truy cập URL nào, HTTP method/status, file extension, size và user-agent.</li>
+          <li><b>Check endpoint process:</b> xác định process tạo kết nối là browser hợp lệ hay process đáng nghi như powershell.exe, mshta.exe, wscript.exe, rundll32.exe.</li>
+          <li><b>Validate business context:</b> kiểm tra email/internal ticket để biết domain có thuộc chiến dịch Marketing/IT hợp lệ không.</li>
+          <li><b>Classify verdict:</b> nếu có business justification, không có file độc hại và không có process bất thường, phân loại false positive.</li>
+        </ol>
+      </section>
+
+      <section class="report-section" id="verdict">
+        <div class="section-kicker">06 · Final assessment</div>
+        <h2>Final Verdict</h2>
+        <div class="report-summary">
+          <p><b>Verdict:</b> False Positive · Legitimate Marketing Domain.</p>
+          <p><b>Reason:</b> Domain mới đăng ký nhưng đã được thông báo nội bộ cho SOC Team, proxy log chỉ ghi nhận static assets, user truy cập bằng Chrome, không thấy executable download, và IP không bị đánh dấu malicious trong kiểm tra threat intelligence của case.</p>
+          <p><b>Malicious activity:</b> Not confirmed.</p>
+          <p><b>Recommended status:</b> Close case after documenting evidence and tuning notes.</p>
+          <p><b>Confidence:</b> Medium-to-high for false positive trong phạm vi evidence hiện có; vẫn cần theo dõi nếu domain phát sinh HTTP POST, file download hoặc nhiều host truy cập bất thường.</p>
+        </div>
+      </section>
+
+      <section class="report-section" id="recommendations">
+        <div class="section-kicker">07 · Prevention & tuning</div>
+        <h2>Recommendations</h2>
+        <ul>
+          <li>Thêm <b>finovabank-promo.com</b> vào approved domain list/whitelist có thời hạn và ghi chú owner là Marketing.</li>
+          <li>Tuning rule để loại trừ các company-related domains đã được xác minh, nhưng không whitelist toàn bộ wildcard nếu chưa có kiểm soát.</li>
+          <li>Thiết lập quy trình Marketing/IT thông báo SOC trước khi đăng ký domain mới.</li>
+          <li>Giữ monitor rule cho hành vi rủi ro: executable download, suspicious script, HTTP POST credential, nhiều host truy cập bất thường hoặc domain chuyển sang IP khác.</li>
+          <li>Chuẩn hóa case template để bắt buộc có: TI result, proxy evidence, endpoint process, business owner và final verdict.</li>
+        </ul>
+      </section>
+
+      <section class="report-section" id="next">
+        <div class="section-kicker">08 · Next improvements</div>
+        <h2>Limitations & Next Improvements</h2>
+        <ul>
+          <li>Bổ sung screenshot endpoint process tree nếu lab platform có cung cấp.</li>
+          <li>Thêm DNS log để xác định resolver, query time và có host khác cùng query domain không.</li>
+          <li>Thêm rule correlation: newly registered domain + executable download + low reputation + unknown user-agent sẽ tăng severity.</li>
+          <li>Lập bảng approved business domains theo owner, purpose, start/end date và ticket reference.</li>
+        </ul>
+      </section>
+    </div>
+  </section>
+</main>
+<footer>© Khánh Linh · SOC Analyst Portfolio · Evidence-based reports</footer>
+</body>
+</html>

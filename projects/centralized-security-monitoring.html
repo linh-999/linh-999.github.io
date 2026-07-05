@@ -17,7 +17,7 @@
         <a href="../index.html#casefiles">Case Files</a>
         <a href="../index.html#workflow">SOC Workflow</a>
         <a href="../index.html#writeups">Write-ups</a>
-        <a class="nav-cta" href="https://github.com/linh-999" target="_blank">GitHub</a>
+        <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
     </nav>
   </div>
@@ -67,7 +67,7 @@
       <section class="report-section" id="summary">
         <div class="section-kicker">01 · Executive view</div>
         <h2>Executive Summary</h2>
-        <p>Project tập trung vào cách xây dựng một hệ thống SIEM nhỏ nhưng có tư duy vận hành thật: endpoint/network sinh log, agent ship log, SIEM chuẩn hóa dữ liệu, dashboard hiển thị tín hiệu bất thường và analyst dùng evidence để kết luận alert. Điểm mạnh của project là không chỉ “cài tool”, mà trình bày được luồng log, rule phát hiện, cách phân loại alert, lý do false positive và hành động khuyến nghị.</p>
+        <p>Project tập trung vào cách xây dựng một hệ thống SIEM nhỏ có đầy đủ tư duy vận hành: endpoint/network sinh log, agent ship log, SIEM chuẩn hóa dữ liệu, dashboard hiển thị tín hiệu bất thường và analyst dùng evidence để kết luận alert. Nội dung nhấn mạnh luồng log, rule phát hiện, phân loại alert, lý do false positive và hành động khuyến nghị.</p>
 
         <div class="callout good">
           <b>Analyst value:</b> Project này chứng minh được 4 năng lực quan trọng của SOC Analyst L1: hiểu log source, biết đọc alert field, biết pivot sang evidence, và không kết luận tấn công khi chưa kiểm tra context.
@@ -123,15 +123,15 @@
           <div class="node-card"><b>Kibana Dashboard</b><p>Hiển thị alert trend, top source IP, destination port, signature và event detail.</p></div>
           <div class="node-card"><b>SOC Analyst</b><p>Pivot từ dashboard sang raw log, xác minh context và ghi verdict.</p></div>
         </div>
-        <div class="placeholder">
-          <b>Ảnh cần chèn sau:</b> topology lab, Kibana dashboard, Snort rule, alert detail hoặc command output. Không nên chèn ảnh minh họa mạng chung chung; ưu tiên ảnh có timestamp/log field thật từ lab.
+        <div class="evidence-note">
+          <b>Evidence artifacts:</b> topology lab, Kibana dashboard, Snort rule, alert detail và command output. Evidence ưu tiên phải có timestamp, log field và nội dung liên quan trực tiếp đến quá trình điều tra.
         </div>
       </section>
 
       <section class="report-section" id="implementation">
         <div class="section-kicker">04 · Build notes</div>
         <h2>Implementation Notes</h2>
-        <p>Phần này giúp project nhìn giống một lab vận hành thật hơn thay vì chỉ mô tả công cụ. Khi đưa lên GitHub, có thể giữ các snippet này như cấu hình mẫu và thay ảnh bằng kết quả lab thực tế.</p>
+        <p>Phần này ghi lại các cấu phần triển khai quan trọng của pipeline SIEM: rule phát hiện, field cần thu thập, luồng Filebeat và truy vấn analyst dùng khi pivot từ dashboard sang raw event.</p>
         <div class="command-grid">
           <div class="codebox"><b># snort local rule example</b><br>alert tcp any any -> $HOME_NET any (msg:"LAB Possible TCP Port Scan"; flags:S; detection_filter:track by_src, count 20, seconds 60; classtype:attempted-recon; sid:1000001; rev:1;)</div>
           <div class="codebox"><b># expected alert fields</b><br>timestamp<br>src_ip / src_port<br>dest_ip / dest_port<br>protocol<br>signature<br>severity / priority<br>rule_sid</div>
