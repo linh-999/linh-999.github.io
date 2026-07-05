@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wazuh SIEM/SOC Lab: Manager, Agent và Detection Flow | Khánh Linh</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="logo" href="../index.html">Khanh<span>Linh</span></a>
+        <div class="nav-links">
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#writeups">Write-ups</a>
+          <a href="../index.html#projects">Projects</a>
+          <a href="../index.html#skills">Skills</a>
+          <a href="../index.html#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="article-layout container">
+    <article class="article">
+      <p class="meta"><a class="text-link" href="../index.html">← Back to Home</a> · Write-up · Jul 2026</p>
+      <h1>📡 Wazuh SIEM/SOC Lab: Manager, Agent và Detection Flow</h1>
+      <p class="lead">Ghi chú dựng lab Wazuh để hiểu kiến trúc SIEM/SOC, luồng log từ agent về manager, rule, dashboard và demo phát hiện hành vi.</p>
+      <div class="tag-list" style="justify-content:flex-start; margin-bottom: 28px;"><span class="tag">Wazuh</span><span class="tag">SIEM</span><span class="tag">Blue Team</span><span class="tag">Lab</span></div>
+      <h2>Mục tiêu</h2>
+      <ul>
+        <li>Hiểu vai trò của Wazuh Manager, Agent, Indexer và Dashboard.</li>
+        <li>Biết cách agent thu thập log endpoint và gửi về server để phân tích.</li>
+        <li>Chuẩn bị nền tảng cho các demo như file integrity, sudo privilege escalation, USB event hoặc brute force SSH.</li>
+      </ul>
+      <h2>Kiến trúc tổng quan</h2>
+      <ul>
+        <li>Wazuh Agent được cài trên endpoint Linux/Windows để thu thập log hệ thống, audit log, security event và file integrity event.</li>
+        <li>Wazuh Manager nhận log, áp rule, sinh alert và chuyển dữ liệu sang indexer.</li>
+        <li>Dashboard giúp SOC Analyst tìm kiếm, lọc alert, xem rule ID, severity, MITRE mapping và host liên quan.</li>
+      </ul>
+      <h2>Use case demo đề xuất</h2>
+      <ul>
+        <li>File Integrity Monitoring: tạo/sửa/xóa file trong thư mục được giám sát.</li>
+        <li>Linux Privilege Escalation: kiểm tra event liên quan sudo hoặc thay đổi quyền.</li>
+        <li>SSH Brute Force: nhiều lần đăng nhập sai từ cùng một IP.</li>
+        <li>Windows Security Event: theo dõi login failure, user creation hoặc policy change.</li>
+      </ul>
+      <h2>Cách viết báo cáo lab</h2>
+      <ul>
+        <li>Mô tả mục tiêu use case.</li>
+        <li>Sơ đồ luồng log: Endpoint → Agent → Manager → Indexer → Dashboard.</li>
+        <li>Ảnh cấu hình agent/rule nếu có.</li>
+        <li>Ảnh alert trên dashboard.</li>
+        <li>Kết luận rule phát hiện được gì và còn hạn chế gì.</li>
+      </ul>
+      <h2>Kỹ năng rút ra</h2>
+      <ul>
+        <li>Nắm được kiến trúc SIEM cơ bản.</li>
+        <li>Biết đọc alert theo rule ID, severity, agent, source log và MITRE technique.</li>
+        <li>Có nền tảng để so sánh Wazuh với ELK/Splunk ở mức sinh viên/thực tập.</li>
+      </ul>
+      <h2>Command / Query tham khảo</h2>
+      <pre><code>sudo systemctl status wazuh-agent
+sudo tail -f /var/ossec/logs/ossec.log
+agent_control -l</code></pre>
+      <div class="note">
+        <p><strong>Ghi chú:</strong> Nội dung này được viết theo hướng portfolio sinh viên/thực tập, có thể bổ sung ảnh lab, topology, screenshot dashboard hoặc log evidence sau khi có dữ liệu thực tế.</p>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    © 2026 Khánh Linh. Built with GitHub Pages.
+  </footer>
+</body>
+</html>

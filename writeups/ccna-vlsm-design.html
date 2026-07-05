@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CCNA Packet Tracer: VLSM Design &amp; Implementation | Khánh Linh</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="logo" href="../index.html">Khanh<span>Linh</span></a>
+        <div class="nav-links">
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#writeups">Write-ups</a>
+          <a href="../index.html#projects">Projects</a>
+          <a href="../index.html#skills">Skills</a>
+          <a href="../index.html#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="article-layout container">
+    <article class="article">
+      <p class="meta"><a class="text-link" href="../index.html">← Back to Home</a> · Write-up · Jun 2026</p>
+      <h1>🧩 CCNA Packet Tracer: VLSM Design &amp; Implementation</h1>
+      <p class="lead">Write-up thiết kế địa chỉ IP bằng VLSM, chia subnet theo số host, cấu hình router/switch/PC và kiểm tra kết nối bằng ping/show command.</p>
+      <div class="tag-list" style="justify-content:flex-start; margin-bottom: 28px;"><span class="tag">CCNA</span><span class="tag">VLSM</span><span class="tag">Packet Tracer</span><span class="tag">Routing</span></div>
+      <h2>Mục tiêu</h2>
+      <ul>
+        <li>Biết chia subnet theo yêu cầu số host bằng VLSM.</li>
+        <li>Gán IP cho router interface, switch VLAN 1 và PC.</li>
+        <li>Kiểm tra kết nối end-to-end bằng ping, show ip interface brief và show running-config.</li>
+      </ul>
+      <h2>Nguyên tắc chia VLSM</h2>
+      <ul>
+        <li>Sắp xếp các mạng con theo số host giảm dần.</li>
+        <li>Chọn prefix nhỏ nhất nhưng đủ số host usable.</li>
+        <li>Cấp phát địa chỉ liên tục để tránh overlap.</li>
+        <li>Ghi rõ Network Address, Usable Range, Broadcast và Default Gateway.</li>
+      </ul>
+      <h2>Quy trình cấu hình</h2>
+      <ul>
+        <li>Cấu hình hostname cho router/switch.</li>
+        <li>Xóa IP sai nếu có bằng no ip address trước khi gán IP mới.</li>
+        <li>Gán IP cho các interface G0/0, G0/1, Serial theo bảng địa chỉ.</li>
+        <li>Bật interface bằng no shutdown.</li>
+        <li>Cấu hình default gateway cho switch và PC.</li>
+        <li>Lưu cấu hình bằng copy running-config startup-config.</li>
+      </ul>
+      <h2>Lệnh kiểm tra</h2>
+      <ul>
+        <li>show ip interface brief để kiểm tra trạng thái up/up và IP đã gán.</li>
+        <li>show running-config để xác nhận cấu hình.</li>
+        <li>ping default gateway từ PC.</li>
+        <li>ping giữa các PC khác subnet để kiểm tra routing.</li>
+      </ul>
+      <h2>Lỗi thường gặp</h2>
+      <ul>
+        <li>Nhầm subnet mask dẫn đến PC không cùng mạng với gateway.</li>
+        <li>Quên no shutdown trên router interface.</li>
+        <li>Gán nhầm gateway của PC.</li>
+        <li>Dùng subnet quá nhỏ so với số host yêu cầu.</li>
+      </ul>
+      <h2>Kỹ năng rút ra</h2>
+      <ul>
+        <li>Tư duy thiết kế địa chỉ IP logic.</li>
+        <li>Biết kiểm tra lỗi kết nối từ Layer 1 đến Layer 3.</li>
+        <li>Có nền tảng cho routing tĩnh, OSPF, ACL và NAT.</li>
+      </ul>
+      <h2>Command / Query tham khảo</h2>
+      <pre><code>show ip interface brief
+show running-config
+copy running-config startup-config</code></pre>
+      <div class="note">
+        <p><strong>Ghi chú:</strong> Nội dung này được viết theo hướng portfolio sinh viên/thực tập, có thể bổ sung ảnh lab, topology, screenshot dashboard hoặc log evidence sau khi có dữ liệu thực tế.</p>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    © 2026 Khánh Linh. Built with GitHub Pages.
+  </footer>
+</body>
+</html>

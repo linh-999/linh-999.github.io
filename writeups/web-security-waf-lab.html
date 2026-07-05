@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Security &amp; WAF Lab: OWASP Top 10 Detection Notes | Khánh Linh</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="logo" href="../index.html">Khanh<span>Linh</span></a>
+        <div class="nav-links">
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#writeups">Write-ups</a>
+          <a href="../index.html#projects">Projects</a>
+          <a href="../index.html#skills">Skills</a>
+          <a href="../index.html#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="article-layout container">
+    <article class="article">
+      <p class="meta"><a class="text-link" href="../index.html">← Back to Home</a> · Write-up · Jun 2026</p>
+      <h1>🌐 Web Security &amp; WAF Lab: OWASP Top 10 Detection Notes</h1>
+      <p class="lead">Ghi chú kiểm thử web cơ bản với Burp Suite/OWASP ZAP, phân tích request-response, nhận diện lỗi phổ biến và đề xuất rule WAF.</p>
+      <div class="tag-list" style="justify-content:flex-start; margin-bottom: 28px;"><span class="tag">Web Security</span><span class="tag">OWASP</span><span class="tag">Burp Suite</span><span class="tag">WAF</span></div>
+      <h2>Mục tiêu</h2>
+      <ul>
+        <li>Luyện tư duy kiểm thử web application theo OWASP Top 10.</li>
+        <li>Biết dùng proxy để quan sát request/response.</li>
+        <li>Hiểu cách WAF phát hiện payload bất thường và ghi log.</li>
+      </ul>
+      <h2>Môi trường lab</h2>
+      <ul>
+        <li>Ứng dụng web lab như DVWA/Juice Shop hoặc web test nội bộ.</li>
+        <li>Burp Suite/OWASP ZAP để intercept request.</li>
+        <li>WAF hoặc rule mô phỏng để chặn payload cơ bản.</li>
+        <li>Web server log để đối chiếu request bị chặn hoặc cho phép.</li>
+      </ul>
+      <h2>Các lỗi kiểm thử</h2>
+      <ul>
+        <li>Broken Access Control: thử truy cập tài nguyên không thuộc quyền user.</li>
+        <li>Injection: kiểm tra input có bị nối trực tiếp vào query/command không.</li>
+        <li>Authentication weakness: kiểm tra login failure, brute force protection và session handling.</li>
+        <li>Security Misconfiguration: header thiếu, directory listing, debug mode hoặc default credential.</li>
+      </ul>
+      <h2>Cách phân tích log</h2>
+      <ul>
+        <li>Xác định URI, method, status code, source IP và user-agent.</li>
+        <li>So sánh request bình thường và request có payload.</li>
+        <li>Kiểm tra WAF action: allow, block, challenge hoặc log only.</li>
+        <li>Ghi lại rule/signature nào match payload.</li>
+      </ul>
+      <h2>Kết luận mẫu</h2>
+      <ul>
+        <li>Lab giúp hiểu mối quan hệ giữa tấn công web, log web server và log WAF.</li>
+        <li>Khi đưa vào môi trường thật cần giảm false positive bằng cách tuning rule theo endpoint, parameter và business logic.</li>
+      </ul>
+      <h2>Kỹ năng rút ra</h2>
+      <ul>
+        <li>Biết đọc HTTP request/response.</li>
+        <li>Biết viết báo cáo vulnerability ngắn.</li>
+        <li>Hiểu cách phòng thủ ở tầng WAF và tầng ứng dụng.</li>
+      </ul>
+      <h2>Command / Query tham khảo</h2>
+      <pre><code>GET /login.php HTTP/1.1
+POST /search.php HTTP/1.1
+curl -I http://example.local</code></pre>
+      <div class="note">
+        <p><strong>Ghi chú:</strong> Nội dung này được viết theo hướng portfolio sinh viên/thực tập, có thể bổ sung ảnh lab, topology, screenshot dashboard hoặc log evidence sau khi có dữ liệu thực tế.</p>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    © 2026 Khánh Linh. Built with GitHub Pages.
+  </footer>
+</body>
+</html>

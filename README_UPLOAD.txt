@@ -1,0 +1,1 @@
+Copy toàn bộ nội dung thư mục này vào repo linh-999.github.io, sau đó git add . && git commit && git push. File index.html là trang chính; các thư mục writeups/, projects/, assets/ chứa trang con và CSS.

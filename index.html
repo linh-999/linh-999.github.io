@@ -3,435 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Khánh Linh | Cybersecurity Write-ups</title>
-
-  <style>
-    :root {
-      --bg: #0b1020;
-      --bg-soft: #111827;
-      --card: #151c2f;
-      --border: #263149;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --primary: #38bdf8;
-      --secondary: #a78bfa;
-      --accent: #22c55e;
-      --danger: #f97316;
-      --shadow: rgba(0, 0, 0, 0.35);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 35%),
-        radial-gradient(circle at top right, rgba(167, 139, 250, 0.16), transparent 30%),
-        var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(1120px, 92%);
-      margin: 0 auto;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(16px);
-      background: rgba(11, 16, 32, 0.82);
-      border-bottom: 1px solid var(--border);
-    }
-
-    nav {
-      height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
-
-    .logo span {
-      color: var(--primary);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 24px;
-      font-size: 0.95rem;
-      color: var(--muted);
-    }
-
-    .nav-links a:hover {
-      color: var(--primary);
-    }
-
-    .hero {
-      padding: 92px 0 64px;
-      display: grid;
-      grid-template-columns: 1.35fr 0.65fr;
-      gap: 48px;
-      align-items: center;
-    }
-
-    .badge {
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
-      padding: 8px 14px;
-      border: 1px solid var(--border);
-      background: rgba(21, 28, 47, 0.75);
-      border-radius: 999px;
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-bottom: 20px;
-    }
-
-    .badge-dot {
-      width: 8px;
-      height: 8px;
-      background: var(--accent);
-      border-radius: 999px;
-      box-shadow: 0 0 16px var(--accent);
-    }
-
-    h1 {
-      font-size: clamp(2.4rem, 6vw, 4.7rem);
-      line-height: 1.05;
-      margin-bottom: 22px;
-      letter-spacing: -1.8px;
-    }
-
-    .gradient-text {
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .hero p {
-      color: var(--muted);
-      font-size: 1.08rem;
-      max-width: 720px;
-      margin-bottom: 30px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 34px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 18px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      font-weight: 700;
-      transition: 0.25s;
-    }
-
-    .btn-primary {
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      color: #06111f;
-      border: none;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(56, 189, 248, 0.25);
-    }
-
-    .btn-outline {
-      background: rgba(21, 28, 47, 0.7);
-      color: var(--text);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-      transform: translateY(-2px);
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      max-width: 640px;
-    }
-
-    .stat-card {
-      background: rgba(21, 28, 47, 0.75);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 18px;
-    }
-
-    .stat-card strong {
-      display: block;
-      font-size: 1.4rem;
-      color: var(--primary);
-    }
-
-    .stat-card span {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    .profile-card {
-      background: linear-gradient(180deg, rgba(21, 28, 47, 0.95), rgba(17, 24, 39, 0.95));
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 26px;
-      box-shadow: 0 22px 60px var(--shadow);
-    }
-
-    .avatar {
-      width: 118px;
-      height: 118px;
-      margin: 0 auto 18px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #06111f;
-      font-size: 2.7rem;
-      font-weight: 900;
-    }
-
-    .profile-card h2 {
-      text-align: center;
-      margin-bottom: 6px;
-      font-size: 1.3rem;
-    }
-
-    .profile-card p {
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: 20px;
-    }
-
-    .tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-    }
-
-    .tag {
-      padding: 7px 11px;
-      border-radius: 999px;
-      background: rgba(56, 189, 248, 0.09);
-      border: 1px solid rgba(56, 189, 248, 0.22);
-      color: #bae6fd;
-      font-size: 0.85rem;
-    }
-
-    section {
-      padding: 70px 0;
-    }
-
-    .section-title {
-      margin-bottom: 30px;
-    }
-
-    .section-title span {
-      color: var(--primary);
-      font-weight: 700;
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-    }
-
-    .section-title h2 {
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      margin-top: 8px;
-      letter-spacing: -0.8px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .card {
-      background: rgba(21, 28, 47, 0.82);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 24px;
-      transition: 0.25s;
-      min-height: 100%;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(56, 189, 248, 0.45);
-      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.22);
-    }
-
-    .card-icon {
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
-      background: rgba(56, 189, 248, 0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--primary);
-      font-size: 1.3rem;
-      margin-bottom: 18px;
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-      font-size: 1.15rem;
-    }
-
-    .card p {
-      color: var(--muted);
-      font-size: 0.96rem;
-      margin-bottom: 18px;
-    }
-
-    .card a {
-      color: var(--primary);
-      font-weight: 700;
-      font-size: 0.95rem;
-    }
-
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .skill {
-      padding: 10px 14px;
-      border: 1px solid var(--border);
-      background: rgba(21, 28, 47, 0.75);
-      border-radius: 12px;
-      color: var(--muted);
-    }
-
-    .timeline {
-      display: grid;
-      gap: 18px;
-    }
-
-    .timeline-item {
-      padding: 22px;
-      border-left: 3px solid var(--primary);
-      background: rgba(21, 28, 47, 0.72);
-      border-radius: 0 18px 18px 0;
-      border-top: 1px solid var(--border);
-      border-right: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .timeline-item h3 {
-      margin-bottom: 8px;
-    }
-
-    .timeline-item p {
-      color: var(--muted);
-    }
-
-    .contact-box {
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.14), rgba(167, 139, 250, 0.12));
-      border: 1px solid var(--border);
-      border-radius: 26px;
-      padding: 34px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .contact-box p {
-      color: var(--muted);
-      max-width: 650px;
-      margin-top: 8px;
-    }
-
-    footer {
-      padding: 30px 0;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      text-align: center;
-      font-size: 0.95rem;
-    }
-
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-        padding-top: 60px;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .contact-box {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .stats {
-        grid-template-columns: 1fr;
-      }
-
-      .nav-links {
-        display: none;
-      }
-    }
-  </style>
+  <title>Khánh Linh | Cybersecurity Write-ups | Khánh Linh</title>
+  <link rel="stylesheet" href="assets/style.css" />
 </head>
-
 <body>
   <header>
     <div class="container">
       <nav>
-        <div class="logo">Khánh<span>Linh</span></div>
+        <a class="logo" href="index.html">Khanh<span>Linh</span></a>
         <div class="nav-links">
-          <a href="#about">About</a>
-          <a href="#writeups">Write-ups</a>
-          <a href="#projects">Projects</a>
-          <a href="#skills">Skills</a>
-          <a href="#contact">Contact</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#writeups">Write-ups</a>
+          <a href="index.html#projects">Projects</a>
+          <a href="index.html#skills">Skills</a>
+          <a href="index.html#contact">Contact</a>
         </div>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero container">
+    <section class="hero container" id="home">
       <div>
         <div class="badge">
           <span class="badge-dot"></span>
-          Cybersecurity Student · SOC · CTF · Network Security
+          Cybersecurity Student · SOC · Network Security · CTF Notes
         </div>
 
         <h1>
@@ -440,9 +36,9 @@
         </h1>
 
         <p>
-          Mình xây dựng trang này để lưu lại các write-up, quá trình phân tích challenge,
-          ghi chú học tập về SOC, Forensics, Reverse Engineering, Web Security và Network Security.
-          Mục tiêu của mình là phát triển kỹ năng điều tra, phân tích log, bảo mật hệ thống và vận hành mạng.
+          Mình xây dựng trang này để lưu lại write-up, project lab và ghi chú học tập về SOC,
+          SIEM, Network Security, Web Security, CTF Forensics và Network Operations. Nội dung được viết theo hướng dễ đọc,
+          có mục tiêu, quy trình, bằng chứng, kết luận và bài học rút ra.
         </p>
 
         <div class="hero-actions">
@@ -452,33 +48,23 @@
         </div>
 
         <div class="stats">
-          <div class="stat-card">
-            <strong>CTF</strong>
-            <span>Write-up & Forensics</span>
-          </div>
-          <div class="stat-card">
-            <strong>SOC</strong>
-            <span>Alert Investigation</span>
-          </div>
-          <div class="stat-card">
-            <strong>Network</strong>
-            <span>CCNA & Operations</span>
-          </div>
+          <div class="stat-card"><strong>6</strong><span>Technical write-ups</span></div>
+          <div class="stat-card"><strong>5</strong><span>Portfolio projects</span></div>
+          <div class="stat-card"><strong>SOC</strong><span>Alert Investigation</span></div>
         </div>
       </div>
 
       <aside class="profile-card">
         <div class="avatar">KL</div>
-        <h2>Cybersecurity Portfolio</h2>
+        <h2>Khánh Linh</h2>
         <p>Information Security Student</p>
-
         <div class="tag-list">
           <span class="tag">SOC Analyst</span>
           <span class="tag">SIEM</span>
+          <span class="tag">Blue Team</span>
           <span class="tag">CTF</span>
-          <span class="tag">Forensics</span>
-          <span class="tag">Reverse</span>
           <span class="tag">Network</span>
+          <span class="tag">Web Security</span>
         </div>
       </aside>
     </section>
@@ -488,28 +74,18 @@
         <span>About Me</span>
         <h2>Hướng học tập & định hướng nghề nghiệp</h2>
       </div>
-
       <div class="timeline">
         <div class="timeline-item">
           <h3>Security Operations Center</h3>
-          <p>
-            Tập trung vào quy trình điều tra alert, phân tích log, nhận diện IOC, phân biệt false positive
-            và xây dựng tư duy xử lý sự cố theo hướng SOC Tier 1.
-          </p>
+          <p>Tập trung vào quy trình điều tra alert, phân tích log, kiểm tra IOC, phân loại false positive/true positive và viết báo cáo theo hướng SOC Tier 1.</p>
         </div>
-
         <div class="timeline-item">
           <h3>Network Security & Operations</h3>
-          <p>
-            Học nền tảng TCP/IP, routing, switching, VLAN, ACL, firewall, VPN và định hướng vận hành hệ thống mạng doanh nghiệp.
-          </p>
+          <p>Học nền tảng TCP/IP, routing, switching, VLAN, ACL, firewall, VPN và định hướng vận hành hệ thống mạng doanh nghiệp.</p>
         </div>
-
         <div class="timeline-item">
-          <h3>CTF & Technical Write-ups</h3>
-          <p>
-            Ghi lại quá trình giải challenge để rèn tư duy phân tích, trình bày bằng chứng và viết báo cáo kỹ thuật rõ ràng.
-          </p>
+          <h3>Technical Write-ups</h3>
+          <p>Ghi lại quá trình làm lab để rèn tư duy phân tích, trình bày bằng chứng và xây dựng portfolio kỹ thuật rõ ràng.</p>
         </div>
       </div>
     </section>
@@ -519,33 +95,48 @@
         <span>Write-ups</span>
         <h2>Bài viết kỹ thuật</h2>
       </div>
-
       <div class="grid">
         <article class="card">
-          <div class="card-icon">🛰️</div>
-          <h3>Orbital Docking Handshake</h3>
-          <p>
-            Reverse Engineering challenge về runtime-built buffer, phân tích binary và tìm handshake phrase.
-          </p>
-          <a href="./writeups/orbital-docking-handshake.html">Đọc write-up →</a>
-        </article>
-
-        <article class="card">
-          <div class="card-icon">🌙</div>
-          <h3>Moon Prism Forensics</h3>
-          <p>
-            Forensics challenge liên quan đến mobile backup, message database và phục hồi bằng chứng.
-          </p>
-          <a href="./writeups/moon-prism-forensics.html">Đọc write-up →</a>
-        </article>
-
-        <article class="card">
           <div class="card-icon">🛡️</div>
-          <h3>SOC Alert Investigation</h3>
-          <p>
-            Mẫu điều tra alert theo flow SOC: triage, evidence collection, IOC checking và final assessment.
-          </p>
+          <p class="meta">Jul 2026 · SOC / SIEM</p>
+          <h3>SOC Alert Investigation: Triage cảnh báo IP độc hại</h3>
+          <p>Quy trình điều tra alert theo hướng SOC Tier 1: đọc alert, thu thập context, kiểm tra IOC, phân loại false positive/true positive và viết kết luận.</p>
           <a href="./writeups/soc-alert-investigation.html">Đọc write-up →</a>
+        </article>
+        <article class="card">
+          <div class="card-icon">📡</div>
+          <p class="meta">Jul 2026 · Wazuh / SIEM</p>
+          <h3>Wazuh SIEM/SOC Lab: Manager, Agent và Detection Flow</h3>
+          <p>Ghi chú dựng lab Wazuh để hiểu kiến trúc SIEM/SOC, luồng log từ agent về manager, rule, dashboard và demo phát hiện hành vi.</p>
+          <a href="./writeups/wazuh-siem-soc-lab.html">Đọc write-up →</a>
+        </article>
+        <article class="card">
+          <div class="card-icon">🧩</div>
+          <p class="meta">Jun 2026 · CCNA / VLSM</p>
+          <h3>CCNA Packet Tracer: VLSM Design &amp; Implementation</h3>
+          <p>Write-up thiết kế địa chỉ IP bằng VLSM, chia subnet theo số host, cấu hình router/switch/PC và kiểm tra kết nối bằng ping/show command.</p>
+          <a href="./writeups/ccna-vlsm-design.html">Đọc write-up →</a>
+        </article>
+        <article class="card">
+          <div class="card-icon">🌐</div>
+          <p class="meta">Jun 2026 · Web Security / OWASP</p>
+          <h3>Web Security &amp; WAF Lab: OWASP Top 10 Detection Notes</h3>
+          <p>Ghi chú kiểm thử web cơ bản với Burp Suite/OWASP ZAP, phân tích request-response, nhận diện lỗi phổ biến và đề xuất rule WAF.</p>
+          <a href="./writeups/web-security-waf-lab.html">Đọc write-up →</a>
+        </article>
+        <article class="card">
+          <div class="card-icon">⚙️</div>
+          <p class="meta">Jun 2026 · Network Operations / Automation</p>
+          <h3>Research Notes: Core IP, Streaming Telemetry &amp; Network Automation</h3>
+          <p>Tổng hợp hướng nghiên cứu về vận hành Core IP/Truyền dẫn, thu thập telemetry, tự động hóa kiểm tra cấu hình và hỗ trợ NOC/SOC.</p>
+          <a href="./writeups/network-automation-telemetry.html">Đọc write-up →</a>
+        </article>
+        <article class="card">
+          <div class="card-icon">🔎</div>
+          <p class="meta">Jun 2026 · CTF / Forensics</p>
+          <h3>CTF Forensics Study Notes: Quy trình phân tích bằng chứng</h3>
+          <p>Ghi chú cách tiếp cận challenge forensics: xác định loại file, kiểm tra metadata, strings, timeline, hidden data và viết lại solve path.</p>
+          <a href="./writeups/ctf-forensics-notes.html">Đọc write-up →</a>
         </article>
       </div>
     </section>
@@ -555,31 +146,100 @@
         <span>Projects</span>
         <h2>Dự án nổi bật</h2>
       </div>
-
       <div class="grid">
         <article class="card">
           <div class="card-icon">📊</div>
-          <h3>Centralized Security Monitoring</h3>
-          <p>
-            Xây dựng mô hình giám sát bảo mật tập trung sử dụng IDS, log collection và dashboard để theo dõi sự kiện bất thường.
-          </p>
+          <p class="meta">Sep 2025 – Oct 2025 · Snort / ELK Stack</p>
+          <h3>Centralized Security Monitoring System</h3>
+          <p>Mô hình giám sát bảo mật tập trung dùng IDS, log collection và dashboard để phát hiện port scan, DoS và sự kiện bất thường.</p>
+          <a href="./projects/centralized-security-monitoring.html">Xem project →</a>
         </article>
-
         <article class="card">
-          <div class="card-icon">🌐</div>
-          <h3>Web Security & WAF Lab</h3>
-          <p>
-            Thực hành kiểm thử lỗ hổng web theo OWASP Top 10, phân tích request/response và đề xuất rule phòng thủ.
-          </p>
+          <div class="card-icon">🧱</div>
+          <p class="meta">Mar 2026 – Apr 2026 · FortiWeb WAF / Burp Suite</p>
+          <h3>Web Security: Penetration Testing &amp; WAF Mitigation</h3>
+          <p>Lab kiểm thử OWASP Top 10, phân tích HTTP request/response và đề xuất rule WAF nhằm giảm rủi ro tấn công web.</p>
+          <a href="./projects/web-security-waf-mitigation.html">Xem project →</a>
         </article>
-
         <article class="card">
-          <div class="card-icon">⚙️</div>
-          <h3>Network Automation Notes</h3>
-          <p>
-            Ghi chú học tập về vận hành mạng, tự động hóa, phân tích packet và xử lý sự cố hạ tầng.
-          </p>
+          <div class="card-icon">🤖</div>
+          <p class="meta">Mar 2026 – Apr 2026 · Python / Scapy</p>
+          <h3>AI-Driven Cybersecurity Agent for Network Automation</h3>
+          <p>Ý tưởng agent hỗ trợ phân tích packet/log và gợi ý bước điều tra cho SOC/NOC bằng Python, Scapy và LLM workflow.</p>
+          <a href="./projects/ai-cybersecurity-agent.html">Xem project →</a>
         </article>
+        <article class="card">
+          <div class="card-icon">🖧</div>
+          <p class="meta">2026 · CCNA / Packet Tracer</p>
+          <h3>CCNA Packet Tracer Lab Portfolio</h3>
+          <p>Bộ lab nền tảng mạng: subnetting, VLAN, routing, OSPF, ACL, NAT, WLAN và troubleshooting theo format write-up dễ đọc.</p>
+          <a href="./projects/ccna-packet-tracer-portfolio.html">Xem project →</a>
+        </article>
+        <article class="card">
+          <div class="card-icon">🧭</div>
+          <p class="meta">2026 · Network Operations / Troubleshooting</p>
+          <h3>Network Troubleshooting Case Notes</h3>
+          <p>Template viết case study xử lý sự cố mạng: symptom, scope, hypothesis, root cause, solution, verification và lesson learned.</p>
+          <a href="./projects/network-troubleshooting-notes.html">Xem project →</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="posts" class="container">
+      <div class="section-title">
+        <span>Posts Index</span>
+        <h2>Danh sách bài viết gần đây</h2>
+      </div>
+      <div class="post-list">
+        <a class="post-item" href="./writeups/soc-alert-investigation.html">
+          <div>
+            <h3>SOC Alert Investigation: Triage cảnh báo IP độc hại</h3>
+            <p>Quy trình điều tra alert theo hướng SOC Tier 1: đọc alert, thu thập context, kiểm tra IOC, phân loại false positive/true positive và viết kết luận.</p>
+          </div>
+          <small>Jul 2026 · Write-up</small>
+        </a>
+        <a class="post-item" href="./writeups/wazuh-siem-soc-lab.html">
+          <div>
+            <h3>Wazuh SIEM/SOC Lab: Manager, Agent và Detection Flow</h3>
+            <p>Ghi chú dựng lab Wazuh để hiểu kiến trúc SIEM/SOC, luồng log từ agent về manager, rule, dashboard và demo phát hiện hành vi.</p>
+          </div>
+          <small>Jul 2026 · Write-up</small>
+        </a>
+        <a class="post-item" href="./writeups/ccna-vlsm-design.html">
+          <div>
+            <h3>CCNA Packet Tracer: VLSM Design &amp; Implementation</h3>
+            <p>Write-up thiết kế địa chỉ IP bằng VLSM, chia subnet theo số host, cấu hình router/switch/PC và kiểm tra kết nối bằng ping/show command.</p>
+          </div>
+          <small>Jun 2026 · Write-up</small>
+        </a>
+        <a class="post-item" href="./writeups/web-security-waf-lab.html">
+          <div>
+            <h3>Web Security &amp; WAF Lab: OWASP Top 10 Detection Notes</h3>
+            <p>Ghi chú kiểm thử web cơ bản với Burp Suite/OWASP ZAP, phân tích request-response, nhận diện lỗi phổ biến và đề xuất rule WAF.</p>
+          </div>
+          <small>Jun 2026 · Write-up</small>
+        </a>
+        <a class="post-item" href="./projects/centralized-security-monitoring.html">
+          <div>
+            <h3>Centralized Security Monitoring System</h3>
+            <p>Mô hình giám sát bảo mật tập trung dùng IDS, log collection và dashboard để phát hiện port scan, DoS và sự kiện bất thường.</p>
+          </div>
+          <small>Sep 2025 – Oct 2025 · Project</small>
+        </a>
+        <a class="post-item" href="./projects/web-security-waf-mitigation.html">
+          <div>
+            <h3>Web Security: Penetration Testing &amp; WAF Mitigation</h3>
+            <p>Lab kiểm thử OWASP Top 10, phân tích HTTP request/response và đề xuất rule WAF nhằm giảm rủi ro tấn công web.</p>
+          </div>
+          <small>Mar 2026 – Apr 2026 · Project</small>
+        </a>
+        <a class="post-item" href="./projects/ai-cybersecurity-agent.html">
+          <div>
+            <h3>AI-Driven Cybersecurity Agent for Network Automation</h3>
+            <p>Ý tưởng agent hỗ trợ phân tích packet/log và gợi ý bước điều tra cho SOC/NOC bằng Python, Scapy và LLM workflow.</p>
+          </div>
+          <small>Mar 2026 – Apr 2026 · Project</small>
+        </a>
       </div>
     </section>
 
@@ -588,26 +248,43 @@
         <span>Skills</span>
         <h2>Kỹ năng & công cụ đang học</h2>
       </div>
-
       <div class="skills">
-        <span class="skill">SIEM</span>
-        <span class="skill">Splunk</span>
-        <span class="skill">Wazuh</span>
-        <span class="skill">ELK Stack</span>
-        <span class="skill">Suricata</span>
-        <span class="skill">Zeek</span>
-        <span class="skill">Wireshark</span>
-        <span class="skill">Burp Suite</span>
-        <span class="skill">OWASP Top 10</span>
-        <span class="skill">Linux</span>
-        <span class="skill">Windows Server</span>
-        <span class="skill">Active Directory</span>
-        <span class="skill">TCP/IP</span>
-        <span class="skill">VLAN</span>
-        <span class="skill">Firewall</span>
-        <span class="skill">Python</span>
-        <span class="skill">Bash</span>
-        <span class="skill">Docker</span>
+        <span class="skill">SIEM</span><span class="skill">Splunk</span><span class="skill">Wazuh</span><span class="skill">ELK Stack</span><span class="skill">Snort IDS</span><span class="skill">Suricata</span><span class="skill">Wireshark</span><span class="skill">Burp Suite</span><span class="skill">OWASP Top 10</span><span class="skill">Linux</span><span class="skill">Windows Server</span><span class="skill">Active Directory</span><span class="skill">TCP/IP</span><span class="skill">VLAN</span><span class="skill">Routing</span><span class="skill">Firewall</span><span class="skill">Python</span><span class="skill">Docker</span>
+      </div>
+    </section>
+
+    <section id="roadmap" class="container">
+      <div class="section-title">
+        <span>Roadmap</span>
+        <h2>Nội dung sẽ bổ sung tiếp</h2>
+      </div>
+      <div class="grid-2">
+        <div class="timeline-item">
+          <h3>Short-term</h3>
+          <ul>
+            <li>Bổ sung ảnh lab, topology và screenshot dashboard cho từng write-up.</li>
+            <li>Viết thêm case study SOC: phishing email, malicious IP, brute force SSH.</li>
+            <li>Hoàn thiện bộ CCNA Packet Tracer write-up theo từng lab.</li>
+          </ul>
+        </div>
+        <div class="timeline-item">
+          <h3>Long-term</h3>
+          <ul>
+            <li>Xây dựng series Network Operations & Automation.</li>
+            <li>Thêm project Wazuh/Splunk investigation với dữ liệu log mẫu.</li>
+            <li>Chuẩn hóa portfolio để dùng khi ứng tuyển SOC/NOC/Network Security Intern.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="tags" class="container">
+      <div class="section-title">
+        <span>Trending Tags</span>
+        <h2>Chủ đề chính</h2>
+      </div>
+      <div class="tag-list" style="justify-content:flex-start;">
+        <span class="tag">soc</span><span class="tag">blue-team</span><span class="tag">dfir</span><span class="tag">siem</span><span class="tag">wazuh</span><span class="tag">ccna</span><span class="tag">packet-tracer</span><span class="tag">web-security</span><span class="tag">owasp</span><span class="tag">network-operations</span><span class="tag">automation</span><span class="tag">ctf</span>
       </div>
     </section>
 
@@ -615,11 +292,8 @@
       <div class="contact-box">
         <div>
           <h2>Let’s connect</h2>
-          <p>
-            Đây là portfolio cá nhân dùng để lưu write-up, ghi chú học tập và các dự án liên quan đến Cybersecurity.
-          </p>
+          <p>Đây là portfolio cá nhân dùng để lưu write-up, ghi chú học tập và các dự án liên quan đến Cybersecurity, SOC và Network Security.</p>
         </div>
-
         <div class="hero-actions">
           <a href="https://github.com/linh-999" class="btn btn-primary" target="_blank">GitHub Profile</a>
           <a href="#writeups" class="btn btn-outline">View Write-ups</a>
@@ -629,7 +303,7 @@
   </main>
 
   <footer>
-    © Khánh Linh. Built with GitHub Pages.
+    © 2026 Khánh Linh. Built with GitHub Pages.
   </footer>
 </body>
 </html>

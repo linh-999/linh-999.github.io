@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Network Troubleshooting Case Notes | Khánh Linh</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="logo" href="../index.html">Khanh<span>Linh</span></a>
+        <div class="nav-links">
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#writeups">Write-ups</a>
+          <a href="../index.html#projects">Projects</a>
+          <a href="../index.html#skills">Skills</a>
+          <a href="../index.html#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="article-layout container">
+    <article class="article">
+      <p class="meta"><a class="text-link" href="../index.html">← Back to Home</a> · Project · 2026</p>
+      <h1>🧭 Network Troubleshooting Case Notes</h1>
+      <p class="lead">Template viết case study xử lý sự cố mạng: symptom, scope, hypothesis, root cause, solution, verification và lesson learned.</p>
+      <div class="tag-list" style="justify-content:flex-start; margin-bottom: 28px;"><span class="tag">Network Operations</span><span class="tag">Troubleshooting</span><span class="tag">SLA</span><span class="tag">NOC</span></div>
+      <h2>Tổng quan</h2>
+      <p>Dự án ghi chú quy trình xử lý sự cố mạng theo hướng vận hành. Thay vì chỉ ghi lệnh cấu hình, mỗi case tập trung vào cách xác định phạm vi lỗi và bằng chứng xác nhận.</p>
+      <h2>Template case study</h2>
+      <ul>
+        <li>Symptom: người dùng/dịch vụ gặp lỗi gì.</li>
+        <li>Scope: lỗi xảy ra với một host, một VLAN, một site hay toàn hệ thống.</li>
+        <li>Hypothesis: các nguyên nhân có thể xảy ra.</li>
+        <li>Verification: lệnh kiểm tra và kết quả.</li>
+        <li>Root Cause: nguyên nhân chính.</li>
+        <li>Solution: cách xử lý.</li>
+        <li>Lesson Learned: cách phòng tránh lặp lại.</li>
+      </ul>
+      <h2>Ví dụ case</h2>
+      <ul>
+        <li>PC không ping được default gateway do sai VLAN.</li>
+        <li>OSPF neighbor không lên do sai network/mask.</li>
+        <li>ACL chặn nhầm traffic hợp lệ.</li>
+        <li>NAT cấu hình thiếu overload hoặc sai inside/outside interface.</li>
+      </ul>
+      <h2>Giá trị portfolio</h2>
+      <ul>
+        <li>Thể hiện tư duy vận hành theo quy trình.</li>
+        <li>Phù hợp hướng NOC/Network Operations.</li>
+        <li>Dễ mở rộng thành blog series trên GitHub Pages.</li>
+      </ul>
+      <div class="note">
+        <p><strong>Ghi chú:</strong> Nội dung này được viết theo hướng portfolio sinh viên/thực tập, có thể bổ sung ảnh lab, topology, screenshot dashboard hoặc log evidence sau khi có dữ liệu thực tế.</p>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    © 2026 Khánh Linh. Built with GitHub Pages.
+  </footer>
+</body>
+</html>
