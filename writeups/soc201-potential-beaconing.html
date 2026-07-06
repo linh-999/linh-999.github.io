@@ -10,20 +10,16 @@
 </head>
 <body>
 <header>
-<div class="container">
-<nav>
-<a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
-<div class="nav-links">
-<a href="../index.html#profile">Giới thiệu</a>
-<a href="../index.html#projects">Dự án</a>
-<a href="../index.html#casefiles">Bài lab</a>
-<a href="../index.html#workflow">Cách mình học</a>
-<a href="../index.html#writeups">Ghi chú</a>
-<a href="../index.html#skills">Kỹ năng</a>
-<a class="nav-cta" href="https://github.com/linh-999" rel="noopener noreferrer" target="_blank">GitHub</a>
-</div>
-</nav>
-</div>
+  <div class="container">
+    <nav>
+      <a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
+      <button class="nav-toggle" aria-label="Mở menu" aria-expanded="false">☰</button>
+      <div class="nav-links">
+        <a class="" href="../about.html">Giới thiệu</a><a class="" href="../projects.html">Dự án</a><a class="" href="../labs.html">Bài lab</a><a class="" href="../notes.html">Ghi chú</a><a class="" href="../skills.html">Kỹ năng</a><a class="" href="../contact.html">Liên hệ</a>
+        <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </nav>
+  </div>
 </header>
 <main class="container">
 <section class="page-hero"><div class="breadcrumb"><a href="../index.html">Trang chủ</a> / Write-ups / SOC-201</div><div class="eyebrow"><span class="pulse"></span> Oct 2025 – Feb 2026 · C2 Beaconing Triage</div><h1 class="page-title">SOC-201: Potential Beaconing Activity Detected</h1><p class="lead">SIEM phát hiện HR-WIN-001 kết nối định kỳ tới external IP 85.208.253.156 qua TCP/443 với chu kỳ 5 phút và byte size ổn định. Case được xử lý như suspicious outbound C2-like behavior, cần containment và escalation dựa trên network pattern, threat intelligence và endpoint evidence.</p><div class="mini-tags"><span>C2 Beaconing</span><span>Periodic Connection</span><span>Endpoint Network</span><span>Threat Intel</span><span>Containment</span><span>Escalation</span></div></section>
@@ -37,7 +33,7 @@
 <section class="report-section" id="verdict"><div class="section-kicker">06 · Assessment</div><h2>Final Assessment</h2><p><span class="verdict-badge true">Suspicious C2-like Beaconing · Escalation Required</span></p><p><b>Reason:</b> Network pattern có chu kỳ đều, byte size ổn định, destination IP có reputation xấu trong case evidence và endpoint cho thấy process tạo outbound connection. Chưa đủ dữ liệu để đặt tên malware family, nhưng đủ để xử lý theo quy trình containment.</p></section>
 <section class="report-section" id="containment"><div class="section-kicker">07 · Response</div><h2>Response Actions</h2><ul><li>Isolate HR-WIN-001 khỏi mạng sản xuất để ngăn traffic outbound tiếp tục.</li><li>Block hoặc sinkhole destination IP 85.208.253.156 tại firewall/proxy trong khi điều tra.</li><li>Collect endpoint artifacts: process path, hash, command line, parent process, signer, autoruns, scheduled tasks và recent files.</li><li>Hunt cùng IOC trên toàn bộ môi trường để xác định có lateral spread hoặc host khác beaconing không.</li><li>Escalate sang Tier 2/Incident Response kèm timeline, screenshots và IOC list.</li></ul></section>
 </div></section></main><footer>
-<div class="container">© 2026 Phạm Huỳnh Khánh Linh · Portfolio học tập &amp; bảo mật</div>
+<div class="container">© 2026 Phạm Huỳnh Khánh Linh · Information Security Portfolio</div>
 </footer>
 <script src="../assets/app.js"></script>
 </body>

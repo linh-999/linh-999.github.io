@@ -1,19 +1,12 @@
-# Portfolio học tập - Phạm Huỳnh Khánh Linh
+# Phạm Huỳnh Khánh Linh Portfolio
 
-Website portfolio cá nhân dùng cho GitHub Pages. Trang chủ được viết theo hướng gần gũi, dễ đọc; các trang project và write-up giữ phần kỹ thuật để trình bày rõ quá trình học, làm lab và cải thiện kỹ năng.
+Portfolio tĩnh chạy bằng GitHub Pages. Trang chủ được thiết kế ngắn gọn, các phần chi tiết được tách thành từng trang: Giới thiệu, Dự án, Bài lab, Ghi chú, Kỹ năng và Liên hệ.
 
-## Cấu trúc
-
-- `index.html`: trang chủ
-- `assets/`: CSS, JS, avatar
-- `projects/`: các project/đồ án đã viết lại
-- `writeups/`: ghi chú và bài lab
-
-## Cập nhật lên GitHub
+## Upload nhanh
 
 ```bash
 git status
 git add .
-git commit -m "Update personal portfolio"
+git commit -m "Refine portfolio into multi-page layout"
 git push origin main
 ```

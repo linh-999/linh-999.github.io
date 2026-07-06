@@ -1,20 +1,12 @@
-HƯỚNG DẪN CẬP NHẬT LÊN GITHUB PAGES
+Cách cập nhật website lên GitHub Pages:
 
 1. Giải nén file ZIP.
-2. Mở thư mục bên trong, nơi có các file/thư mục:
-   - index.html
-   - assets/
-   - projects/
-   - writeups/
-3. Copy toàn bộ nội dung đó vào root repo: linh-999.github.io
-4. Mở Git Bash trong thư mục repo và chạy:
+2. Mở Git Bash tại thư mục chứa index.html.
+3. Chạy:
 
-   git status
-   git add .
-   git commit -m "Refine personal portfolio content"
-   git push origin main
+git status
+git add .
+git commit -m "Update portfolio website"
+git push origin main
 
-Lưu ý:
-- Không copy thư mục .git từ ZIP cũ nếu có.
-- GitHub Pages phân biệt chữ hoa/thường trong tên file.
-- Sau khi push, mở https://linh-999.github.io và nhấn Ctrl + F5 nếu trang chưa cập nhật ngay.
+Sau khi push, chờ 1-3 phút rồi Ctrl + F5 để tải lại trang.

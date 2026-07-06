@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bài lab | Khánh Linh</title>
+  <meta name="description" content="Các bài lab và case study về SOC, network security và investigation."/>
+  <link rel="stylesheet" href="assets/style.css"/>
+</head>
+<body><header>
+  <div class="container">
+    <nav>
+      <a class="logo" href="index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
+      <button class="nav-toggle" aria-label="Mở menu" aria-expanded="false">☰</button>
+      <div class="nav-links">
+        <a class="" href="about.html">Giới thiệu</a><a class="" href="projects.html">Dự án</a><a class="active" href="labs.html">Bài lab</a><a class="" href="notes.html">Ghi chú</a><a class="" href="skills.html">Kỹ năng</a><a class="" href="contact.html">Liên hệ</a>
+        <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<main class="container page-main">
+  <section class="page-hero professional-page-hero">
+    <div class="breadcrumb"><a href="index.html">Trang chủ</a> / Bài lab</div>
+    <div class="eyebrow"><span class="pulse"></span> Labs & Case Studies</div>
+    <h1 class="page-title">Bài lab và case study</h1>
+    <p class="lead">Phần này tập trung vào các bài thực hành nhỏ hơn: đọc tình huống, xác định dữ liệu cần xem, ghi lại bằng chứng và đưa ra nhận định có cơ sở.</p>
+  </section>
+  <section class="section-lite">
+    <div class="case-grid lab-page-grid"><article class="case-card">
+  <div>
+    <span class="verdict closed">Cần theo dõi</span>
+    <p class="meta">SOC-201</p>
+    <h3>Potential Beaconing Activity</h3>
+    <p>Luyện phân tích kết nối outbound lặp lại, kiểm tra timeline và đánh giá khả năng beaconing.</p>
+    <div class="mini-tags"><span>Beaconing</span><span>Endpoint</span><span>Timeline</span></div>
+  </div>
+  <a href="writeups/soc201-potential-beaconing.html">Mở bài lab →</a>
+</article>
+<article class="case-card">
+  <div>
+    <span class="verdict closed">Đã xác minh</span>
+    <p class="meta">SOC-102</p>
+    <h3>Newly Registered Domain</h3>
+    <p>Thực hành xác minh domain đáng nghi, đối chiếu threat intelligence và tránh kết luận thiếu bối cảnh.</p>
+    <div class="mini-tags"><span>Proxy</span><span>Threat Intel</span><span>False Positive</span></div>
+  </div>
+  <a href="writeups/soc102-newly-registered-domain.html">Mở bài lab →</a>
+</article>
+<article class="case-card">
+  <div>
+    <span class="verdict closed">Khung viết</span>
+    <p class="meta">IR</p>
+    <h3>Incident Reporting Framework</h3>
+    <p>Khung viết báo cáo điều tra gồm bối cảnh, bằng chứng, nhận định, verdict và hướng xử lý.</p>
+    <div class="mini-tags"><span>Report</span><span>Evidence</span><span>Recommendation</span></div>
+  </div>
+  <a href="projects/soc-incident-reporting-framework.html">Mở bài lab →</a>
+</article>
+<article class="case-card">
+  <div>
+    <span class="verdict closed">Network lab</span>
+    <p class="meta">NSMS</p>
+    <h3>Secure Remote Administration & VPN</h3>
+    <p>Lab mạng doanh nghiệp có VLAN, NAT, DMZ, SSH hardening, IPSec VPN và kiểm soát truy cập.</p>
+    <div class="mini-tags"><span>VLAN</span><span>IPSec</span><span>NAT</span><span>Firewall</span></div>
+  </div>
+  <a href="projects/remote-administration-vpn-lab.html">Mở bài lab →</a>
+</article>
+<article class="case-card">
+  <div>
+    <span class="verdict closed">Detection</span>
+    <p class="meta">AUTH</p>
+    <h3>Windows Authentication Attack Detection</h3>
+    <p>Ghi chú nhận diện bất thường đăng nhập Windows, event log và cách triage alert liên quan xác thực.</p>
+    <div class="mini-tags"><span>Windows Log</span><span>Sysmon</span><span>Triage</span></div>
+  </div>
+  <a href="projects/windows-authentication-attack-detection.html">Mở bài lab →</a>
+</article>
+<article class="case-card">
+  <div>
+    <span class="verdict closed">Playbook</span>
+    <p class="meta">PHISH</p>
+    <h3>Phishing Email Triage Playbook</h3>
+    <p>Checklist phân tích email nghi vấn dựa trên sender, header, URL, attachment và mức độ rủi ro.</p>
+    <div class="mini-tags"><span>Email</span><span>IOC</span><span>Playbook</span></div>
+  </div>
+  <a href="projects/phishing-email-triage-playbook.html">Mở bài lab →</a>
+</article></div>
+  </section>
+</main>
+<footer>
+  <div class="container">© 2026 Phạm Huỳnh Khánh Linh · Information Security Portfolio</div>
+</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>

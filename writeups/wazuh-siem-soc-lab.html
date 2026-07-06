@@ -10,20 +10,16 @@
 </head>
 <body>
 <header>
-<div class="container">
-<nav>
-<a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
-<div class="nav-links">
-<a href="../index.html#profile">Giới thiệu</a>
-<a href="../index.html#projects">Dự án</a>
-<a href="../index.html#casefiles">Bài lab</a>
-<a href="../index.html#workflow">Cách mình học</a>
-<a href="../index.html#writeups">Ghi chú</a>
-<a href="../index.html#skills">Kỹ năng</a>
-<a class="nav-cta" href="https://github.com/linh-999" rel="noopener noreferrer" target="_blank">GitHub</a>
-</div>
-</nav>
-</div>
+  <div class="container">
+    <nav>
+      <a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
+      <button class="nav-toggle" aria-label="Mở menu" aria-expanded="false">☰</button>
+      <div class="nav-links">
+        <a class="" href="../about.html">Giới thiệu</a><a class="" href="../projects.html">Dự án</a><a class="" href="../labs.html">Bài lab</a><a class="" href="../notes.html">Ghi chú</a><a class="" href="../skills.html">Kỹ năng</a><a class="" href="../contact.html">Liên hệ</a>
+        <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </nav>
+  </div>
 </header>
 <main class="container">
 <section class="page-hero">
@@ -36,7 +32,7 @@
 <section class="report-layout">
 <aside class="sidebar"><div class="panel"><p class="meta">Write-up type</p><div class="info-grid" style="grid-template-columns:1fr"><div class="info-box"><span>Focus</span><b>Wazuh Monitoring Lab</b></div><div class="info-box"><span>Vai trò</span><b>SOC / Security Operations Learner</b></div><div class="info-box"><span>Trạng thái</span><b>Complete technical note</b></div></div></div><div class="panel" style="margin-top:16px"><p class="meta">Nội dung chính</p><div class="toc"><a href="#s1">Lab objective</a><a href="#s2">Log flow</a><a href="#s3">Detection use cases</a><a href="#s4">Analyst conclusion</a></div></div></aside>
 <div><section class="report-section" id="s1"><div class="section-kicker">01 · Notes</div><h2>Lab objective</h2><ul><li>Thiết kế luồng log Endpoint → Agent → Manager → Indexer → Dashboard.</li><li>Theo dõi File Integrity Monitoring, authentication failure và command activity.</li><li>Viết checklist triage cho alert Wazuh ở mức SOC L1.</li></ul></section><section class="report-section" id="s2"><div class="section-kicker">02 · Notes</div><h2>Log flow</h2><ul><li>Endpoint sinh log hệ thống và hoạt động bảo mật.</li><li>Wazuh agent thu thập log và gửi về manager.</li><li>Manager áp dụng decoder/rule để tạo alert.</li><li>Indexer lưu trữ dữ liệu để dashboard truy vấn và analyst review.</li></ul></section><section class="report-section" id="s3"><div class="section-kicker">03 · Notes</div><h2>Detection use cases</h2><ul><li>FIM: phát hiện file quan trọng bị sửa, xóa hoặc tạo mới.</li><li>Authentication: phát hiện nhiều lần đăng nhập thất bại hoặc đăng nhập bất thường.</li><li>Privileged activity: ghi nhận lệnh đặc quyền và hành vi admin cần kiểm tra.</li></ul></section><section class="report-section" id="s4"><div class="section-kicker">04 · Notes</div><h2>Analyst conclusion</h2><ul><li>Lab giúp hiểu vai trò của từng thành phần trong Wazuh.</li><li>Rule chỉ có giá trị khi analyst biết đọc raw log, context và false-positive condition.</li><li>Cần bổ sung asset inventory, user context và maintenance window để vận hành tốt hơn.</li></ul></section></div></section></main><footer>
-<div class="container">© 2026 Phạm Huỳnh Khánh Linh · Portfolio học tập &amp; bảo mật</div>
+<div class="container">© 2026 Phạm Huỳnh Khánh Linh · Information Security Portfolio</div>
 </footer>
 <script src="../assets/app.js"></script>
 </body>

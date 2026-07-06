@@ -3,267 +3,61 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Phạm Huỳnh Khánh Linh | Portfolio học tập</title>
-  <meta name="description" content="Portfolio học tập của Phạm Huỳnh Khánh Linh, sinh viên An toàn thông tin tại Trường Đại học Sư phạm Kỹ thuật TP. HCM."/>
+  <title>Phạm Huỳnh Khánh Linh | Information Security Portfolio</title>
+  <meta name="description" content="Portfolio của Phạm Huỳnh Khánh Linh, sinh viên An toàn thông tin tại HCMUTE."/>
   <link rel="stylesheet" href="assets/style.css"/>
 </head>
-<body>
-<header>
+<body><header>
   <div class="container">
     <nav>
       <a class="logo" href="index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
-      <button class="nav-toggle" aria-label="Mở menu">☰</button>
+      <button class="nav-toggle" aria-label="Mở menu" aria-expanded="false">☰</button>
       <div class="nav-links">
-        <a href="index.html#profile">Giới thiệu</a>
-        <a href="index.html#projects">Dự án</a>
-        <a href="index.html#casefiles">Bài lab</a>
-        <a href="index.html#workflow">Cách mình làm</a>
-        <a href="index.html#skills">Kỹ năng</a>
-        <a href="index.html#contact">Liên hệ</a>
+        <a class="" href="about.html">Giới thiệu</a><a class="" href="projects.html">Dự án</a><a class="" href="labs.html">Bài lab</a><a class="" href="notes.html">Ghi chú</a><a class="" href="skills.html">Kỹ năng</a><a class="" href="contact.html">Liên hệ</a>
         <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
     </nav>
   </div>
 </header>
 <main>
-  <section class="hero container" id="home">
+  <section class="hero container home-hero">
     <div class="hero-copy">
-      <div class="eyebrow"><span class="pulse"></span> Portfolio học tập · An toàn thông tin</div>
-      <h1>Phạm Huỳnh Khánh Linh<br/><span class="gradient">Mình học từ lab, lớn lên qua từng project.</span></h1>
-      <p class="lead">Mình là sinh viên ngành An toàn thông tin tại Trường Đại học Sư phạm Kỹ thuật TP. HCM. Trang này là nơi mình sắp xếp lại các đồ án, bài lab và ghi chú học tập theo cách dễ đọc hơn: người xem có thể hiểu mình đã học gì, làm gì và đang cố gắng đi theo hướng nào.</p>
+      <div class="eyebrow"><span class="pulse"></span> Sinh viên An toàn thông tin</div>
+      <h1>Phạm Huỳnh Khánh Linh</h1>
+      <p class="lead">Sinh viên ngành An toàn thông tin, Khoa Công nghệ thông tin, Trường Đại học Sư phạm Kỹ thuật TP. HCM. Tôi quan tâm đến SOC/SIEM, Network Security và Web/Application Security.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#projects">Xem dự án của mình</a>
-        <a class="btn btn-outline" href="#profile">Đọc phần giới thiệu</a>
-        <a class="btn btn-outline" href="#contact">Liên hệ</a>
-      </div>
-      <div class="metrics personal-metrics">
-        <div class="metric"><strong>01/03/2005</strong><span>Ngày sinh</span></div>
-        <div class="metric"><strong>HCMUTE</strong><span>Trường Đại học Sư phạm Kỹ thuật TP. HCM</span></div>
-        <div class="metric"><strong>ATTT</strong><span>Ngành An toàn thông tin</span></div>
-        <div class="metric"><strong>Khoa CNTT</strong><span>Nơi mình đang học và rèn nền tảng kỹ thuật</span></div>
+        <a class="btn btn-primary" href="projects.html">Xem dự án</a>
+        <a class="btn btn-outline" href="about.html">Giới thiệu</a>
+        <a class="btn btn-outline" href="contact.html">Liên hệ</a>
       </div>
     </div>
-    <aside class="avatar-card" aria-label="Ảnh đại diện Khánh Linh">
-      <div class="avatar-frame">
-        <img src="assets/avatar.jpg" alt="Ảnh đại diện Khánh Linh"/>
-      </div>
+    <aside class="avatar-card compact-avatar" aria-label="Ảnh đại diện Khánh Linh">
+      <div class="avatar-frame"><img src="assets/avatar.jpg" alt="Ảnh đại diện Khánh Linh"/></div>
       <div class="avatar-info">
-        <span class="avatar-kicker">Một góc nhỏ về mình</span>
-        <h2>Học chậm nhưng chắc</h2>
-        <p>Mình thích ghi lại quá trình làm bài, vì mỗi lần viết lại là một lần hiểu rõ hơn mình đã sai ở đâu và có thể cải thiện điều gì.</p>
-      </div>
-      <div class="journey-points">
-        <div><b>01</b><span>Học nền tảng</span></div>
-        <div><b>02</b><span>Làm lab</span></div>
-        <div><b>03</b><span>Viết lại</span></div>
+        <h2>Portfolio cá nhân</h2>
+        <p>Tổng hợp có chọn lọc các đồ án, bài lab và ghi chú học tập liên quan đến an toàn thông tin.</p>
       </div>
     </aside>
   </section>
 
-  <section class="section container" id="profile">
-    <div class="section-title">
-      <span>Giới thiệu</span>
-      <h2>Mình là ai?</h2>
-      <p>Mình xây portfolio này không phải để liệt kê thật nhiều công cụ, mà để kể lại quá trình mình học ngành An toàn thông tin bằng những sản phẩm cụ thể. Có bài còn đơn giản, có bài chưa hoàn hảo, nhưng mỗi project đều cho mình thêm một kinh nghiệm thật.</p>
+  <section class="section container home-overview">
+    <div class="section-title compact-title">
+      <span>Nội dung chính</span>
+      <h2>Chọn phần bạn muốn xem</h2>
+      <p>Mỗi mục được tách thành một trang riêng để người xem dễ chọn nội dung cần đọc, thay vì dồn toàn bộ vào một trang dài.</p>
     </div>
-    <div class="profile-grid">
-      <div class="panel profile-main">
-        <p class="meta">Phạm Huỳnh Khánh Linh</p>
-        <h3>Sinh viên An toàn thông tin</h3>
-        <p class="soft">Hiện tại mình quan tâm nhiều đến SOC, giám sát log, bảo mật mạng, bảo mật ứng dụng web và cách trình bày một vấn đề kỹ thuật sao cho rõ ràng. Mình muốn các project trong trang này vừa có cảm giác gần gũi của một hành trình học tập, vừa đủ chi tiết để nhà tuyển dụng hoặc người hướng dẫn nhìn thấy được năng lực thực hành.</p>
-        <div class="fact-grid">
-          <div class="info-box"><span>Ngày sinh</span><b>01/03/2005</b></div>
-          <div class="info-box"><span>Trường</span><b>Đại học Sư phạm Kỹ thuật TP. HCM</b></div>
-          <div class="info-box"><span>Khoa</span><b>Công nghệ thông tin</b></div>
-          <div class="info-box"><span>Ngành</span><b>An toàn thông tin</b></div>
-        </div>
-      </div>
-      <div class="profile-list">
-        <div><b>Mình đang đi theo hướng nào?</b><p class="soft">Mình đang rèn nền tảng cho các vị trí liên quan đến SOC Analyst, Security Operations, Network Security và Web/Application Security.</p></div>
-        <div><b>Mình muốn người xem thấy gì?</b><p class="soft">Không chỉ thấy tên công cụ, mà thấy cách mình tiếp cận vấn đề: đọc yêu cầu, dựng môi trường, kiểm tra kết quả, ghi lại lỗi gặp phải và đề xuất cách làm tốt hơn.</p></div>
-        <div><b>Cách mình chọn project</b><p class="soft">Mình ưu tiên các đồ án có thể chứng minh năng lực thực hành: giám sát hệ thống, đọc log, kiểm thử web, thiết kế mạng, cấu hình bảo mật và tự động hóa báo cáo.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section container" id="projects">
-    <div class="section-title">
-      <span>Dự án nổi bật</span>
-      <h2>Những project mình chọn để trình bày kỹ hơn</h2>
-      <p>Các project bên dưới được viết lại gọn hơn bản báo cáo môn học. Ở trang ngoài mình giữ lời giới thiệu dễ đọc; khi bấm vào từng project, nội dung sẽ đi sâu hơn vào kiến trúc, cách triển khai, kết quả và phần cần cải thiện.</p>
-    </div>
-    <div class="featured">
-      <article class="project-card feature-card">
-        <div>
-          <div class="card-icon">AI</div>
-          <p class="meta">Apr 2026 · Security Automation</p>
-          <h3>Multi-Agent Web Pentesting & Reporting</h3>
-          <p>Dự án dùng nhiều agent để hỗ trợ các bước kiểm thử web: thu thập bề mặt, kiểm tra dấu hiệu rủi ro, đánh giá mức độ ảnh hưởng và tạo báo cáo dễ đọc hơn.</p>
-          <div class="analyst-focus"><strong>Phần mình muốn thể hiện: </strong>biến kết quả kỹ thuật thành nhận xét có ngữ cảnh, có mức độ ưu tiên và có hướng xử lý.</div>
-          <div class="mini-tags"><span>CrewAI</span><span>Recon</span><span>Assessment</span><span>CVE/NVD</span><span>Reporting</span></div>
-        </div>
-        <a href="projects/multi-agent-pentest-reporting.html">Xem chi tiết →</a>
-      </article>
-      <article class="project-card feature-card">
-        <div>
-          <div class="card-icon">WEB</div>
-          <p class="meta">Apr 2026 · Web/AppSec</p>
-          <h3>Web Application Security Assessment</h3>
-          <p>Phân tích một hệ thống website có đăng nhập, phân quyền, chat realtime, thanh toán và lưu trữ ảnh; sau đó kiểm thử các nhóm lỗi phổ biến trong bảo mật ứng dụng web.</p>
-          <div class="analyst-focus"><strong>Phần mình muốn thể hiện: </strong>hiểu luồng ứng dụng, kiểm tra lỗi theo tình huống cụ thể và đề xuất hướng vá rõ ràng.</div>
-          <div class="mini-tags"><span>Spring Boot</span><span>JWT</span><span>MySQL</span><span>Burp Suite</span><span>OWASP ZAP</span></div>
-        </div>
-        <a href="projects/web-app-security-assessment.html">Xem chi tiết →</a>
-      </article>
-    </div>
-    <div class="grid project-grid-expanded">
-      <article class="project-card">
-        <div class="card-icon">IDS</div>
-        <p class="meta">Oct 2025 · IDS/SIEM Lab</p>
-        <h3>Centralized IDS Monitoring with Snort & ELK</h3>
-        <p>Triển khai luồng giám sát từ Snort sang ELK để quan sát cảnh báo mạng và luyện cách đọc log theo ngữ cảnh.</p>
-        <div class="analyst-focus"><strong>Điểm học được: </strong>cách một cảnh báo được tạo ra, chuyển về dashboard và được phân tích trước khi kết luận.</div>
-        <div class="mini-tags"><span>Snort</span><span>ELK Stack</span><span>Filebeat</span><span>Kibana</span><span>IDS</span></div>
-        <a href="projects/centralized-security-monitoring.html">Xem project →</a>
-      </article>
-      <article class="project-card">
-        <div class="card-icon">WAF</div>
-        <p class="meta">Apr 2026 · Web Defense</p>
-        <h3>FortiWeb WAF Defense Lab</h3>
-        <p>Cấu hình FortiWeb-100D và kiểm thử các request độc hại thường gặp để hiểu cách WAF chặn, ghi log và cần tinh chỉnh chính sách.</p>
-        <div class="analyst-focus"><strong>Điểm học được: </strong>không chỉ bật rule, mà còn phải đọc kết quả chặn, phân biệt đúng/sai và điều chỉnh policy.</div>
-        <div class="mini-tags"><span>FortiWeb</span><span>XSS</span><span>SQLi</span><span>XXE</span><span>Policy Tuning</span></div>
-        <a href="projects/web-security-waf-mitigation.html">Xem project →</a>
-      </article>
-      <article class="project-card">
-        <div class="card-icon">NET</div>
-        <p class="meta">Apr 2026 · Network Design</p>
-        <h3>Enterprise Network Design for Business</h3>
-        <p>Thiết kế mạng doanh nghiệp theo hướng có phân vùng, định tuyến, bảo mật truy cập, dịch vụ nội bộ và khả năng mở rộng.</p>
-        <div class="analyst-focus"><strong>Điểm học được: </strong>nhìn hệ thống mạng như một nền tảng vận hành, không chỉ là nối thiết bị cho thông nhau.</div>
-        <div class="mini-tags"><span>VLAN</span><span>OSPF</span><span>Firewall</span><span>AAA/RADIUS</span><span>Monitoring</span></div>
-        <a href="projects/enterprise-network-design.html">Xem project →</a>
-      </article>
-      <article class="project-card">
-        <div class="card-icon">VPN</div>
-        <p class="meta">May 2026 · Network Security</p>
-        <h3>Remote Administration & Site-to-Site VPN Lab</h3>
-        <p>Lab mô phỏng HQ và chi nhánh, có VLAN, DMZ, NAT, quản trị qua SSH, hardening switch và kết nối IPSec VPN.</p>
-        <div class="analyst-focus"><strong>Điểm học được: </strong>thiết kế truy cập từ xa an toàn và hiểu mối liên hệ giữa NAT, firewall policy và VPN.</div>
-        <div class="mini-tags"><span>IPSec VPN</span><span>NAT</span><span>DMZ</span><span>SSH</span><span>Port Security</span></div>
-        <a href="projects/remote-administration-vpn-lab.html">Xem project →</a>
-      </article>
-      <article class="project-card">
-        <div class="card-icon">CR</div>
-        <p class="meta">May 2025 · Cryptography</p>
-        <h3>Secure Chat with Public-Key Cryptography</h3>
-        <p>Ứng dụng chat minh họa mã hóa khóa công khai, giúp mình hiểu rõ hơn vai trò của khóa, luồng gửi nhận và giới hạn của một mô hình bảo mật đơn giản.</p>
-        <div class="analyst-focus"><strong>Điểm học được: </strong>khi nói về bảo mật, cần hiểu cả ý tưởng thuật toán lẫn cách ứng dụng vào luồng dữ liệu thật.</div>
-        <div class="mini-tags"><span>RSA</span><span>Public Key</span><span>Secure Chat</span><span>Key Management</span></div>
-        <a href="projects/secure-chat-public-key-crypto.html">Xem project →</a>
-      </article>
-      <article class="project-card">
-        <div class="card-icon">HID</div>
-        <p class="meta">Dec 2025 · Wireless/Mobile Security</p>
-        <h3>Wireless HID Security Awareness Lab</h3>
-        <p>Nghiên cứu rủi ro từ thiết bị giả lập HID trong môi trường lab được phép, sau đó chuyển trọng tâm sang nhận diện rủi ro và cách phòng chống ở endpoint.</p>
-        <div class="analyst-focus"><strong>Điểm học được: </strong>một thiết bị nhỏ vẫn có thể tạo rủi ro lớn nếu người dùng và endpoint không được kiểm soát tốt.</div>
-        <div class="mini-tags"><span>HID</span><span>BadUSB Risk</span><span>Endpoint Defense</span><span>Awareness</span></div>
-        <a href="projects/wireless-hid-security-awareness.html">Xem project →</a>
-      </article>
-      <article class="project-card">
-        <div class="card-icon">IOT</div>
-        <p class="meta">Dec 2025 · Embedded / IoT</p>
-        <h3>Voice Controlled Robot using STM32 & Bluetooth</h3>
-        <p>Dự án hệ thống nhúng dùng STM32, Bluetooth và điều khiển động cơ. Mình giữ project này như một phần thể hiện nền tảng hệ thống và IoT.</p>
-        <div class="analyst-focus"><strong>Điểm học được: </strong>làm việc với phần cứng giúp mình hiểu rõ hơn giới hạn, độ ổn định và cách kiểm thử hệ thống thật.</div>
-        <div class="mini-tags"><span>STM32</span><span>Bluetooth</span><span>PWM</span><span>Embedded</span><span>IoT</span></div>
-        <a href="projects/embedded-voice-robot-iot.html">Xem project →</a>
-      </article>
-    </div>
-  </section>
-
-  <section class="section container" id="casefiles">
-    <div class="section-title">
-      <span>Bài lab</span>
-      <h2>Những bài mình dùng để luyện tư duy phân tích</h2>
-      <p>Mỗi bài lab được viết lại theo hướng: tình huống là gì, mình quan sát được gì, vì sao kết luận như vậy và nếu làm lại thì cần cải thiện điểm nào.</p>
-    </div>
-    <div class="case-grid">
-      <article class="case-card"><div><span class="verdict">Cần theo dõi</span><p class="meta">SOC-201</p><h3>Potential Beaconing Activity</h3><p>Luyện quan sát kết nối outbound lặp lại và kiểm tra xem đó là hành vi bình thường hay dấu hiệu bất thường.</p><div class="mini-tags"><span>Beaconing</span><span>Endpoint</span><span>Timeline</span></div></div><a href="writeups/soc201-potential-beaconing.html">Xem bài lab →</a></article>
-      <article class="case-card"><div><span class="verdict closed">Đã xác minh</span><p class="meta">SOC-102</p><h3>Newly Registered Domain</h3><p>Luyện xác minh domain đáng nghi và tránh kết luận vội khi hoạt động có bối cảnh nghiệp vụ hợp lệ.</p><div class="mini-tags"><span>Proxy</span><span>Threat Intel</span><span>False Positive</span></div></div><a href="writeups/soc102-newly-registered-domain.html">Xem bài lab →</a></article>
-      <article class="case-card"><div><span class="verdict closed">Khung viết</span><p class="meta">SOC Report</p><h3>Incident Reporting Framework</h3><p>Khung ghi lại một ca điều tra: bối cảnh, mốc thời gian, bằng chứng, kết luận và đề xuất xử lý.</p><div class="mini-tags"><span>Report</span><span>Verdict</span><span>Recommendation</span></div></div><a href="projects/soc-incident-reporting-framework.html">Xem bài lab →</a></article>
-      <article class="case-card"><div><span class="verdict closed">Network Lab</span><p class="meta">NSMS</p><h3>Secure Remote Administration & VPN</h3><p>Lab mạng doanh nghiệp có phân đoạn, NAT, DMZ, SSH, hardening và VPN giữa HQ/Branch.</p><div class="mini-tags"><span>VLAN</span><span>IPSec</span><span>NAT</span><span>Firewall</span></div></div><a href="projects/remote-administration-vpn-lab.html">Xem bài lab →</a></article>
-    </div>
-  </section>
-
-  <section class="section container" id="workflow">
-    <div class="section-title">
-      <span>Cách mình làm</span>
-      <h2>Từ một bài lab thành một project có thể giới thiệu</h2>
-      <p>Mình đang tập thói quen không chỉ làm cho ra kết quả, mà còn biết giải thích lại quá trình đó cho người khác hiểu.</p>
-    </div>
-    <div class="workflow">
-      <div class="step"><strong>01</strong><span>Đọc yêu cầu</span><p>Xác định bài đang giải quyết vấn đề gì và kết quả cần chứng minh là gì.</p></div>
-      <div class="step"><strong>02</strong><span>Dựng môi trường</span><p>Chuẩn bị thiết bị, máy ảo, dịch vụ hoặc topology phù hợp với bài lab.</p></div>
-      <div class="step"><strong>03</strong><span>Làm và ghi lại</span><p>Chụp lại cấu hình, log, lỗi gặp phải và các bước kiểm tra quan trọng.</p></div>
-      <div class="step"><strong>04</strong><span>Phân tích lại</span><p>Tự hỏi vì sao kết quả xảy ra, điểm nào đúng, điểm nào còn yếu.</p></div>
-      <div class="step"><strong>05</strong><span>Viết gọn</span><p>Biến bài làm thành một trang dễ đọc: mục tiêu, cách làm, kết quả và hướng cải thiện.</p></div>
-    </div>
-  </section>
-
-  <section class="section container" id="writeups">
-    <div class="section-title"><span>Ghi chú</span><h2>Một số ghi chú học tập</h2><p>Đây là những ghi chú nhỏ mình dùng để ôn lại checklist, cách đọc log và kinh nghiệm khi làm lab.</p></div>
-    <div class="grid">
-      <article class="card"><div class="card-icon">SOC</div><p class="meta">SOC-201</p><h3>Potential Beaconing Activity</h3><p>Ghi chú từ một case kết nối lặp lại theo chu kỳ và cách kiểm tra dấu hiệu bất thường.</p><a href="writeups/soc201-potential-beaconing.html">Đọc ghi chú →</a></article>
-      <article class="card"><div class="card-icon">TI</div><p class="meta">SOC-102</p><h3>Newly Registered Domain</h3><p>Ghi chú về cách xác minh domain đáng nghi và tránh kết luận nhầm.</p><a href="writeups/soc102-newly-registered-domain.html">Đọc ghi chú →</a></article>
-      <article class="card"><div class="card-icon">WZ</div><p class="meta">Wazuh</p><h3>Wazuh SIEM/SOC Lab</h3><p>Từ agent, manager, dashboard đến ý tưởng viết use case cơ bản.</p><a href="writeups/wazuh-siem-soc-lab.html">Đọc ghi chú →</a></article>
-      <article class="card"><div class="card-icon">IR</div><p class="meta">SOC Method</p><h3>SOC Alert Investigation</h3><p>Checklist giúp mình không bỏ sót bước khi nhận một cảnh báo bảo mật.</p><a href="writeups/soc-alert-investigation.html">Đọc ghi chú →</a></article>
-      <article class="card"><div class="card-icon">WAF</div><p class="meta">Web Defense</p><h3>Web Security &amp; WAF Lab</h3><p>Ghi chú về request web, WAF event và cách đọc log.</p><a href="writeups/web-security-waf-lab.html">Đọc ghi chú →</a></article>
-      <article class="card"><div class="card-icon">NET</div><p class="meta">CCNA</p><h3>VLSM Design &amp; Verification</h3><p>Chia subnet, đặt gateway và kiểm tra kết nối.</p><a href="writeups/ccna-vlsm-design.html">Đọc ghi chú →</a></article>
-    </div>
-  </section>
-
-  <section class="section container" id="skills">
-    <div class="section-title"><span>Kỹ năng</span><h2>Những mảng mình đang rèn</h2><p>Mình chưa xem đây là danh sách “biết hết”, mà là những mảng mình đang học qua đồ án, lab và ghi chú cá nhân.</p></div>
-    <div class="skills-wrap">
-      <div class="panel"><h3>SOC / Monitoring</h3><div class="skill-list"><span>Alert Triage</span><span>Log Analysis</span><span>SIEM Use Case</span><span>False Positive Analysis</span><span>Incident Report</span><span>MITRE ATT&CK</span></div></div>
-      <div class="panel"><h3>Web / AppSec</h3><div class="skill-list"><span>OWASP Top 10</span><span>Burp Suite</span><span>OWASP ZAP</span><span>WAF Policy</span><span>JWT</span><span>WebSocket Security</span></div></div>
-      <div class="panel"><h3>Network / System</h3><div class="skill-list"><span>TCP/IP</span><span>VLAN</span><span>OSPF</span><span>ACL</span><span>IPSec VPN</span><span>AAA/RADIUS</span><span>NAT/DMZ</span></div></div>
-      <div class="panel"><h3>Automation / Engineering</h3><div class="skill-list"><span>Python basics</span><span>CrewAI Concept</span><span>CVE Enrichment</span><span>Technical Reporting</span><span>STM32</span><span>Bluetooth/IoT</span></div></div>
-    </div>
-  </section>
-
-  <section class="section container" id="roadmap">
-    <div class="section-title"><span>Hành trình</span><h2>Mình đang đi từng bước</h2><p>Từ nền tảng mạng và lập trình, mình đang mở rộng sang SOC, bảo mật web và tự động hóa để có thể làm việc tốt hơn trong môi trường thực tế.</p></div>
-    <div class="timeline">
-      <div class="timeline-item"><strong>2025</strong><div><h3>Bắt đầu gom nền tảng</h3><p class="soft">Làm các bài về mật mã, mạng, hệ thống và bắt đầu học cách viết báo cáo rõ ràng hơn.</p></div></div>
-      <div class="timeline-item"><strong>Cuối 2025</strong><div><h3>Làm nhiều lab thực hành hơn</h3><p class="soft">Thực hành IDS, ELK, wireless security và embedded/IoT để hiểu hệ thống từ nhiều góc nhìn.</p></div></div>
-      <div class="timeline-item"><strong>2026</strong><div><h3>Tập trung hơn vào bảo mật vận hành</h3><p class="soft">Bổ sung WAF, Web App Security, thiết kế mạng doanh nghiệp, VPN và automation cho báo cáo bảo mật.</p></div></div>
-    </div>
-  </section>
-
-  <section class="section container" id="contact">
-    <div class="contact contact-card">
-      <div class="contact-copy">
-        <span class="section-kicker">Liên hệ</span>
-        <h2>Mình luôn mở cho cơ hội học hỏi</h2>
-        <p>Nếu cần trao đổi về internship, đồ án, SOC/SIEM lab, network security hoặc web security project, bạn có thể liên hệ mình qua email hoặc số điện thoại bên dưới.</p>
-        <div class="contact-links">
-          <a class="contact-pill" href="mailto:phamkhahnhlinh103@gmail.com"><span>Email</span><b>phamkhahnhlinh103@gmail.com</b></a>
-          <a class="contact-pill" href="tel:0392980607"><span>Phone</span><b>0392 980 607</b></a>
-          <a class="contact-pill" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer"><span>GitHub</span><b>github.com/linh-999</b></a>
-        </div>
-      </div>
-      <div class="contact-actions">
-        <a class="btn btn-primary" href="mailto:phamkhahnhlinh103@gmail.com">Gửi email</a>
-        <a class="btn btn-outline" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">Mở GitHub</a>
-      </div>
+    <div class="grid nav-card-grid">
+      <a class="card nav-card" href="about.html"><div class="card-icon">01</div><h3>Giới thiệu</h3><p>Thông tin cá nhân, định hướng học tập và mục tiêu nghề nghiệp.</p></a>
+      <a class="card nav-card" href="projects.html"><div class="card-icon">02</div><h3>Dự án</h3><p>Các đồ án nổi bật về SOC, WAF, Web/AppSec, Network và Automation.</p></a>
+      <a class="card nav-card" href="labs.html"><div class="card-icon">03</div><h3>Bài lab</h3><p>Các bài thực hành được trình bày theo tình huống, bằng chứng và kết luận.</p></a>
+      <a class="card nav-card" href="notes.html"><div class="card-icon">04</div><h3>Ghi chú</h3><p>Checklist và ghi chú ngắn dùng để ôn lại kiến thức khi làm lab.</p></a>
+      <a class="card nav-card" href="skills.html"><div class="card-icon">05</div><h3>Kỹ năng</h3><p>Các nhóm kỹ năng đang rèn luyện qua đồ án và thực hành.</p></a>
+      <a class="card nav-card" href="contact.html"><div class="card-icon">06</div><h3>Liên hệ</h3><p>Email, số điện thoại và GitHub.</p></a>
     </div>
   </section>
 </main>
 <footer>
-  <div class="container">© 2026 Phạm Huỳnh Khánh Linh · Portfolio học tập & bảo mật</div>
+  <div class="container">© 2026 Phạm Huỳnh Khánh Linh · Information Security Portfolio</div>
 </footer>
 <script src="assets/app.js"></script>
 </body>

@@ -41,3 +41,16 @@ body{background:radial-gradient(circle at 10% 0%,rgba(125,211,252,.12),transpare
 body:before{opacity:.35}
 h1{font-size:clamp(2.35rem,5.2vw,5.05rem);letter-spacing:-2.4px}.lead{font-size:1.05rem}.gradient{background:linear-gradient(100deg,#f8fafc 0%,#bde7ff 45%,#d9f9e8 78%,#ffe3a5 100%);-webkit-background-clip:text;background-clip:text;color:transparent}.eyebrow,.section-title span,.section-kicker,.avatar-kicker{letter-spacing:1.1px}.personal-metrics .metric strong{font-size:1rem}.fact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px}.profile-main .meta{color:#f8d78c}.avatar-info h2{letter-spacing:-.6px}.project-card p,.card p,.case-card p,.soft,.section-title p,.lead{color:#d2dce8}.analyst-focus{border-left-color:rgba(248,215,140,.9);background:rgba(248,215,140,.075);color:#e7edf6}.mini-tags span,.skill-list span,.chip{color:#e9eef6;background:rgba(255,255,255,.05)}
 @media(max-width:620px){.fact-grid{grid-template-columns:1fr}h1{font-size:clamp(2.25rem,12vw,3.3rem)}}
+
+
+/* Professional multi-page refinement */
+.nav-links a.active{color:#f8fafc;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.12)}
+.home-hero{min-height:calc(100vh - 260px);align-items:center;padding-bottom:38px}
+.home-hero h1{font-size:clamp(2.65rem,6vw,5.4rem);letter-spacing:-2.8px;margin:16px 0 16px}
+.compact-avatar{padding:22px;max-width:420px;justify-self:end}.compact-avatar .avatar-frame{max-width:330px}.compact-avatar .avatar-info h2{font-size:1.35rem}.compact-avatar .avatar-info p{font-size:.95rem}
+.home-overview{padding-top:28px}.compact-title h2{font-size:clamp(1.65rem,3vw,2.35rem)}.compact-title p{max-width:760px}.nav-card{min-height:210px}.nav-card:hover{transform:translateY(-5px)}
+.page-main{padding-bottom:78px}.professional-page-hero{padding-top:64px;padding-bottom:34px}.professional-page-hero .page-title{font-size:clamp(2.25rem,4.8vw,4.2rem)}.section-lite{margin-bottom:34px}.three-steps{grid-template-columns:repeat(3,1fr)}.lab-page-grid{grid-template-columns:repeat(3,1fr)}
+.profile-main h3{font-size:1.85rem}.profile-main .fact-grid{margin-top:20px}.nav-links a{border:1px solid transparent;padding:8px 10px;border-radius:999px;transition:.2s}.nav-links a:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.10)}
+@media(max-width:1080px){.lab-page-grid{grid-template-columns:repeat(2,1fr)}.three-steps{grid-template-columns:1fr}}
+@media(max-width:900px){.compact-avatar{justify-self:start}.home-hero{min-height:auto}.nav-links a{border-radius:12px}.nav-links a.active{width:100%}}
+@media(max-width:620px){.lab-page-grid{grid-template-columns:1fr}.home-hero h1{letter-spacing:-1.6px}.professional-page-hero{padding-top:44px}.nav-card{min-height:auto}}
