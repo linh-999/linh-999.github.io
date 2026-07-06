@@ -14,7 +14,7 @@
 <nav>
 <a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
 <div class="nav-links">
-<a href="../index.html#profile">Hành trình</a>
+<a href="../index.html#profile">Giới thiệu</a>
 <a href="../index.html#projects">Dự án</a>
 <a href="../index.html#casefiles">Bài lab</a>
 <a href="../index.html#workflow">Cách mình học</a>
@@ -27,16 +27,16 @@
 </header>
 <main class="container">
 <section class="page-hero">
-<div class="breadcrumb"><a href="../index.html">Home</a> / Write-ups / Wazuh SIEM/SOC Lab Report</div>
+<div class="breadcrumb"><a href="../index.html">Trang chủ</a> / Write-ups / Wazuh SIEM/SOC Lab Report</div>
 <div class="eyebrow"><span class="pulse"></span> Nov 2025 – Dec 2025 · Wazuh Monitoring Lab</div>
 <h1 class="page-title">Wazuh SIEM/SOC Lab Report</h1>
 <p class="lead">Bài lab trình bày cách triển khai luồng giám sát Wazuh theo tư duy SOC: endpoint sinh log, agent thu thập, manager xử lý rule, indexer lưu trữ và dashboard hỗ trợ analyst triage. Nội dung tập trung vào cách viết use case, đọc alert và đánh giá limitation.</p>
 <div class="mini-tags"><span>Wazuh</span><span>Agent</span><span>Manager</span><span>Indexer</span><span>Dashboard</span><span>FIM</span><span>Auth Logs</span></div>
 </section>
 <section class="report-layout">
-<aside class="sidebar"><div class="panel"><p class="meta">Write-up type</p><div class="info-grid" style="grid-template-columns:1fr"><div class="info-box"><span>Focus</span><b>Wazuh Monitoring Lab</b></div><div class="info-box"><span>Role</span><b>SOC / Security Operations Learner</b></div><div class="info-box"><span>Status</span><b>Complete technical note</b></div></div></div><div class="panel" style="margin-top:16px"><p class="meta">On this page</p><div class="toc"><a href="#s1">Lab objective</a><a href="#s2">Log flow</a><a href="#s3">Detection use cases</a><a href="#s4">Analyst conclusion</a></div></div></aside>
+<aside class="sidebar"><div class="panel"><p class="meta">Write-up type</p><div class="info-grid" style="grid-template-columns:1fr"><div class="info-box"><span>Focus</span><b>Wazuh Monitoring Lab</b></div><div class="info-box"><span>Vai trò</span><b>SOC / Security Operations Learner</b></div><div class="info-box"><span>Trạng thái</span><b>Complete technical note</b></div></div></div><div class="panel" style="margin-top:16px"><p class="meta">Nội dung chính</p><div class="toc"><a href="#s1">Lab objective</a><a href="#s2">Log flow</a><a href="#s3">Detection use cases</a><a href="#s4">Analyst conclusion</a></div></div></aside>
 <div><section class="report-section" id="s1"><div class="section-kicker">01 · Notes</div><h2>Lab objective</h2><ul><li>Thiết kế luồng log Endpoint → Agent → Manager → Indexer → Dashboard.</li><li>Theo dõi File Integrity Monitoring, authentication failure và command activity.</li><li>Viết checklist triage cho alert Wazuh ở mức SOC L1.</li></ul></section><section class="report-section" id="s2"><div class="section-kicker">02 · Notes</div><h2>Log flow</h2><ul><li>Endpoint sinh log hệ thống và hoạt động bảo mật.</li><li>Wazuh agent thu thập log và gửi về manager.</li><li>Manager áp dụng decoder/rule để tạo alert.</li><li>Indexer lưu trữ dữ liệu để dashboard truy vấn và analyst review.</li></ul></section><section class="report-section" id="s3"><div class="section-kicker">03 · Notes</div><h2>Detection use cases</h2><ul><li>FIM: phát hiện file quan trọng bị sửa, xóa hoặc tạo mới.</li><li>Authentication: phát hiện nhiều lần đăng nhập thất bại hoặc đăng nhập bất thường.</li><li>Privileged activity: ghi nhận lệnh đặc quyền và hành vi admin cần kiểm tra.</li></ul></section><section class="report-section" id="s4"><div class="section-kicker">04 · Notes</div><h2>Analyst conclusion</h2><ul><li>Lab giúp hiểu vai trò của từng thành phần trong Wazuh.</li><li>Rule chỉ có giá trị khi analyst biết đọc raw log, context và false-positive condition.</li><li>Cần bổ sung asset inventory, user context và maintenance window để vận hành tốt hơn.</li></ul></section></div></section></main><footer>
-<div class="container">© 2026 Khánh Linh · Learning Journey &amp; Security Portfolio · Built for GitHub Pages</div>
+<div class="container">© 2026 Phạm Huỳnh Khánh Linh · Portfolio học tập &amp; bảo mật</div>
 </footer>
 <script src="../assets/app.js"></script>
 </body>

@@ -14,7 +14,7 @@
 <nav>
 <a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
 <div class="nav-links">
-<a href="../index.html#profile">Hành trình</a>
+<a href="../index.html#profile">Giới thiệu</a>
 <a href="../index.html#projects">Dự án</a>
 <a href="../index.html#casefiles">Bài lab</a>
 <a href="../index.html#workflow">Cách mình học</a>
@@ -27,16 +27,16 @@
 </header>
 <main class="container">
 <section class="page-hero">
-<div class="breadcrumb"><a href="../index.html">Home</a> / Write-ups / SOC Alert Investigation Method</div>
+<div class="breadcrumb"><a href="../index.html">Trang chủ</a> / Write-ups / SOC Alert Investigation Method</div>
 <div class="eyebrow"><span class="pulse"></span> 2025 · SOC Reporting Method</div>
 <h1 class="page-title">SOC Alert Investigation Method</h1>
 <p class="lead">Write-up trình bày phương pháp xử lý một alert SOC từ lúc tiếp nhận đến khi đưa kết luận. Nội dung phù hợp cho SOC L1: đọc alert context, xác định asset bị ảnh hưởng, thu thập evidence, kiểm tra IOC, đánh giá scope và viết recommendation.</p>
 <div class="mini-tags"><span>Triage</span><span>Evidence</span><span>IOC</span><span>Verdict</span><span>False Positive</span><span>Escalation</span></div>
 </section>
 <section class="report-layout">
-<aside class="sidebar"><div class="panel"><p class="meta">Write-up type</p><div class="info-grid" style="grid-template-columns:1fr"><div class="info-box"><span>Focus</span><b>SOC Reporting Method</b></div><div class="info-box"><span>Role</span><b>SOC / Security Operations Learner</b></div><div class="info-box"><span>Status</span><b>Complete technical note</b></div></div></div><div class="panel" style="margin-top:16px"><p class="meta">On this page</p><div class="toc"><a href="#s1">Investigation standard</a><a href="#s2">Triage workflow</a><a href="#s3">Report structure</a><a href="#s4">Conclusion</a></div></div></aside>
+<aside class="sidebar"><div class="panel"><p class="meta">Write-up type</p><div class="info-grid" style="grid-template-columns:1fr"><div class="info-box"><span>Focus</span><b>SOC Reporting Method</b></div><div class="info-box"><span>Vai trò</span><b>SOC / Security Operations Learner</b></div><div class="info-box"><span>Trạng thái</span><b>Complete technical note</b></div></div></div><div class="panel" style="margin-top:16px"><p class="meta">Nội dung chính</p><div class="toc"><a href="#s1">Investigation standard</a><a href="#s2">Triage workflow</a><a href="#s3">Report structure</a><a href="#s4">Conclusion</a></div></div></aside>
 <div><section class="report-section" id="s1"><div class="section-kicker">01 · Notes</div><h2>Investigation standard</h2><ul><li>Không kết luận chỉ dựa vào severity hoặc rule name.</li><li>Mỗi kết luận cần có evidence: raw event, dashboard, IOC result, endpoint/network/email log.</li><li>Phân biệt observed evidence và analyst assessment.</li></ul></section><section class="report-section" id="s2"><div class="section-kicker">02 · Notes</div><h2>Triage workflow</h2><ul><li>Validate alert time, source, destination, affected host và user.</li><li>Pivot sang raw log để hiểu điều kiện rule match.</li><li>Kiểm tra scope: single host, multiple hosts, single user hay nhiều user.</li><li>Đưa verdict: true positive, false positive, benign activity hoặc needs escalation.</li></ul></section><section class="report-section" id="s3"><div class="section-kicker">03 · Notes</div><h2>Report structure</h2><ul><li>Executive summary ngắn gọn.</li><li>Evidence table rõ giá trị từng bằng chứng.</li><li>Recommendations có action cụ thể và owner phù hợp.</li></ul></section><section class="report-section" id="s4"><div class="section-kicker">04 · Notes</div><h2>Conclusion</h2><ul><li>Một report tốt giúp SOC lead hiểu vì sao case được đóng hoặc cần escalation.</li><li>Limitation cần ghi rõ để tránh phóng đại kết luận khi thiếu endpoint/threat intelligence context.</li></ul></section></div></section></main><footer>
-<div class="container">© 2026 Khánh Linh · Learning Journey &amp; Security Portfolio · Built for GitHub Pages</div>
+<div class="container">© 2026 Phạm Huỳnh Khánh Linh · Portfolio học tập &amp; bảo mật</div>
 </footer>
 <script src="../assets/app.js"></script>
 </body>

@@ -6,19 +6,21 @@ HƯỚNG DẪN CHÈN / ĐỔI AVATAR
 2. Đặt tên ảnh là:
    avatar.jpg
 
-3. Trong file index.html, dòng avatar hiện đang dùng:
-   <img src="assets/avatar.jpg" alt="Avatar Khánh Linh"/>
+3. File index.html hiện đang dùng dòng:
+   <img src="assets/avatar.jpg" alt="Ảnh đại diện Khánh Linh"/>
 
-4. Nếu ảnh của bạn là PNG, có 2 cách:
-   - Cách dễ nhất: đổi tên file PNG thành avatar.jpg sau khi export lại đúng định dạng JPG.
-   - Hoặc sửa dòng HTML thành:
-     <img src="assets/avatar.png" alt="Avatar Khánh Linh"/>
+4. Nếu ảnh là PNG, đổi dòng trên thành:
+   <img src="assets/avatar.png" alt="Ảnh đại diện Khánh Linh"/>
 
-5. Lưu ý khi dùng GitHub Pages:
-   - Tên file phân biệt chữ hoa/thường: avatar.jpg khác Avatar.jpg.
-   - Nên dùng ảnh dọc hoặc vuông, khuôn mặt nằm giữa ảnh.
-   - Kích thước khuyến nghị: 800x800, 1000x1000 hoặc ảnh dọc rõ mặt.
+5. Lưu ý:
+   - Tên file phải đúng y chang, ví dụ avatar.jpg khác Avatar.jpg.
+   - Nên dùng ảnh rõ mặt, ánh sáng tốt, khuôn mặt nằm giữa khung.
+   - Ảnh vuông hoặc dọc sẽ đẹp hơn trong khung avatar.
 
-Thông tin liên hệ đã được đặt ở section Contact cuối trang:
+Thông tin cá nhân và liên hệ đã được đặt ở trang chủ:
+- Ngày sinh: 01/03/2005
+- Trường: Đại học Sư phạm Kỹ thuật TP. HCM
+- Khoa: Công nghệ thông tin
+- Ngành: An toàn thông tin
 - Email: phamkhahnhlinh103@gmail.com
 - Phone: 0392 980 607

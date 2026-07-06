@@ -14,10 +14,10 @@
       <a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
       <button class="nav-toggle" aria-label="Mở menu">☰</button>
       <div class="nav-links">
-        <a href="../index.html#profile">Hành trình</a>
+        <a href="../index.html#profile">Giới thiệu</a>
         <a href="../index.html#projects">Dự án</a>
-        <a href="../index.html#casefiles">Lab cases</a>
-        <a href="../index.html#workflow">Cách học</a>
+        <a href="../index.html#casefiles">Bài lab</a>
+        <a href="../index.html#workflow">Cách mình làm</a>
         <a href="../index.html#skills">Kỹ năng</a>
         <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
@@ -26,7 +26,7 @@
 </header>
 <main class="container">
   <section class="page-hero">
-    <div class="breadcrumb"><a href="../index.html">Home</a> / Projects / Wireless HID Security Awareness Lab</div>
+    <div class="breadcrumb"><a href="../index.html">Trang chủ</a> / Projects / Wireless HID Security Awareness Lab</div>
     <div class="eyebrow"><span class="pulse"></span> Dec 2025 · Wireless/Mobile Security</div>
     <h1 class="page-title">Wireless HID Security Awareness Lab</h1>
     <p class="lead">Nghiên cứu rủi ro từ thiết bị giả lập HID/BadUSB trong môi trường kiểm thử được phép. Trang này cố tình trình bày theo hướng phòng thủ: nhận diện rủi ro, impact, chỉ dấu giám sát và biện pháp hardening endpoint, không mô tả payload hay hướng dẫn tấn công chi tiết.</p>
@@ -34,8 +34,8 @@
   </section>
   <section class="report-layout">
     <aside class="sidebar">
-      <div class="panel"><p class="meta">Case metadata</p><div class="info-grid" style="grid-template-columns:1fr"><div class="info-box"><span>Priority</span><b>Medium</b></div><div class="info-box"><span>Status</span><b>Defensive write-up</b></div><div class="info-box"><span>Role</span><b>Security Awareness / Defensive Analyst</b></div><div class="info-box"><span>Source project</span><b>Wireless & Mobile Security · 2025</b></div></div></div>
-      <div class="panel" style="margin-top:16px"><p class="meta">On this page</p><div class="toc"><a href="#1">Executive Summary</a><a href="#2">Risk Model</a><a href="#3">Detection & Monitoring Ideas</a><a href="#4">Defensive Controls</a><a href="#5">Analyst Workflow</a><a href="#6">Portfolio Value</a></div></div>
+      <div class="panel"><p class="meta">Thông tin project</p><div class="info-grid" style="grid-template-columns:1fr"><div class="info-box"><span>Mức độ phù hợp</span><b>Medium</b></div><div class="info-box"><span>Trạng thái</span><b>Defensive write-up</b></div><div class="info-box"><span>Vai trò</span><b>Security Awareness / Defensive Analyst</b></div><div class="info-box"><span>Nguồn đồ án</span><b>Wireless & Mobile Security · 2025</b></div></div></div>
+      <div class="panel" style="margin-top:16px"><p class="meta">Nội dung chính</p><div class="toc"><a href="#1">Executive Summary</a><a href="#2">Risk Model</a><a href="#3">Detection & Monitoring Ideas</a><a href="#4">Defensive Controls</a><a href="#5">Analyst Workflow</a><a href="#6">Portfolio Value</a></div></div>
     </aside>
     <div><section class="report-section" id="1"><div class="section-kicker">01 · summary</div><h2>Executive Summary</h2><p>Đồ án liên quan công cụ Rucky/HID có yếu tố offensive, nên khi đưa vào portfolio cần đổi góc nhìn sang defensive awareness. Giá trị chính là hiểu một thiết bị ngoại vi có thể trở thành vector tấn công và cách tổ chức giảm rủi ro.</p><div class="callout warn"><b>Safety note:</b> Nội dung chỉ trình bày trong phạm vi học tập và phòng thủ, không cung cấp payload hoặc hướng dẫn khai thác.</div></section>
 <section class="report-section" id="2"><div class="section-kicker">02 · risk</div><h2>Risk Model</h2><div class="table-wrap"><table><thead><tr><th>Risk area</th><th>Possible impact</th><th>Defensive lens</th></tr></thead><tbody><tr><td>HID emulation</td><td>Thiết bị bị nhận như bàn phím/thiết bị nhập liệu.</td><td>Kiểm soát thiết bị USB/HID và policy endpoint.</td></tr><tr><td>Credential exposure</td><td>Thông tin nhạy cảm có thể bị thu thập nếu endpoint bị thao tác.</td><td>Least privilege, credential manager, monitoring.</td></tr><tr><td>Persistence / C2 concept</td><td>Có thể bị mô phỏng trong lab để hiểu rủi ro.</td><td>EDR alert, process monitoring, egress control.</td></tr><tr><td>User behavior</td><td>Người dùng cắm thiết bị lạ.</td><td>Awareness training và physical security.</td></tr></tbody></table></div></section>
@@ -47,7 +47,7 @@
   </section>
 </main>
 <footer>
-  <div class="container">© 2026 Khánh Linh · Security Learning Portfolio · Built for GitHub Pages</div>
+  <div class="container">© 2026 Phạm Huỳnh Khánh Linh · Portfolio học tập & bảo mật</div>
 </footer>
 <script src="../assets/app.js"></script>
 </body>

@@ -14,7 +14,7 @@
 <nav>
 <a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
 <div class="nav-links">
-<a href="../index.html#profile">Hành trình</a>
+<a href="../index.html#profile">Giới thiệu</a>
 <a href="../index.html#projects">Dự án</a>
 <a href="../index.html#casefiles">Bài lab</a>
 <a href="../index.html#workflow">Cách mình học</a>
@@ -27,14 +27,14 @@
 </header>
 <main class="container">
 <section class="page-hero">
-<div class="breadcrumb"><a href="../index.html">Home</a> / Write-ups / SOC-102</div>
+<div class="breadcrumb"><a href="../index.html">Trang chủ</a> / Write-ups / SOC-102</div>
 <div class="eyebrow"><span class="pulse"></span> Oct 2025 – May 2026 · Suspicious Domain Access</div>
 <h1 class="page-title">SOC-102: Connection to Newly Registered Domain</h1>
 <p class="lead">SOC nhận alert khi workstation FIN-WIN-001 truy cập domain mới đăng ký cdn-assets.finovabank-promo.com trỏ về AWS IP 44.203.90.18. Quá trình điều tra đối chiếu SIEM alert, proxy log, endpoint context, threat intelligence và email nội bộ để xác định đây là hoạt động Marketing hợp lệ.</p>
 <div class="mini-tags"><span>Newly Registered Domain</span><span>Proxy Log</span><span>Threat Intel</span><span>Endpoint Context</span><span>False Positive</span><span>Business Validation</span></div>
 </section>
 <section class="report-layout">
-<aside class="sidebar"><div class="panel"><p class="meta">Case metadata</p><div class="info-grid" style="grid-template-columns:1fr"><div class="info-box"><span>Priority</span><b>Medium</b></div><div class="info-box"><span>Status</span><b>False Positive / Closed</b></div><div class="info-box"><span>Role</span><b>SOC Analyst L1</b></div><div class="info-box"><span>Verdict</span><b>Authorized Marketing Activity</b></div></div></div><div class="panel" style="margin-top:16px"><p class="meta">On this page</p><div class="toc"><a href="#summary">Executive Summary</a><a href="#alert">Alert Context</a><a href="#scope">Objective &amp; Scope</a><a href="#evidence">Evidence Review</a><a href="#workflow">Investigation Workflow</a><a href="#verdict">Final Verdict</a><a href="#recommendations">Recommendations</a></div></div></aside>
+<aside class="sidebar"><div class="panel"><p class="meta">Thông tin project</p><div class="info-grid" style="grid-template-columns:1fr"><div class="info-box"><span>Mức độ phù hợp</span><b>Medium</b></div><div class="info-box"><span>Trạng thái</span><b>False Positive / Closed</b></div><div class="info-box"><span>Vai trò</span><b>SOC Analyst L1</b></div><div class="info-box"><span>Verdict</span><b>Authorized Marketing Activity</b></div></div></div><div class="panel" style="margin-top:16px"><p class="meta">Nội dung chính</p><div class="toc"><a href="#summary">Executive Summary</a><a href="#alert">Alert Context</a><a href="#scope">Objective &amp; Scope</a><a href="#evidence">Evidence Review</a><a href="#workflow">Investigation Workflow</a><a href="#verdict">Final Verdict</a><a href="#recommendations">Recommendations</a></div></div></aside>
 <div>
 <section class="report-section" id="summary"><div class="section-kicker">01 · Executive view</div><h2>Executive Summary</h2><p>SOC nhận alert <b>SOC-102: Connection to Newly Registered Domain</b> khi workstation <b>FIN-WIN-001</b> (<b>192.168.15.3</b>) truy cập domain <b>cdn-assets.finovabank-promo.com</b>. Domain mới được đăng ký gần thời điểm alert và host trên AWS với destination IP <b>44.203.90.18</b>, vì vậy cần được xử lý như một suspicious observable.</p><p>Điều tra cho thấy user truy cập bằng trình duyệt Chrome, proxy log chỉ ghi nhận static assets <b>styles.css</b> và <b>banner.jpg</b>, không có executable download, không có process đáng nghi và email nội bộ đã thông báo domain này phục vụ chiến dịch Marketing. Case được phân loại là <span class="verdict-badge false">False Positive · Authorized Marketing Activity</span>.</p><figure class="lab-figure"><img alt="SOC-102 alert details showing newly registered domain" src="../assets/labs/soc102/soc102-1.png"/><figcaption>Figure 1 · Alert details ghi nhận FIN-WIN-001 truy cập newly registered domain trên AWS.</figcaption></figure></section>
 <section class="report-section" id="alert"><div class="section-kicker">02 · Alert validation</div><h2>Alert Context &amp; IOCs</h2><div class="table-wrap"><table><thead><tr><th>Field</th><th>Value</th><th>Analyst note</th></tr></thead><tbody><tr><td>Event ID</td><td>1002</td><td>Alert thuộc nhóm suspicious domain access.</td></tr><tr><td>Source host</td><td>FIN-WIN-001 · 192.168.15.3</td><td>Workstation nội bộ thuộc nhóm cần kiểm tra user activity.</td></tr><tr><td>Destination</td><td>cdn-assets.finovabank-promo.com · 44.203.90.18</td><td>Domain mới đăng ký, host trên AWS.</td></tr><tr><td>Alert time</td><td>Oct 08 2025, 10:22 AM</td><td>Cần đối chiếu với proxy, endpoint và email evidence.</td></tr><tr><td>Severity</td><td>Medium</td><td>Đủ nghi vấn để triage nhưng chưa đủ để kết luận malicious.</td></tr></tbody></table></div><div class="callout warn"><b>Initial assessment:</b> Newly registered domain là tín hiệu đáng nghi, không phải bằng chứng độc hại. Analyst cần kiểm tra threat intelligence, proxy, endpoint và business context.</div></section>
@@ -44,7 +44,7 @@
 <section class="report-section" id="verdict"><div class="section-kicker">06 · Verdict</div><h2>Final Assessment</h2><p><span class="verdict-badge false">False Positive · Authorized Marketing Activity</span></p><p><b>Reason:</b> Domain mới đăng ký nhưng được email nội bộ xác nhận phục vụ Q4 Marketing Campaign; proxy log chỉ ghi nhận static assets; user truy cập bằng Chrome; không có executable download, process đáng nghi hoặc bằng chứng credential submission.</p></section>
 <section class="report-section" id="recommendations"><div class="section-kicker">07 · Response</div><h2>Recommendations</h2><ul><li>Thêm <b>finovabank-promo.com</b> vào approved domain list có owner, purpose và thời hạn rõ ràng.</li><li>Tune rule newly registered domain để loại trừ domain đã được business owner xác minh.</li><li>Thiết lập quy trình Marketing/IT thông báo SOC trước khi đăng ký domain campaign mới.</li><li>Tiếp tục monitor nếu domain phát sinh HTTP POST, file executable download hoặc nhiều host truy cập bất thường.</li></ul></section>
 </div></section></main><footer>
-<div class="container">© 2026 Khánh Linh · Learning Journey &amp; Security Portfolio · Built for GitHub Pages</div>
+<div class="container">© 2026 Phạm Huỳnh Khánh Linh · Portfolio học tập &amp; bảo mật</div>
 </footer>
 <script src="../assets/app.js"></script>
 </body>
