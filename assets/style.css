@@ -54,3 +54,23 @@ h1{font-size:clamp(2.35rem,5.2vw,5.05rem);letter-spacing:-2.4px}.lead{font-size:
 @media(max-width:1080px){.lab-page-grid{grid-template-columns:repeat(2,1fr)}.three-steps{grid-template-columns:1fr}}
 @media(max-width:900px){.compact-avatar{justify-self:start}.home-hero{min-height:auto}.nav-links a{border-radius:12px}.nav-links a.active{width:100%}}
 @media(max-width:620px){.lab-page-grid{grid-template-columns:1fr}.home-hero h1{letter-spacing:-1.6px}.professional-page-hero{padding-top:44px}.nav-card{min-height:auto}}
+
+
+/* Contact outside tab: homepage + footer */
+.home-contact-block{padding:10px 0 72px}
+.home-contact-card{display:grid;grid-template-columns:1fr 1.2fr;gap:22px;align-items:center;padding:26px;border:1px solid var(--border);border-radius:var(--radius);background:linear-gradient(135deg,rgba(255,255,255,.065),rgba(125,211,252,.055));box-shadow:var(--shadow)}
+.home-contact-card h2{font-size:clamp(1.45rem,2.6vw,2.15rem);letter-spacing:-.8px;margin:6px 0 8px}
+.home-contact-card p{color:var(--muted);line-height:1.75}
+.home-contact-list{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.home-contact-list a{display:flex;flex-direction:column;gap:4px;padding:13px 14px;border:1px solid var(--border);border-radius:16px;background:rgba(2,6,23,.23)}
+.home-contact-list a:hover{border-color:rgba(125,211,252,.35);transform:translateY(-2px)}
+.home-contact-list span{font-size:.72rem;text-transform:uppercase;letter-spacing:.9px;color:var(--accent);font-weight:900}
+.home-contact-list b{font-size:.91rem;color:var(--text);word-break:break-word}
+.site-footer{padding:24px 0;border-top:1px solid var(--border);background:rgba(8,17,31,.38);color:var(--muted2)}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;text-align:left}
+.footer-inner strong{color:var(--text)}
+.footer-inner p{margin-top:2px;color:var(--muted2);font-size:.92rem}
+.footer-contact{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px}
+.footer-contact a{padding:8px 11px;border:1px solid var(--border);border-radius:999px;background:rgba(255,255,255,.04);color:#dbeafe;font-size:.9rem}
+.footer-contact a:hover{color:var(--text);border-color:rgba(125,211,252,.32)}
+@media(max-width:900px){.home-contact-card{grid-template-columns:1fr}.home-contact-list{grid-template-columns:1fr}.footer-inner{flex-direction:column;align-items:flex-start}.footer-contact{justify-content:flex-start}}

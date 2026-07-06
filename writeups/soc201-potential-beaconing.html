@@ -15,7 +15,7 @@
       <a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
       <button class="nav-toggle" aria-label="Mở menu" aria-expanded="false">☰</button>
       <div class="nav-links">
-        <a class="" href="../about.html">Giới thiệu</a><a class="" href="../projects.html">Dự án</a><a class="" href="../labs.html">Bài lab</a><a class="" href="../notes.html">Ghi chú</a><a class="" href="../skills.html">Kỹ năng</a><a class="" href="../contact.html">Liên hệ</a>
+        <a class="" href="../about.html">Giới thiệu</a><a class="" href="../projects.html">Dự án</a><a class="" href="../labs.html">Bài lab</a><a class="" href="../notes.html">Ghi chú</a><a class="" href="../skills.html">Kỹ năng</a>
         <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
     </nav>
@@ -32,8 +32,18 @@
 <section class="report-section" id="workflow"><div class="section-kicker">05 · Triage process</div><h2>Investigation Workflow</h2><ol><li>Validate timestamp, source host, destination IP, protocol, port và byte-size pattern.</li><li>Kiểm tra log management để xác nhận interval 5 phút có lặp lại nhiều lần.</li><li>Tra cứu external IP trên threat-intelligence sources và ghi confidence.</li><li>Pivot sang endpoint network history để xác định process/PID tạo kết nối.</li><li>Kiểm tra scope: hunt IP 85.208.253.156 trên proxy/firewall/DNS để biết có host nội bộ khác liên quan không.</li><li>Chuẩn bị escalation package gồm IOC, timeline, process evidence và recommended containment.</li></ol></section>
 <section class="report-section" id="verdict"><div class="section-kicker">06 · Assessment</div><h2>Final Assessment</h2><p><span class="verdict-badge true">Suspicious C2-like Beaconing · Escalation Required</span></p><p><b>Reason:</b> Network pattern có chu kỳ đều, byte size ổn định, destination IP có reputation xấu trong case evidence và endpoint cho thấy process tạo outbound connection. Chưa đủ dữ liệu để đặt tên malware family, nhưng đủ để xử lý theo quy trình containment.</p></section>
 <section class="report-section" id="containment"><div class="section-kicker">07 · Response</div><h2>Response Actions</h2><ul><li>Isolate HR-WIN-001 khỏi mạng sản xuất để ngăn traffic outbound tiếp tục.</li><li>Block hoặc sinkhole destination IP 85.208.253.156 tại firewall/proxy trong khi điều tra.</li><li>Collect endpoint artifacts: process path, hash, command line, parent process, signer, autoruns, scheduled tasks và recent files.</li><li>Hunt cùng IOC trên toàn bộ môi trường để xác định có lateral spread hoặc host khác beaconing không.</li><li>Escalate sang Tier 2/Incident Response kèm timeline, screenshots và IOC list.</li></ul></section>
-</div></section></main><footer>
-<div class="container">© 2026 Phạm Huỳnh Khánh Linh · Information Security Portfolio</div>
+</div></section></main><footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <strong>Phạm Huỳnh Khánh Linh</strong>
+      <p>Sinh viên An toàn thông tin · HCMUTE</p>
+    </div>
+    <div class="footer-contact" aria-label="Thông tin liên hệ">
+      <a href="mailto:phamkhahnhlinh103@gmail.com">phamkhahnhlinh103@gmail.com</a>
+      <a href="tel:0392980607">0392 980 607</a>
+      <a href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+  </div>
 </footer>
 <script src="../assets/app.js"></script>
 </body>

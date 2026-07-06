@@ -15,7 +15,7 @@
       <a class="logo" href="../index.html"><span class="logo-mark">KL</span><span>Khánh <strong>Linh</strong></span></a>
       <button class="nav-toggle" aria-label="Mở menu" aria-expanded="false">☰</button>
       <div class="nav-links">
-        <a class="" href="../about.html">Giới thiệu</a><a class="" href="../projects.html">Dự án</a><a class="" href="../labs.html">Bài lab</a><a class="" href="../notes.html">Ghi chú</a><a class="" href="../skills.html">Kỹ năng</a><a class="" href="../contact.html">Liên hệ</a>
+        <a class="" href="../about.html">Giới thiệu</a><a class="" href="../projects.html">Dự án</a><a class="" href="../labs.html">Bài lab</a><a class="" href="../notes.html">Ghi chú</a><a class="" href="../skills.html">Kỹ năng</a>
         <a class="nav-cta" href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
     </nav>
@@ -39,8 +39,18 @@
 <section class="report-section" id="workflow"><div class="section-kicker">05 · Triage process</div><h2>Investigation Workflow</h2><ol><li>Đọc alert context: rule name, source host, destination domain, destination IP, severity và timestamp.</li><li>Tra cứu domain/IP trên threat-intelligence sources để xác định có phải known IOC không.</li><li>Pivot sang proxy log để xác định user truy cập URL nào, status code, file extension và dữ liệu trả về.</li><li>Kiểm tra endpoint process để phân biệt user browsing với malware tự động kết nối.</li><li>Tìm business context qua email hoặc owner nội bộ để xác minh domain có thuộc hoạt động hợp lệ không.</li><li>Tổng hợp evidence và phân loại alert.</li></ol></section>
 <section class="report-section" id="verdict"><div class="section-kicker">06 · Verdict</div><h2>Final Assessment</h2><p><span class="verdict-badge false">False Positive · Authorized Marketing Activity</span></p><p><b>Reason:</b> Domain mới đăng ký nhưng được email nội bộ xác nhận phục vụ Q4 Marketing Campaign; proxy log chỉ ghi nhận static assets; user truy cập bằng Chrome; không có executable download, process đáng nghi hoặc bằng chứng credential submission.</p></section>
 <section class="report-section" id="recommendations"><div class="section-kicker">07 · Response</div><h2>Recommendations</h2><ul><li>Thêm <b>finovabank-promo.com</b> vào approved domain list có owner, purpose và thời hạn rõ ràng.</li><li>Tune rule newly registered domain để loại trừ domain đã được business owner xác minh.</li><li>Thiết lập quy trình Marketing/IT thông báo SOC trước khi đăng ký domain campaign mới.</li><li>Tiếp tục monitor nếu domain phát sinh HTTP POST, file executable download hoặc nhiều host truy cập bất thường.</li></ul></section>
-</div></section></main><footer>
-<div class="container">© 2026 Phạm Huỳnh Khánh Linh · Information Security Portfolio</div>
+</div></section></main><footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <strong>Phạm Huỳnh Khánh Linh</strong>
+      <p>Sinh viên An toàn thông tin · HCMUTE</p>
+    </div>
+    <div class="footer-contact" aria-label="Thông tin liên hệ">
+      <a href="mailto:phamkhahnhlinh103@gmail.com">phamkhahnhlinh103@gmail.com</a>
+      <a href="tel:0392980607">0392 980 607</a>
+      <a href="https://github.com/linh-999" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+  </div>
 </footer>
 <script src="../assets/app.js"></script>
 </body>
