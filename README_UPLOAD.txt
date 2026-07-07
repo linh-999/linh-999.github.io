@@ -13,3 +13,10 @@ Sau khi push, chờ 1-3 phút rồi Ctrl + F5 để tải lại trang.
 
 
 Cập nhật: phần Liên hệ hiện được đặt trực tiếp ở trang chủ và footer, không dùng tab/trang riêng contact.html.
+
+
+Cập nhật CV:
+- Xuất CV ra PDF.
+- Đổi tên thành cv.pdf.
+- Đặt vào thư mục documents/.
+- Đường dẫn trên web sẽ là documents/cv.pdf.

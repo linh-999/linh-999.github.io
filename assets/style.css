@@ -61,7 +61,7 @@ h1{font-size:clamp(2.35rem,5.2vw,5.05rem);letter-spacing:-2.4px}.lead{font-size:
 .home-contact-card{display:grid;grid-template-columns:1fr 1.2fr;gap:22px;align-items:center;padding:26px;border:1px solid var(--border);border-radius:var(--radius);background:linear-gradient(135deg,rgba(255,255,255,.065),rgba(125,211,252,.055));box-shadow:var(--shadow)}
 .home-contact-card h2{font-size:clamp(1.45rem,2.6vw,2.15rem);letter-spacing:-.8px;margin:6px 0 8px}
 .home-contact-card p{color:var(--muted);line-height:1.75}
-.home-contact-list{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.home-contact-list{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .home-contact-list a{display:flex;flex-direction:column;gap:4px;padding:13px 14px;border:1px solid var(--border);border-radius:16px;background:rgba(2,6,23,.23)}
 .home-contact-list a:hover{border-color:rgba(125,211,252,.35);transform:translateY(-2px)}
 .home-contact-list span{font-size:.72rem;text-transform:uppercase;letter-spacing:.9px;color:var(--accent);font-weight:900}
